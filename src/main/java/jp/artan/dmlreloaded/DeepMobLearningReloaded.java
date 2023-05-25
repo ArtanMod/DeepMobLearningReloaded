@@ -2,6 +2,9 @@ package jp.artan.dmlreloaded;
 
 import com.mojang.logging.LogUtils;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
+import jp.artan.dmlreloaded.init.BlockInit;
+import jp.artan.dmlreloaded.init.ItemGroupInit;
+import jp.artan.dmlreloaded.init.ItemInit;
 import jp.artan.repack.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,6 +28,10 @@ public class DeepMobLearningReloaded {
     public DeepMobLearningReloaded() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::registerProviders);
+
+        ItemGroupInit.register();
+        ItemInit.register();
+        BlockInit.register();
     }
 
     public static ResourceLocation getResource(String name) {
