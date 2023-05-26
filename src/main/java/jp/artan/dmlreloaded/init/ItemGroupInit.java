@@ -4,7 +4,6 @@ import jp.artan.artansprojectcoremod.tabs.CreativeTab;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 
 public class ItemGroupInit {
     private static final DeepMobLearningReloadedRegistrate REGISTRATE = DeepMobLearningReloaded.registrate();
