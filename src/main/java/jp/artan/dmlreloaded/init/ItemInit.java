@@ -13,8 +13,6 @@ import net.minecraft.world.item.Item;
 public class ItemInit {
     private static final DeepMobLearningReloadedRegistrate REGISTRATE = DeepMobLearningReloaded.registrate().creativeModeTab(() -> ItemGroupInit.DEEP_MOB_LEARNING_RELOADED);
 
-
-
     public static class DataModel {
         public static final ItemEntry<Item> BLANK = REGISTRATE.item("data_model_blank", Item::new)
                 .lang("Blank Data Model")
@@ -54,6 +52,12 @@ public class ItemInit {
                 .register();
 
         public static void register() {
+            REGISTRATE.addRawLang("dmlreloaded.living_matter.exp_consume", "Can be consumed for expirience %1$s");
+            REGISTRATE.addRawLang("dmlreloaded.living_matter.exp_consume_stack", "Hold %1$s to consume entire stack.");
+            REGISTRATE.addRawLang("dmlreloaded.living_matter.exp", "Experience per item: %1$s");
+            REGISTRATE.addRawJPLang("dmlreloaded.living_matter.exp_consume", "%1$sで消費することができます");
+            REGISTRATE.addRawJPLang("dmlreloaded.living_matter.exp_consume_stack", "%1$sを押しながら使用するとスタック全体が消費されます.");
+            REGISTRATE.addRawJPLang("dmlreloaded.living_matter.exp", "アイテムごとの経験値: %1$s");
         }
     }
 

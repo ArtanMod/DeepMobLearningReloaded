@@ -31,9 +31,9 @@ public class ItemLivingMatter extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flag) {
-        list.add(new TranslatableComponent("dmlreforged.living_matter.exp_consume", new TextComponent("(Right-Click)").withStyle(t -> t.withColor(ChatFormatting.WHITE))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
-        list.add(new TranslatableComponent("dmlreforged.living_matter.exp_consume_stack", new TextComponent("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
-        list.add(new TranslatableComponent("dmlreforged.living_matter.exp", new TextComponent(Integer.toString(LivingExpConfig.getExp(getType()))).withStyle(t -> t.withColor(ChatFormatting.GREEN))));
+        list.add(new TranslatableComponent("dmlreloaded.living_matter.exp_consume", new TextComponent("(Right-Click)").withStyle(t -> t.withColor(ChatFormatting.WHITE))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
+        list.add(new TranslatableComponent("dmlreloaded.living_matter.exp_consume_stack", new TextComponent("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
+        list.add(new TranslatableComponent("dmlreloaded.living_matter.exp", new TextComponent(Integer.toString(LivingExpConfig.getExp(getType()))).withStyle(t -> t.withColor(ChatFormatting.GREEN))));
     }
 
     @Override
@@ -44,13 +44,11 @@ public class ItemLivingMatter extends Item {
                 int size = player.getItemInHand(hand).getCount();
                 player.getItemInHand(hand).shrink(size);
                 player.giveExperiencePoints(exp * size);
-            }
-            else {
+            } else {
                 player.getItemInHand(hand).shrink(1);
                 player.giveExperiencePoints(exp);
             }
         }
-
         return super.use(world, player, hand);
     }
 

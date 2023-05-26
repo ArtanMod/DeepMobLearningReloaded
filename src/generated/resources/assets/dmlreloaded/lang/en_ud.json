@@ -1,4 +1,7 @@
 {
+  "dmlreloaded.living_matter.exp": "%1$s :\u026F\u01DD\u0287\u0131 \u0279\u01DDd \u01DD\u0254u\u01DD\u0131\u0279\u01DDdx\u018E",
+  "dmlreloaded.living_matter.exp_consume": "%1$s \u01DD\u0254u\u01DD\u0131\u0279\u0131dx\u01DD \u0279o\u025F p\u01DD\u026Fnsuo\u0254 \u01DDq u\u0250\u0186",
+  "dmlreloaded.living_matter.exp_consume_stack": "\u02D9\u029E\u0254\u0250\u0287s \u01DD\u0279\u0131\u0287u\u01DD \u01DD\u026Fnsuo\u0254 o\u0287 %1$s p\u05DFoH",
   "item.dmlreloaded.data_model_blank": "\u05DF\u01DDpoW \u0250\u0287\u0250\u15E1 \u029Eu\u0250\u05DF\u15FA",
   "item.dmlreloaded.data_model_blaze": "\u05DF\u01DDpoW \u0250\u0287\u0250\u15E1 \u01DDz\u0250\u05DF\u15FA",
   "item.dmlreloaded.living_matter_extraterrestrial": "\u0279\u01DD\u0287\u0287\u0250W \u05DF\u0250\u0131\u0279\u0287s\u01DD\u0279\u0279\u01DD\u0287\u0250\u0279\u0287x\u018E",

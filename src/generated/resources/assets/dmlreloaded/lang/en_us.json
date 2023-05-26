@@ -1,4 +1,7 @@
 {
+  "dmlreloaded.living_matter.exp": "Experience per item: %1$s",
+  "dmlreloaded.living_matter.exp_consume": "Can be consumed for expirience %1$s",
+  "dmlreloaded.living_matter.exp_consume_stack": "Hold %1$s to consume entire stack.",
   "item.dmlreloaded.data_model_blank": "Blank Data Model",
   "item.dmlreloaded.data_model_blaze": "Blaze Data Model",
   "item.dmlreloaded.living_matter_extraterrestrial": "Extraterrestrial Matter",
