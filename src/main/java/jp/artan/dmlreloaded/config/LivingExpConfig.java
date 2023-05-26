@@ -7,9 +7,6 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import java.util.HashMap;
 
 public class LivingExpConfig {
-    public static ForgeConfigSpec.IntValue LIVING_MATTER_OVERWORLDIAN; //10;
-    public static ForgeConfigSpec.IntValue LIVING_MATTER_HELLISH; //14;
-    public static ForgeConfigSpec.IntValue LIVING_MATTER_EXTRATERRESTRIAL; //20;
 
     private static HashMap<ILivingMatterType, ForgeConfigSpec.IntValue> livingHashMap = new HashMap();
 

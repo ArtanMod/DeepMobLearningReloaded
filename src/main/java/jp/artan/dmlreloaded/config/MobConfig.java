@@ -4,17 +4,18 @@ import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.common.MobKey;
 import net.minecraftforge.common.ForgeConfigSpec;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class MobConfig {
     private static HashMap<IMobKey, ForgeConfigSpec.ConfigValue<List<? extends String>>> ACCEPTEDMOBS = new HashMap<>();
-    private static HashMap<IMobKey, ForgeConfigSpec.ConfigValue<List<? extends IMobKey.Loot>>> PRISTINELOOT = new HashMap<>();
+    private static HashMap<IMobKey, ForgeConfigSpec.ConfigValue<List<? extends String>>> PRISTINELOOT = new HashMap<>();
 
     public static void addMobConfig(
             IMobKey mobKey,
             ForgeConfigSpec.ConfigValue<List<? extends String>> mobs,
-            ForgeConfigSpec.ConfigValue<List<? extends IMobKey.Loot>> loot
+            ForgeConfigSpec.ConfigValue<List<? extends String>> loot
     ) {
         ACCEPTEDMOBS.put(mobKey, mobs);
         PRISTINELOOT.put(mobKey, loot);
@@ -37,7 +38,11 @@ public class MobConfig {
         );
     }
 
-    public static final List<? extends String> getMobs(IMobKey mobKey) {
-        return ACCEPTEDMOBS.get(mobKey).get();
+    public static List<? extends String> getMobs(IMobKey mobKey) {
+        try {
+            return ACCEPTEDMOBS.get(mobKey).get();
+        } catch(Exception e) {
+            return new ArrayList<>();
+        }
     }
 }

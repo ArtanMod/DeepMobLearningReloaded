@@ -7,7 +7,7 @@ public interface IMobKey {
     String getMobKey();
     ILivingMatterType getLivingMatterType();
     List<String> getMobs();
-    List<MobKey.Loot> getLoot();
+    List<String> getLoot();
     void addMob(String mob);
     void addLoot(String itemId, int amount);
 
@@ -17,6 +17,10 @@ public interface IMobKey {
         public Loot(String itemId, int amount) {
             this.itemId = itemId;
             this.amount = amount;
+        }
+
+        public String getLootId() {
+            return this.itemId + "," + this.amount;
         }
     }
 }

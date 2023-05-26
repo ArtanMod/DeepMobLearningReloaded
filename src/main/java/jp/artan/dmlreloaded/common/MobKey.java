@@ -131,7 +131,7 @@ public enum MobKey implements IMobKey {
     private final String mobKey;
     private final ILivingMatterType livingMatterType;
     private final List<String> mobs;
-    private final List<Loot> loot;
+    private final List<String> loot;
 
     MobKey(
             String mobKey,
@@ -142,7 +142,7 @@ public enum MobKey implements IMobKey {
         this.mobKey = mobKey;
         this.livingMatterType = livingMatterType;
         this.mobs = mobs;
-        this.loot = loot;
+        this.loot = loot.stream().map(Loot::getLootId).toList();
     }
 
     @Override
@@ -161,7 +161,7 @@ public enum MobKey implements IMobKey {
     }
 
     @Override
-    public List<Loot> getLoot() {
+    public List<String> getLoot() {
         return loot;
     }
 
@@ -172,6 +172,6 @@ public enum MobKey implements IMobKey {
 
     @Override
     public void addLoot(String itemId, int amount) {
-        loot.add(new Loot(itemId, amount));
+        loot.add(new Loot(itemId, amount).getLootId());
     }
 }
