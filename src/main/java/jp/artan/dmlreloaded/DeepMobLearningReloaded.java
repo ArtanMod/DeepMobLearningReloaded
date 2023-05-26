@@ -1,6 +1,7 @@
 package jp.artan.dmlreloaded;
 
 import com.mojang.logging.LogUtils;
+import jp.artan.dmlreloaded.config.Config;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import jp.artan.dmlreloaded.init.BlockInit;
 import jp.artan.dmlreloaded.init.ItemGroupInit;
@@ -20,6 +21,15 @@ import java.util.stream.Collectors;
 public class DeepMobLearningReloaded {
     public static final String MOD_ID = "dmlreloaded";
 
+    // Minecraft logic
+    public static final int TICKS_TO_SECOND = 20;
+
+    // Internal inventory sizes
+    public static final int DEEP_LEARNER_INTERNAL_SLOTS_SIZE = 4;
+
+    // Data model max tier
+    public static final int DATA_MODEL_MAXIMUM_TIER = 4;
+
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -28,6 +38,8 @@ public class DeepMobLearningReloaded {
     public DeepMobLearningReloaded() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::registerProviders);
+
+        Config.register();
 
         ItemGroupInit.register();
         ItemInit.register();

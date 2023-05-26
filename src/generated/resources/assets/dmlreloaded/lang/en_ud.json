@@ -1,4 +1,9 @@
 {
   "item.dmlreloaded.data_model_blank": "\u05DF\u01DDpoW \u0250\u0287\u0250\u15E1 \u029Eu\u0250\u05DF\u15FA",
+  "item.dmlreloaded.data_model_blaze": "\u05DF\u01DDpoW \u0250\u0287\u0250\u15E1 \u01DDz\u0250\u05DF\u15FA",
+  "item.dmlreloaded.living_matter_extraterrestrial": "\u0279\u01DD\u0287\u0287\u0250W \u05DF\u0250\u0131\u0279\u0287s\u01DD\u0279\u0279\u01DD\u0287\u0250\u0279\u0287x\u018E",
+  "item.dmlreloaded.living_matter_hellish": "\u0279\u01DD\u0287\u0287\u0250W \u0265s\u0131\u05DF\u05DF\u01DDH",
+  "item.dmlreloaded.living_matter_overworldian": "\u0279\u01DD\u0287\u0287\u0250W u\u0250\u0131p\u05DF\u0279o\u028D\u0279\u01DD\u028CO",
+  "item.dmlreloaded.pristine_matter_blaze": "\u0279\u01DD\u0287\u0287\u0250W \u01DDz\u0250\u05DF\u15FA \u01DDu\u0131\u0287s\u0131\u0279\u0500",
   "itemGroup.deep_mob_learning_reloaded": "p\u01DDp\u0250o\u05DF\u01DD\u1D1A :bu\u0131u\u0279\u0250\u01DD\uA780 qoW d\u01DD\u01DD\u15E1"
 }
