@@ -34,7 +34,7 @@ public class MobConfig {
         addMobConfig(
                 MobKey.BLAZE,
                 COMMON_BUILDER.defineList("blaze", MobKey.BLAZE.getMobs(), o -> o instanceof String),
-                COMMON_BUILDER.defineList("blaze", MobKey.BLAZE.getLoot(), o -> o instanceof IMobKey.Loot)
+                COMMON_BUILDER.defineList("blaze", MobKey.BLAZE.getLoot(), o -> o instanceof String)
         );
     }
 
