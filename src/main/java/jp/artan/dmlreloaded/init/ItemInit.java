@@ -31,6 +31,11 @@ public class ItemInit {
             .jpLang("グリッチを注入したインゴット")
             .register();
 
+    public static final ItemEntry<Item> POLYMER_CLAY = REGISTRATE.item("polymer_clay", Item::new)
+            .lang("Polymer Clay")
+            .jpLang("ポリマー粘土")
+            .register();
+
     public static class DataModel {
         public static final ItemEntry<Item> BLANK = REGISTRATE.item("data_model_blank", Item::new)
                 .lang("Blank Data Model")
