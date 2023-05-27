@@ -6,6 +6,7 @@ import jp.artan.dmlreloaded.config.EnergyCostConfig;
 import jp.artan.dmlreloaded.config.MobConfig;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,7 +23,7 @@ public abstract class MobMetaData {
     protected int interfaceOffsetY;
     protected ItemLivingMatter livingMatter;
     protected ItemPristineMatter pristineMatter;
-    protected String[] mobTrivia;
+    protected int mobTriviaLine;
 
     public MobMetaData(
             IMobKey key,
@@ -34,7 +35,7 @@ public abstract class MobMetaData {
             int interfaceOffsetY,
             ItemLivingMatter livingMatter,
             ItemPristineMatter pristineMatter,
-            String[] mobTrivia
+            int mobTriviaLine
     ) {
         this.key = key;
         this.name = name;
@@ -45,7 +46,7 @@ public abstract class MobMetaData {
         this.interfaceOffsetY = interfaceOffsetY;
         this.livingMatter = livingMatter;
         this.pristineMatter = pristineMatter;
-        this.mobTrivia = mobTrivia;
+        this.mobTriviaLine = mobTriviaLine;
     }
 
     public int getSimulationTickCost() {
@@ -100,8 +101,16 @@ public abstract class MobMetaData {
         return pristineMatter;
     }
 
-    public String[] getMobTrivia() {
-        return mobTrivia;
+    public int getMobTriviaLine() {
+        return mobTriviaLine;
+    }
+
+    public static String getMobTriviaLangId(int index) {
+        return "dmlreloaded.gui.mob.trivia." + index;
+    }
+
+    public TranslatableComponent getMobTrivia(int index) {
+        return new TranslatableComponent(getMobTriviaLangId(index));
     }
 
     public boolean entityLivingMatchesMob(LivingEntity entity) {

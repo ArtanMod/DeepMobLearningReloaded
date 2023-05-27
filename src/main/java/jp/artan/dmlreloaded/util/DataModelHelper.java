@@ -7,10 +7,26 @@ import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaFactory;
 import jp.artan.dmlreloaded.item.ItemDataModel;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class DataModelHelper {
+    public static NonNullList<ItemStack> getValidFromList(NonNullList<ItemStack> list) {
+        NonNullList<ItemStack> filteredList = NonNullList.create();
+
+        for(ItemStack stack : list) {
+            Item item = stack.getItem();
+
+            if(item instanceof ItemDataModel) {
+                filteredList.add(stack);
+            }
+        }
+
+        return filteredList;
+    }
+
     public static MutableComponent getTierName(ItemStack stack, boolean getNextTierName) {
         return TierHelper.getTierName(getTier(stack), getNextTierName);
     }

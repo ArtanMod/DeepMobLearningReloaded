@@ -1,7 +1,8 @@
 package jp.artan.dmlreloaded.common.mobmetas;
 
 import jp.artan.dmlreloaded.common.IMobKey;
-import jp.artan.dmlreloaded.common.MobKey;
+import jp.artan.dmlreloaded.config.MobMetaDataConfig;
+import net.minecraftforge.common.util.NonNullSupplier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,13 @@ public class MobMetaFactory {
 
     public static MobMetaData createMobMetaData(IMobKey mobKey) {
         MobMetaData meta = null;
-        meta = new BlazeMeta(10, 48, 10, 20);
+        try {
+            NonNullSupplier<MobMetaData> func = MobMetaDataConfig.getMobMetaData(mobKey);
+            meta = func.get();
+        } catch(Exception e) {
+//            TODO: zombieをデフォルトとする
+            meta = null;
+        }
         return meta;
     }
 

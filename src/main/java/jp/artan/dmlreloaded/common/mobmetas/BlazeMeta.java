@@ -7,12 +7,10 @@ import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.level.Level;
 
 public class BlazeMeta extends MobMetaData {
-    static String[] mobTrivia = {"Bring buckets, and watch in despair", "as it evaporates, and everything is on fire", "You are on fire"};
-
-    BlazeMeta(int numberOfHearts, int interfaceScale, int interfaceOffsetX, int interfaceOffsetY) {
+    public BlazeMeta(int numberOfHearts, int interfaceScale, int interfaceOffsetX, int interfaceOffsetY) {
         super(
                 MobKey.BLAZE,
-                "Blaze",
+                "entity.minecraft.blaze",
                 "Blazes",
                 numberOfHearts,
                 interfaceScale,
@@ -20,7 +18,7 @@ public class BlazeMeta extends MobMetaData {
                 interfaceOffsetY,
                 ItemInit.LivingMatter.HELLISH.get(),
                 ItemInit.PristineMatter.BLAZE.get(),
-                mobTrivia
+                3
         );
     }
 

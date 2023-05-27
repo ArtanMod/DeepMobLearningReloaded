@@ -5,6 +5,7 @@ import jp.artan.dmlreloaded.common.LivingMatterType;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import jp.artan.dmlreloaded.item.ItemDataModel;
+import jp.artan.dmlreloaded.item.ItemDeepLearner;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
@@ -12,6 +13,11 @@ import net.minecraft.world.item.Item;
 
 public class ItemInit {
     private static final DeepMobLearningReloadedRegistrate REGISTRATE = DeepMobLearningReloaded.registrate().creativeModeTab(() -> ItemGroupInit.DEEP_MOB_LEARNING_RELOADED);
+
+    public static final ItemEntry<ItemDeepLearner> DEEP_LEARNER = REGISTRATE.item("deep_learner", ItemDeepLearner::new)
+            .lang("Deep Learner")
+            .jpLang("深層学習装置")
+            .register();
 
     public static class DataModel {
         public static final ItemEntry<Item> BLANK = REGISTRATE.item("data_model_blank", Item::new)
