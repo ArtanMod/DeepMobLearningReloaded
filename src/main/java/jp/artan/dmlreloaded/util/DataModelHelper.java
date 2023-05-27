@@ -7,8 +7,11 @@ import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaFactory;
 import jp.artan.dmlreloaded.item.ItemDataModel;
+import jp.artan.dmlreloaded.item.ItemGlitchSword;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -128,5 +131,27 @@ public class DataModelHelper {
             return 0;
         }
         return DataModelLevelupHelper.getTierRoof(getTier(stack), false);
+    }
+
+    /* Called by deep learners */
+    public static void increaseMobKillCount(ItemStack stack, ServerPlayer player) {
+        // Get our current tier before increasing the kill count;
+        int tier = getTier(stack);
+        int i = getCurrentTierKillCount(stack);
+        boolean isGlitchSwordEquipped = player.getMainHandItem().getItem() instanceof ItemGlitchSword;
+
+        i = i + (isGlitchSwordEquipped ? 2 : 1);
+        setCurrentTierKillCount(stack, i);
+
+        // Update the totals
+        setTotalKillCount(stack, getTotalKillCount(stack) + 1);
+
+        if(DataModelLevelupHelper.shouldIncreaseTier(tier, i, getCurrentTierSimulationCount(stack))) {
+            player.displayClientMessage(new TranslatableComponent("dmlreloaded.tiers.increase_tier", stack.getHoverName(), getTierName(stack, true)), true);
+
+            setCurrentTierKillCount(stack, 0);
+            setCurrentTierSimulationCount(stack, 0);
+            setTier(stack, tier + 1);
+        }
     }
 }

@@ -21,6 +21,7 @@ public class Config {
         DataModelConfig.registerServerConfig(SERVER_BUILDER);
         EnergyCostConfig.registerServerConfig(SERVER_BUILDER);
         LivingExpConfig.registerServerConfig(SERVER_BUILDER);
+        BalanceConfigs.registerServerConfig(SERVER_BUILDER);
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SERVER_BUILDER.build());
     }
 

@@ -4,10 +4,7 @@ import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.common.LivingMatterType;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
-import jp.artan.dmlreloaded.item.ItemDataModel;
-import jp.artan.dmlreloaded.item.ItemDeepLearner;
-import jp.artan.dmlreloaded.item.ItemLivingMatter;
-import jp.artan.dmlreloaded.item.ItemPristineMatter;
+import jp.artan.dmlreloaded.item.*;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
 
@@ -17,6 +14,21 @@ public class ItemInit {
     public static final ItemEntry<ItemDeepLearner> DEEP_LEARNER = REGISTRATE.item("deep_learner", ItemDeepLearner::new)
             .lang("Deep Learner")
             .jpLang("深層学習装置")
+            .register();
+
+    public static final ItemEntry<ItemGlitchFragment> GLITCH_FRAGMENT = REGISTRATE.item("glitch_fragment", ItemGlitchFragment::new)
+            .lang("Unstable Glitch Fragment")
+            .jpLang("不安定なグリッチの断片")
+            .register();
+
+    public static final ItemEntry<ItemGlitchHeart> GLITCH_HEART = REGISTRATE.item("glitch_heart", ItemGlitchHeart::new)
+            .lang("Corrupted Glitch Heart")
+            .jpLang("破損したグリッチの心臓")
+            .register();
+
+    public static final ItemEntry<ItemGlitchIngot> GLITCH_INGOT = REGISTRATE.item("glitch_infused_ingot", ItemGlitchIngot::new)
+            .lang("Glitch Infused Ingot")
+            .jpLang("グリッチを注入したインゴット")
             .register();
 
     public static class DataModel {
@@ -43,11 +55,12 @@ public class ItemInit {
             REGISTRATE.addRawLang("dmlreloaded.tiers.tier_3", "Advanced");
             REGISTRATE.addRawLang("dmlreloaded.tiers.tier_4", "Superior");
             REGISTRATE.addRawLang("dmlreloaded.tiers.tier_5", "Self Aware");
+            REGISTRATE.addRawLang("dmlreloaded.tiers.increase_tier", "%1$s reached the %2$s tier");
 
             REGISTRATE.addRawJPLang("dmlreloaded.holdshift", "- %1$s長押しで情報を表示");
             REGISTRATE.addRawJPLang("dmlreloaded.data_model.tier", "等級: %1$s");
             REGISTRATE.addRawJPLang("dmlreloaded.data_model.data.collected", "データ収集: %1$s/%2$s");
-            REGISTRATE.addRawJPLang("dmlreloaded.data_model.data.killmultiplier", "対象キル数: %1$s");
+            REGISTRATE.addRawJPLang("dmlreloaded.data_model.data.killmultiplier", "キル数ごとの学習量: %1$s");
             REGISTRATE.addRawJPLang("dmlreloaded.data_model.rfcost", "シミュレーションコスト: %1$s RF/t");
             REGISTRATE.addRawJPLang("dmlreloaded.data_model.type_text", "タイプ: %1$s");
             REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_1", "不完全");
@@ -55,6 +68,7 @@ public class ItemInit {
             REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_3", "上級");
             REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_4", "至上");
             REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_5", "自己認識");
+            REGISTRATE.addRawJPLang("dmlreloaded.tiers.increase_tier", "%1$sが%2$sの階級にアップデート");
         }
     }
 

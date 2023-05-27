@@ -33,14 +33,16 @@ public class MobConfig {
         COMMON_BUILDER.push("mobs");
         addMobConfig(
                 MobKey.BLAZE,
-                COMMON_BUILDER.defineList("blaze", MobKey.BLAZE.getMobs(), o -> o instanceof String),
-                COMMON_BUILDER.defineList("blaze", MobKey.BLAZE.getLoot(), o -> o instanceof String)
+                COMMON_BUILDER.defineList("blaze_mobs", MobKey.BLAZE.getMobs(), o -> o instanceof String),
+                COMMON_BUILDER.defineList("blaze_loot", MobKey.BLAZE.getLoot(), o -> o instanceof String)
         );
     }
 
     public static List<? extends String> getMobs(IMobKey mobKey) {
         try {
-            return ACCEPTEDMOBS.get(mobKey).get();
+            ForgeConfigSpec.ConfigValue<List<? extends String>> name = ACCEPTEDMOBS.get(mobKey);
+            List<? extends String> mobs = name.get();
+            return mobs;
         } catch(Exception e) {
             return new ArrayList<>();
         }

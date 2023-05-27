@@ -4,11 +4,10 @@ import com.mojang.logging.LogUtils;
 import jp.artan.dmlreloaded.config.Config;
 import jp.artan.dmlreloaded.config.MobMetaDataConfig;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
-import jp.artan.dmlreloaded.init.BlockInit;
-import jp.artan.dmlreloaded.init.ContainerInit;
-import jp.artan.dmlreloaded.init.ItemGroupInit;
-import jp.artan.dmlreloaded.init.ItemInit;
+import jp.artan.dmlreloaded.init.*;
+import jp.artan.dmlreloaded.provider.ModGlobalLootModifierProvider;
 import jp.artan.repack.registrate.util.nullness.NonNullSupplier;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -39,6 +38,8 @@ public class DeepMobLearningReloaded {
 
     public DeepMobLearningReloaded() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        DropModifier.GLM.register(modEventBus);
+
         modEventBus.addListener(this::registerProviders);
 
         Config.register();
@@ -59,6 +60,9 @@ public class DeepMobLearningReloaded {
     }
 
     void registerProviders(GatherDataEvent event) {
-
+        DataGenerator gen = event.getGenerator();
+        if(event.includeServer()) {
+            gen.addProvider(new ModGlobalLootModifierProvider(gen, MOD_ID));
+        }
     }
 }
