@@ -11,6 +11,7 @@
   "dmlreloaded.gui.deep_learner.killing_blow": "\u3068\u3069\u3081\u306E\u4E00\u6483\u3092\u4E0E\u3048\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059.",
   "dmlreloaded.gui.deep_learner.max": "\u9054\u6210\u3057\u305F\u6700\u5927\u7B49\u7D1A",
   "dmlreloaded.gui.deep_learner.not_found": "\u30C7\u30FC\u30BF\u30E2\u30C7\u30EB\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093",
+  "dmlreloaded.gui.deep_learner.overlay": "%1$s\u306E\u30E2\u30C7\u30EB",
   "dmlreloaded.gui.deep_learner.when_placed": "\u3068\u30C7\u30FC\u30BF\u3092\u53CE\u96C6\u3059\u308B\u3088\u3046\u306B\u306A\u308A\u307E\u3059.",
   "dmlreloaded.gui.information": "\u60C5\u5831",
   "dmlreloaded.gui.mob_name": "%1$s",

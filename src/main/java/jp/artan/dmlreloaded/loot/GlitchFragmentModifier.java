@@ -13,6 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -57,19 +58,7 @@ public class GlitchFragmentModifier extends LootModifier {
             }
             //Bow works
             if(ctx.getParamOrNull(LootContextParams.KILLER_ENTITY) instanceof ServerPlayer player) {
-                NonNullList<ItemStack> inventory = NonNullList.create();
-                inventory.addAll(player.getInventory().items);
-                inventory.addAll(player.getInventory().offhand);
-
-                // Grab the deep learners and combat trial items from a players inventory
-                NonNullList<ItemStack> deepLearners = getDeepLearners(inventory);
-                NonNullList<ItemStack> updatedModels = NonNullList.create();
-
-                // Update every data model in every deeplearner that match the kill event
-                deepLearners.forEach(stack -> {
-                    NonNullList<ItemStack> models = updateAndReturnModels(stack, (LivingEntity) ctx.getParamOrNull(LootContextParams.THIS_ENTITY), player);
-                    updatedModels.addAll(models);
-                });
+                NonNullList<ItemStack> updatedModels = updateDataModel(ctx, player);
 
                 // Return early if no models were affected
                 if(updatedModels.size() == 0) {
@@ -83,8 +72,40 @@ public class GlitchFragmentModifier extends LootModifier {
                     generatedLoot.add(meta.getPristineMatterStack(2));
                 }
             }
+        } else if(enabled && ctx.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof Animal && ctx.getParamOrNull(LootContextParams.KILLER_ENTITY) instanceof ServerPlayer player) {
+            NonNullList<ItemStack> updatedModels = updateDataModel(ctx, player);
+
+            // Return early if no models were affected
+            if(updatedModels.size() == 0) {
+                return generatedLoot;
+            }
+
+            // Chance to drop pristine matter from the model that gained data
+            // Can be toggled in Configs
+            if(BalanceConfigs.isGlitchArmorExtraDropsEnabled.get() && ItemGlitchArmor.isSetEquippedByPlayer(player) && ThreadLocalRandom.current().nextInt(1, 100) <= 16) {
+                MobMetaData meta = DataModelHelper.getMobMetaData(updatedModels.get(0));
+                generatedLoot.add(meta.getPristineMatterStack(2));
+            }
         }
         return generatedLoot;
+    }
+
+    private static NonNullList<ItemStack> updateDataModel(LootContext ctx, ServerPlayer player) {
+        NonNullList<ItemStack> inventory = NonNullList.create();
+        inventory.addAll(player.getInventory().items);
+        inventory.addAll(player.getInventory().offhand);
+
+        // Grab the deep learners and combat trial items from a players inventory
+        NonNullList<ItemStack> deepLearners = getDeepLearners(inventory);
+        NonNullList<ItemStack> updatedModels = NonNullList.create();
+
+        // Update every data model in every deeplearner that match the kill event
+        deepLearners.forEach(stack -> {
+            NonNullList<ItemStack> models = updateAndReturnModels(stack, (LivingEntity) ctx.getParamOrNull(LootContextParams.THIS_ENTITY), player);
+            updatedModels.addAll(models);
+        });
+
+        return updatedModels;
     }
 
     private static NonNullList<ItemStack> updateAndReturnModels(ItemStack deepLearner, LivingEntity entity, ServerPlayer player) {

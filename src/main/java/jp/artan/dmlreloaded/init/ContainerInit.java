@@ -42,6 +42,8 @@ public class ContainerInit {
             .addRawJPLang("dmlreloaded.gui.information", "情報")
             .addRawLang("dmlreloaded.gui.mob_name", "The %1$s")
             .addRawJPLang("dmlreloaded.gui.mob_name", "%1$s")
+            .addRawLang("dmlreloaded.gui.deep_learner.overlay", "%1$s Model")
+            .addRawJPLang("dmlreloaded.gui.deep_learner.overlay", "%1$sのモデル")
             .register();
 
     public static void register() {
