@@ -12,7 +12,7 @@ public class MobConfig {
     private static HashMap<IMobKey, ForgeConfigSpec.ConfigValue<List<? extends String>>> ACCEPTEDMOBS = new HashMap<>();
     private static HashMap<IMobKey, ForgeConfigSpec.ConfigValue<List<? extends String>>> PRISTINELOOT = new HashMap<>();
 
-    public static void addMobConfig(
+    public static void registerMobConfig(
             IMobKey mobKey,
             ForgeConfigSpec.ConfigValue<List<? extends String>> mobs,
             ForgeConfigSpec.ConfigValue<List<? extends String>> loot
@@ -31,7 +31,7 @@ public class MobConfig {
                 "This may appear confusing to many of you, but it is a new sensible way to handle configuration, because the server configuration is synced when playing multiplayer.",
                 "- Credit for this notification: BluSunrize (ImmersiveEngineering)").push("mob_registry");
         COMMON_BUILDER.push("mobs");
-        addMobConfig(
+        registerMobConfig(
                 MobKey.BLAZE,
                 COMMON_BUILDER.defineList("blaze_mobs", MobKey.BLAZE.getMobs(), o -> o instanceof String),
                 COMMON_BUILDER.defineList("blaze_loot", MobKey.BLAZE.getLoot(), o -> o instanceof String)

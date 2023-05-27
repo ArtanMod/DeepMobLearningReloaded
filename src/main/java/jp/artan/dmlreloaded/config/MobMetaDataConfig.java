@@ -15,12 +15,12 @@ public class MobMetaDataConfig {
 
     private static HashMap<IMobKey, NonNullSupplier<MobMetaData>> mobMobMetaData = new HashMap();
 
-    public static void addMobMetaData(IMobKey mobKey, NonNullSupplier<MobMetaData> mobMetaData) {
+    public static void registerMobMetaData(IMobKey mobKey, NonNullSupplier<MobMetaData> mobMetaData) {
         mobMobMetaData.put(mobKey, mobMetaData);
     }
 
     public static void register() {
-        addMobMetaData(MobKey.BLAZE, () -> new BlazeMeta(10, 48, 10, 20));
+        registerMobMetaData(MobKey.BLAZE, () -> new BlazeMeta(10, 48, 10, 20));
         REGISTRATE.addRawLang(MobMetaData.getMobTriviaLangId(0), "Bring buckets, and watch in despair");
         REGISTRATE.addRawLang(MobMetaData.getMobTriviaLangId(1), "as it evaporates, and everything is on fire");
         REGISTRATE.addRawLang(MobMetaData.getMobTriviaLangId(2), "You are on fire");

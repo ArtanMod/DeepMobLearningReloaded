@@ -10,15 +10,15 @@ public class LivingExpConfig {
 
     private static HashMap<ILivingMatterType, ForgeConfigSpec.IntValue> livingHashMap = new HashMap();
 
-    public static void addLivingMatterType(ILivingMatterType type, ForgeConfigSpec.IntValue config) {
+    public static void registerLivingMatterType(ILivingMatterType type, ForgeConfigSpec.IntValue config) {
         livingHashMap.put(type, config);
     }
 
     public static void registerServerConfig(ForgeConfigSpec.Builder SERVER_BUILDER) {
         SERVER_BUILDER.comment("Balance the EXP received from using Living Matter Item").push("living_matter");
-        addLivingMatterType(LivingMatterType.OVERWORLDIAN, SERVER_BUILDER.defineInRange("livingOverworldian", 10, 0, 999));
-        addLivingMatterType(LivingMatterType.HELLISH, SERVER_BUILDER.defineInRange("livingHellish", 14, 0, 999));
-        addLivingMatterType(LivingMatterType.EXTRATERRESTRIAL, SERVER_BUILDER.defineInRange("livingExtraterrestrial", 20, 0, 999));
+        registerLivingMatterType(LivingMatterType.OVERWORLDIAN, SERVER_BUILDER.defineInRange("livingOverworldian", 10, 0, 999));
+        registerLivingMatterType(LivingMatterType.HELLISH, SERVER_BUILDER.defineInRange("livingHellish", 14, 0, 999));
+        registerLivingMatterType(LivingMatterType.EXTRATERRESTRIAL, SERVER_BUILDER.defineInRange("livingExtraterrestrial", 20, 0, 999));
         SERVER_BUILDER.pop();
     }
 
