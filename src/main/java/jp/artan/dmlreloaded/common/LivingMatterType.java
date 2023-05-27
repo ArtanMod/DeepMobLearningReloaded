@@ -8,18 +8,25 @@ public enum LivingMatterType implements ILivingMatterType {
     EXTRATERRESTRIAL("extraterrestrial", ChatFormatting.LIGHT_PURPLE);
 
     private final String type;
+    private final String langId;
     private final ChatFormatting color;
     LivingMatterType(
             String type,
             ChatFormatting color
     ) {
         this.type = type;
+        this.langId = "dmlreloaded.living_matter." + type;
         this.color = color;
     }
 
     @Override
     public String getType() {
         return this.type;
+    }
+
+    @Override
+    public String getLangId() {
+        return this.langId;
     }
 
     @Override

@@ -20,12 +20,12 @@ public class TierHelper {
     public static MutableComponent getTierName(int tier, boolean getNextTierName) {
         int addTiers = getNextTierName ? 1 : 0;
         switch(tier + addTiers) {
-            case 0: return new TranslatableComponent("dmlreforged.tiers.tier_1").withStyle(t -> t.withColor(ChatFormatting.DARK_GRAY));
-            case 1: return new TranslatableComponent("dmlreforged.tiers.tier_2").withStyle(t -> t.withColor(ChatFormatting.GREEN));
-            case 2: return new TranslatableComponent("dmlreforged.tiers.tier_3").withStyle(t -> t.withColor(ChatFormatting.BLUE));
-            case 3: return new TranslatableComponent("dmlreforged.tiers.tier_4").withStyle(t -> t.withColor(ChatFormatting.LIGHT_PURPLE));
-            case 4: return new TranslatableComponent("dmlreforged.tiers.tier_5").withStyle(t -> t.withColor(ChatFormatting.GOLD));
-            default: return new TranslatableComponent("dmlreforged.tiers.tier_1").withStyle(t -> t.withColor(ChatFormatting.DARK_GRAY));
+            case 0: return new TranslatableComponent("dmlreloaded.tiers.tier_1").withStyle(t -> t.withColor(ChatFormatting.DARK_GRAY));
+            case 1: return new TranslatableComponent("dmlreloaded.tiers.tier_2").withStyle(t -> t.withColor(ChatFormatting.GREEN));
+            case 2: return new TranslatableComponent("dmlreloaded.tiers.tier_3").withStyle(t -> t.withColor(ChatFormatting.BLUE));
+            case 3: return new TranslatableComponent("dmlreloaded.tiers.tier_4").withStyle(t -> t.withColor(ChatFormatting.LIGHT_PURPLE));
+            case 4: return new TranslatableComponent("dmlreloaded.tiers.tier_5").withStyle(t -> t.withColor(ChatFormatting.GOLD));
+            default: return new TranslatableComponent("dmlreloaded.tiers.tier_1").withStyle(t -> t.withColor(ChatFormatting.DARK_GRAY));
         }
     }
 

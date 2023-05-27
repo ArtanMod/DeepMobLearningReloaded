@@ -26,12 +26,36 @@ public class ItemInit {
                 .register();
 
         public static void register() {
+            REGISTRATE.addRawLang("dmlreloaded.holdshift", "- hold %1$s for more info");
+            REGISTRATE.addRawLang("dmlreloaded.data_model.tier", "Tier: %1$s");
+            REGISTRATE.addRawLang("dmlreloaded.data_model.data.collected", "Data collected: %1$s/%2$s");
+            REGISTRATE.addRawLang("dmlreloaded.data_model.data.killmultiplier", "Data per kill: %1$s");
+            REGISTRATE.addRawLang("dmlreloaded.data_model.rfcost", "Simulation cost: %1$s RF/t");
+            REGISTRATE.addRawLang("dmlreloaded.data_model.type_text", "Type: %1$s");
+            REGISTRATE.addRawLang("dmlreloaded.tiers.tier_1", "Faulty");
+            REGISTRATE.addRawLang("dmlreloaded.tiers.tier_2", "Basic");
+            REGISTRATE.addRawLang("dmlreloaded.tiers.tier_3", "Advanced");
+            REGISTRATE.addRawLang("dmlreloaded.tiers.tier_4", "Superior");
+            REGISTRATE.addRawLang("dmlreloaded.tiers.tier_5", "Self Aware");
+
+            REGISTRATE.addRawJPLang("dmlreloaded.holdshift", "- %1$s長押しで情報を表示");
+            REGISTRATE.addRawJPLang("dmlreloaded.data_model.tier", "等級: %1$s");
+            REGISTRATE.addRawJPLang("dmlreloaded.data_model.data.collected", "データ収集: %1$s/%2$s");
+            REGISTRATE.addRawJPLang("dmlreloaded.data_model.data.killmultiplier", "対象キル数: %1$s");
+            REGISTRATE.addRawJPLang("dmlreloaded.data_model.rfcost", "シミュレーションコスト: %1$s RF/t");
+            REGISTRATE.addRawJPLang("dmlreloaded.data_model.type_text", "タイプ: %1$s");
+            REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_1", "不完全");
+            REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_2", "基本");
+            REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_3", "上級");
+            REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_4", "至上");
+            REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_5", "自己認識");
         }
     }
 
     public static class PristineMatter {
         public static final ItemEntry<ItemPristineMatter> BLAZE = REGISTRATE.item("pristine_matter_blaze", p -> new ItemPristineMatter(p, MobKey.BLAZE))
                 .lang("Pristine Blaze Matter")
+                .jpLang("綺麗なブレイズマター")
                 .register();
 
         public static void register() {
@@ -41,20 +65,30 @@ public class ItemInit {
     public static class LivingMatter {
         public static final ItemEntry<ItemLivingMatter> OVERWORLDIAN = REGISTRATE.item("living_matter_overworldian", p -> new ItemLivingMatter(p, LivingMatterType.OVERWORLDIAN))
                 .lang("Overworldian Matter")
+                .jpLang("Overworldianマター")
                 .register();
 
         public static final ItemEntry<ItemLivingMatter> HELLISH = REGISTRATE.item("living_matter_hellish", p -> new ItemLivingMatter(p, LivingMatterType.HELLISH))
                 .lang("Hellish Matter")
+                .jpLang("Hellishマター")
                 .register();
 
         public static final ItemEntry<ItemLivingMatter> EXTRATERRESTRIAL = REGISTRATE.item("living_matter_extraterrestrial", p -> new ItemLivingMatter(p, LivingMatterType.EXTRATERRESTRIAL))
                 .lang("Extraterrestrial Matter")
+                .jpLang("Extraterrestrialマター")
                 .register();
 
         public static void register() {
+            REGISTRATE.addRawLang(LivingMatterType.HELLISH.getLangId(), "Hellish");
+            REGISTRATE.addRawLang(LivingMatterType.EXTRATERRESTRIAL.getLangId(), "Extraterrestrial");
+            REGISTRATE.addRawLang(LivingMatterType.OVERWORLDIAN.getLangId(), "Overworldian");
             REGISTRATE.addRawLang("dmlreloaded.living_matter.exp_consume", "Can be consumed for expirience %1$s");
             REGISTRATE.addRawLang("dmlreloaded.living_matter.exp_consume_stack", "Hold %1$s to consume entire stack.");
             REGISTRATE.addRawLang("dmlreloaded.living_matter.exp", "Experience per item: %1$s");
+
+            REGISTRATE.addRawJPLang(LivingMatterType.HELLISH.getLangId(), "Hellish");
+            REGISTRATE.addRawJPLang(LivingMatterType.EXTRATERRESTRIAL.getLangId(), "Extraterrestrial");
+            REGISTRATE.addRawJPLang(LivingMatterType.OVERWORLDIAN.getLangId(), "Overworldian");
             REGISTRATE.addRawJPLang("dmlreloaded.living_matter.exp_consume", "%1$sで消費することができます");
             REGISTRATE.addRawJPLang("dmlreloaded.living_matter.exp_consume_stack", "%1$sを押しながら使用するとスタック全体が消費されます.");
             REGISTRATE.addRawJPLang("dmlreloaded.living_matter.exp", "アイテムごとの経験値: %1$s");
