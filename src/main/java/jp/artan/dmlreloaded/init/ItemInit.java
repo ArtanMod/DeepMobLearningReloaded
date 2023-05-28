@@ -12,11 +12,45 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 
 public class ItemInit {
     private static final DeepMobLearningReloadedRegistrate REGISTRATE = DeepMobLearningReloaded.registrate().creativeModeTab(() -> ItemGroupInit.DEEP_MOB_LEARNING_RELOADED);
 
+
+
+    public static final ItemEntry<ItemSootedRedstone> SOOT_COVERED_REDSTONE = REGISTRATE.item("soot_covered_redstone", ItemSootedRedstone::new)
+            .lang("Soot Covered Redstone")
+            .jpLang("煤で覆われたレッドストーン")
+            .register();
+
+    public static final ItemEntry<Item> SOOT_COVERED_PLATE = REGISTRATE.item("soot_covered_plate", Item::new)
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(ctx.get(), 8)
+                        .define('X', Items.OBSIDIAN)
+                        .define('Y', SOOT_COVERED_REDSTONE.get())
+                        .pattern("XX")
+                        .pattern("XY")
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(SOOT_COVERED_REDSTONE.get()))
+                        .save(prov);
+            })
+            .lang("Soot Covered Plate")
+            .jpLang("煤で覆われたプレート")
+            .register();
+
     public static final ItemEntry<ItemDeepLearner> DEEP_LEARNER = REGISTRATE.item("deep_learner", ItemDeepLearner::new)
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(ctx.get())
+                        .define('#', SOOT_COVERED_PLATE.get())
+                        .define('X', Items.REPEATER)
+                        .define('Y', Blocks.GLASS_PANE)
+                        .define('Z', SOOT_COVERED_REDSTONE.get())
+                        .pattern("#X#")
+                        .pattern("XYX")
+                        .pattern("#Z#")
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(SOOT_COVERED_PLATE.get()))
+                        .save(prov);
+            })
             .lang("Deep Learner")
             .jpLang("深層学習装置")
             .register();
@@ -63,7 +97,7 @@ public class ItemInit {
                 ShapedRecipeBuilder.shaped(ctx.get())
                         .define('#', GLITCH_INGOT.get())
                         .define('X', Items.IRON_NUGGET)
-                        .define('Y', Items.STRING)
+                        .define('Y', Items.STICK)
                         .pattern("  #")
                         .pattern("X# ")
                         .pattern("YX ")
@@ -169,6 +203,11 @@ public class ItemInit {
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_4", "     %1$s%%の確率で%2$sの綺麗なマターをドロップします");
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_5", "  2. 飛行と落下ダメージ無効");
 
+        // ItemSootedRedstone
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.soot_covered_redstone_1", "Crafted by crushing %1$s against");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.soot_covered_redstone_2", "a %1$s (Left click)");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.soot_covered_redstone_1", "%1$sを押し潰して作成します");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.soot_covered_redstone_2", "%1$s(左クリック)");
     }
 
     public static class DataModel {

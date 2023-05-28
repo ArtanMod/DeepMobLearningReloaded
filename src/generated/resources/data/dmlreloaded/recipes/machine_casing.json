@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#X#",
+    "XYX",
+    "#X#"
+  ],
+  "key": {
+    "#": {
+      "item": "dmlreloaded:soot_covered_plate"
+    },
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "Y": {
+      "item": "dmlreloaded:soot_covered_redstone"
+    }
+  },
+  "result": {
+    "item": "dmlreloaded:machine_casing",
+    "count": 8
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#X#",
+    "XYX",
+    "#Z#"
+  ],
+  "key": {
+    "#": {
+      "item": "dmlreloaded:soot_covered_plate"
+    },
+    "X": {
+      "item": "minecraft:repeater"
+    },
+    "Y": {
+      "item": "minecraft:glass_pane"
+    },
+    "Z": {
+      "item": "dmlreloaded:soot_covered_redstone"
+    }
+  },
+  "result": {
+    "item": "dmlreloaded:deep_learner"
+  }
+}

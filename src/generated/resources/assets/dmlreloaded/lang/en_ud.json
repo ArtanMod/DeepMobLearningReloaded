@@ -1,5 +1,6 @@
 {
   "block.dmlreloaded.infused_ingot_block": "\u029E\u0254o\u05DF\u15FA p\u01DDsn\u025FuI \u0265\u0254\u0287\u0131\u05DF\u2141",
+  "block.dmlreloaded.machine_casing": "\u029E\u0254o\u05DF\u15FA p\u01DDsn\u025FuI \u0265\u0254\u0287\u0131\u05DF\u2141",
   "block.dmlreloaded.simulation_chamber": "\u0279\u01DDq\u026F\u0250\u0265\u0186 uo\u0131\u0287\u0250\u05DFn\u026F\u0131S",
   "dmlreloaded.data_model.data.collected": "%2$s/%1$s :p\u01DD\u0287\u0254\u01DD\u05DF\u05DFo\u0254 \u0250\u0287\u0250\u15E1",
   "dmlreloaded.data_model.data.killmultiplier": "%1$s :\u05DF\u05DF\u0131\u029E \u0279\u01DDd \u0250\u0287\u0250\u15E1",
@@ -57,6 +58,8 @@
   "dmlreloaded.hover_text.glitch_infused_sword_6": ")%2$s x\u0250W( %1$s :\u01DDs\u0250\u01DD\u0279\u0254u\u0131 \u01DDb\u0250\u026F\u0250p \u0287u\u01DD\u0279\u0279n\u0186",
   "dmlreloaded.hover_text.glitchingot_1": "%1$s bu\u0131z\u0131\u05DF\u0131q\u0250\u0287s \u028Eq \u01DDp\u0250W",
   "dmlreloaded.hover_text.more_info": "\u029Eooq\u01DDp\u0131n\u2141 \u01DD\u0265\u0287 \u0279o I\u018E\u017F u\u0131 puno\u025F o\u025Fu\u0131 \u01DD\u0279o\u026F",
+  "dmlreloaded.hover_text.soot_covered_redstone_1": "\u0287su\u0131\u0250b\u0250 %1$s bu\u0131\u0265sn\u0279\u0254 \u028Eq p\u01DD\u0287\u025F\u0250\u0279\u0186",
+  "dmlreloaded.hover_text.soot_covered_redstone_2": ")\u029E\u0254\u0131\u05DF\u0254 \u0287\u025F\u01DD\uA780( %1$s \u0250",
   "dmlreloaded.living_matter.exp": "%1$s :\u026F\u01DD\u0287\u0131 \u0279\u01DDd \u01DD\u0254u\u01DD\u0131\u0279\u01DDdx\u018E",
   "dmlreloaded.living_matter.exp_consume": "%1$s \u01DD\u0254u\u01DD\u0131\u0279\u0131dx\u01DD \u0279o\u025F p\u01DD\u026Fnsuo\u0254 \u01DDq u\u0250\u0186",
   "dmlreloaded.living_matter.exp_consume_stack": "\u02D9\u029E\u0254\u0250\u0287s \u01DD\u0279\u0131\u0287u\u01DD \u01DD\u026Fnsuo\u0254 o\u0287 %1$s p\u05DFoH",
@@ -89,5 +92,7 @@
   "item.dmlreloaded.living_matter_overworldian": "\u0279\u01DD\u0287\u0287\u0250W u\u0250\u0131p\u05DF\u0279o\u028D\u0279\u01DD\u028CO",
   "item.dmlreloaded.polymer_clay": "\u028E\u0250\u05DF\u0186 \u0279\u01DD\u026F\u028E\u05DFo\u0500",
   "item.dmlreloaded.pristine_matter_blaze": "\u0279\u01DD\u0287\u0287\u0250W \u01DDz\u0250\u05DF\u15FA \u01DDu\u0131\u0287s\u0131\u0279\u0500",
+  "item.dmlreloaded.soot_covered_plate": "\u01DD\u0287\u0250\u05DF\u0500 p\u01DD\u0279\u01DD\u028Co\u0186 \u0287ooS",
+  "item.dmlreloaded.soot_covered_redstone": "\u01DDuo\u0287sp\u01DD\u1D1A p\u01DD\u0279\u01DD\u028Co\u0186 \u0287ooS",
   "itemGroup.deep_mob_learning_reloaded": "p\u01DDp\u0250o\u05DF\u01DD\u1D1A :bu\u0131u\u0279\u0250\u01DD\uA780 qoW d\u01DD\u01DD\u15E1"
 }

@@ -8,8 +8,11 @@ import jp.artan.dmlreloaded.item.ItemDeepLearner;
 import jp.artan.repack.registrate.providers.RegistrateRecipeProvider;
 import jp.artan.repack.registrate.util.entry.BlockEntry;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -17,6 +20,25 @@ import net.minecraftforge.client.model.generators.ModelFile;
 
 public class BlockInit {
     private static final DeepMobLearningReloadedRegistrate REGISTRATE = DeepMobLearningReloaded.registrate().creativeModeTab(() -> ItemGroupInit.DEEP_MOB_LEARNING_RELOADED);
+
+    public static final BlockEntry<Block> MACHINE_CASING = REGISTRATE.block("machine_casing", Block::new)
+            .initialProperties(Material.STONE)
+            .blockstate((c, p) -> BlockStateGen.cubeAll(c, p, "", "machine_base_up"))
+            .simpleItem()
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(ctx.get(), 8)
+                        .define('#', ItemInit.SOOT_COVERED_PLATE.get())
+                        .define('X', Items.IRON_INGOT)
+                        .define('Y', ItemInit.SOOT_COVERED_REDSTONE.get())
+                        .pattern("#X#")
+                        .pattern("XYX")
+                        .pattern("#X#")
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(ItemInit.SOOT_COVERED_PLATE.get()))
+                        .save(prov);
+            })
+            .lang("Glitch Infused Block")
+            .jpLang("グリッチが染み込んだブロック")
+            .register();
 
     public static final BlockEntry<BlockSimulationChamber> SIMULATION_CHAMBER = REGISTRATE.block("simulation_chamber", BlockSimulationChamber::new)
             .initialProperties(Material.STONE)
@@ -33,6 +55,19 @@ public class BlockInit {
                         });
 
                 prov.simpleBlockItem(ctx.get(), model);
+            })
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(ctx.get())
+                        .define('#', Blocks.GLASS_PANE)
+                        .define('X', Items.ENDER_PEARL)
+                        .define('Y', MACHINE_CASING.get())
+                        .define('A', Items.CYAN_DYE)
+                        .define('B', Items.COMPARATOR)
+                        .pattern(" # ")
+                        .pattern("XYX")
+                        .pattern("ABA")
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(MACHINE_CASING.get()))
+                        .save(prov);
             })
             .simpleItem()
             .lang("Simulation Chamber")
