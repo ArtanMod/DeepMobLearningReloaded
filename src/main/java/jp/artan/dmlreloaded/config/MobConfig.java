@@ -24,8 +24,8 @@ public class MobConfig {
     public static void registerCommonConfig(ForgeConfigSpec.Builder COMMON_BUILDER) {
         COMMON_BUILDER.comment("Add custom mob to count for data learning.",
                 "IMPORTANT NOTICE:",
-                "THIS IS ONLY THE COMMON CONFIG. It does not contain all the values adjustable for DMLReforged.",
-                "All modifiers for machines, and most other adjustable values have been moved to dmlreforged-server.toml.",
+                "THIS IS ONLY THE COMMON CONFIG. It does not contain all the values adjustable for DMLReloaded.",
+                "All modifiers for machines, and most other adjustable values have been moved to dmlreloaded-server.toml.",
                 "That file is PER WORLD, meaning you have to go into 'saves/<world name>/serverconfig' to adjust it. Those changes will then only apply for THAT WORLD.",
                 "You can then take that config file and put it in the 'defaultconfigs' folder to make it apply automatically to all NEW worlds you generate FROM THERE ON.",
                 "This may appear confusing to many of you, but it is a new sensible way to handle configuration, because the server configuration is synced when playing multiplayer.",

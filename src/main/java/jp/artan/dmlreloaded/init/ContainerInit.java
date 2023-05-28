@@ -3,8 +3,10 @@ package jp.artan.dmlreloaded.init;
 import jp.artan.artansprojectcoremod.plugin.registrate.builder.ModContainerBuilder;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.container.DeepLearnerContainer;
+import jp.artan.dmlreloaded.container.SimulationChamberContainer;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import jp.artan.dmlreloaded.screen.DeepLearnerScreen;
+import jp.artan.dmlreloaded.screen.SimulationChamberScreen;
 import jp.artan.repack.registrate.builders.MenuBuilder;
 import jp.artan.repack.registrate.util.entry.MenuEntry;
 import jp.artan.repack.registrate.util.nullness.NonNullSupplier;
@@ -44,6 +46,42 @@ public class ContainerInit {
             .addRawJPLang("dmlreloaded.gui.mob_name", "%1$s")
             .addRawLang("dmlreloaded.gui.deep_learner.overlay", "%1$s Model")
             .addRawJPLang("dmlreloaded.gui.deep_learner.overlay", "%1$sのモデル")
+            .register();
+
+    public static final MenuEntry<SimulationChamberContainer> SIMULATION_CHAMBER = register("simulation_chamber", SimulationChamberContainer::new, () -> SimulationChamberScreen::new)
+            .addRawLang("dmlreloaded.gui.simulation_chamber.collected", "%1$s / %2$s Data collected")
+            .addRawJPLang("dmlreloaded.gui.simulation_chamber.collected", "%1$s / %2$sデータを収集")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.max_tier", "This data model has reached the max tier.")
+            .addRawJPLang("dmlreloaded.gui.simulation_chamber.max_tier", "このデータモデルは最大等級に達しています.")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.missing", "Machine is missing a data model")
+            .addRawJPLang("dmlreloaded.gui.simulation_chamber.missing", "機械にデータモデルがありません")
+            .addRawLang("dmlreloaded.gui.energy.energystored", "%1$s/%2$s RF")
+            .addRawJPLang("dmlreloaded.gui.energy.energystored", "%1$s/%2$s RF")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.drain", "Simulations with current data model drains %1$s RF/t")
+            .addRawJPLang("dmlreloaded.gui.simulation_chamber.drain", "現在のデータモデルでシミュレーションすると%1$s RF/t消費します")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.insert", "Please insert a data model")
+            .addRawJPLang("dmlreloaded.gui.simulation_chamber.insert", "シミュレーションを開始するために")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.to_begin", "to begin the simulation")
+            .addRawJPLang("dmlreloaded.gui.simulation_chamber.to_begin", "データモデルを挿入してください")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.console.1", "> Launching runtime")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.console.2", "v1.4.7")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.console.3", "> Iteration # %1$s started")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.console.4", "> Loading model from chip memory")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.console.5", "> Assessing threat level")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.console.6", "> Engaged enemy")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.console.7", "> Pristine procurement")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.console.8_succeeded", "succeeded")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.console.8_failed", "failed")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.console.9", "> Processing results")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.console.10", "...")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.cannot_begin", "Cannot begin simulation")
+            .addRawJPLang("dmlreloaded.gui.simulation_chamber.cannot_begin", "シミュレーションを開始できません")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.missing_polymer", "Missing polymer medium")
+            .addRawJPLang("dmlreloaded.gui.simulation_chamber.missing_polymer", "ポリマー粘土がありません")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.iterations", "Iterations: %1$s")
+            .addRawJPLang("dmlreloaded.gui.simulation_chamber.iterations", "繰り返し回数: %1$s")
+            .addRawLang("dmlreloaded.gui.simulation_chamber.pristine_chance", "Pristine chance: %1$s%%")
+            .addRawJPLang("dmlreloaded.gui.simulation_chamber.pristine_chance", "綺麗なマターの入手確率: %1$s%%")
             .register();
 
     public static void register() {

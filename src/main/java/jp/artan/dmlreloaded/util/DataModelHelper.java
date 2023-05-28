@@ -133,6 +133,10 @@ public class DataModelHelper {
         return DataModelLevelupHelper.getTierRoof(getTier(stack), false);
     }
 
+    public static int getPristineChance(ItemStack stack) {
+        return TierHelper.getPristineChance(getTier(stack));
+    }
+
     /* Called by deep learners */
     public static void increaseMobKillCount(ItemStack stack, ServerPlayer player) {
         // Get our current tier before increasing the kill count;
@@ -149,6 +153,23 @@ public class DataModelHelper {
         if(DataModelLevelupHelper.shouldIncreaseTier(tier, i, getCurrentTierSimulationCount(stack))) {
             player.displayClientMessage(new TranslatableComponent("dmlreloaded.tiers.increase_tier", stack.getHoverName(), getTierName(stack, true)), true);
 
+            setCurrentTierKillCount(stack, 0);
+            setCurrentTierSimulationCount(stack, 0);
+            setTier(stack, tier + 1);
+        }
+    }
+
+    /* Called by simulation chamber */
+    public static void increaseSimulationCount(ItemStack stack) {
+        int tier = getTier(stack);
+        int i = getCurrentTierSimulationCount(stack);
+        i = i + 1;
+        setCurrentTierSimulationCount(stack, i);
+
+        // Update the totals
+        setTotalSimulationCount(stack, getTotalSimulationCount(stack) + 1);
+
+        if(DataModelLevelupHelper.shouldIncreaseTier(tier, getCurrentTierKillCount(stack), i)) {
             setCurrentTierKillCount(stack, 0);
             setCurrentTierSimulationCount(stack, 0);
             setTier(stack, tier + 1);

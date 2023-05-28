@@ -41,6 +41,7 @@ public class DeepMobLearningReloaded {
     public DeepMobLearningReloaded() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         DropModifier.GLM.register(modEventBus);
+        BlockEntityInit.BET.register(modEventBus);
 
         modEventBus.addListener(this::registerProviders);
         modEventBus.addListener(this::onFMLClientSetup);
@@ -48,6 +49,7 @@ public class DeepMobLearningReloaded {
         Config.register();
         MobMetaDataConfig.register();
 
+        BlockEntityInit.register();
         ContainerInit.register();
         ItemGroupInit.register();
         ItemInit.register();

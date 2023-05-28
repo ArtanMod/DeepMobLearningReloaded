@@ -5,8 +5,11 @@ import jp.artan.dmlreloaded.common.LivingMatterType;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import jp.artan.dmlreloaded.item.*;
+import jp.artan.repack.registrate.providers.RegistrateRecipeProvider;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 public class ItemInit {
     private static final DeepMobLearningReloadedRegistrate REGISTRATE = DeepMobLearningReloaded.registrate().creativeModeTab(() -> ItemGroupInit.DEEP_MOB_LEARNING_RELOADED);
@@ -32,6 +35,18 @@ public class ItemInit {
             .register();
 
     public static final ItemEntry<Item> POLYMER_CLAY = REGISTRATE.item("polymer_clay", Item::new)
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(ctx.get(), 16)
+                        .define('#', Items.CLAY_BALL)
+                        .define('X', Items.IRON_INGOT)
+                        .define('Y', Items.GOLD_INGOT)
+                        .define('Z', Items.LAPIS_LAZULI)
+                        .pattern("Y# ")
+                        .pattern("#Z#")
+                        .pattern(" #X")
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(Items.CLAY_BALL))
+                        .save(prov);
+            })
             .lang("Polymer Clay")
             .jpLang("ポリマー粘土")
             .register();

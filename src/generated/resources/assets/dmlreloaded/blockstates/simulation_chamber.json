@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "dmlreloaded:block/simulation_chamber"
+    },
+    "facing=south": {
+      "model": "dmlreloaded:block/simulation_chamber",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "dmlreloaded:block/simulation_chamber",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "dmlreloaded:block/simulation_chamber",
+      "y": 90
+    }
+  }
+}
