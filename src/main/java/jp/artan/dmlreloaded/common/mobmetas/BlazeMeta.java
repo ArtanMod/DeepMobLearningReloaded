@@ -7,15 +7,12 @@ import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.level.Level;
 
 public class BlazeMeta extends MobMetaData {
-    public BlazeMeta(int numberOfHearts, int interfaceScale, int interfaceOffsetX, int interfaceOffsetY) {
+    public BlazeMeta() {
         super(
                 MobKey.BLAZE,
                 "entity.minecraft.blaze",
                 "Blazes",
-                numberOfHearts,
-                interfaceScale,
-                interfaceOffsetX,
-                interfaceOffsetY,
+                10, 48, 10, 20,
                 ItemInit.LivingMatter.HELLISH.get(),
                 ItemInit.PristineMatter.BLAZE.get(),
                 3

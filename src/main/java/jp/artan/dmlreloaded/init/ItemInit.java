@@ -3,6 +3,7 @@ package jp.artan.dmlreloaded.init;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.common.LivingMatterType;
 import jp.artan.dmlreloaded.common.MobKey;
+import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import jp.artan.dmlreloaded.item.*;
 import jp.artan.repack.registrate.providers.RegistrateRecipeProvider;
@@ -222,6 +223,12 @@ public class ItemInit {
                 .jpLang("ブレイズのデータモデル")
                 .register();
 
+        public static final ItemEntry<ItemDataModel> ZOMBIE = REGISTRATE.item("data_model_zombie", p -> new ItemDataModel(p, MobKey.ZOMBIE))
+                .properties(p -> p.stacksTo(1))
+                .lang("Zombie Data Model")
+                .jpLang("ゾンビのデータモデル")
+                .register();
+
         public static void register() {
             REGISTRATE.addRawLang("dmlreloaded.holdshift", "- hold %1$s for more info");
             REGISTRATE.addRawLang("dmlreloaded.data_model.tier", "Tier: %1$s");
@@ -255,6 +262,22 @@ public class ItemInit {
         public static final ItemEntry<ItemPristineMatter> BLAZE = REGISTRATE.item("pristine_matter_blaze", p -> new ItemPristineMatter(p, MobKey.BLAZE))
                 .lang("Pristine Blaze Matter")
                 .jpLang("綺麗なブレイズマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.BLAZE, 0), "Bring buckets, and watch in despair")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.BLAZE, 1), "as it evaporates, and everything is on fire")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.BLAZE, 2), "You are on fire")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.BLAZE, 0), "バケツを持って来て、絶望して見ている")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.BLAZE, 1), "それが蒸発し、すべてが燃え上がるのを絶望的に眺める")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.BLAZE, 2), "君は燃えている")
+                .register();
+        public static final ItemEntry<ItemPristineMatter> ZOMBIE = REGISTRATE.item("pristine_matter_zombie", p -> new ItemPristineMatter(p, MobKey.ZOMBIE))
+                .lang("Pristine Zombie Matter")
+                .jpLang("綺麗なゾンビマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ZOMBIE, 0), "They go moan in the night.")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ZOMBIE, 1), "Does not understand the need for")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ZOMBIE, 2), "personal space")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ZOMBIE, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ZOMBIE, 1), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ZOMBIE, 2), "")
                 .register();
 
         public static void register() {

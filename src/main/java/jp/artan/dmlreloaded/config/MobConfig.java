@@ -36,6 +36,11 @@ public class MobConfig {
                 COMMON_BUILDER.defineList("blaze_mobs", MobKey.BLAZE.getMobs(), o -> o instanceof String),
                 COMMON_BUILDER.defineList("blaze_loot", MobKey.BLAZE.getLoot(), o -> o instanceof String)
         );
+        registerMobConfig(
+                MobKey.ZOMBIE,
+                COMMON_BUILDER.defineList("zombie_mobs", MobKey.ZOMBIE.getMobs(), o -> o instanceof String),
+                COMMON_BUILDER.defineList("zombie_loot", MobKey.ZOMBIE.getLoot(), o -> o instanceof String)
+        );
     }
 
     public static List<? extends String> getMobs(IMobKey mobKey) {

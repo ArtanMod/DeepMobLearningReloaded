@@ -2,7 +2,6 @@ package jp.artan.dmlreloaded;
 
 import com.mojang.logging.LogUtils;
 import jp.artan.dmlreloaded.config.Config;
-import jp.artan.dmlreloaded.config.MobMetaDataConfig;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import jp.artan.dmlreloaded.init.*;
 import jp.artan.dmlreloaded.provider.ModGlobalLootModifierProvider;
@@ -47,7 +46,6 @@ public class DeepMobLearningReloaded {
         modEventBus.addListener(this::onFMLClientSetup);
 
         Config.register();
-        MobMetaDataConfig.register();
 
         BlockEntityInit.register();
         ContainerInit.register();

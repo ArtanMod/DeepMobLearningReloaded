@@ -105,12 +105,12 @@ public abstract class MobMetaData {
         return mobTriviaLine;
     }
 
-    public static String getMobTriviaLangId(int index) {
-        return "dmlreloaded.gui.mob.trivia." + index;
+    public static String getMobTriviaLangId(IMobKey key, int index) {
+        return "dmlreloaded.gui.mob." + key.getMobKey() + ".trivia." + index;
     }
 
     public TranslatableComponent getMobTrivia(int index) {
-        return new TranslatableComponent(getMobTriviaLangId(index));
+        return new TranslatableComponent(getMobTriviaLangId(this.getKey(), index));
     }
 
     public boolean entityLivingMatchesMob(LivingEntity entity) {
