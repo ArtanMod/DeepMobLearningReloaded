@@ -46,6 +46,8 @@ public class ContainerInit {
             .addRawJPLang("dmlreloaded.gui.mob_name", "%1$s")
             .addRawLang("dmlreloaded.gui.deep_learner.overlay", "%1$s Model")
             .addRawJPLang("dmlreloaded.gui.deep_learner.overlay", "%1$sのモデル")
+            .addRawLang("dmlreloaded.gui.defeated", "%1$s defeated: %2$s")
+            .addRawJPLang("dmlreloaded.gui.defeated", "%1$sを倒した回数: %2$s")
             .register();
 
     public static final MenuEntry<SimulationChamberContainer> SIMULATION_CHAMBER = register("simulation_chamber", SimulationChamberContainer::new, () -> SimulationChamberScreen::new)

@@ -131,7 +131,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         int spacing = 12;
 
         drawString(pose, font, new TranslatableComponent("dmlreloaded.gui.name"), leftStart, topStart + spacing, 0x55FFFF);
-        drawString(pose, font,  new TranslatableComponent("dmlreloaded.gui.mob_name", new TranslatableComponent(meta.getName())), leftStart, topStart + (spacing *  2), 0xFFFFFF);
+        drawString(pose, font,  new TranslatableComponent("dmlreloaded.gui.mob_name", new TranslatableComponent(meta.getEntityId())), leftStart, topStart + (spacing *  2), 0xFFFFFF);
         drawString(pose, font, new TranslatableComponent("dmlreloaded.gui.information"), leftStart, topStart + (spacing *  3), 0xFFFFFF);
         int mobTriviaLine = meta.getMobTriviaLine();
         for (int i = 0; i < mobTriviaLine; i++) {
@@ -139,11 +139,10 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         }
         MutableComponent dataModelTier = DataModelHelper.getTierName(stack, false);
         MutableComponent nextTier = DataModelHelper.getTierName(stack, true);
-        String pluralMobName = DataModelHelper.getMobMetaData(stack).getPluralName();
         int totalKills = DataModelHelper.getTotalKillCount(stack);
         double killsToNextTier = DataModelHelper.getKillsToNextTier(stack);
         drawString(pose, font, new TranslatableComponent("dmlreloaded.tiers.tier", dataModelTier), leftStart, topStart + (spacing * 8), 0xFFFFFF);
-        drawString(pose, font, pluralMobName + " defeated: " + totalKills, leftStart, topStart + (spacing * 9), 0xFFFFFF);
+        drawString(pose, font, new TranslatableComponent("dmlreloaded.gui.defeated", new TranslatableComponent(meta.getEntityId()), totalKills), leftStart, topStart + (spacing * 9), 0xFFFFFF);
         if(DataModelHelper.getTier(stack) != DeepMobLearningReloaded.DATA_MODEL_MAXIMUM_TIER) {
             drawString(pose, font, new TranslatableComponent("dmlreloaded.tiers.tier_next", f.format(killsToNextTier), nextTier), leftStart, topStart + (spacing * 10), 0xFFFFFF);
         } else {

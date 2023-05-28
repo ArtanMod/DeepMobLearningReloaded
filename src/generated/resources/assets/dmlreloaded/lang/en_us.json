@@ -16,6 +16,7 @@
   "dmlreloaded.gui.deep_learner.not_found": "No Data Model Found",
   "dmlreloaded.gui.deep_learner.overlay": "%1$s Model",
   "dmlreloaded.gui.deep_learner.when_placed": "when they are placed in the deep learner.",
+  "dmlreloaded.gui.defeated": "%1$s defeated: %2$s",
   "dmlreloaded.gui.energy.energystored": "%1$s/%2$s RF",
   "dmlreloaded.gui.information": "Information",
   "dmlreloaded.gui.mob.blaze.trivia.0": "Bring buckets, and watch in despair",

@@ -4,7 +4,6 @@ import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.common.energy.DeepEnergyStorage;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
-import jp.artan.dmlreloaded.common.mobmetas.MobMetaFactory;
 import jp.artan.dmlreloaded.init.BlockEntityInit;
 import jp.artan.dmlreloaded.init.ItemInit;
 import jp.artan.dmlreloaded.item.ItemDataModel;
@@ -154,7 +153,7 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
     private void startSimulation(BlockEntitySimulationChamber be) {
         isCrafting = true;
         currentDataModelType = DataModelHelper.getMobMetaData(getDataModel()).getKey();
-        mobMetaData = MobMetaFactory.createMobMetaData(currentDataModelType);
+        mobMetaData = currentDataModelType.getMobMetaData().get();
         ItemStack oldInput = getPolymerClay();
         ItemStack newInput = new ItemStack(ItemInit.POLYMER_CLAY.get(), oldInput.getCount() - 1);
         inventory.setStackInSlot(POLYMER_SLOT, newInput);

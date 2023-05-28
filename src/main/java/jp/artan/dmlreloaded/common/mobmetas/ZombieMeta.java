@@ -10,7 +10,6 @@ public class ZombieMeta extends MobMetaData {
         super(
                 MobKey.ZOMBIE,
                 "entity.minecraft.zombie",
-                "Zombies",
                 10, 35, -2, 6,
                 ItemInit.LivingMatter.OVERWORLDIAN.get(),
                 ItemInit.PristineMatter.ZOMBIE.get(),

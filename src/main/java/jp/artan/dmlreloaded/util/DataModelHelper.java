@@ -5,7 +5,6 @@ import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
-import jp.artan.dmlreloaded.common.mobmetas.MobMetaFactory;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.item.ItemGlitchSword;
 import net.minecraft.core.NonNullList;
@@ -51,7 +50,7 @@ public class DataModelHelper {
     }
 
     public static MobMetaData getMobMetaData(ItemStack stack) {
-        return MobMetaFactory.createMobMetaData(getMobKey(stack));
+        return getMobKey(stack).getMobMetaData().get();
     }
 
     public static int getTier(ItemStack stack) {

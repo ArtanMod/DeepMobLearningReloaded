@@ -14,8 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public abstract class MobMetaData {
-    protected String name;
-    private String pluralName;
+    protected String entityId;
     protected IMobKey key;
     protected int numberOfHearts;
     protected int interfaceScale;
@@ -27,8 +26,7 @@ public abstract class MobMetaData {
 
     public MobMetaData(
             IMobKey key,
-            String name,
-            String pluralName,
+            String entityId,
             int numberOfHearts,
             int interfaceScale,
             int interfaceOffsetX,
@@ -38,8 +36,7 @@ public abstract class MobMetaData {
             int mobTriviaLine
     ) {
         this.key = key;
-        this.name = name;
-        this.pluralName = pluralName;
+        this.entityId = entityId;
         this.numberOfHearts = numberOfHearts;
         this.interfaceScale = interfaceScale;
         this.interfaceOffsetX = interfaceOffsetX;
@@ -50,7 +47,7 @@ public abstract class MobMetaData {
     }
 
     public int getSimulationTickCost() {
-        int cost = EnergyCostConfig.getCost(getKey());
+        int cost = EnergyCostConfig.getCost(this.getKey());
         return cost;
     }
     public ItemStack getLivingMatterStack(int amount) {
@@ -61,12 +58,8 @@ public abstract class MobMetaData {
         return new ItemStack(pristineMatter, amount);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getPluralName() {
-        return pluralName;
+    public String getEntityId() {
+        return entityId;
     }
 
     public IMobKey getKey() {

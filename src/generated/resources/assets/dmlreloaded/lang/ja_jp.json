@@ -16,6 +16,7 @@
   "dmlreloaded.gui.deep_learner.not_found": "\u30C7\u30FC\u30BF\u30E2\u30C7\u30EB\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093",
   "dmlreloaded.gui.deep_learner.overlay": "%1$s\u306E\u30E2\u30C7\u30EB",
   "dmlreloaded.gui.deep_learner.when_placed": "\u3068\u30C7\u30FC\u30BF\u3092\u53CE\u96C6\u3059\u308B\u3088\u3046\u306B\u306A\u308A\u307E\u3059.",
+  "dmlreloaded.gui.defeated": "%1$s\u3092\u5012\u3057\u305F\u56DE\u6570: %2$s",
   "dmlreloaded.gui.energy.energystored": "%1$s/%2$s RF",
   "dmlreloaded.gui.information": "\u60C5\u5831",
   "dmlreloaded.gui.mob_name": "%1$s",

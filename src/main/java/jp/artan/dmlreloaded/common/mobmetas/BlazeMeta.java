@@ -11,7 +11,6 @@ public class BlazeMeta extends MobMetaData {
         super(
                 MobKey.BLAZE,
                 "entity.minecraft.blaze",
-                "Blazes",
                 10, 48, 10, 20,
                 ItemInit.LivingMatter.HELLISH.get(),
                 ItemInit.PristineMatter.BLAZE.get(),
