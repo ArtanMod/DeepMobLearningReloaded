@@ -23,6 +23,10 @@ public class ItemInit {
     public static final ItemEntry<ItemSootedRedstone> SOOT_COVERED_REDSTONE = REGISTRATE.item("soot_covered_redstone", ItemSootedRedstone::new)
             .lang("Soot Covered Redstone")
             .jpLang("煤で覆われたレッドストーン")
+            .addRawLang("dmlreloaded.hover_text.soot_covered_redstone_1", "Crafted by crushing %1$s against")
+            .addRawLang("dmlreloaded.hover_text.soot_covered_redstone_2", "a %1$s (Left click)")
+            .addRawJPLang("dmlreloaded.hover_text.soot_covered_redstone_1", "%1$sを押し潰して作成します")
+            .addRawJPLang("dmlreloaded.hover_text.soot_covered_redstone_2", "%1$s(左クリック)")
             .register();
 
     public static final ItemEntry<Item> SOOT_COVERED_PLATE = REGISTRATE.item("soot_covered_plate", Item::new)
@@ -74,6 +78,10 @@ public class ItemInit {
             })
             .lang("Glitch Infused Ingot")
             .jpLang("グリッチが染み込んだインゴット")
+            .addRawLang("dmlreloaded.hover_text.glitchingot_1", "Made by stabilizing %1$s")
+            .addRawLang("dmlreloaded.hover_text.more_info", "more info found in JEI or the Guidebook")
+            .addRawJPLang("dmlreloaded.hover_text.glitchingot_1", "%1$sを安定化させることで作成できます")
+            .addRawJPLang("dmlreloaded.hover_text.more_info", "詳細はJEIかガイドブックを参照してください")
             .register();
 
     public static final ItemEntry<Item> POLYMER_CLAY = REGISTRATE.item("polymer_clay", Item::new)
@@ -107,6 +115,22 @@ public class ItemInit {
             })
             .lang("Glitch Infused Sword")
             .jpLang("グリッチが染み込んだ剣")
+            .addRawLang("dmlreloaded.messages.sword_levelup.max", "Your %1$s has now reached peak performance!")
+            .addRawLang("dmlreloaded.messages.sword_levelup", "Your %1$s grows in power!")
+            .addRawLang("dmlreloaded.hover_text.glitch_infused_sword_1", "Bonus: Quick learner")
+            .addRawLang("dmlreloaded.hover_text.glitch_infused_sword_2", "(Bonuses are disabled during Trials)")
+            .addRawLang("dmlreloaded.hover_text.glitch_infused_sword_3", "The Data gained from the demise of a mob is doubled,")
+            .addRawLang("dmlreloaded.hover_text.glitch_infused_sword_4", "when Data is gained there is also a small chance")
+            .addRawLang("dmlreloaded.hover_text.glitch_infused_sword_5", "that the sword will get a permanent damage increase.")
+            .addRawLang("dmlreloaded.hover_text.glitch_infused_sword_6", "Current damage increase: %1$s (Max %2$s)")
+            .addRawJPLang("dmlreloaded.messages.sword_levelup.max", "%1$sは最大の性能に達しました")
+            .addRawJPLang("dmlreloaded.messages.sword_levelup", "%1$sは力を増しています")
+            .addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_1", "ボーナス: クイックラーニング")
+            .addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_2", "(ボーナスは試練中は無効です)")
+            .addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_3", "モブを倒した時に得られるデータが2倍になります")
+            .addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_4", "データが得られたとき、ごくわずかな確率で")
+            .addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_5", "剣の耐久値が増加します.")
+            .addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_6", "現在の耐久値増加: %1$s (最大 %2$s)")
             .register();
 
     public static final ItemEntry<ItemGlitchArmor> GLITCH_HELMET = REGISTRATE.item("glitch_infused_helmet", p -> new ItemGlitchArmor(EquipmentSlot.HEAD, p))
@@ -168,31 +192,7 @@ public class ItemInit {
         PristineMatter.register();
         LivingMatter.register();
 
-        // GLITCH_INGOT
-        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitchingot_1", "Made by stabilizing %1$s");
-        REGISTRATE.addRawLang("dmlreloaded.hover_text.more_info", "more info found in JEI or the Guidebook");
-        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitchingot_1", "%1$sを安定化させることで作成できます");
-        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.more_info", "詳細はJEIかガイドブックを参照してください");
-
-        // GLITCH_SWORD
-        REGISTRATE.addRawLang("dmlreloaded.messages.sword_levelup.max", "Your %1$s has now reached peak performance!");
-        REGISTRATE.addRawLang("dmlreloaded.messages.sword_levelup", "Your %1$s grows in power!");
-        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_sword_1", "Bonus: Quick learner");
-        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_sword_2", "(Bonuses are disabled during Trials)");
-        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_sword_3", "The Data gained from the demise of a mob is doubled,");
-        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_sword_4", "when Data is gained there is also a small chance");
-        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_sword_5", "that the sword will get a permanent damage increase.");
-        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_sword_6", "Current damage increase: %1$s (Max %2$s)");
-        REGISTRATE.addRawJPLang("dmlreloaded.messages.sword_levelup.max", "%1$sは最大の性能に達しました");
-        REGISTRATE.addRawJPLang("dmlreloaded.messages.sword_levelup", "%1$sは力を増しています");
-        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_1", "ボーナス: クイックラーニング");
-        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_2", "(ボーナスは試練中は無効です)");
-        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_3", "モブを倒した時に得られるデータが2倍になります");
-        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_4", "データが得られたとき、ごくわずかな確率で");
-        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_5", "剣の耐久値が増加します.");
-        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_6", "現在の耐久値増加: %1$s (最大 %2$s)");
-
-        // GLITCH_HELMET GLITCH_CHEST GLITCH_LEGGINGS GLITCH_BOOTS
+        // 共通翻訳情報: GLITCH_HELMET GLITCH_CHEST GLITCH_LEGGINGS GLITCH_BOOTS
         REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_1", "Bonus while full set is equipped");
         REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_2", "(Bonuses are disabled during Trials)");
         REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_3", "  1.  %1$s%% chance to drop %2$s Pristine Matter");
@@ -203,18 +203,36 @@ public class ItemInit {
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_3", "  1.  データモデルがデータを獲得したときに");
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_4", "     %1$s%%の確率で%2$sの綺麗なマターをドロップします");
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_5", "  2. 飛行と落下ダメージ無効");
-
-        // ItemSootedRedstone
-        REGISTRATE.addRawLang("dmlreloaded.hover_text.soot_covered_redstone_1", "Crafted by crushing %1$s against");
-        REGISTRATE.addRawLang("dmlreloaded.hover_text.soot_covered_redstone_2", "a %1$s (Left click)");
-        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.soot_covered_redstone_1", "%1$sを押し潰して作成します");
-        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.soot_covered_redstone_2", "%1$s(左クリック)");
     }
 
     public static class DataModel {
         public static final ItemEntry<Item> BLANK = REGISTRATE.item("data_model_blank", Item::new)
                 .lang("Blank Data Model")
                 .jpLang("空のデータモデル")
+                .addRawLang("dmlreloaded.holdshift", "- hold %1$s for more info")
+                .addRawLang("dmlreloaded.data_model.tier", "Tier: %1$s")
+                .addRawLang("dmlreloaded.data_model.data.collected", "Data collected: %1$s/%2$s")
+                .addRawLang("dmlreloaded.data_model.data.killmultiplier", "Data per kill: %1$s")
+                .addRawLang("dmlreloaded.data_model.rfcost", "Simulation cost: %1$s RF/t")
+                .addRawLang("dmlreloaded.data_model.type_text", "Type: %1$s")
+                .addRawLang("dmlreloaded.tiers.tier_1", "Faulty")
+                .addRawLang("dmlreloaded.tiers.tier_2", "Basic")
+                .addRawLang("dmlreloaded.tiers.tier_3", "Advanced")
+                .addRawLang("dmlreloaded.tiers.tier_4", "Superior")
+                .addRawLang("dmlreloaded.tiers.tier_5", "Self Aware")
+                .addRawLang("dmlreloaded.tiers.increase_tier", "%1$s reached the %2$s tier")
+                .addRawJPLang("dmlreloaded.holdshift", "- %1$s長押しで情報を表示")
+                .addRawJPLang("dmlreloaded.data_model.tier", "等級: %1$s")
+                .addRawJPLang("dmlreloaded.data_model.data.collected", "データ収集: %1$s/%2$s")
+                .addRawJPLang("dmlreloaded.data_model.data.killmultiplier", "キル数ごとの学習量: %1$s")
+                .addRawJPLang("dmlreloaded.data_model.rfcost", "シミュレーションコスト: %1$s RF/t")
+                .addRawJPLang("dmlreloaded.data_model.type_text", "タイプ: %1$s")
+                .addRawJPLang("dmlreloaded.tiers.tier_1", "不完全")
+                .addRawJPLang("dmlreloaded.tiers.tier_2", "基本")
+                .addRawJPLang("dmlreloaded.tiers.tier_3", "上級")
+                .addRawJPLang("dmlreloaded.tiers.tier_4", "至上")
+                .addRawJPLang("dmlreloaded.tiers.tier_5", "自己認識")
+                .addRawJPLang("dmlreloaded.tiers.increase_tier", "%1$sが%2$sの階級にアップデート")
                 .register();
 
         public static final ItemEntry<ItemDataModel> BLAZE = REGISTRATE.item("data_model_blaze", p -> new ItemDataModel(p, MobKey.BLAZE))
@@ -230,31 +248,7 @@ public class ItemInit {
                 .register();
 
         public static void register() {
-            REGISTRATE.addRawLang("dmlreloaded.holdshift", "- hold %1$s for more info");
-            REGISTRATE.addRawLang("dmlreloaded.data_model.tier", "Tier: %1$s");
-            REGISTRATE.addRawLang("dmlreloaded.data_model.data.collected", "Data collected: %1$s/%2$s");
-            REGISTRATE.addRawLang("dmlreloaded.data_model.data.killmultiplier", "Data per kill: %1$s");
-            REGISTRATE.addRawLang("dmlreloaded.data_model.rfcost", "Simulation cost: %1$s RF/t");
-            REGISTRATE.addRawLang("dmlreloaded.data_model.type_text", "Type: %1$s");
-            REGISTRATE.addRawLang("dmlreloaded.tiers.tier_1", "Faulty");
-            REGISTRATE.addRawLang("dmlreloaded.tiers.tier_2", "Basic");
-            REGISTRATE.addRawLang("dmlreloaded.tiers.tier_3", "Advanced");
-            REGISTRATE.addRawLang("dmlreloaded.tiers.tier_4", "Superior");
-            REGISTRATE.addRawLang("dmlreloaded.tiers.tier_5", "Self Aware");
-            REGISTRATE.addRawLang("dmlreloaded.tiers.increase_tier", "%1$s reached the %2$s tier");
 
-            REGISTRATE.addRawJPLang("dmlreloaded.holdshift", "- %1$s長押しで情報を表示");
-            REGISTRATE.addRawJPLang("dmlreloaded.data_model.tier", "等級: %1$s");
-            REGISTRATE.addRawJPLang("dmlreloaded.data_model.data.collected", "データ収集: %1$s/%2$s");
-            REGISTRATE.addRawJPLang("dmlreloaded.data_model.data.killmultiplier", "キル数ごとの学習量: %1$s");
-            REGISTRATE.addRawJPLang("dmlreloaded.data_model.rfcost", "シミュレーションコスト: %1$s RF/t");
-            REGISTRATE.addRawJPLang("dmlreloaded.data_model.type_text", "タイプ: %1$s");
-            REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_1", "不完全");
-            REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_2", "基本");
-            REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_3", "上級");
-            REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_4", "至上");
-            REGISTRATE.addRawJPLang("dmlreloaded.tiers.tier_5", "自己認識");
-            REGISTRATE.addRawJPLang("dmlreloaded.tiers.increase_tier", "%1$sが%2$sの階級にアップデート");
         }
     }
 
@@ -288,29 +282,29 @@ public class ItemInit {
         public static final ItemEntry<ItemLivingMatter> OVERWORLDIAN = REGISTRATE.item("living_matter_overworldian", p -> new ItemLivingMatter(p, LivingMatterType.OVERWORLDIAN))
                 .lang("Overworldian Matter")
                 .jpLang("Overworldianマター")
+                .addRawLang(LivingMatterType.OVERWORLDIAN.getLangId(), "Overworldian")
+                .addRawJPLang(LivingMatterType.OVERWORLDIAN.getLangId(), "Overworldian")
                 .register();
 
         public static final ItemEntry<ItemLivingMatter> HELLISH = REGISTRATE.item("living_matter_hellish", p -> new ItemLivingMatter(p, LivingMatterType.HELLISH))
                 .lang("Hellish Matter")
                 .jpLang("Hellishマター")
+                .addRawLang(LivingMatterType.HELLISH.getLangId(), "Hellish")
+                .addRawJPLang(LivingMatterType.HELLISH.getLangId(), "Hellish")
                 .register();
 
         public static final ItemEntry<ItemLivingMatter> EXTRATERRESTRIAL = REGISTRATE.item("living_matter_extraterrestrial", p -> new ItemLivingMatter(p, LivingMatterType.EXTRATERRESTRIAL))
                 .lang("Extraterrestrial Matter")
                 .jpLang("Extraterrestrialマター")
+                .addRawLang(LivingMatterType.EXTRATERRESTRIAL.getLangId(), "Extraterrestrial")
+                .addRawJPLang(LivingMatterType.EXTRATERRESTRIAL.getLangId(), "Extraterrestrial")
                 .register();
 
         public static void register() {
-            REGISTRATE.addRawLang(LivingMatterType.HELLISH.getLangId(), "Hellish");
-            REGISTRATE.addRawLang(LivingMatterType.EXTRATERRESTRIAL.getLangId(), "Extraterrestrial");
-            REGISTRATE.addRawLang(LivingMatterType.OVERWORLDIAN.getLangId(), "Overworldian");
+            // 共通翻訳情報
             REGISTRATE.addRawLang("dmlreloaded.living_matter.exp_consume", "Can be consumed for expirience %1$s");
             REGISTRATE.addRawLang("dmlreloaded.living_matter.exp_consume_stack", "Hold %1$s to consume entire stack.");
             REGISTRATE.addRawLang("dmlreloaded.living_matter.exp", "Experience per item: %1$s");
-
-            REGISTRATE.addRawJPLang(LivingMatterType.HELLISH.getLangId(), "Hellish");
-            REGISTRATE.addRawJPLang(LivingMatterType.EXTRATERRESTRIAL.getLangId(), "Extraterrestrial");
-            REGISTRATE.addRawJPLang(LivingMatterType.OVERWORLDIAN.getLangId(), "Overworldian");
             REGISTRATE.addRawJPLang("dmlreloaded.living_matter.exp_consume", "%1$sで消費することができます");
             REGISTRATE.addRawJPLang("dmlreloaded.living_matter.exp_consume_stack", "%1$sを押しながら使用するとスタック全体が消費されます.");
             REGISTRATE.addRawJPLang("dmlreloaded.living_matter.exp", "アイテムごとの経験値: %1$s");
