@@ -20,7 +20,7 @@ public class ItemGlitchIngot extends Item{
     @Override
     public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flagIn) {
         if(BalanceConfigs.isSootedRedstoneCraftingEnabled.get()) {
-            list.add(new TranslatableComponent("dmlreloaded.hover_text.glitchingot_1", new TranslatableComponent("item.dmlreforged.glitch_heart").withStyle(t->t.withColor(ChatFormatting.AQUA))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
+            list.add(new TranslatableComponent("dmlreloaded.hover_text.glitchingot_1", new TranslatableComponent("item.dmlreloaded.glitch_heart").withStyle(t->t.withColor(ChatFormatting.AQUA))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
             list.add(new TranslatableComponent("dmlreloaded.hover_text.more_info").withStyle(t->t.withColor(ChatFormatting.GRAY)));
         }
     }

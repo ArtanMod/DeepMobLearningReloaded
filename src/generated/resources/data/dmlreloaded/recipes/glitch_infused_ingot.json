@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dmlreloaded:infused_ingot_block"
+    }
+  ],
+  "result": {
+    "item": "dmlreloaded:glitch_infused_ingot",
+    "count": 9
+  }
+}

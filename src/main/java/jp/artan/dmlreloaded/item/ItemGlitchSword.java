@@ -6,6 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
+import jp.artan.dmlreloaded.item.material.GlitchToolMaterial;
 import jp.artan.dmlreloaded.util.NBTHelper;
 
 import net.minecraft.ChatFormatting;
@@ -19,7 +20,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
@@ -28,8 +28,8 @@ public class ItemGlitchSword extends SwordItem {
     private static final int DAMAGE_BONUS_MAX = 32;
     private static final int DAMAGE_INCREASE_CHANCE = 4;
 
-    public ItemGlitchSword(Tier p_43269_, int p_43270_, float p_43271_, Properties p_43272_) {
-        super(p_43269_, p_43270_, p_43271_, p_43272_);
+    public ItemGlitchSword(Properties p_43272_) {
+        super(new GlitchToolMaterial(), 10, 5f, p_43272_);
     }
 
 
@@ -44,9 +44,9 @@ public class ItemGlitchSword extends SwordItem {
             setPermanentWeaponDamage(sword, current + DAMAGE_BONUS >= DAMAGE_BONUS_MAX ? DAMAGE_BONUS_MAX : current + DAMAGE_BONUS);
 
             if(getPermanentWeaponDamage(sword) >= DAMAGE_BONUS_MAX) {
-                player.displayClientMessage(new TranslatableComponent("dmlreforged.messages.sword_levelup.max",new TextComponent(sword.getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.AQUA))), true);
+                player.displayClientMessage(new TranslatableComponent("dmlreloaded.messages.sword_levelup.max",new TextComponent(sword.getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.AQUA))), true);
             } else {
-                player.displayClientMessage(new TranslatableComponent("dmlreforged.messages.sword_levelup",new TextComponent(sword.getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.AQUA))), true);
+                player.displayClientMessage(new TranslatableComponent("dmlreloaded.messages.sword_levelup",new TextComponent(sword.getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.AQUA))), true);
             }
         }
     }
@@ -72,13 +72,13 @@ public class ItemGlitchSword extends SwordItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(new TranslatableComponent("dmlreforged.hover_text.glitch_infused_sword_1"));
-        //list.add(new TranslatableComponent("dmlreforged.hover_text.glitch_infused_sword_2"));
-        list.add(new TranslatableComponent("dmlreforged.hover_text.glitch_infused_sword_3").withStyle(t->t.withColor(ChatFormatting.GOLD)));
-        list.add(new TranslatableComponent("dmlreforged.hover_text.glitch_infused_sword_4").withStyle(t->t.withColor(ChatFormatting.GOLD)));
-        list.add(new TranslatableComponent("dmlreforged.hover_text.glitch_infused_sword_5").withStyle(t->t.withColor(ChatFormatting.GOLD)));
+        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_sword_1"));
+        //list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_sword_2"));
+        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_sword_3").withStyle(t->t.withColor(ChatFormatting.GOLD)));
+        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_sword_4").withStyle(t->t.withColor(ChatFormatting.GOLD)));
+        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_sword_5").withStyle(t->t.withColor(ChatFormatting.GOLD)));
         list.add(new TextComponent(""));
-        list.add(new TranslatableComponent("dmlreforged.hover_text.glitch_infused_sword_6", new TextComponent(Integer.toString(getPermanentWeaponDamage(stack))).withStyle(t->t.withColor(ChatFormatting.AQUA)), new TextComponent(Integer.toString(DAMAGE_BONUS_MAX)).withStyle(t->t.withColor(ChatFormatting.WHITE))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
+        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_sword_6", new TextComponent(Integer.toString(getPermanentWeaponDamage(stack))).withStyle(t->t.withColor(ChatFormatting.AQUA)), new TextComponent(Integer.toString(DAMAGE_BONUS_MAX)).withStyle(t->t.withColor(ChatFormatting.WHITE))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
     }
 
     @Override

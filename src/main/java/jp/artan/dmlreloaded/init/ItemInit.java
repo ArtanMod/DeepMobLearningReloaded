@@ -8,6 +8,8 @@ import jp.artan.dmlreloaded.item.*;
 import jp.artan.repack.registrate.providers.RegistrateRecipeProvider;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
@@ -30,8 +32,13 @@ public class ItemInit {
             .register();
 
     public static final ItemEntry<ItemGlitchIngot> GLITCH_INGOT = REGISTRATE.item("glitch_infused_ingot", ItemGlitchIngot::new)
+            .recipe((ctx, prov) -> {
+                ShapelessRecipeBuilder.shapeless(ctx.get(), 9).requires(BlockInit.INFUSED_INGOT_BLOCK.get())
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(ItemInit.GLITCH_INGOT.get()))
+                        .save(prov);
+            })
             .lang("Glitch Infused Ingot")
-            .jpLang("グリッチを注入したインゴット")
+            .jpLang("グリッチが染み込んだインゴット")
             .register();
 
     public static final ItemEntry<Item> POLYMER_CLAY = REGISTRATE.item("polymer_clay", Item::new)
@@ -50,6 +57,119 @@ public class ItemInit {
             .lang("Polymer Clay")
             .jpLang("ポリマー粘土")
             .register();
+
+    public static final ItemEntry<ItemGlitchSword> GLITCH_SWORD = REGISTRATE.item("glitch_infused_sword", ItemGlitchSword::new)
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(ctx.get())
+                        .define('#', GLITCH_INGOT.get())
+                        .define('X', Items.IRON_NUGGET)
+                        .define('Y', Items.STRING)
+                        .pattern("  #")
+                        .pattern("X# ")
+                        .pattern("YX ")
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(GLITCH_INGOT.get()))
+                        .save(prov);
+            })
+            .lang("Glitch Infused Sword")
+            .jpLang("グリッチが染み込んだ剣")
+            .register();
+
+    public static final ItemEntry<ItemGlitchArmor> GLITCH_HELMET = REGISTRATE.item("glitch_infused_helmet", p -> new ItemGlitchArmor(EquipmentSlot.HEAD, p))
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(ctx.get())
+                        .define('#', GLITCH_INGOT.get())
+                        .pattern("###")
+                        .pattern("# #")
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(GLITCH_INGOT.get()))
+                        .save(prov);
+            })
+            .lang("Glitch Infused Helmet")
+            .jpLang("グリッチが染み込んだヘルメット")
+            .register();
+
+    public static final ItemEntry<ItemGlitchArmor> GLITCH_CHEST = REGISTRATE.item("glitch_infused_chestplate", p -> new ItemGlitchArmor(EquipmentSlot.CHEST, p))
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(ctx.get())
+                        .define('#', GLITCH_INGOT.get())
+                        .pattern("# #")
+                        .pattern("###")
+                        .pattern("###")
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(GLITCH_INGOT.get()))
+                        .save(prov);
+            })
+            .lang("Glitch Infused Chestplate")
+            .jpLang("グリッチが染み込んだチェストプレート")
+            .register();
+
+    public static final ItemEntry<ItemGlitchArmor> GLITCH_LEGGINGS = REGISTRATE.item("glitch_infused_leggings", p -> new ItemGlitchArmor(EquipmentSlot.LEGS, p))
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(ctx.get())
+                        .define('#', GLITCH_INGOT.get())
+                        .pattern("###")
+                        .pattern("# #")
+                        .pattern("# #")
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(GLITCH_INGOT.get()))
+                        .save(prov);
+            })
+            .lang("Glitch Infused Leggings")
+            .jpLang("グリッチが染み込んだレギンス")
+            .register();
+
+    public static final ItemEntry<ItemGlitchArmor> GLITCH_BOOTS = REGISTRATE.item("glitch_infused_boots", p -> new ItemGlitchArmor(EquipmentSlot.FEET, p))
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(ctx.get())
+                        .define('#', GLITCH_INGOT.get())
+                        .pattern("# #")
+                        .pattern("# #")
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(GLITCH_INGOT.get()))
+                        .save(prov);
+            })
+            .lang("Glitch Infused Boots")
+            .jpLang("グリッチが染み込んだブーツ")
+            .register();
+
+    public static void register() {
+        DataModel.register();
+        PristineMatter.register();
+        LivingMatter.register();
+
+        // GLITCH_INGOT
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitchingot_1", "Made by stabilizing %1$s");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.more_info", "more info found in JEI or the Guidebook");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitchingot_1", "%1$sを安定化させることで作成できます");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.more_info", "詳細はJEIかガイドブックを参照してください");
+
+        // GLITCH_SWORD
+        REGISTRATE.addRawLang("dmlreloaded.messages.sword_levelup.max", "Your %1$s has now reached peak performance!");
+        REGISTRATE.addRawLang("dmlreloaded.messages.sword_levelup", "Your %1$s grows in power!");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_sword_1", "Bonus: Quick learner");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_sword_2", "(Bonuses are disabled during Trials)");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_sword_3", "The Data gained from the demise of a mob is doubled,");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_sword_4", "when Data is gained there is also a small chance");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_sword_5", "that the sword will get a permanent damage increase.");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_sword_6", "Current damage increase: %1$s (Max %2$s)");
+        REGISTRATE.addRawJPLang("dmlreloaded.messages.sword_levelup.max", "%1$sは最大の性能に達しました");
+        REGISTRATE.addRawJPLang("dmlreloaded.messages.sword_levelup", "%1$sは力を増しています");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_1", "ボーナス: クイックラーニング");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_2", "(ボーナスは試練中は無効です)");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_3", "モブを倒した時に得られるデータが2倍になります");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_4", "データが得られたとき、ごくわずかな確率で");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_5", "剣の耐久値が増加します.");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_6", "現在の耐久値増加: %1$s (最大 %2$s)");
+
+        // GLITCH_HELMET GLITCH_CHEST GLITCH_LEGGINGS GLITCH_BOOTS
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_1", "Bonus while full set is equipped");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_2", "(Bonuses are disabled during Trials)");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_3", "  1.  %1$s%% chance to drop %2$s Pristine Matter");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_4", "     when a Data Model gains Data.");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_5", "  2. Flight & Immunity against fall damage");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_1", "ボーナス: フルセット装備時");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_2", "(ボーナスは試練中は無効です)");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_3", "  1.  データモデルがデータを獲得したときに");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_4", "     %1$s%%の確率で%2$sの綺麗なマターをドロップします");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_5", "  2. 飛行と落下ダメージ無効");
+
+    }
 
     public static class DataModel {
         public static final ItemEntry<Item> BLANK = REGISTRATE.item("data_model_blank", Item::new)
@@ -133,11 +253,5 @@ public class ItemInit {
             REGISTRATE.addRawJPLang("dmlreloaded.living_matter.exp_consume_stack", "%1$sを押しながら使用するとスタック全体が消費されます.");
             REGISTRATE.addRawJPLang("dmlreloaded.living_matter.exp", "アイテムごとの経験値: %1$s");
         }
-    }
-
-    public static void register() {
-        DataModel.register();
-        PristineMatter.register();
-        LivingMatter.register();
     }
 }

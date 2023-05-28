@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  #",
+    "X# ",
+    "YX "
+  ],
+  "key": {
+    "#": {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    "X": {
+      "item": "minecraft:iron_nugget"
+    },
+    "Y": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "dmlreloaded:glitch_infused_sword"
+  }
+}

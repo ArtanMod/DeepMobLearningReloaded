@@ -4,6 +4,7 @@ import io.netty.util.internal.ThreadLocalRandom;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.config.BalanceConfigs;
 import jp.artan.dmlreloaded.init.ItemInit;
+import jp.artan.dmlreloaded.item.material.GlitchArmorMaterial;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -25,8 +26,8 @@ public class ItemGlitchArmor extends ArmorItem{
     private static final int HEART_SET_CHANCE = 1;
     private static final int PRISTINE_SET_NUMBER_OF_DROPS = 2;
 
-    public ItemGlitchArmor(ArmorMaterial p_40386_, EquipmentSlot p_40387_, Properties p_40388_) {
-        super(p_40386_, p_40387_, p_40388_);
+    public ItemGlitchArmor(EquipmentSlot p_40387_, Properties p_40388_) {
+        super(new GlitchArmorMaterial(), p_40387_, p_40388_);
     }
 
 
@@ -73,11 +74,11 @@ public class ItemGlitchArmor extends ArmorItem{
 
     @Override
     public void appendHoverText(ItemStack p_41421_, Level p_41422_, List<Component> list, TooltipFlag p_41424_) {
-        list.add(new TranslatableComponent("dmlreforged.hover_text.glitch_infused_armor_1"));
-        //list.add(new TranslatableComponent("dmlreforged.hover_text.glitch_infused_armor_2"));
-        list.add(new TranslatableComponent("dmlreforged.hover_text.glitch_infused_armor_3", new TextComponent(Integer.toString(PRISTINE_SET_CHANCE)), new TextComponent(Integer.toString(PRISTINE_SET_NUMBER_OF_DROPS))).withStyle(t->t.withColor(ChatFormatting.GOLD)));
-        list.add(new TranslatableComponent("dmlreforged.hover_text.glitch_infused_armor_4").withStyle(t->t.withColor(ChatFormatting.GOLD)));
-        list.add(new TranslatableComponent("dmlreforged.hover_text.glitch_infused_armor_5").withStyle(t->t.withColor(ChatFormatting.GOLD)));
+        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_armor_1"));
+        //list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_armor_2"));
+        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_armor_3", new TextComponent(Integer.toString(PRISTINE_SET_CHANCE)), new TextComponent(Integer.toString(PRISTINE_SET_NUMBER_OF_DROPS))).withStyle(t->t.withColor(ChatFormatting.GOLD)));
+        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_armor_4").withStyle(t->t.withColor(ChatFormatting.GOLD)));
+        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_armor_5").withStyle(t->t.withColor(ChatFormatting.GOLD)));
     }
 }
 
