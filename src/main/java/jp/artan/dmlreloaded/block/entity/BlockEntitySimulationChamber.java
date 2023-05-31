@@ -75,7 +75,7 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
     }
 
     private DeepEnergyStorage createEnergyStorage() {
-        return new DeepEnergyStorage(this, 2000000, 25600, 0, 0);
+        return new DeepEnergyStorage(this, 2000000, 25600, 0, DeepMobLearningReloaded.DEBUG_MODE ? 2000000 : 0);
     }
 
     public boolean isCrafting() {

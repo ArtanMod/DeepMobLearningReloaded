@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "dmlreloaded:block/extraction_chamber"
+    },
+    "facing=south": {
+      "model": "dmlreloaded:block/extraction_chamber",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "dmlreloaded:block/extraction_chamber",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "dmlreloaded:block/extraction_chamber",
+      "y": 90
+    }
+  }
+}

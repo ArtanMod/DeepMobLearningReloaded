@@ -1,4 +1,5 @@
 {
+  "block.dmlreloaded.extraction_chamber": "Extraction Chamber",
   "block.dmlreloaded.infused_ingot_block": "Glitch Infused Block",
   "block.dmlreloaded.machine_casing": "Glitch Infused Block",
   "block.dmlreloaded.simulation_chamber": "Simulation Chamber",
@@ -18,6 +19,7 @@
   "dmlreloaded.gui.deep_learner.when_placed": "when they are placed in the deep learner.",
   "dmlreloaded.gui.defeated": "%1$s defeated: %2$s",
   "dmlreloaded.gui.energy.energystored": "%1$s/%2$s RF",
+  "dmlreloaded.gui.extraction_chamber.opcost": "Operational cost: %1$s RF/t",
   "dmlreloaded.gui.information": "Information",
   "dmlreloaded.gui.mob.blaze.trivia.0": "Bring buckets, and watch in despair",
   "dmlreloaded.gui.mob.blaze.trivia.1": "as it evaporates, and everything is on fire",

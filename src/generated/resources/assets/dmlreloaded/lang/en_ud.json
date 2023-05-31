@@ -1,4 +1,5 @@
 {
+  "block.dmlreloaded.extraction_chamber": "\u0279\u01DDq\u026F\u0250\u0265\u0186 uo\u0131\u0287\u0254\u0250\u0279\u0287x\u018E",
   "block.dmlreloaded.infused_ingot_block": "\u029E\u0254o\u05DF\u15FA p\u01DDsn\u025FuI \u0265\u0254\u0287\u0131\u05DF\u2141",
   "block.dmlreloaded.machine_casing": "\u029E\u0254o\u05DF\u15FA p\u01DDsn\u025FuI \u0265\u0254\u0287\u0131\u05DF\u2141",
   "block.dmlreloaded.simulation_chamber": "\u0279\u01DDq\u026F\u0250\u0265\u0186 uo\u0131\u0287\u0250\u05DFn\u026F\u0131S",
@@ -18,6 +19,7 @@
   "dmlreloaded.gui.deep_learner.when_placed": "\u02D9\u0279\u01DDu\u0279\u0250\u01DD\u05DF d\u01DD\u01DDp \u01DD\u0265\u0287 u\u0131 p\u01DD\u0254\u0250\u05DFd \u01DD\u0279\u0250 \u028E\u01DD\u0265\u0287 u\u01DD\u0265\u028D",
   "dmlreloaded.gui.defeated": "%2$s :p\u01DD\u0287\u0250\u01DD\u025F\u01DDp %1$s",
   "dmlreloaded.gui.energy.energystored": "\u2132\u1D1A %2$s/%1$s",
+  "dmlreloaded.gui.extraction_chamber.opcost": "\u0287/\u2132\u1D1A %1$s :\u0287so\u0254 \u05DF\u0250uo\u0131\u0287\u0250\u0279\u01DDdO",
   "dmlreloaded.gui.information": "uo\u0131\u0287\u0250\u026F\u0279o\u025FuI",
   "dmlreloaded.gui.mob.blaze.trivia.0": "\u0279\u0131\u0250ds\u01DDp u\u0131 \u0265\u0254\u0287\u0250\u028D pu\u0250 's\u0287\u01DD\u029E\u0254nq bu\u0131\u0279\u15FA",
   "dmlreloaded.gui.mob.blaze.trivia.1": "\u01DD\u0279\u0131\u025F uo s\u0131 bu\u0131\u0265\u0287\u028E\u0279\u01DD\u028C\u01DD pu\u0250 's\u01DD\u0287\u0250\u0279od\u0250\u028C\u01DD \u0287\u0131 s\u0250",

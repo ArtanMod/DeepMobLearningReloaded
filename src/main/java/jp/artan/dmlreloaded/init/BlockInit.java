@@ -2,6 +2,7 @@ package jp.artan.dmlreloaded.init;
 
 import jp.artan.artansprojectcoremod.gen.BlockStateGen;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
+import jp.artan.dmlreloaded.block.BlockExtractionChamber;
 import jp.artan.dmlreloaded.block.BlockSimulationChamber;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import jp.artan.dmlreloaded.item.ItemDeepLearner;
@@ -72,6 +73,40 @@ public class BlockInit {
             .simpleItem()
             .lang("Simulation Chamber")
             .jpLang("シミュレーション室")
+            .register();
+
+    public static final BlockEntry<BlockExtractionChamber> EXTRACTION_CHAMBER = REGISTRATE.block("extraction_chamber", BlockExtractionChamber::new)
+            .initialProperties(Material.STONE)
+            .properties(p -> p.strength(4f, 10.0f).lightLevel(blockstate -> 15))
+            .blockstate((ctx, prov) -> {
+                ModelFile model = prov.models().getExistingFile(prov.modLoc("block/extraction_chamber"));
+
+                prov.getVariantBuilder(ctx.get())
+                        .forAllStates(state -> {
+                            return ConfiguredModel.builder()
+                                    .modelFile(model)
+                                    .rotationY((((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180)) % 360)
+                                    .build();
+                        });
+
+                prov.simpleBlockItem(ctx.get(), model);
+            })
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(ctx.get())
+                        .define('#', Items.GOLD_INGOT)
+                        .define('X', Items.DIAMOND)
+                        .define('Y', MACHINE_CASING.get())
+                        .define('A', Items.DANDELION)
+                        .define('B', Items.COMPARATOR)
+                        .pattern(" # ")
+                        .pattern("XYX")
+                        .pattern("ABA")
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(MACHINE_CASING.get()))
+                        .save(prov);
+            })
+            .simpleItem()
+            .lang("Extraction Chamber")
+            .jpLang("抽出室")
             .register();
 
     public static final BlockEntry<Block> INFUSED_INGOT_BLOCK = REGISTRATE.block("infused_ingot_block", Block::new)

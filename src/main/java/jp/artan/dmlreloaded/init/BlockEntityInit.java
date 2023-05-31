@@ -1,6 +1,7 @@
 package jp.artan.dmlreloaded.init;
 
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
+import jp.artan.dmlreloaded.block.entity.BlockEntityExtractionChamber;
 import jp.artan.dmlreloaded.block.entity.BlockEntitySimulationChamber;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -12,6 +13,9 @@ public class BlockEntityInit {
 
     public static final RegistryObject<BlockEntityType<BlockEntitySimulationChamber>> ENTITY_SIMULATION_CHAMBER = BET.register("simulation_chamber",
             () -> BlockEntityType.Builder.of(BlockEntitySimulationChamber::new, BlockInit.SIMULATION_CHAMBER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<BlockEntityExtractionChamber>> ENTITY_EXTRACTION_CHAMBER = BET.register("extraction_chamber",
+            () -> BlockEntityType.Builder.of(BlockEntityExtractionChamber::new, BlockInit.EXTRACTION_CHAMBER.get()).build(null));
 
     public static void register() {
 

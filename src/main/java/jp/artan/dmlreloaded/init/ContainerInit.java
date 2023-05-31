@@ -3,9 +3,11 @@ package jp.artan.dmlreloaded.init;
 import jp.artan.artansprojectcoremod.plugin.registrate.builder.ModContainerBuilder;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.container.DeepLearnerContainer;
+import jp.artan.dmlreloaded.container.ExtractionChamberContainer;
 import jp.artan.dmlreloaded.container.SimulationChamberContainer;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import jp.artan.dmlreloaded.screen.DeepLearnerScreen;
+import jp.artan.dmlreloaded.screen.ExtractionChamberScreen;
 import jp.artan.dmlreloaded.screen.SimulationChamberScreen;
 import jp.artan.repack.registrate.builders.MenuBuilder;
 import jp.artan.repack.registrate.util.entry.MenuEntry;
@@ -84,6 +86,10 @@ public class ContainerInit {
             .addRawJPLang("dmlreloaded.gui.simulation_chamber.iterations", "繰り返し回数: %1$s")
             .addRawLang("dmlreloaded.gui.simulation_chamber.pristine_chance", "Pristine chance: %1$s%%")
             .addRawJPLang("dmlreloaded.gui.simulation_chamber.pristine_chance", "綺麗なマターの入手確率: %1$s%%")
+            .register();
+    public static final MenuEntry<ExtractionChamberContainer> EXTRACTION_CHAMBER = register("extraction_chamber", ExtractionChamberContainer::new, () -> ExtractionChamberScreen::new)
+            .addRawLang("dmlreloaded.gui.extraction_chamber.opcost", "Operational cost: %1$s RF/t")
+            .addRawJPLang("dmlreloaded.gui.extraction_chamber.opcost", "実行コスト: %1$s RF/t")
             .register();
 
     public static void register() {

@@ -14,6 +14,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import org.slf4j.Logger;
@@ -32,6 +33,9 @@ public class DeepMobLearningReloaded {
     // Data model max tier
     public static final int DATA_MODEL_MAXIMUM_TIER = 4;
 
+    // Debug Mode
+    public static final boolean DEBUG_MODE = true;
+
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -43,6 +47,7 @@ public class DeepMobLearningReloaded {
         BlockEntityInit.BET.register(modEventBus);
 
         modEventBus.addListener(this::registerProviders);
+        modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::onFMLClientSetup);
 
         Config.register();
@@ -66,6 +71,10 @@ public class DeepMobLearningReloaded {
         event.enqueueWork(() -> {
             MinecraftForge.EVENT_BUS.register(new DataOverlay(TextComponent.EMPTY));
         });
+    }
+
+    public void commonSetup(FMLCommonSetupEvent evt) {
+        evt.enqueueWork(PacketHandler::register);
     }
 
     void registerProviders(GatherDataEvent event) {
