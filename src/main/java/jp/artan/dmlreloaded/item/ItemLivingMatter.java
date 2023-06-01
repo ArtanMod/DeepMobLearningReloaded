@@ -1,7 +1,6 @@
 package jp.artan.dmlreloaded.item;
 
 import jp.artan.dmlreloaded.common.ILivingMatterType;
-import jp.artan.dmlreloaded.config.LivingExpConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -33,13 +32,13 @@ public class ItemLivingMatter extends Item {
     public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flag) {
         list.add(new TranslatableComponent("dmlreloaded.living_matter.exp_consume", new TextComponent("(Right-Click)").withStyle(t -> t.withColor(ChatFormatting.WHITE))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
         list.add(new TranslatableComponent("dmlreloaded.living_matter.exp_consume_stack", new TextComponent("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
-        list.add(new TranslatableComponent("dmlreloaded.living_matter.exp", new TextComponent(Integer.toString(LivingExpConfig.getExp(getType()))).withStyle(t -> t.withColor(ChatFormatting.GREEN))));
+        list.add(new TranslatableComponent("dmlreloaded.living_matter.exp", new TextComponent(Integer.toString(getType().getExp())).withStyle(t -> t.withColor(ChatFormatting.GREEN))));
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         if(!world.isClientSide()) {
-            int exp = LivingExpConfig.getExp(getType());
+            int exp = getType().getExp();
             if(player.isCrouching()) {
                 int size = player.getItemInHand(hand).getCount();
                 player.getItemInHand(hand).shrink(size);
