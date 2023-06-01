@@ -10,7 +10,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -54,7 +53,7 @@ public class BlockEntityExtractionChamber extends InventoryBlockEntity{
     }
 
     public boolean pristineChanged() {
-        return !getPristine().isEmpty() && !currentPristineMatter.equals(((ItemPristineMatter) getPristine().getItem()).getMobKey().getMobKey());
+        return !getPristine().isEmpty() && !currentPristineMatter.equals(((ItemPristineMatter) getPristine().getItem()).getMobKey().getId());
     }
 
     private boolean canStartCraft() {
@@ -87,7 +86,7 @@ public class BlockEntityExtractionChamber extends InventoryBlockEntity{
             if(pristineChanged()) {
                 finishCraft(true);
                 this.selected = false;
-                currentPristineMatter = ((ItemPristineMatter) getPristine().getItem()).getMobKey().getMobKey();
+                currentPristineMatter = ((ItemPristineMatter) getPristine().getItem()).getMobKey().getId();
                 setResultingItem(ItemStack.EMPTY);
                 update();
                 return;

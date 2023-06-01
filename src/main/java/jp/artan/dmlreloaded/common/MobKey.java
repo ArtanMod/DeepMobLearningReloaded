@@ -6,7 +6,6 @@ import jp.artan.dmlreloaded.common.mobmetas.ZombieMeta;
 import net.minecraftforge.common.util.NonNullSupplier;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public enum MobKey implements IMobKey {
@@ -133,20 +132,20 @@ public enum MobKey implements IMobKey {
         add(new Loot("minecraft:potato", 32));
     }});
 
-    private final String mobKey;
+    private final String id;
     private final NonNullSupplier<MobMetaData> mobMetaData;
     private final ILivingMatterType livingMatterType;
     private final List<String> mobs;
     private final List<String> loot;
 
     MobKey(
-            String mobKey,
+            String id,
             NonNullSupplier<MobMetaData> mobMetaData,
             ILivingMatterType livingMatterType,
             List<String> mobs,
             List<Loot> loot
     ) {
-        this.mobKey = mobKey;
+        this.id = id;
         this.mobMetaData = mobMetaData;
         this.livingMatterType = livingMatterType;
         this.mobs = mobs;
@@ -154,8 +153,8 @@ public enum MobKey implements IMobKey {
     }
 
     @Override
-    public String getMobKey() {
-        return this.mobKey;
+    public String getId() {
+        return this.id;
     }
 
     @Override

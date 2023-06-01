@@ -3,11 +3,10 @@ package jp.artan.dmlreloaded.common;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import net.minecraftforge.common.util.NonNullSupplier;
 
-import java.util.HashSet;
 import java.util.List;
 
 public interface IMobKey {
-    String getMobKey();
+    String getId();
     NonNullSupplier<MobMetaData> getMobMetaData();
     ILivingMatterType getLivingMatterType();
     List<String> getMobs();

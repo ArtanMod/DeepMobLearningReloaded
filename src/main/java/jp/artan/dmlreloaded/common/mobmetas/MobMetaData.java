@@ -99,7 +99,7 @@ public abstract class MobMetaData {
     }
 
     public static String getMobTriviaLangId(IMobKey key, int index) {
-        return "dmlreloaded.gui.mob." + key.getMobKey() + ".trivia." + index;
+        return "dmlreloaded.gui.mob." + key.getId() + ".trivia." + index;
     }
 
     public TranslatableComponent getMobTrivia(int index) {

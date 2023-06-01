@@ -7,21 +7,21 @@ public enum LivingMatterType implements ILivingMatterType {
     HELLISH("hellish", ChatFormatting.DARK_RED),
     EXTRATERRESTRIAL("extraterrestrial", ChatFormatting.LIGHT_PURPLE);
 
-    private final String type;
+    private final String id;
     private final String langId;
     private final ChatFormatting color;
     LivingMatterType(
-            String type,
+            String id,
             ChatFormatting color
     ) {
-        this.type = type;
-        this.langId = "dmlreloaded.living_matter." + type;
+        this.id = id;
+        this.langId = "dmlreloaded.living_matter." + id;
         this.color = color;
     }
 
     @Override
-    public String getType() {
-        return this.type;
+    public String getId() {
+        return this.id;
     }
 
     @Override
