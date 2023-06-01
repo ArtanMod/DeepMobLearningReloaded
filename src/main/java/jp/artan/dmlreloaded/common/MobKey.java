@@ -26,12 +26,13 @@ public enum MobKey implements IMobKey {
         add(new Loot("minecraft:dragon_breath", 22));
         add(new Loot("minecraft:dragon_egg", 1));
     }}),
-    DROWNED("drowned", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
-    }}, new ArrayList<>(){{
-    }}),
     ELDER_GUARDIAN("elder_guardian", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add("minecraft:elder_guardian");
     }}, new ArrayList<>(){{
+        add(new Loot("minecraft:prismarine_shard", 64));
+        add(new Loot("minecraft:prismarine_crystals", 64));
+        add(new Loot("minecraft:fish", 64));
+        add(new Loot("minecraft:sponge", 8));
     }}),
     ENDERMAN("enderman", () -> null, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
         add("minecraft:enderman");
@@ -40,7 +41,11 @@ public enum MobKey implements IMobKey {
         add(new Loot("minecraft:end_crystal", 1));
     }}),
     EVOKER("evoker", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+        add("minecraft:evoker");
+        add("minecraft:vex");
     }}, new ArrayList<>(){{
+        add(new Loot("minecraft:emerald", 8));
+        add(new Loot("minecraft:totem_of_undying", 1));
     }}),
     GHAST("ghast", () -> null, LivingMatterType.HELLISH, new ArrayList<>(){{
         add("minecraft:ghast");
@@ -55,25 +60,43 @@ public enum MobKey implements IMobKey {
         add(new Loot("minecraft:fish", 64));
     }}),
     HOGLIN("hoglin", () -> null, LivingMatterType.HELLISH, new ArrayList<>(){{
+        add("minecraft:hoglin");
     }}, new ArrayList<>(){{
+        add(new Loot("minecraft:leather", 32));
+        add(new Loot("minecraft:porkchop", 32));
     }}),
     MAGMA_CUBE("magma_cube", () -> null, LivingMatterType.HELLISH, new ArrayList<>(){{
         add("minecraft:magma_cube");
     }}, new ArrayList<>(){{
+        add(new Loot("minecraft:magma_cream", 32));
     }}),
     PHONTOM("phontom", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+        add("minecraft:phontom");
     }}, new ArrayList<>(){{
+        add(new Loot("minecraft:phantom_membrane", 8));
     }}),
     PIGLIN("piglin", () -> null, LivingMatterType.HELLISH, new ArrayList<>(){{
+        add("minecraft:piglin");
+        add("minecraft:piglin_brute");
+        add("minecraft:zombie_pigman");
     }}, new ArrayList<>(){{
+        add(new Loot("minecraft:gold_ingot", 16));
     }}),
     PILLAGER("pillager", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+        add("minecraft:pillager");
+        add("minecraft:vindicator");
     }}, new ArrayList<>(){{
+        add(new Loot("minecraft:emerald", 8));
+        add(new Loot("minecraft:book", 64));
     }}),
     RAVAGER("ravager", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+        add("minecraft:ravager");
     }}, new ArrayList<>(){{
+        add(new Loot("minecraft:saddle", 4));
+        add(new Loot("minecraft:diamond", 2));
     }}),
     SHULKER("shulker", () -> null, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
+        add("minecraft:shulker");
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:shulker_shell", 18));
         add(new Loot("minecraft:diamond", 2));
@@ -99,9 +122,6 @@ public enum MobKey implements IMobKey {
         add(new Loot("minecraft:string", 64));
         add(new Loot("minecraft:web", 8));
     }}),
-    VINDICATOR("vindicator", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
-    }}, new ArrayList<>(){{
-    }}),
     WITCH("witch", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add("minecraft:witch");
     }}, new ArrayList<>(){{
@@ -119,12 +139,15 @@ public enum MobKey implements IMobKey {
         add("minecraft:wither");
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:nether_star", 3));
+        add(new Loot("minecraft:ancient_debris", 1));
     }}),
     ZOMBIE("zombie", ZombieMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add("minecraft:zombie");
+        add("minecraft:giant");
         add("minecraft:husk");
         add("minecraft:zombie_villager");
-        add("minecraft:zombie_pigman");
+        add("minecraft:drowned");
+        add("minecraft:zoglin");
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:rotten_flesh", 64));
         add(new Loot("minecraft:iron_ingot", 16));
