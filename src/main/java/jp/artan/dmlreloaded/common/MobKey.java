@@ -120,20 +120,20 @@ public enum MobKey implements IMobKey {
         add(new Loot("minecraft:string", 64));
         add(new Loot("minecraft:web", 8));
     }}),
-    WITCH("witch", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    WITCH("witch", WitchMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new Mob("minecraft:witch"));
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:redstone", 32));
         add(new Loot("minecraft:glowstone_dust", 32));
         add(new Loot("minecraft:sugar", 64));
     }}),
-    WITHER_SKELETON("wither_skeleton", () -> null, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
+    WITHER_SKELETON("wither_skeleton", WitherSkeletonMeta::new, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
         add(new Mob("minecraft:wither_skeleton"));
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:skull", 18));
         add(new Loot("minecraft:coal", 64));
     }}),
-    WITHER("wither", () -> null, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
+    WITHER("wither", WitherMeta::new, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
         add(new Mob("minecraft:wither"));
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:nether_star", 3));

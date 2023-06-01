@@ -299,6 +299,24 @@ public class ItemInit {
                 .jpLang("クモのデータモデル")
                 .register();
 
+        public static final ItemEntry<ItemDataModel> WITCH = REGISTRATE.item("data_model_witch", p -> new ItemDataModel(p, MobKey.WITCH))
+                .properties(p -> p.stacksTo(1))
+                .lang("Creeper Witch Model")
+                .jpLang("ウィッチのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> WITHER_SKELETON = REGISTRATE.item("data_model_wither_skeleton", p -> new ItemDataModel(p, MobKey.WITHER_SKELETON))
+                .properties(p -> p.stacksTo(1))
+                .lang("Creeper Wither Skeleton Model")
+                .jpLang("ウィザースケルトンのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> WITHER = REGISTRATE.item("data_model_wither", p -> new ItemDataModel(p, MobKey.WITHER))
+                .properties(p -> p.stacksTo(1))
+                .lang("Creeper Wither Model")
+                .jpLang("ウィザーのデータモデル")
+                .register();
+
         public static final ItemEntry<ItemDataModel> ZOMBIE = REGISTRATE.item("data_model_zombie", p -> new ItemDataModel(p, MobKey.ZOMBIE))
                 .properties(p -> p.stacksTo(1))
                 .lang("Zombie Data Model")
@@ -407,6 +425,35 @@ public class ItemInit {
                 .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 1), "Drops strands of string for some reason..")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 1), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> WITCH = REGISTRATE.item("pristine_matter_witch", p -> new ItemPristineMatter(p, MobKey.WITCH))
+                .lang("Pristine Witch Matter")
+                .jpLang("綺麗なウィッチマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.WITCH, 0), "Affinity with potions and concoctions")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.WITCH, 1), "Beware!")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.WITCH, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.WITCH, 1), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> WITHER_SKELETON = REGISTRATE.item("pristine_matter_wither_skeleton", p -> new ItemPristineMatter(p, MobKey.WITHER_SKELETON))
+                .lang("Pristine Wither Skeleton Matter")
+                .jpLang("綺麗なウィザースケルトンマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.WITHER_SKELETON, 0), "Inflicts the wither effect")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.WITHER_SKELETON, 1), "Bring milk")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.WITHER_SKELETON, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.WITHER_SKELETON, 1), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> WITHER = REGISTRATE.item("pristine_matter_wither", p -> new ItemPristineMatter(p, MobKey.WITHER))
+                .lang("Pristine Wither Matter")
+                .jpLang("綺麗なウィザーマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.WITHER, 0), "Do not approach this enemy. Run!")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.WITHER, 1), "I mean it has 3 heads, what could")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.WITHER, 2), "possibly go wrong?")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.WITHER, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.WITHER, 1), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.WITHER, 2), "")
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> ZOMBIE = REGISTRATE.item("pristine_matter_zombie", p -> new ItemPristineMatter(p, MobKey.ZOMBIE))

@@ -41,9 +41,9 @@ public class EnergyCostConfig {
 //        registerMobEnergyCost(MobKey.SKELETON, SERVER_BUILDER.defineInRange("shulkerCost", 80, 1, 6666));
 //        registerMobEnergyCost(MobKey.SLIME, SERVER_BUILDER.defineInRange("slimeCost", 150, 1, 6666));
 //        registerMobEnergyCost(MobKey.SPIDER, SERVER_BUILDER.defineInRange("spiderCost", 80, 1, 6666));
-        registerMobEnergyCost(MobKey.WITCH, SERVER_BUILDER.defineInRange("witchCost", 120, 1, 6666));
-        registerMobEnergyCost(MobKey.WITHER_SKELETON, SERVER_BUILDER.defineInRange("witherSkeletonCost", 880, 1, 6666));
-        registerMobEnergyCost(MobKey.WITHER, SERVER_BUILDER.defineInRange("witherCost", 2048, 1, 6666));
+//        registerMobEnergyCost(MobKey.WITCH, SERVER_BUILDER.defineInRange("witchCost", 120, 1, 6666));
+//        registerMobEnergyCost(MobKey.WITHER_SKELETON, SERVER_BUILDER.defineInRange("witherSkeletonCost", 880, 1, 6666));
+//        registerMobEnergyCost(MobKey.WITHER, SERVER_BUILDER.defineInRange("witherCost", 2048, 1, 6666));
 //        registerMobEnergyCost(MobKey.ZOMBIE, SERVER_BUILDER.defineInRange("zombieCost", 80, 1, 6666));
 
         FECOSTEXTRACTIONCHAMBER = SERVER_BUILDER.comment("Balance the energy cost of the Loot Fabricator (FE/t)")
