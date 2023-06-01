@@ -275,6 +275,30 @@ public class ItemInit {
                 .jpLang("ガーディアンのデータモデル")
                 .register();
 
+        public static final ItemEntry<ItemDataModel> SHULKER = REGISTRATE.item("data_model_shulker", p -> new ItemDataModel(p, MobKey.SHULKER))
+                .properties(p -> p.stacksTo(1))
+                .lang("Creeper Shulker Model")
+                .jpLang("シェルカーのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> SKELETON = REGISTRATE.item("data_model_skeleton", p -> new ItemDataModel(p, MobKey.SKELETON))
+                .properties(p -> p.stacksTo(1))
+                .lang("Creeper Skeleton Model")
+                .jpLang("スケルトンのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> SLIME = REGISTRATE.item("data_model_slime", p -> new ItemDataModel(p, MobKey.SLIME))
+                .properties(p -> p.stacksTo(1))
+                .lang("Creeper Slime Model")
+                .jpLang("スライムのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> SPIDER = REGISTRATE.item("data_model_spider", p -> new ItemDataModel(p, MobKey.SPIDER))
+                .properties(p -> p.stacksTo(1))
+                .lang("Creeper Spider Model")
+                .jpLang("クモのデータモデル")
+                .register();
+
         public static final ItemEntry<ItemDataModel> ZOMBIE = REGISTRATE.item("data_model_zombie", p -> new ItemDataModel(p, MobKey.ZOMBIE))
                 .properties(p -> p.stacksTo(1))
                 .lang("Zombie Data Model")
@@ -343,6 +367,46 @@ public class ItemInit {
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.GUARDIAN, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.GUARDIAN, 1), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.GUARDIAN, 2), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> SHULKER = REGISTRATE.item("pristine_matter_shulker", p -> new ItemPristineMatter(p, MobKey.SHULKER))
+                .lang("Pristine Shulker Matter")
+                .jpLang("綺麗なシェルカーマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SHULKER, 0), "Found in End cities")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SHULKER, 1), "Sneaky little buggers")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SHULKER, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SHULKER, 1), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> SKELETON = REGISTRATE.item("pristine_matter_skeleton", p -> new ItemPristineMatter(p, MobKey.SKELETON))
+                .lang("Pristine Skeleton Matter")
+                .jpLang("綺麗なスケルトンマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SKELETON, 0), "A formidable archer, which seem to be running")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SKELETON, 1), "some sort of cheat engine")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SKELETON, 2), "A shield could prove useful")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SKELETON, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SKELETON, 1), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SKELETON, 2), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> SLIME = REGISTRATE.item("pristine_matter_slime", p -> new ItemPristineMatter(p, MobKey.SLIME))
+                .lang("Pristine Slime Matter")
+                .jpLang("綺麗なスライムマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SLIME, 0), "The bounce")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SLIME, 1), "bounce his bounce")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SLIME, 2), "squish - \"A slime haiku\"")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SLIME, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SLIME, 1), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SLIME, 2), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> SPIDER = REGISTRATE.item("pristine_matter_spider", p -> new ItemPristineMatter(p, MobKey.SPIDER))
+                .lang("Pristine Spider Matter")
+                .jpLang("綺麗なクモマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 0), "Nocturnal douchebags, beware")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 1), "Drops strands of string for some reason..")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 1), "")
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> ZOMBIE = REGISTRATE.item("pristine_matter_zombie", p -> new ItemPristineMatter(p, MobKey.ZOMBIE))

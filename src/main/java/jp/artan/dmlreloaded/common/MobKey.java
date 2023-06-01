@@ -93,13 +93,13 @@ public enum MobKey implements IMobKey {
         add(new Loot("minecraft:saddle", 4));
         add(new Loot("minecraft:diamond", 2));
     }}),
-    SHULKER("shulker", () -> null, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
+    SHULKER("shulker", ShulkerMeta::new, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
         add(new Mob("minecraft:shulker"));
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:shulker_shell", 18));
         add(new Loot("minecraft:diamond", 2));
     }}),
-    SKELETON("skeleton", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    SKELETON("skeleton", SkeletonMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new Mob("minecraft:stray"));
         add(new Mob("minecraft:skeleton"));
     }}, new ArrayList<>(){{
@@ -107,12 +107,12 @@ public enum MobKey implements IMobKey {
         add(new Loot("minecraft:arrow", 64));
         add(new Loot("minecraft:skull", 6));
     }}),
-    SLIME("slime", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    SLIME("slime", SlimeMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new Mob("minecraft:slime"));
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:slime_ball", 32));
     }}),
-    SPIDER("spider", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    SPIDER("spider", SpiderMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new Mob("minecraft:spider"));
         add(new Mob("minecraft:cave_spider"));
     }}, new ArrayList<>(){{
