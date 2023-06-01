@@ -6,19 +6,19 @@ import net.minecraft.ChatFormatting;
 import net.minecraftforge.common.util.NonNullSupplier;
 
 public enum LivingMatterType implements ILivingMatterType {
-    OVERWORLDIAN("overworldian", 10, () -> ItemInit.LivingMatter.OVERWORLDIAN.get(), ChatFormatting.GREEN),
-    HELLISH("hellish", 14, () -> ItemInit.LivingMatter.HELLISH.get(), ChatFormatting.DARK_RED),
-    EXTRATERRESTRIAL("extraterrestrial", 20, () -> ItemInit.LivingMatter.EXTRATERRESTRIAL.get(), ChatFormatting.LIGHT_PURPLE);
+    OVERWORLDIAN("overworldian", 10, () -> ItemInit.LivingMatter.OVERWORLDIAN::get, ChatFormatting.GREEN),
+    HELLISH("hellish", 14, () -> ItemInit.LivingMatter.HELLISH::get, ChatFormatting.DARK_RED),
+    EXTRATERRESTRIAL("extraterrestrial", 20, () -> ItemInit.LivingMatter.EXTRATERRESTRIAL::get, ChatFormatting.LIGHT_PURPLE);
 
     private final String id;
     private final int exp;
-    private final NonNullSupplier<ItemLivingMatter> livingMatter;
+    private final NonNullSupplier<NonNullSupplier<ItemLivingMatter>> livingMatter;
     private final String langId;
     private final ChatFormatting color;
     LivingMatterType(
             String id,
             int exp,
-            NonNullSupplier<ItemLivingMatter> livingMatter,
+            NonNullSupplier<NonNullSupplier<ItemLivingMatter>> livingMatter,
             ChatFormatting color
     ) {
         this.id = id;
@@ -40,7 +40,7 @@ public enum LivingMatterType implements ILivingMatterType {
 
     @Override
     public NonNullSupplier<ItemLivingMatter> getLivingMatter() {
-        return this.livingMatter;
+        return this.livingMatter.get();
     }
 
     @Override
