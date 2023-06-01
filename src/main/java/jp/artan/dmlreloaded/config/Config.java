@@ -20,14 +20,12 @@ public class Config {
     private static void registerServerConfigs() {
         ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
         DataModelConfig.registerServerConfig(SERVER_BUILDER);
-        EnergyCostConfig.registerServerConfig(SERVER_BUILDER);
         BalanceConfigs.registerServerConfig(SERVER_BUILDER);
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SERVER_BUILDER.build());
     }
 
     private static void registerCommonConfigs() {
         ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
-        MobConfig.registerCommonConfig(COMMON_BUILDER);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_BUILDER.build());
     }
 }

@@ -3,6 +3,7 @@ package jp.artan.dmlreloaded.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
+import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.common.network.ServerboundResultingItemPacket;
 import jp.artan.dmlreloaded.config.EnergyCostConfig;
 import jp.artan.dmlreloaded.container.ExtractionChamberContainer;
@@ -207,10 +208,9 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
 
         if(stack.getItem() instanceof ItemPristineMatter pristine) {
             NonNullList<ItemStack> result = NonNullList.create();
-            List<String> loots = pristine.getMobKey().getLoot();
+            List<IMobKey.Loot> loots = pristine.getMobKey().getLoot();
             for(int i = 0; i < loots.size(); i++) {
-                String[] list = loots.get(i).split(",");
-                result.add(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(list[0])), Integer.parseInt(list[1])));
+                result.add(loots.get(i).getItemStack());
             }
             return result;
         } else {

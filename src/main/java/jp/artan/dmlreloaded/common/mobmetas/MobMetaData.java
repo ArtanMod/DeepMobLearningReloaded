@@ -5,8 +5,6 @@ import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
-import jp.artan.dmlreloaded.config.EnergyCostConfig;
-import jp.artan.dmlreloaded.config.MobConfig;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -116,7 +114,7 @@ public abstract class MobMetaData {
         ResourceLocation registryName = entity.getType().getRegistryName();
         if (registryName != null) {
             String name = registryName.toString();
-            for (String mobRegname : MobConfig.getMobs(getKey())) {
+            for (String mobRegname : getKey().getMobs()) {
                 if (mobRegname.equals(name)) {
                     return true;
                 }
