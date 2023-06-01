@@ -12,7 +12,6 @@ public class GuardianMeta extends MobMetaData {
                 MobKey.GUARDIAN,
                 "entity.minecraft.guardian",
                 340, 15,
-                ItemInit.LivingMatter.OVERWORLDIAN.get(),
                 ItemInit.PristineMatter.GUARDIAN.get(),
                 3
         );

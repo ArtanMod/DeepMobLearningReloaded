@@ -12,7 +12,6 @@ public class WitchMeta extends MobMetaData {
                 MobKey.WITCH,
                 "entity.minecraft.witch",
                 120, 13,
-                ItemInit.LivingMatter.OVERWORLDIAN.get(),
                 ItemInit.PristineMatter.WITCH.get(),
                 2
         );

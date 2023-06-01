@@ -12,7 +12,6 @@ public class SlimeMeta extends MobMetaData {
                 MobKey.SLIME,
                 "entity.minecraft.slime",
                 150, 8,
-                ItemInit.LivingMatter.OVERWORLDIAN.get(),
                 ItemInit.PristineMatter.SLIME.get(),
                 3
         );

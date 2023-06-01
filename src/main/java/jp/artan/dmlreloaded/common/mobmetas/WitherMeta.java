@@ -12,7 +12,6 @@ public class WitherMeta extends MobMetaData {
                 MobKey.WITHER,
                 "entity.minecraft.wither",
                 2048, 150,
-                ItemInit.LivingMatter.EXTRATERRESTRIAL.get(),
                 ItemInit.PristineMatter.WITHER.get(),
                 1
         );

@@ -12,7 +12,6 @@ public class ShulkerMeta extends MobMetaData {
                 MobKey.SHULKER,
                 "entity.minecraft.shulker",
                 512, 15,
-                ItemInit.LivingMatter.EXTRATERRESTRIAL.get(),
                 ItemInit.PristineMatter.SHULKER.get(),
                 2
         );

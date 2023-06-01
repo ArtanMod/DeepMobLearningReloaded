@@ -12,7 +12,6 @@ public class SkeletonMeta extends MobMetaData {
                 MobKey.SKELETON,
                 "entity.minecraft.skeleton",
                 80, 10,
-                ItemInit.LivingMatter.OVERWORLDIAN.get(),
                 ItemInit.PristineMatter.SKELETON.get(),
                 3
         );

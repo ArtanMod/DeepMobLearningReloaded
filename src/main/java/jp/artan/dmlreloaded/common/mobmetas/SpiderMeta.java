@@ -12,7 +12,6 @@ public class SpiderMeta extends MobMetaData {
                 MobKey.SPIDER,
                 "entity.minecraft.spider",
                 80, 8,
-                ItemInit.LivingMatter.OVERWORLDIAN.get(),
                 ItemInit.PristineMatter.SPIDER.get(),
                 2
         );

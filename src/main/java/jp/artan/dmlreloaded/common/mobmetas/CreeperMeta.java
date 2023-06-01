@@ -13,7 +13,6 @@ public class CreeperMeta extends MobMetaData {
                 MobKey.CREEPER,
                 "entity.minecraft.creeper",
                 80, 10,
-                ItemInit.LivingMatter.OVERWORLDIAN.get(),
                 ItemInit.PristineMatter.CREEPER.get(),
                 2
         );

@@ -13,13 +13,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.util.NonNullSupplier;
 
 public abstract class MobMetaData {
     protected String entityId;
     protected IMobKey key;
     protected int numberOfHearts;
     protected int simulationTickCost;
-    protected ItemLivingMatter livingMatter;
     protected ItemPristineMatter pristineMatter;
     protected int mobTriviaLine;
 
@@ -28,7 +28,6 @@ public abstract class MobMetaData {
             String entityId,
             int simulationTickCost,
             int numberOfHearts,
-            ItemLivingMatter livingMatter,
             ItemPristineMatter pristineMatter,
             int mobTriviaLine
     ) {
@@ -36,7 +35,6 @@ public abstract class MobMetaData {
         this.entityId = entityId;
         this.simulationTickCost = simulationTickCost;
         this.numberOfHearts = numberOfHearts;
-        this.livingMatter = livingMatter;
         this.pristineMatter = pristineMatter;
         this.mobTriviaLine = mobTriviaLine;
     }
@@ -46,7 +44,7 @@ public abstract class MobMetaData {
     }
 
     public ItemStack getLivingMatterStack(int amount) {
-        return new ItemStack(livingMatter, amount);
+        return new ItemStack(getLivingMatter(), amount);
     }
 
     public ItemStack getPristineMatterStack(int amount) {
@@ -66,11 +64,11 @@ public abstract class MobMetaData {
     }
 
     public ILivingMatterType getType() {
-        return livingMatter.getType();
+        return this.getKey().getLivingMatterType();
     }
 
     public ItemLivingMatter getLivingMatter() {
-        return livingMatter;
+        return this.getType().getLivingMatter().get();
     }
 
     public ItemPristineMatter getPristineMatter() {

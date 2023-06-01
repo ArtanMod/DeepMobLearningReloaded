@@ -12,7 +12,6 @@ public class GhastMeta extends MobMetaData {
                 MobKey.GHAST,
                 "entity.minecraft.ghast",
                 372, 5,
-                ItemInit.LivingMatter.HELLISH.get(),
                 ItemInit.PristineMatter.GHAST.get(),
                 2
         );

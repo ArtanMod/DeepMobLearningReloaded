@@ -12,7 +12,6 @@ public class BlazeMeta extends MobMetaData {
                 MobKey.BLAZE,
                 "entity.minecraft.blaze",
                 256, 10,
-                ItemInit.LivingMatter.HELLISH.get(),
                 ItemInit.PristineMatter.BLAZE.get(),
                 3
         );

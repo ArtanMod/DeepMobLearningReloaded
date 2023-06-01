@@ -12,7 +12,6 @@ public class WitherSkeletonMeta extends MobMetaData {
                 MobKey.WITHER_SKELETON,
                 "entity.minecraft.wither_skeleton",
                 880, 10,
-                ItemInit.LivingMatter.HELLISH.get(),
                 ItemInit.PristineMatter.WITHER_SKELETON.get(),
                 2
         );

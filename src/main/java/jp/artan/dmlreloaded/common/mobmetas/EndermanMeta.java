@@ -12,7 +12,6 @@ public class EndermanMeta extends MobMetaData {
                 MobKey.ENDERMAN,
                 "entity.minecraft.enderman",
                 512, 20,
-                ItemInit.LivingMatter.EXTRATERRESTRIAL.get(),
                 ItemInit.PristineMatter.ENDERMAN.get(),
                 2
         );

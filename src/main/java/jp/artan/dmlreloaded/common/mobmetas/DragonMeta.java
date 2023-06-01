@@ -12,7 +12,6 @@ public class DragonMeta extends MobMetaData{
                 MobKey.DRAGON,
                 "entity.minecraft.ender_dragon",
                 4096, 100,
-                ItemInit.LivingMatter.EXTRATERRESTRIAL.get(),
                 ItemInit.PristineMatter.DRAGON.get(),
                 2
         );
