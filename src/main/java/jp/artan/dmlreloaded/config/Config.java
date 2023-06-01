@@ -20,6 +20,7 @@ public class Config {
     private static void registerServerConfigs() {
         ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
         DataModelConfig.registerServerConfig(SERVER_BUILDER);
+        EnergyCostConfig.registerServerConfig(SERVER_BUILDER);
         BalanceConfigs.registerServerConfig(SERVER_BUILDER);
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SERVER_BUILDER.build());
     }

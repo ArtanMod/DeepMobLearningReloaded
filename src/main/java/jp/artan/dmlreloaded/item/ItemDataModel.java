@@ -2,6 +2,7 @@ package jp.artan.dmlreloaded.item;
 
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
+import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.common.LivingMatterType;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import jp.artan.dmlreloaded.util.DataModelLevelupHelper;
@@ -38,9 +39,7 @@ public class ItemDataModel extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> list, TooltipFlag flagIn) {
-        if(!Screen.hasShiftDown()) {
-            list.add(new TranslatableComponent("dmlreloaded.holdshift", new TextComponent("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE).withItalic(true))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
-        } else {
+        if(Screen.hasShiftDown()) {
             list.add(new TranslatableComponent("dmlreloaded.data_model.tier", DataModelHelper.getTierName(stack, false)));
             int tier = DataModelHelper.getTier(stack);
             if(tier != DeepMobLearningReloaded.DATA_MODEL_MAXIMUM_TIER) {
@@ -53,6 +52,16 @@ public class ItemDataModel extends Item {
             list.add(new TranslatableComponent("dmlreloaded.data_model.rfcost", new TextComponent(Integer.toString(DataModelHelper.getSimulationTickCost(stack))).withStyle(t -> t.withColor(ChatFormatting.GRAY))));
             ILivingMatterType livingMatterType = DataModelHelper.getMatterTypeName(stack);
             list.add(new TranslatableComponent("dmlreloaded.data_model.type_text", new TranslatableComponent(livingMatterType.getLangId()).withStyle(t -> t.withColor(livingMatterType.getColor()))));
+        } else if(Screen.hasControlDown()) {
+            List<IMobKey.Mob> mobs = this.getMobKey().getMobs();
+            list.add(new TranslatableComponent("dmlreloaded.learning_target"));
+            for(int i = 0; i < mobs.size(); i++) {
+                String mob = mobs.get(i).getLangId();
+                list.add(new TranslatableComponent("%1$s. %2$s", i + 1, new TranslatableComponent(mob)));
+            }
+        } else {
+            list.add(new TranslatableComponent("dmlreloaded.holdshift", new TextComponent("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE).withItalic(true))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
+            list.add(new TranslatableComponent("dmlreloaded.holdctrl", new TextComponent("CTRL").withStyle(t -> t.withColor(ChatFormatting.WHITE).withItalic(true))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
         }
     }
 }

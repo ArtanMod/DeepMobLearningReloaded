@@ -114,8 +114,8 @@ public abstract class MobMetaData {
         ResourceLocation registryName = entity.getType().getRegistryName();
         if (registryName != null) {
             String name = registryName.toString();
-            for (String mobRegname : getKey().getMobs()) {
-                if (mobRegname.equals(name)) {
+            for (IMobKey.Mob mobRegname : getKey().getMobs()) {
+                if (mobRegname.getEntityId().equals(name)) {
                     return true;
                 }
             }
