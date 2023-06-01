@@ -32,7 +32,7 @@ public enum MobKey implements IMobKey {
         add(new Loot("minecraft:fish", 64));
         add(new Loot("minecraft:sponge", 8));
     }}),
-    ENDERMAN("enderman", () -> null, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
+    ENDERMAN("enderman", EndermanMeta::new, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
         add(new Mob("minecraft:enderman"));
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:ender_pearl", 6));
@@ -45,12 +45,12 @@ public enum MobKey implements IMobKey {
         add(new Loot("minecraft:emerald", 8));
         add(new Loot("minecraft:totem_of_undying", 1));
     }}),
-    GHAST("ghast", () -> null, LivingMatterType.HELLISH, new ArrayList<>(){{
+    GHAST("ghast", GhastMeta::new, LivingMatterType.HELLISH, new ArrayList<>(){{
         add(new Mob("minecraft:ghast"));
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:ghast_tear", 8));
     }}),
-    GUARDIAN("guardian", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    GUARDIAN("guardian", GuardianMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new Mob("minecraft:guardian"));
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:prismarine_shard", 32));

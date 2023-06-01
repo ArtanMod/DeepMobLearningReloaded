@@ -27,9 +27,9 @@ public class EnergyCostConfig {
 //        registerMobEnergyCost(MobKey.CREEPER, SERVER_BUILDER.defineInRange("creeperCost", 80, 1, 6666));
 //        registerMobEnergyCost(MobKey.DRAGON, SERVER_BUILDER.defineInRange("dragonCost", 4096, 1, 6666));
         registerMobEnergyCost(MobKey.ELDER_GUARDIAN, SERVER_BUILDER.defineInRange("elderGuardianCost", 2048, 1, 6666));
-        registerMobEnergyCost(MobKey.ENDERMAN, SERVER_BUILDER.defineInRange("endermanCost", 512, 1, 6666));
+//        registerMobEnergyCost(MobKey.ENDERMAN, SERVER_BUILDER.defineInRange("endermanCost", 512, 1, 6666));
         registerMobEnergyCost(MobKey.EVOKER, SERVER_BUILDER.defineInRange("evokerCost", 512, 1, 6666));
-        registerMobEnergyCost(MobKey.GHAST, SERVER_BUILDER.defineInRange("ghastCost", 372, 1, 6666));
+//        registerMobEnergyCost(MobKey.GHAST, SERVER_BUILDER.defineInRange("ghastCost", 372, 1, 6666));
         registerMobEnergyCost(MobKey.GUARDIAN, SERVER_BUILDER.defineInRange("guardianCost", 340, 1, 6666));
         registerMobEnergyCost(MobKey.HOGLIN, SERVER_BUILDER.defineInRange("hoglinCost", 512, 1, 6666));
         registerMobEnergyCost(MobKey.MAGMA_CUBE, SERVER_BUILDER.defineInRange("magmaCubeCost", 150, 1, 6666));

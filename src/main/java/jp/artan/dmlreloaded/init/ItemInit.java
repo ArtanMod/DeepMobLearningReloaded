@@ -257,6 +257,24 @@ public class ItemInit {
                 .jpLang("ドラゴンのデータモデル")
                 .register();
 
+        public static final ItemEntry<ItemDataModel> ENDERMAN = REGISTRATE.item("data_model_enderman", p -> new ItemDataModel(p, MobKey.ENDERMAN))
+                .properties(p -> p.stacksTo(1))
+                .lang("Creeper Enderman Model")
+                .jpLang("エンダーマンのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> GHAST = REGISTRATE.item("data_model_ghast", p -> new ItemDataModel(p, MobKey.GHAST))
+                .properties(p -> p.stacksTo(1))
+                .lang("Creeper Ghast Model")
+                .jpLang("ガストのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> GUARDIAN = REGISTRATE.item("data_model_guardian", p -> new ItemDataModel(p, MobKey.GUARDIAN))
+                .properties(p -> p.stacksTo(1))
+                .lang("Creeper Guardian Model")
+                .jpLang("ガーディアンのデータモデル")
+                .register();
+
         public static final ItemEntry<ItemDataModel> ZOMBIE = REGISTRATE.item("data_model_zombie", p -> new ItemDataModel(p, MobKey.ZOMBIE))
                 .properties(p -> p.stacksTo(1))
                 .lang("Zombie Data Model")
@@ -297,6 +315,36 @@ public class ItemInit {
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.DRAGON, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.DRAGON, 1), "")
                 .register();
+
+        public static final ItemEntry<ItemPristineMatter> ENDERMAN = REGISTRATE.item("pristine_matter_enderman", p -> new ItemPristineMatter(p, MobKey.ENDERMAN))
+                .lang("Pristine Enderman Matter")
+                .jpLang("綺麗なエンダーマンマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ENDERMAN, 0), "Friendly unless provoked, dislikes rain.")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ENDERMAN, 1), "Teleports short distances")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ENDERMAN, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ENDERMAN, 1), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> GHAST = REGISTRATE.item("pristine_matter_ghast", p -> new ItemPristineMatter(p, MobKey.GHAST))
+                .lang("Pristine Ghast Matter")
+                .jpLang("綺麗なガストマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.GHAST, 0), "If you hear something that sounds like")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.GHAST, 1), "a crying llama, you're probably hearing a ghast")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.GHAST, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.GHAST, 1), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> GUARDIAN = REGISTRATE.item("pristine_matter_guardian", p -> new ItemPristineMatter(p, MobKey.GUARDIAN))
+                .lang("Pristine Guardian Matter")
+                .jpLang("綺麗なガーディアンマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.GUARDIAN, 0), "Lurking in the oceans.")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.GUARDIAN, 1), "Uses some sort of sonar beam as")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.GUARDIAN, 2), "a means of attack")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.GUARDIAN, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.GUARDIAN, 1), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.GUARDIAN, 2), "")
+                .register();
+
         public static final ItemEntry<ItemPristineMatter> ZOMBIE = REGISTRATE.item("pristine_matter_zombie", p -> new ItemPristineMatter(p, MobKey.ZOMBIE))
                 .lang("Pristine Zombie Matter")
                 .jpLang("綺麗なゾンビマター")
