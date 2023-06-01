@@ -1,5 +1,8 @@
 package jp.artan.dmlreloaded.common.mobmetas;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Quaternion;
+import com.mojang.math.Vector3f;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.config.EnergyCostConfig;
@@ -17,6 +20,7 @@ public abstract class MobMetaData {
     protected String entityId;
     protected IMobKey key;
     protected int numberOfHearts;
+    protected int simulationTickCost;
     protected int interfaceScale;
     protected int interfaceOffsetX;
     protected int interfaceOffsetY;
@@ -27,6 +31,7 @@ public abstract class MobMetaData {
     public MobMetaData(
             IMobKey key,
             String entityId,
+            int simulationTickCost,
             int numberOfHearts,
             int interfaceScale,
             int interfaceOffsetX,
@@ -37,6 +42,7 @@ public abstract class MobMetaData {
     ) {
         this.key = key;
         this.entityId = entityId;
+        this.simulationTickCost = simulationTickCost;
         this.numberOfHearts = numberOfHearts;
         this.interfaceScale = interfaceScale;
         this.interfaceOffsetX = interfaceOffsetX;
@@ -47,9 +53,9 @@ public abstract class MobMetaData {
     }
 
     public int getSimulationTickCost() {
-        int cost = EnergyCostConfig.getCost(this.getKey());
-        return cost;
+        return this.simulationTickCost;
     }
+
     public ItemStack getLivingMatterStack(int amount) {
         return new ItemStack(livingMatter, amount);
     }
@@ -120,6 +126,18 @@ public abstract class MobMetaData {
         return false;
     }
 
+    // DeepLearnerScreen Function
+    public Quaternion getEntityXRotation() {
+        return Vector3f.XP.rotationDegrees(180.0F);
+    }
+
+    public Quaternion getEntityZRotation() {
+        return Vector3f.ZP.rotationDegrees(0.0F);
+    }
+
+    public void setPose(PoseStack poseStack, int xPos, int yPos, long gameTime) {
+        poseStack.scale(1.2F, 1.2F, -1.2F);
+    }
 
     // Have to implement, different for every Meta
     public abstract LivingEntity getEntity(Level world);

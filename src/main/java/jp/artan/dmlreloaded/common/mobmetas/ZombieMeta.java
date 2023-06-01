@@ -9,17 +9,19 @@ public class ZombieMeta extends MobMetaData {
     public ZombieMeta() {
         super(
                 MobKey.ZOMBIE,
-                "entity.minecraft.zombie",
+                "entity.minecraft.zombie", 80,
                 10, 35, -2, 6,
                 ItemInit.LivingMatter.OVERWORLDIAN.get(),
                 ItemInit.PristineMatter.ZOMBIE.get(),
                 3);
     }
 
+    @Override
     public Zombie getEntity(Level world) {
         return new Zombie(world);
     }
 
+    @Override
     public Zombie getExtraEntity(Level world) {
         Zombie childEntity = new Zombie(world);
         childEntity.setBaby(true);
@@ -27,10 +29,12 @@ public class ZombieMeta extends MobMetaData {
         return childEntity;
     }
 
+    @Override
     public int getExtraInterfaceOffsetX() {
         return 21;
     }
 
+    @Override
     public int getExtraInterfaceOffsetY() {
         return 6;
     }

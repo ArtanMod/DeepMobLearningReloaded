@@ -16,14 +16,14 @@ public class EnergyCostConfig {
      * @param mobKey    対象のMobKey
      * @param intValue
      */
-    public static void registerMobEnergyCost(IMobKey mobKey, ForgeConfigSpec.IntValue intValue) {
+    private static void registerMobEnergyCost(IMobKey mobKey, ForgeConfigSpec.IntValue intValue) {
         mobKeyHashMap.put(mobKey, intValue);
     }
 
     public static void registerServerConfig(ForgeConfigSpec.Builder SERVER_BUILDER) {
         SERVER_BUILDER.comment("Data Model cost (FE/t)").push("data_model");
 
-        registerMobEnergyCost(MobKey.BLAZE, SERVER_BUILDER.defineInRange("blazeCost", 256, 1, 6666));
+//        registerMobEnergyCost(MobKey.BLAZE, SERVER_BUILDER.defineInRange("blazeCost", 256, 1, 6666));
         registerMobEnergyCost(MobKey.CREEPER, SERVER_BUILDER.defineInRange("creeperCost", 80, 1, 6666));
         registerMobEnergyCost(MobKey.DRAGON, SERVER_BUILDER.defineInRange("dragonCost", 4096, 1, 6666));
         registerMobEnergyCost(MobKey.ELDER_GUARDIAN, SERVER_BUILDER.defineInRange("elderGuardianCost", 2048, 1, 6666));
@@ -45,20 +45,11 @@ public class EnergyCostConfig {
         registerMobEnergyCost(MobKey.WITCH, SERVER_BUILDER.defineInRange("witchCost", 120, 1, 6666));
         registerMobEnergyCost(MobKey.WITHER_SKELETON, SERVER_BUILDER.defineInRange("witherSkeletonCost", 880, 1, 6666));
         registerMobEnergyCost(MobKey.WITHER, SERVER_BUILDER.defineInRange("witherCost", 2048, 1, 6666));
-        registerMobEnergyCost(MobKey.ZOMBIE, SERVER_BUILDER.defineInRange("zombieCost", 80, 1, 6666));
+//        registerMobEnergyCost(MobKey.ZOMBIE, SERVER_BUILDER.defineInRange("zombieCost", 80, 1, 6666));
 
         FECOSTEXTRACTIONCHAMBER = SERVER_BUILDER.comment("Balance the energy cost of the Loot Fabricator (FE/t)")
                 .defineInRange("lootFabricatorCost", 256, 1, 18000);
 
         SERVER_BUILDER.pop();
-    }
-
-    public static final int getCost(IMobKey mobKey) {
-        try {
-            ForgeConfigSpec.IntValue value = mobKeyHashMap.get(mobKey);
-            return value.get();
-        } catch(Exception e) {
-            return 80;
-        }
     }
 }
