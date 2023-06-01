@@ -24,8 +24,8 @@ public class EnergyCostConfig {
         SERVER_BUILDER.comment("Data Model cost (FE/t)").push("data_model");
 
 //        registerMobEnergyCost(MobKey.BLAZE, SERVER_BUILDER.defineInRange("blazeCost", 256, 1, 6666));
-        registerMobEnergyCost(MobKey.CREEPER, SERVER_BUILDER.defineInRange("creeperCost", 80, 1, 6666));
-        registerMobEnergyCost(MobKey.DRAGON, SERVER_BUILDER.defineInRange("dragonCost", 4096, 1, 6666));
+//        registerMobEnergyCost(MobKey.CREEPER, SERVER_BUILDER.defineInRange("creeperCost", 80, 1, 6666));
+//        registerMobEnergyCost(MobKey.DRAGON, SERVER_BUILDER.defineInRange("dragonCost", 4096, 1, 6666));
         registerMobEnergyCost(MobKey.ELDER_GUARDIAN, SERVER_BUILDER.defineInRange("elderGuardianCost", 2048, 1, 6666));
         registerMobEnergyCost(MobKey.ENDERMAN, SERVER_BUILDER.defineInRange("endermanCost", 512, 1, 6666));
         registerMobEnergyCost(MobKey.EVOKER, SERVER_BUILDER.defineInRange("evokerCost", 512, 1, 6666));

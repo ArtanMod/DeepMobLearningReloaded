@@ -69,6 +69,8 @@
   "dmlreloaded.tiers.tier_next": "%2$s\u307E\u3067\u3042\u3068%1$s\u4F53\u5012\u3059\u3068\u9054\u6210",
   "item.dmlreloaded.data_model_blank": "\u7A7A\u306E\u30C7\u30FC\u30BF\u30E2\u30C7\u30EB",
   "item.dmlreloaded.data_model_blaze": "\u30D6\u30EC\u30A4\u30BA\u306E\u30C7\u30FC\u30BF\u30E2\u30C7\u30EB",
+  "item.dmlreloaded.data_model_creeper": "\u30AF\u30EA\u30FC\u30D1\u30FC\u306E\u30C7\u30FC\u30BF\u30E2\u30C7\u30EB",
+  "item.dmlreloaded.data_model_dragon": "\u30C9\u30E9\u30B4\u30F3\u306E\u30C7\u30FC\u30BF\u30E2\u30C7\u30EB",
   "item.dmlreloaded.data_model_zombie": "\u30BE\u30F3\u30D3\u306E\u30C7\u30FC\u30BF\u30E2\u30C7\u30EB",
   "item.dmlreloaded.deep_learner": "\u6DF1\u5C64\u5B66\u7FD2\u88C5\u7F6E",
   "item.dmlreloaded.glitch_fragment": "\u4E0D\u5B89\u5B9A\u306A\u30B0\u30EA\u30C3\u30C1\u306E\u65AD\u7247",
@@ -84,6 +86,8 @@
   "item.dmlreloaded.living_matter_overworldian": "Overworldian\u30DE\u30BF\u30FC",
   "item.dmlreloaded.polymer_clay": "\u30DD\u30EA\u30DE\u30FC\u7C98\u571F",
   "item.dmlreloaded.pristine_matter_blaze": "\u7DBA\u9E97\u306A\u30D6\u30EC\u30A4\u30BA\u30DE\u30BF\u30FC",
+  "item.dmlreloaded.pristine_matter_creeper": "\u7DBA\u9E97\u306A\u30AF\u30EA\u30FC\u30D1\u30FC\u30DE\u30BF\u30FC",
+  "item.dmlreloaded.pristine_matter_dragon": "\u7DBA\u9E97\u306A\u30C9\u30E9\u30B4\u30F3\u30DE\u30BF\u30FC",
   "item.dmlreloaded.pristine_matter_zombie": "\u7DBA\u9E97\u306A\u30BE\u30F3\u30D3\u30DE\u30BF\u30FC",
   "item.dmlreloaded.soot_covered_plate": "\u7164\u3067\u8986\u308F\u308C\u305F\u30D7\u30EC\u30FC\u30C8",
   "item.dmlreloaded.soot_covered_redstone": "\u7164\u3067\u8986\u308F\u308C\u305F\u30EC\u30C3\u30C9\u30B9\u30C8\u30FC\u30F3"

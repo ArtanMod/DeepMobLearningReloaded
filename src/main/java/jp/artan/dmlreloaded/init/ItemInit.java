@@ -245,6 +245,18 @@ public class ItemInit {
                 .jpLang("ブレイズのデータモデル")
                 .register();
 
+        public static final ItemEntry<ItemDataModel> CREEPER = REGISTRATE.item("data_model_creeper", p -> new ItemDataModel(p, MobKey.CREEPER))
+                .properties(p -> p.stacksTo(1))
+                .lang("Creeper Data Model")
+                .jpLang("クリーパーのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> DRAGON = REGISTRATE.item("data_model_dragon", p -> new ItemDataModel(p, MobKey.DRAGON))
+                .properties(p -> p.stacksTo(1))
+                .lang("Creeper Dragon Model")
+                .jpLang("ドラゴンのデータモデル")
+                .register();
+
         public static final ItemEntry<ItemDataModel> ZOMBIE = REGISTRATE.item("data_model_zombie", p -> new ItemDataModel(p, MobKey.ZOMBIE))
                 .properties(p -> p.stacksTo(1))
                 .lang("Zombie Data Model")
@@ -266,6 +278,24 @@ public class ItemInit {
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.BLAZE, 0), "バケツを持って来て、絶望して見ている")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.BLAZE, 1), "それが蒸発し、すべてが燃え上がるのを絶望的に眺める")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.BLAZE, 2), "君は燃えている")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> CREEPER = REGISTRATE.item("pristine_matter_creeper", p -> new ItemPristineMatter(p, MobKey.CREEPER))
+                .lang("Pristine Creeper Matter")
+                .jpLang("綺麗なクリーパーマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.CREEPER, 0), "Will blow up your base if")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.CREEPER, 1), "left unattended.")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.CREEPER, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.CREEPER, 1), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> DRAGON = REGISTRATE.item("pristine_matter_dragon", p -> new ItemPristineMatter(p, MobKey.DRAGON))
+                .lang("Pristine Dragon Matter")
+                .jpLang("綺麗なドラゴンマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.DRAGON, 0), "Resides in the end, does not harbor treasure")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.DRAGON, 1), "Destroy its crystals, break the cycle.")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.DRAGON, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.DRAGON, 1), "")
                 .register();
         public static final ItemEntry<ItemPristineMatter> ZOMBIE = REGISTRATE.item("pristine_matter_zombie", p -> new ItemPristineMatter(p, MobKey.ZOMBIE))
                 .lang("Pristine Zombie Matter")

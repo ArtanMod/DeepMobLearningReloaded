@@ -1,8 +1,6 @@
 package jp.artan.dmlreloaded.common;
 
-import jp.artan.dmlreloaded.common.mobmetas.BlazeMeta;
-import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
-import jp.artan.dmlreloaded.common.mobmetas.ZombieMeta;
+import jp.artan.dmlreloaded.common.mobmetas.*;
 import net.minecraftforge.common.util.NonNullSupplier;
 
 import java.util.ArrayList;
@@ -14,13 +12,13 @@ public enum MobKey implements IMobKey {
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:blaze_rod", 22));
     }}),
-    CREEPER("creeper", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    CREEPER("creeper", CreeperMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new Mob("minecraft:creeper"));
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:gunpowder", 64));
         add(new Loot("minecraft:skull", 6));
     }}),
-    DRAGON("dragon", () -> null, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
+    DRAGON("dragon", DragonMeta::new, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
         add(new Mob("minecraft:ender_dragon"));
     }}, new ArrayList<>(){{
         add(new Loot("minecraft:dragon_breath", 22));

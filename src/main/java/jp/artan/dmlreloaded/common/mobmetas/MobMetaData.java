@@ -19,9 +19,6 @@ public abstract class MobMetaData {
     protected IMobKey key;
     protected int numberOfHearts;
     protected int simulationTickCost;
-    protected int interfaceScale;
-    protected int interfaceOffsetX;
-    protected int interfaceOffsetY;
     protected ItemLivingMatter livingMatter;
     protected ItemPristineMatter pristineMatter;
     protected int mobTriviaLine;
@@ -31,9 +28,6 @@ public abstract class MobMetaData {
             String entityId,
             int simulationTickCost,
             int numberOfHearts,
-            int interfaceScale,
-            int interfaceOffsetX,
-            int interfaceOffsetY,
             ItemLivingMatter livingMatter,
             ItemPristineMatter pristineMatter,
             int mobTriviaLine
@@ -42,9 +36,6 @@ public abstract class MobMetaData {
         this.entityId = entityId;
         this.simulationTickCost = simulationTickCost;
         this.numberOfHearts = numberOfHearts;
-        this.interfaceScale = interfaceScale;
-        this.interfaceOffsetX = interfaceOffsetX;
-        this.interfaceOffsetY = interfaceOffsetY;
         this.livingMatter = livingMatter;
         this.pristineMatter = pristineMatter;
         this.mobTriviaLine = mobTriviaLine;
@@ -72,18 +63,6 @@ public abstract class MobMetaData {
 
     public int getNumberOfHearts() {
         return numberOfHearts;
-    }
-
-    public int getInterfaceScale() {
-        return interfaceScale;
-    }
-
-    public int getInterfaceOffsetX() {
-        return interfaceOffsetX;
-    }
-
-    public int getInterfaceOffsetY() {
-        return interfaceOffsetY;
     }
 
     public ILivingMatterType getType() {
@@ -143,14 +122,6 @@ public abstract class MobMetaData {
     // Optional fields
     public Entity getExtraEntity(Level world) {
         return null;
-    }
-
-    public int getExtraInterfaceOffsetX() {
-        return 0;
-    }
-
-    public int getExtraInterfaceOffsetY() {
-        return 0;
     }
 
     public String getExtraTooltip() {
