@@ -253,67 +253,67 @@ public class ItemInit {
 
         public static final ItemEntry<ItemDataModel> DRAGON = REGISTRATE.item("data_model_dragon", p -> new ItemDataModel(p, MobKey.DRAGON))
                 .properties(p -> p.stacksTo(1))
-                .lang("Creeper Dragon Model")
+                .lang("Dragon Data Model")
                 .jpLang("ドラゴンのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> ENDERMAN = REGISTRATE.item("data_model_enderman", p -> new ItemDataModel(p, MobKey.ENDERMAN))
                 .properties(p -> p.stacksTo(1))
-                .lang("Creeper Enderman Model")
+                .lang("Enderman Data Model")
                 .jpLang("エンダーマンのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> GHAST = REGISTRATE.item("data_model_ghast", p -> new ItemDataModel(p, MobKey.GHAST))
                 .properties(p -> p.stacksTo(1))
-                .lang("Creeper Ghast Model")
+                .lang("Ghast Data Model")
                 .jpLang("ガストのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> GUARDIAN = REGISTRATE.item("data_model_guardian", p -> new ItemDataModel(p, MobKey.GUARDIAN))
                 .properties(p -> p.stacksTo(1))
-                .lang("Creeper Guardian Model")
+                .lang("Guardian Data Model")
                 .jpLang("ガーディアンのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> SHULKER = REGISTRATE.item("data_model_shulker", p -> new ItemDataModel(p, MobKey.SHULKER))
                 .properties(p -> p.stacksTo(1))
-                .lang("Creeper Shulker Model")
+                .lang("Shulker Data Model")
                 .jpLang("シェルカーのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> SKELETON = REGISTRATE.item("data_model_skeleton", p -> new ItemDataModel(p, MobKey.SKELETON))
                 .properties(p -> p.stacksTo(1))
-                .lang("Creeper Skeleton Model")
+                .lang("Skeleton Data Model")
                 .jpLang("スケルトンのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> SLIME = REGISTRATE.item("data_model_slime", p -> new ItemDataModel(p, MobKey.SLIME))
                 .properties(p -> p.stacksTo(1))
-                .lang("Creeper Slime Model")
+                .lang("Slime Data Model")
                 .jpLang("スライムのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> SPIDER = REGISTRATE.item("data_model_spider", p -> new ItemDataModel(p, MobKey.SPIDER))
                 .properties(p -> p.stacksTo(1))
-                .lang("Creeper Spider Model")
+                .lang("Spider Data Model")
                 .jpLang("クモのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> WITCH = REGISTRATE.item("data_model_witch", p -> new ItemDataModel(p, MobKey.WITCH))
                 .properties(p -> p.stacksTo(1))
-                .lang("Creeper Witch Model")
+                .lang("Witch Data Model")
                 .jpLang("ウィッチのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> WITHER_SKELETON = REGISTRATE.item("data_model_wither_skeleton", p -> new ItemDataModel(p, MobKey.WITHER_SKELETON))
                 .properties(p -> p.stacksTo(1))
-                .lang("Creeper Wither Skeleton Model")
+                .lang("Wither Skeleton Data Model")
                 .jpLang("ウィザースケルトンのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> WITHER = REGISTRATE.item("data_model_wither", p -> new ItemDataModel(p, MobKey.WITHER))
                 .properties(p -> p.stacksTo(1))
-                .lang("Creeper Wither Model")
+                .lang("Wither Data Model")
                 .jpLang("ウィザーのデータモデル")
                 .register();
 
