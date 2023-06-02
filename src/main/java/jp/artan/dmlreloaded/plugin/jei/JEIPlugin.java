@@ -17,6 +17,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.util.NonNullSupplier;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashMap;
@@ -63,7 +64,7 @@ public class JEIPlugin implements IModPlugin {
     }
 
     private void addExtractionChamberRecipe(IRecipeRegistration registration) {
-        Map<ItemStack, List<IMobKey.Loot>> pristineTables = new HashMap<>();
+        Map<ItemStack, List<NonNullSupplier<ItemStack>>> pristineTables = new HashMap<>();
         List<ExtractionChamberRecipeCategory.ExtractionChamberRecipes> list = Lists.newArrayList();
 
         ForgeRegistries.ITEMS.getEntries().forEach(hashMapItem -> {
@@ -73,7 +74,7 @@ public class JEIPlugin implements IModPlugin {
         });
         pristineTables.forEach(
                 (input, outputs) -> outputs.forEach((output) -> {
-                    list.add(new ExtractionChamberRecipeCategory.ExtractionChamberRecipes(input, output.getItemStack()));
+                    list.add(new ExtractionChamberRecipeCategory.ExtractionChamberRecipes(input, output.get()));
                 })
         );
         registration.addRecipes(ExtractionChamberRecipeCategory.type, list);

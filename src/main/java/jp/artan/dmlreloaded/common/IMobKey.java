@@ -1,10 +1,11 @@
 package jp.artan.dmlreloaded.common;
 
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.util.NonNullSupplier;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 
@@ -13,9 +14,9 @@ public interface IMobKey {
     NonNullSupplier<MobMetaData> getMobMetaData();
     ILivingMatterType getLivingMatterType();
     List<Mob> getMobs();
-    List<Loot> getLoot();
+    List<NonNullSupplier<ItemStack>> getLoot();
     void addMob(String entityId, String langId);
-    void addLoot(String itemId, int amount);
+    void addLoot(NonNullSupplier<ItemStack> itemStack);
 
     class Mob {
         private final String entityId;
@@ -38,15 +39,16 @@ public interface IMobKey {
     }
 
     class Loot {
-        private final String itemId;
+        private final NonNullSupplier<ItemLike> item;
         private final int amount;
-        public Loot(String itemId, int amount) {
-            this.itemId = itemId;
+
+        public Loot(NonNullSupplier<ItemLike> item, int amount) {
+            this.item = item;
             this.amount = amount;
         }
 
         public ItemStack getItemStack() {
-            return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(this.itemId)), this.amount);
+            return new ItemStack(this.item.get(), this.amount);
         }
     }
 }
