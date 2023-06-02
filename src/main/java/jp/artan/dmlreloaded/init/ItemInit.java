@@ -219,6 +219,19 @@ public class ItemInit {
 
     public static class DataModel {
         public static final ItemEntry<Item> BLANK = REGISTRATE.item("data_model_blank", Item::new)
+                .recipe((ctx, prov) -> {
+                    ShapedRecipeBuilder.shaped(ctx.get())
+                            .define('#', Items.LAPIS_LAZULI)
+                            .define('A', Items.REPEATER)
+                            .define('B', SOOT_COVERED_REDSTONE.get())
+                            .define('C', Blocks.STONE)
+                            .define('D', Items.GOLD_INGOT)
+                            .pattern("#A#")
+                            .pattern("BCB")
+                            .pattern("#D#")
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(SOOT_COVERED_REDSTONE.get()))
+                            .save(prov);
+                })
                 .lang("Blank Data Model")
                 .jpLang("空のデータモデル")
                 .addRawLang("dmlreloaded.holdshift", "- hold %1$s for more info")

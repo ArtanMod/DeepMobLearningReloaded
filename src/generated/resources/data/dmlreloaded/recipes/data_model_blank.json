@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#A#",
+    "BCB",
+    "#D#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "A": {
+      "item": "minecraft:repeater"
+    },
+    "B": {
+      "item": "dmlreloaded:soot_covered_redstone"
+    },
+    "C": {
+      "item": "minecraft:stone"
+    },
+    "D": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "dmlreloaded:data_model_blank"
+  }
+}
