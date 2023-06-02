@@ -1,0 +1,23 @@
+{
+  "name": "Introduction",
+  "icon": "dmlreloaded:soot_covered_redstone",
+  "category": "dmlreloaded:0_introduction",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The design principle of this $(item)Mod$() is to be a simple and$(br)lag-free alternative to gathering mob resources by traditional means.$(br2)The mods mechanics encourage players to explore and engage in combat and benefit from it later on.$(br2)To get started you will need some specialized $(item)Crafting Components$()."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "dmlreloaded:soot_covered_redstone",
+      "title": "Sooting Redstone",
+      "anchor": "sooted_redstone",
+      "text": "$(item)Soot-covered Redstone$() can be created by crushing some $(item)Redstone$() against a $(item)Block of Coal$().$(br2)This sooty marvel will be required to craft most things this $(item)Mod$() has to offer."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:soot_covered_plate",
+      "recipe2": "dmlreloaded:machine_casing"
+    }
+  ]
+}
