@@ -3,6 +3,7 @@ package jp.artan.dmlreloaded.plugin.jei;
 import com.google.common.collect.Lists;
 import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.init.BlockInit;
+import jp.artan.dmlreloaded.init.ItemInit;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
 import jp.artan.dmlreloaded.plugin.jei.category.ExtractionChamberRecipeCategory;
@@ -12,10 +13,12 @@ import jp.artan.dmlreloaded.util.DataModelHelper;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.core.NonNullList;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -44,6 +47,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipes(RecipeTypes.CRAFTING, CraftingRecipeMaker.getCraftingRecipes());
         this.addSimulationChamberRecipe(registration);
         this.addExtractionChamberRecipe(registration);
+        registration.addIngredientInfo(new ItemStack(ItemInit.GLITCH_INGOT.get()), VanillaTypes.ITEM_STACK, new TranslatableComponent("jei.dmlreloaded.glitch_ingot"));
     }
 
     @Override

@@ -63,11 +63,21 @@ public class ItemInit {
     public static final ItemEntry<ItemGlitchFragment> GLITCH_FRAGMENT = REGISTRATE.item("glitch_fragment", ItemGlitchFragment::new)
             .lang("Unstable Glitch Fragment")
             .jpLang("不安定なグリッチの断片")
+            .addRawLang("dmlreloaded.hover_text.glitch_fragment_1", "Crafted by crushing a %1$s")
+            .addRawJPLang("dmlreloaded.hover_text.glitch_fragment_1", "%1$sを粉砕して作る")
+            .addRawLang("dmlreloaded.hover_text.glitch_fragment_2", "against some %1$s (Right click)")
+            .addRawJPLang("dmlreloaded.hover_text.glitch_fragment_2", "%1$sに対して(右クリック)")
+            .addRawLang("dmlreloaded.hover_text.glitch_fragment_3", "Yields 3 fragments per crushed heart")
+            .addRawJPLang("dmlreloaded.hover_text.glitch_fragment_3", "砕いた心臓1個につき3個の破片を得ることができます")
+            .addRawLang("dmlreloaded.hover_text.glitch_fragment_4", "Can rarly drop from hostile mobs.")
+            .addRawJPLang("dmlreloaded.hover_text.glitch_fragment_4", "敵対するモブからまれにドロップすることがあります")
             .register();
 
     public static final ItemEntry<ItemGlitchHeart> GLITCH_HEART = REGISTRATE.item("glitch_heart", ItemGlitchHeart::new)
             .lang("Corrupted Glitch Heart")
             .jpLang("破損したグリッチの心臓")
+            .addRawLang("dmlreloaded.hover_text.glitch_heart", "Drops from System Glitches")
+            .addRawJPLang("dmlreloaded.hover_text.glitch_heart", "グリッチシステムからドロップ")
             .register();
 
     public static final ItemEntry<ItemGlitchIngot> GLITCH_INGOT = REGISTRATE.item("glitch_infused_ingot", ItemGlitchIngot::new)
@@ -82,6 +92,8 @@ public class ItemInit {
             .addRawLang("dmlreloaded.hover_text.more_info", "more info found in JEI or the Guidebook")
             .addRawJPLang("dmlreloaded.hover_text.glitchingot_1", "%1$sを安定化させることで作成できます")
             .addRawJPLang("dmlreloaded.hover_text.more_info", "詳細はJEIかガイドブックを参照してください")
+            .addRawLang("jei.dmlreloaded.glitch_ingot", "TLDR: Drop some fragments, lapis and gold ingots into a body of water and hope for the best\\n\\nYou've found that lapis is a good stabilization agent for Unstable glitch fragments.\\nAfter the fragments are stable, they desperately seek out a material to latch on to, you think that gold might be strong enough as a host.\\n\\nThe entire process is delicate, it needs to be performed in water or the materials wont bind properly.")
+            .addRawJPLang("jei.dmlreloaded.glitch_ingot", "TLDR: 不安定なグリッチの断片・ラピスラズリ・金インゴットを水に落とす。\\n\\nラピスラズリは不安定なグリッチの断片を安定させるのに適していることがわかりました。\\n不安定なグリッチの断片が安定した後、結合する素材を求めて必死探してます。\\n\\nこのプロセス全体は繊細で、水中で行わないと材料が適切に結合しない。")
             .register();
 
     public static final ItemEntry<Item> POLYMER_CLAY = REGISTRATE.item("polymer_clay", Item::new)

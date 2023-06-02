@@ -80,6 +80,11 @@
   "dmlreloaded.gui.simulation_chamber.to_begin": "to begin the simulation",
   "dmlreloaded.holdctrl": "- hold %1$s for more info",
   "dmlreloaded.holdshift": "- hold %1$s for more info",
+  "dmlreloaded.hover_text.glitch_fragment_1": "Crafted by crushing a %1$s",
+  "dmlreloaded.hover_text.glitch_fragment_2": "against some %1$s (Right click)",
+  "dmlreloaded.hover_text.glitch_fragment_3": "Yields 3 fragments per crushed heart",
+  "dmlreloaded.hover_text.glitch_fragment_4": "Can rarly drop from hostile mobs.",
+  "dmlreloaded.hover_text.glitch_heart": "Drops from System Glitches",
   "dmlreloaded.hover_text.glitch_infused_armor_1": "Bonus while full set is equipped",
   "dmlreloaded.hover_text.glitch_infused_armor_2": "(Bonuses are disabled during Trials)",
   "dmlreloaded.hover_text.glitch_infused_armor_3": "  1.  %1$s%% chance to drop %2$s Pristine Matter",
@@ -156,5 +161,6 @@
   "item.dmlreloaded.pristine_matter_zombie": "Pristine Zombie Matter",
   "item.dmlreloaded.soot_covered_plate": "Soot Covered Plate",
   "item.dmlreloaded.soot_covered_redstone": "Soot Covered Redstone",
-  "itemGroup.deep_mob_learning_reloaded": "Deep Mob Learning: Reloaded"
+  "itemGroup.deep_mob_learning_reloaded": "Deep Mob Learning: Reloaded",
+  "jei.dmlreloaded.glitch_ingot": "TLDR: Drop some fragments, lapis and gold ingots into a body of water and hope for the best\\n\\nYou've found that lapis is a good stabilization agent for Unstable glitch fragments.\\nAfter the fragments are stable, they desperately seek out a material to latch on to, you think that gold might be strong enough as a host.\\n\\nThe entire process is delicate, it needs to be performed in water or the materials wont bind properly."
 }
