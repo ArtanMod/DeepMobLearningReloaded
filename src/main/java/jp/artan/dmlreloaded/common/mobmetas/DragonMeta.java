@@ -4,6 +4,8 @@ import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class DragonMeta extends MobMetaData{
@@ -13,11 +15,17 @@ public class DragonMeta extends MobMetaData{
                 "entity.minecraft.ender_dragon",
                 4096, 100,
                 ItemInit.PristineMatter.DRAGON.get(),
+                null,
                 2
         );
     }
 
     public EnderDragon getEntity(Level world) {
         return new EnderDragon(EntityType.ENDER_DRAGON ,world);
+    }
+
+    @Override
+    public ItemStack getSpawnEgg() {
+        return ItemStack.EMPTY;
     }
 }

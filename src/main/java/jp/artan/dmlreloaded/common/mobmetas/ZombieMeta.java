@@ -3,6 +3,7 @@ package jp.artan.dmlreloaded.common.mobmetas;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class ZombieMeta extends MobMetaData {
@@ -12,6 +13,7 @@ public class ZombieMeta extends MobMetaData {
                 "entity.minecraft.zombie",
                 80, 10,
                 ItemInit.PristineMatter.ZOMBIE.get(),
+                Items.ZOMBIE_SPAWN_EGG,
                 3);
     }
 

@@ -4,6 +4,7 @@ import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Blaze;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class BlazeMeta extends MobMetaData {
@@ -13,6 +14,7 @@ public class BlazeMeta extends MobMetaData {
                 "entity.minecraft.blaze",
                 256, 10,
                 ItemInit.PristineMatter.BLAZE.get(),
+                Items.BLAZE_SPAWN_EGG,
                 3
         );
     }

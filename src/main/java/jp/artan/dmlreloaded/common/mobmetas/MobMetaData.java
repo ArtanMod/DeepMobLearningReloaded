@@ -11,9 +11,10 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.util.NonNullSupplier;
 
 public abstract class MobMetaData {
     protected String entityId;
@@ -21,6 +22,7 @@ public abstract class MobMetaData {
     protected int numberOfHearts;
     protected int simulationTickCost;
     protected ItemPristineMatter pristineMatter;
+    protected Item spawnEggItem;
     protected int mobTriviaLine;
 
     public MobMetaData(
@@ -29,6 +31,7 @@ public abstract class MobMetaData {
             int simulationTickCost,
             int numberOfHearts,
             ItemPristineMatter pristineMatter,
+            Item spawnEggItem,
             int mobTriviaLine
     ) {
         this.key = key;
@@ -36,6 +39,7 @@ public abstract class MobMetaData {
         this.simulationTickCost = simulationTickCost;
         this.numberOfHearts = numberOfHearts;
         this.pristineMatter = pristineMatter;
+        this.spawnEggItem = spawnEggItem;
         this.mobTriviaLine = mobTriviaLine;
     }
 
@@ -49,6 +53,10 @@ public abstract class MobMetaData {
 
     public ItemStack getPristineMatterStack(int amount) {
         return new ItemStack(pristineMatter, amount);
+    }
+
+    public ItemStack getSpawnEgg() {
+        return new ItemStack(spawnEggItem);
     }
 
     public String getEntityId() {

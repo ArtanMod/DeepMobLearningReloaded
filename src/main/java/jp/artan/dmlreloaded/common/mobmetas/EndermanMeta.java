@@ -4,6 +4,7 @@ import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class EndermanMeta extends MobMetaData {
@@ -13,6 +14,7 @@ public class EndermanMeta extends MobMetaData {
                 "entity.minecraft.enderman",
                 512, 20,
                 ItemInit.PristineMatter.ENDERMAN.get(),
+                Items.ENDERMAN_SPAWN_EGG,
                 2
         );
     }

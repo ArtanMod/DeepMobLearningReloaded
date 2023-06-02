@@ -4,6 +4,7 @@ import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Guardian;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class GuardianMeta extends MobMetaData {
@@ -13,6 +14,7 @@ public class GuardianMeta extends MobMetaData {
                 "entity.minecraft.guardian",
                 340, 15,
                 ItemInit.PristineMatter.GUARDIAN.get(),
+                Items.GUARDIAN_SPAWN_EGG,
                 3
         );
     }

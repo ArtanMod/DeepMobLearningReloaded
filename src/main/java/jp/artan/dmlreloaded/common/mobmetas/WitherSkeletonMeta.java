@@ -4,6 +4,7 @@ import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.WitherSkeleton;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class WitherSkeletonMeta extends MobMetaData {
@@ -13,6 +14,7 @@ public class WitherSkeletonMeta extends MobMetaData {
                 "entity.minecraft.wither_skeleton",
                 880, 10,
                 ItemInit.PristineMatter.WITHER_SKELETON.get(),
+                Items.WITHER_SKELETON_SPAWN_EGG,
                 2
         );
     }

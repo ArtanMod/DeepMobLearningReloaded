@@ -5,6 +5,7 @@ import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class CreeperMeta extends MobMetaData {
@@ -14,6 +15,7 @@ public class CreeperMeta extends MobMetaData {
                 "entity.minecraft.creeper",
                 80, 10,
                 ItemInit.PristineMatter.CREEPER.get(),
+                Items.CREEPER_SPAWN_EGG,
                 2
         );
     }

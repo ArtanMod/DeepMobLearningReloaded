@@ -4,6 +4,7 @@ import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class WitherMeta extends MobMetaData {
@@ -13,6 +14,7 @@ public class WitherMeta extends MobMetaData {
                 "entity.minecraft.wither",
                 2048, 150,
                 ItemInit.PristineMatter.WITHER.get(),
+                null,
                 1
         );
     }
@@ -21,4 +23,8 @@ public class WitherMeta extends MobMetaData {
         };
     }
 
+    @Override
+    public ItemStack getSpawnEgg() {
+        return ItemStack.EMPTY;
+    }
 }

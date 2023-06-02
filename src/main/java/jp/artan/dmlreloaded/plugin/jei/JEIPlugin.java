@@ -7,9 +7,11 @@ import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
 import jp.artan.dmlreloaded.plugin.jei.category.ExtractionChamberRecipeCategory;
 import jp.artan.dmlreloaded.plugin.jei.category.SimulationChamberRecipeCategory;
+import jp.artan.dmlreloaded.plugin.jei.maker.CraftingRecipeMaker;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
@@ -39,6 +41,7 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
+        registration.addRecipes(RecipeTypes.CRAFTING, CraftingRecipeMaker.getCraftingRecipes());
         this.addSimulationChamberRecipe(registration);
         this.addExtractionChamberRecipe(registration);
     }
@@ -54,7 +57,6 @@ public class JEIPlugin implements IModPlugin {
 
         ForgeRegistries.ITEMS.getEntries().forEach(hashMapItem -> {
             if(hashMapItem.getValue() instanceof ItemDataModel dataModel) {
-                System.out.println(dataModel);
                 ItemStack dataStack = new ItemStack(dataModel);
                 DataModelHelper.setTier(dataStack, 1);
                 list.add(new SimulationChamberRecipeCategory.SimulationChamberRecipes(dataStack));

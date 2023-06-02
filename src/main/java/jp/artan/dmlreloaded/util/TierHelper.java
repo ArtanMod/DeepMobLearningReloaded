@@ -30,6 +30,10 @@ public class TierHelper {
     }
 
     public static boolean isMaxTier(int tier) {
-        return tier == 4;
+        return tier == getMaxTier();
+    }
+
+    public static int getMaxTier() {
+        return 4;
     }
 }
