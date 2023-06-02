@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dmlreloaded:data_model_blank"
+    },
+    {
+      "item": "minecraft:wither_skeleton_skull"
+    }
+  ],
+  "result": {
+    "item": "dmlreloaded:data_model_wither_skeleton"
+  }
+}
