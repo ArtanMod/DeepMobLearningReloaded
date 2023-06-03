@@ -3,13 +3,19 @@ package jp.artan.dmlreloaded.data.builder;
 import com.google.common.base.Preconditions;
 import com.google.gson.JsonObject;
 import jp.artan.artansprojectcoremod.tabs.CreativeTab;
+import jp.artan.dmlreloaded.data.providers.RegistratePatchouliProvider;
+import jp.artan.repack.registrate.util.entry.BlockEntry;
+import jp.artan.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -19,7 +25,7 @@ public class PatchouliBuilder {
     private final ExistingFileHelper existingFileHelper;
     protected final ResourceLocation location;
     private final PatchouliBuilder.Book book;
-    private final NonNullList<PatchouliBuilder.Category> categories = NonNullList.create();
+    private final PatchouliBuilder.Categories categories;
     private final NonNullList<PatchouliBuilder.Entry> entries = NonNullList.create();
 
     public PatchouliBuilder(
@@ -30,31 +36,27 @@ public class PatchouliBuilder {
         this.modId = modId;
         this.location = new ResourceLocation(modId, name);
         this.existingFileHelper = existingFileHelper;
-        this.book = PatchouliBuilder.Book.create(this);
+        this.book = new PatchouliBuilder.Book(this.location, this);
+        this.categories = new PatchouliBuilder.Categories(this);
     }
 
     public PatchouliBuilder.Book book() {
         return this.book;
     }
 
-    public void save(Consumer<PatchouliBuilder.Result> consumer) {
-        this.save(consumer, this.location);
+    public PatchouliBuilder.Categories categories() {
+        return this.categories;
     }
 
-    public void save(Consumer<PatchouliBuilder.Result> consumer, ResourceLocation location) {
-        this.ensureValid(location);
-        consumer.accept(new PatchouliBuilder.Result(
-                this.location,
-                this.book
-        ));
+    public void save(Consumer<RegistratePatchouliProvider.Result> consumer) {
+        consumer.accept(this.book);
+        for(Category category : categories.categories) {
+            consumer.accept(category);
+        }
     }
 
-    /**
-     * 保存前にBuilderで生成したデータが正しいかを検証
-     * @param location
-     */
-    private void ensureValid(ResourceLocation location) {
-
+    protected ResourceLocation getId() {
+        return this.location;
     }
 
     protected void existTextureFile(ResourceLocation location) {
@@ -62,16 +64,17 @@ public class PatchouliBuilder {
         Preconditions.checkState(fileExist, "Texture at %s does not exist", location);
     }
 
-    public static class Book {
+    public static class Book implements RegistratePatchouliProvider.Result {
+        private final ResourceLocation id;
         private final PatchouliBuilder parent;
         private final PatchouliBuilder.Book.Properties properties;
-        protected Book(PatchouliBuilder parent) {
+        protected Book(
+                ResourceLocation id,
+                PatchouliBuilder parent
+        ) {
+            this.id = id;
             this.parent = parent;
             this.properties = new PatchouliBuilder.Book.Properties(this);
-        }
-
-        protected static PatchouliBuilder.Book create(PatchouliBuilder parent) {
-            return new PatchouliBuilder.Book(parent);
         }
 
         public PatchouliBuilder.Book properties(Function<Book.Properties, Book.Properties> properties) {
@@ -83,7 +86,14 @@ public class PatchouliBuilder {
             return this.parent;
         }
 
-        public JsonObject serializeBook(JsonObject jsonobject) {
+        @Override
+        public ResourceLocation getId() {
+            return this.id;
+        }
+
+        @Override
+        public JsonObject serialize() {
+            JsonObject jsonobject = new JsonObject();
             if(this.properties.name != null) jsonobject.addProperty("name", this.properties.name);
             if(this.properties.landingText != null) jsonobject.addProperty("landing_text", this.properties.landingText);
             if(this.properties.bookTexture != null) jsonobject.addProperty("book_texture", this.properties.bookTexture);
@@ -123,6 +133,16 @@ public class PatchouliBuilder {
             return jsonobject;
         }
 
+        @Override
+        public Path getPath(Path pathIn) {
+            return getBasePath(this.parent.getId(), pathIn, "/book.json");
+        }
+
+        @Override
+        public RegistratePatchouliProvider.ProviderType getProviderType() {
+            return RegistratePatchouliProvider.ProviderType.BOOK_ITEM;
+        }
+
         /**
          * @see "https://vazkiimods.github.io/Patchouli/docs/reference/book-json/"
          */
@@ -160,7 +180,6 @@ public class PatchouliBuilder {
             private @Nullable OverflowMode textOverflowMode;
             private @Nullable String extend;
             private boolean allowExtensions = true;
-
 
             public Properties(Book parent) {
                 this.parent = parent;
@@ -430,19 +449,135 @@ public class PatchouliBuilder {
         }
     }
 
-    public static class Category {
+    public static class Categories {
         private final PatchouliBuilder parent;
-        protected Category(PatchouliBuilder parent) {
+        private final NonNullList<PatchouliBuilder.Category> categories = NonNullList.create();
+
+        public Categories(PatchouliBuilder parent) {
             this.parent = parent;
         }
 
-        protected static PatchouliBuilder.Category create(PatchouliBuilder parent) {
-            return new PatchouliBuilder.Category(parent);
+        public PatchouliBuilder.Category addCategory(String name, String description, ItemEntry<? extends Item> item) {
+            return this.addCategory(name, description, item.getId().toString());
+        }
+
+        public PatchouliBuilder.Category addCategory(String name, String description, BlockEntry<? extends Block> block) {
+            return this.addCategory(name, description, block.getId().toString());
+        }
+
+        public PatchouliBuilder.Category addCategory(String name, String description, String icon) {
+            PatchouliBuilder.Category category = new PatchouliBuilder.Category(this, categories.size(), name, description, icon);
+            this.categories.add(category);
+            return category;
         }
 
         public PatchouliBuilder build() {
             return this.parent;
         }
+    }
+
+    public static class Category implements RegistratePatchouliProvider.Result {
+        private final int index;
+        private final Categories categories;
+        private final PatchouliBuilder.Category.Properties properties;
+
+        protected Category(
+                Categories categories,
+                int index,
+                String name,
+                String description,
+                String icon
+        ) {
+            this.index = index;
+            this.categories = categories;
+            this.properties = new PatchouliBuilder.Category.Properties(name, description, icon, index);
+        }
+
+        public Category properties(Function<Category.Properties, Category.Properties> properties) {
+            properties.apply(this.properties);
+            return this;
+        }
+
+        public Categories build() {
+            return this.categories;
+        }
+
+        @Override
+        public ResourceLocation getId() {
+            return new ResourceLocation(this.categories.parent.modId, this.getCategoryId());
+        }
+
+        @Override
+        public JsonObject serialize() {
+            JsonObject jsonobject = new JsonObject();
+            jsonobject.addProperty("name", this.properties.name);
+            jsonobject.addProperty("description", this.properties.description);
+            jsonobject.addProperty("icon", this.properties.icon);
+            if(this.properties.parent != null) jsonobject.addProperty("parent", this.properties.parent);
+            if(this.properties.flag != null) jsonobject.addProperty("flag", this.properties.flag);
+            jsonobject.addProperty("sortnum", this.properties.sortnum);
+            jsonobject.addProperty("secret", this.properties.secret);
+            return jsonobject;
+        }
+
+        @Override
+        public Path getPath(Path pathIn) {
+            return getBasePath(this.categories.parent.getId(), pathIn, "/en_us/categories/" + index + "_" + this.getCategoryId() + ".json");
+        }
+
+        @Override
+        public RegistratePatchouliProvider.ProviderType getProviderType() {
+            return RegistratePatchouliProvider.ProviderType.BOOK_CATEGORY;
+        }
+
+        private String getCategoryId() {
+            return this.properties.name.toLowerCase();
+        }
+
+        /**
+         * @see "https://vazkiimods.github.io/Patchouli/docs/reference/category-json/"
+         */
+        public static class Properties {
+            private final String name;
+            private final String description;
+            private final String icon;
+            private @Nullable String parent;
+            private @Nullable String flag;
+            private int sortnum;
+            private boolean secret = false;
+            public Properties(
+                    String name,
+                    String description,
+                    String icon,
+                    int sortnum
+            ) {
+                this.name = name;
+                this.description = description;
+                this.icon = icon;
+                this.sortnum = sortnum;
+            }
+
+            public Properties setParent(String parent) {
+                this.parent = parent;
+                return this;
+            }
+
+            public Properties setFlag(String flag) {
+                this.flag = flag;
+                return this;
+            }
+
+            public Properties setSortnum(int sortnum) {
+                this.sortnum = sortnum;
+                return this;
+            }
+
+            public Properties setSecret() {
+                this.secret = true;
+                return this;
+            }
+        }
+
     }
 
     public static class Entry {
@@ -460,27 +595,7 @@ public class PatchouliBuilder {
         }
     }
 
-    public static class Result {
-        private final ResourceLocation id;
-        private final PatchouliBuilder.Book book;
-
-        public Result(
-                ResourceLocation id,
-                PatchouliBuilder.Book book
-        ) {
-            this.id = id;
-            this.book = book;
-        }
-
-        public JsonObject serializeBook() {
-            JsonObject jsonobject = new JsonObject();
-            jsonobject = this.book.serializeBook(jsonobject);
-            return jsonobject;
-        }
-
-        public ResourceLocation getId() {
-            return this.id;
-        }
+    private static Path getBasePath(ResourceLocation location, Path pathIn, String children) {
+        return pathIn.resolve("data/" + location.getNamespace() + "/patchouli_books/" + location.getPath() + children);
     }
-
 }

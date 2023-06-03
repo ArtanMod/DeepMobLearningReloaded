@@ -3,7 +3,9 @@ package jp.artan.dmlreloaded.provider;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
 import jp.artan.dmlreloaded.data.providers.RegistratePatchouliProvider;
+import jp.artan.dmlreloaded.init.BlockInit;
 import jp.artan.dmlreloaded.init.ItemGroupInit;
+import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -15,7 +17,7 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
     }
 
     @Override
-    protected void registerPatchouli(Consumer<PatchouliBuilder.Result> consumer) {
+    protected void registerPatchouli(Consumer<RegistratePatchouliProvider.Result> consumer) {
         this.book("book")
                 .book().properties(
                         p -> p.setName("Deep Mob Learning")
@@ -37,6 +39,18 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                                 .addMacros("$(dmlbm)", "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning-blood-magic-addon)Deep Mob Learning - BM Addon$()")
                                 .setI18n()
                 ).build()
+                .categories()
+                .addCategory(
+                        "Introduction",
+                        "This chapter will cover the basics of the $(item)Mod$() so you can start accumulating $(l:0_introduction/1_data)Data$() for your $(l:0_introduction/2_data_models#data_models)Data Models$().",
+                        ItemInit.DEEP_LEARNER
+                ).build()
+                .addCategory(
+                        "Machines",
+                        "This chapter will teach you everything you need to know about the machines$(br)in $(dml)$(br2)All $(item)Machines$() accepts $(item)Inputs$() from the top of the block. The other sides are used to pipe $(item)Outputs$().",
+                        BlockInit.SIMULATION_CHAMBER
+                ).build()
+                .build()
                 .save(consumer);
     }
 }

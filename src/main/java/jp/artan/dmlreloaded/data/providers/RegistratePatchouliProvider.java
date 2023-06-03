@@ -43,9 +43,11 @@ public abstract class RegistratePatchouliProvider implements RegistrateProvider 
             protected void registerModels() {
                 LOGGER.debug("Registering Patchouli Item Models");
                 registerPatchouli(result -> {
-                    LOGGER.debug("Registering Patchouli Item Model: {}", result.getId().getPath());
-                    getBuilder(result.getId().getPath()).parent(getExistingFile(mcLoc("item/generated")))
-                            .texture("layer0", new ResourceLocation(modid, "item/" + result.getId().getPath()));
+                    if(result.getProviderType() == ProviderType.BOOK_ITEM) {
+                        LOGGER.debug("Registering Patchouli Item Model: {}", result.getId().getPath());
+                        getBuilder(result.getId().getPath()).parent(getExistingFile(mcLoc("item/generated")))
+                                .texture("layer0", new ResourceLocation(modid, "item/" + result.getId().getPath()));
+                    }
                 });
             }
             private Path getPath(ResourceLocation loc) {
@@ -78,20 +80,16 @@ public abstract class RegistratePatchouliProvider implements RegistrateProvider 
         registerPatchouli(result -> {
             LOGGER.debug("Registering Patchouli Book: {}", result.getId().getPath());
             if(set.add(result.getId())) {
-                saveBook(pCache, result.serializeBook(), getBookPath(path, result));
+                saveJson(pCache, result.serialize(), result.getPath(this.generator.getOutputFolder()));
             } else {
                 throw new IllegalStateException("Duplicate patchouli " + result.getId());
             }
         });
     }
 
-    protected abstract void registerPatchouli(Consumer<PatchouliBuilder.Result> consumer);
+    protected abstract void registerPatchouli(Consumer<Result> consumer);
 
-    private static Path getBookPath(Path pathIn, PatchouliBuilder.Result book) {
-        return pathIn.resolve("data/" + book.getId().getNamespace() + "/patchouli_books/" + book.getId().getPath() + "/book.json");
-    }
-
-    private static void saveBook(HashCache pCache, JsonObject pBookJson, Path pPath) {
+    private static void saveJson(HashCache pCache, JsonObject pBookJson, Path pPath) {
         try {
             String jStr = GSON.toJson(pBookJson);
             String hash = SHA1.hashUnencodedChars(jStr).toString();
@@ -119,5 +117,21 @@ public abstract class RegistratePatchouliProvider implements RegistrateProvider 
         } catch(IOException ioexception) {
             LOGGER.error("Couldn't save patchouli book {}", pPath, ioexception);
         }
+    }
+
+    public interface Result {
+        ResourceLocation getId();
+
+        JsonObject serialize();
+
+        Path getPath(Path pathIn);
+
+        ProviderType getProviderType();
+    }
+
+    public enum ProviderType {
+        BOOK_ITEM,
+        BOOK_CATEGORY,
+        BOOK_ENTRY
     }
 }
