@@ -1,7 +1,7 @@
 {
   "name": "Simulation Chamber",
-  "icon": "dmlreloaded:simulation_chamber",
   "category": "dmlreloaded:1_machines",
+  "icon": "dmlreloaded:simulation_chamber",
   "pages": [
     {
       "type": "patchouli:text",
@@ -9,14 +9,14 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "dmlreloaded:simulation_chamber",
       "anchor": "simulation_chamber",
+      "recipe": "dmlreloaded:simulation_chamber",
       "text": "The $(item)Simulation Chamber$() is crafted with a $(l:0_introduction/0_introduction#plates_and_casings)Sooted Machine Casing$().$(br2)The operational $(item)Energy$() cost depends on what $(l:0_introduction/2_data_models)Data Model$() is used."
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "dmlreloaded:polymer_clay",
       "anchor": "simulation_chamber",
+      "recipe": "dmlreloaded:polymer_clay",
       "text": "$(item)Polymer Clay$() is a very soft and adept clay that can take on most shapes.$(br2)In the $(item)Simulation Chamber$() its used as a binding agent to create $(l:1_machines/1_matter)Matter$()"
     }
   ]

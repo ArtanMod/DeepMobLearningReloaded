@@ -1,6 +1,7 @@
 package jp.artan.dmlreloaded.data.builder;
 
 import com.google.common.base.Preconditions;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import jp.artan.artansprojectcoremod.tabs.CreativeTab;
 import jp.artan.dmlreloaded.data.providers.RegistratePatchouliProvider;
@@ -11,12 +12,15 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -26,7 +30,6 @@ public class PatchouliBuilder {
     protected final ResourceLocation location;
     private final PatchouliBuilder.Book book;
     private final PatchouliBuilder.Categories categories;
-    private final NonNullList<PatchouliBuilder.Entry> entries = NonNullList.create();
 
     public PatchouliBuilder(
             String modId,
@@ -52,6 +55,9 @@ public class PatchouliBuilder {
         consumer.accept(this.book);
         for(Category category : categories.categories) {
             consumer.accept(category);
+            for(Entry entry : category.entries.entries) {
+                consumer.accept(entry);
+            }
         }
     }
 
@@ -477,28 +483,31 @@ public class PatchouliBuilder {
     }
 
     public static class Category implements RegistratePatchouliProvider.Result {
-        private final int index;
-        private final Categories categories;
+        private final PatchouliBuilder.Categories categories;
         private final PatchouliBuilder.Category.Properties properties;
+        private final PatchouliBuilder.Entries entries = new PatchouliBuilder.Entries(this);
 
         protected Category(
-                Categories categories,
+                PatchouliBuilder.Categories categories,
                 int index,
                 String name,
                 String description,
                 String icon
         ) {
-            this.index = index;
             this.categories = categories;
             this.properties = new PatchouliBuilder.Category.Properties(name, description, icon, index);
         }
 
-        public Category properties(Function<Category.Properties, Category.Properties> properties) {
+        public PatchouliBuilder.Category properties(Function<Category.Properties, Category.Properties> properties) {
             properties.apply(this.properties);
             return this;
         }
 
-        public Categories build() {
+        public PatchouliBuilder.Entries entries() {
+            return this.entries;
+        }
+
+        public PatchouliBuilder.Categories build() {
             return this.categories;
         }
 
@@ -522,7 +531,7 @@ public class PatchouliBuilder {
 
         @Override
         public Path getPath(Path pathIn) {
-            return getBasePath(this.categories.parent.getId(), pathIn, "/en_us/categories/" + index + "_" + this.getCategoryId() + ".json");
+            return getBasePath(this.categories.parent.getId(), pathIn, "/en_us/categories/" + this.getCategoryId() + ".json");
         }
 
         @Override
@@ -531,7 +540,7 @@ public class PatchouliBuilder {
         }
 
         private String getCategoryId() {
-            return this.properties.name.toLowerCase();
+            return this.properties.sortnum + "_" + this.properties.name.replace(" ", "_").toLowerCase();
         }
 
         /**
@@ -577,21 +586,764 @@ public class PatchouliBuilder {
                 return this;
             }
         }
-
     }
 
-    public static class Entry {
-        private final PatchouliBuilder parent;
-        protected Entry(PatchouliBuilder parent) {
-            this.parent = parent;
+    public static class Entries {
+        private final PatchouliBuilder.Category category;
+        private final NonNullList<PatchouliBuilder.Entry> entries = NonNullList.create();
+
+        public Entries(PatchouliBuilder.Category category) {
+            this.category = category;
         }
 
-        protected static PatchouliBuilder.Entry create(PatchouliBuilder parent) {
-            return new PatchouliBuilder.Entry(parent);
+        public PatchouliBuilder.Entry addEntry(String name, ItemEntry<? extends Item> itemIcon) {
+            return this.addEntry(name, itemIcon.getId().toString());
         }
 
-        public PatchouliBuilder build() {
-            return this.parent;
+        public PatchouliBuilder.Entry addEntry(String name, BlockEntry<? extends Block> blockIcon) {
+            return this.addEntry(name, blockIcon.getId().toString());
+        }
+
+        public PatchouliBuilder.Entry addEntry(String name, String icon) {
+            String category = this.category.categories.parent.modId + ":" + this.category.getCategoryId();
+            PatchouliBuilder.Entry entry = new PatchouliBuilder.Entry(this, this.entries.size(), name, category, icon);
+            this.entries.add(entry);
+            return entry;
+        }
+
+        public PatchouliBuilder.Category build() {
+            return this.category;
+        }
+    }
+
+    /**
+     * @see "https://vazkiimods.github.io/Patchouli/docs/reference/entry-json/"
+     */
+    public static class Entry implements RegistratePatchouliProvider.Result {
+        private final PatchouliBuilder.Entries entries;
+        private final PatchouliBuilder.Entry.Properties properties;
+        protected Entry(
+                PatchouliBuilder.Entries entries,
+                int index,
+                String name,
+                String category,
+                String icon
+        ) {
+            this.entries = entries;
+            this.properties = new PatchouliBuilder.Entry.Properties(name, category, icon, index);
+        }
+
+        public PatchouliBuilder.Entry properties(Function<Entry.Properties, Entry.Properties> properties) {
+            properties.apply(this.properties);
+            return this;
+        }
+
+        public PatchouliBuilder.Entries build() {
+            return this.entries;
+        }
+
+        @Override
+        public ResourceLocation getId() {
+            return new ResourceLocation(this.getParent().modId, this.getEntryId());
+        }
+
+        @Override
+        public JsonObject serialize() {
+            JsonObject jsonobject = new JsonObject();
+
+            jsonobject.addProperty("name", this.properties.name);
+            jsonobject.addProperty("category", this.properties.category);
+            jsonobject.addProperty("icon", this.properties.icon);
+
+            JsonArray pagesJsonArray = new JsonArray();
+            for(Properties.Page page : this.properties.pages) {
+                pagesJsonArray.add(page.serialize());
+            }
+            jsonobject.add("pages", pagesJsonArray);
+
+            return jsonobject;
+        }
+
+        @Override
+        public Path getPath(Path pathIn) {
+            return getBasePath(this.getParent().getId(), pathIn, "/en_us/entries/" + this.getEntryId() + ".json");
+        }
+
+        @Override
+        public RegistratePatchouliProvider.ProviderType getProviderType() {
+            return RegistratePatchouliProvider.ProviderType.BOOK_ENTRY;
+        }
+
+        private String getEntryId() {
+            return this.getCategoryId() + "/" + this.properties.sortnum + "_" + this.properties.name.replace(" ", "_").toLowerCase();
+        }
+
+        private PatchouliBuilder getParent() {
+            return this.entries.category.categories.parent;
+        }
+
+        private String getCategoryId() {
+            return this.entries.category.getCategoryId();
+        }
+
+        public static class Properties {
+
+            private final String name;
+            private final String category;
+            private final String icon;
+            private NonNullList<Page> pages = NonNullList.create();
+            private @Nullable String advancement;
+            private @Nullable String flag;
+            private boolean priority = false;
+            private boolean secret = false;
+            private boolean readByDefault = false;
+            private int sortnum;
+            private HashMap<String, Integer> extraRecipeMappings = new HashMap<>();
+
+            public Properties(
+                    String name,
+                    String category,
+                    String icon,
+                    int sortnum
+            ) {
+                this.name = name;
+                this.category = category;
+                this.icon = icon;
+                this.sortnum = sortnum;
+            }
+
+            public Properties getAdvancement(String advancement) {
+                this.advancement = advancement;
+                return this;
+            }
+
+            public Properties setFlag(String flag) {
+                this.flag = flag;
+                return this;
+            }
+
+            public Properties setHighPriority() {
+                this.priority = true;
+                return this;
+            }
+
+            public Properties setSecret() {
+                this.secret = true;
+                return this;
+            }
+
+            public Properties setOpenYet() {
+                this.readByDefault = true;
+                return this;
+            }
+
+            public Properties setSortnum(int sortnum) {
+                this.sortnum = sortnum;
+                return this;
+            }
+
+            public Properties addExtraRecipeMapping(ItemStack itemStack, int page) {
+                this.extraRecipeMappings.put(itemStack.getDescriptionId(), page);
+                return this;
+            }
+
+            public Properties.TextPage addTextPage(String text) {
+                Properties.TextPage page = new Properties.TextPage(this, text);
+                this.pages.add(page);
+                return page;
+            }
+
+            public Properties.ImagePage addImagePage(String image) {
+                Properties.ImagePage page = new Properties.ImagePage(this, image);
+                this.pages.add(page);
+                return page;
+            }
+
+            public Properties.CraftingRecipePage addCraftingRecipePage(ItemEntry<? extends Item> item) {
+                return this.addCraftingRecipePage(item.getId());
+            }
+
+            public Properties.CraftingRecipePage addCraftingRecipePage(BlockEntry<? extends Block> block) {
+                return this.addCraftingRecipePage(block.getId());
+            }
+
+            public Properties.CraftingRecipePage addCraftingRecipePage(ResourceLocation recipe) {
+                Properties.CraftingRecipePage page = new Properties.CraftingRecipePage(this, recipe);
+                this.pages.add(page);
+                return page;
+            }
+
+            public Properties.SmeltingRecipePage addSmeltingRecipePage(ResourceLocation recipe) {
+                Properties.SmeltingRecipePage page = new Properties.SmeltingRecipePage(this, recipe);
+                this.pages.add(page);
+                return page;
+            }
+
+            public Properties.MultiblockPage addMultiblockPage(String name) {
+                Properties.MultiblockPage page = new Properties.MultiblockPage(this, name);
+                this.pages.add(page);
+                return page;
+            }
+
+            public Properties.EntityPage addEntityPage(String entity) {
+                Properties.EntityPage page = new Properties.EntityPage(this, entity);
+                this.pages.add(page);
+                return page;
+            }
+
+            public Properties.SpotlightPage addSpotlightPage(ItemEntry<? extends Item> item) {
+                return this.addSpotlightPage(item.getId().toString());
+            }
+
+            public Properties.SpotlightPage addSpotlightPage(BlockEntry<? extends Block> block) {
+                return this.addSpotlightPage(block.getId().toString());
+            }
+
+            public Properties.SpotlightPage addSpotlightPage(String item) {
+                Properties.SpotlightPage page = new Properties.SpotlightPage(this, item);
+                this.pages.add(page);
+                return page;
+            }
+
+            public Properties.LinkPage addRelatedPage(String url, String linkText) {
+                Properties.LinkPage page = new Properties.LinkPage(this, url, linkText);
+                this.pages.add(page);
+                return page;
+            }
+
+            public Properties.RelationsPage addRelatedPage() {
+                Properties.RelationsPage page = new Properties.RelationsPage(this);
+                this.pages.add(page);
+                return page;
+            }
+
+            public Properties.QuestPage addQuestPage() {
+                Properties.QuestPage page = new Properties.QuestPage(this);
+                this.pages.add(page);
+                return page;
+            }
+
+            public Properties.EmptyPage addEmptyPage() {
+                Properties.EmptyPage page = new Properties.EmptyPage(this);
+                this.pages.add(page);
+                return page;
+            }
+
+            /**
+             * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/"
+             */
+            public static abstract class Page<T extends Page> {
+                private final Entry.Properties parent;
+                private final String type;
+                private @Nullable String advancement;
+                private @Nullable String flag;
+                private @Nullable String anchor;
+
+                public Page(Entry.Properties parent, String type) {
+                    this.parent = parent;
+                    this.type = type;
+                }
+
+                public T setAdvancement(String advancement) {
+                    this.advancement = advancement;
+                    return (T) this;
+                }
+
+                public T setFlag(String flag) {
+                    this.flag = flag;
+                    return (T) this;
+                }
+
+                public T setAnchor(String anchor) {
+                    this.anchor = anchor;
+                    return (T) this;
+                }
+
+                public JsonObject serialize() {
+                    JsonObject jsonobject = new JsonObject();
+                    jsonobject.addProperty("type", this.type);
+                    if(this.advancement != null) jsonobject.addProperty("advancement", this.advancement);
+                    if(this.flag != null) jsonobject.addProperty("flag", this.flag);
+                    if(this.anchor != null) jsonobject.addProperty("anchor", this.anchor);
+                    this.serializeData(jsonobject);
+                    return jsonobject;
+                }
+
+                public Entry.Properties build() {
+                    return this.parent;
+                }
+
+                protected abstract void serializeData(JsonObject jsonobject);
+            }
+
+            /**
+             * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#text-pages"
+             */
+            public static class TextPage extends Page<TextPage> {
+                private final String text;
+                private @Nullable String title;
+
+                public TextPage(Entry.Properties parent, String text) {
+                    super(parent, "patchouli:text");
+                    this.text = text;
+                }
+
+                public TextPage setTitle(String title) {
+                    this.title = title;
+                    return this;
+                }
+
+                @Override
+                protected void serializeData(JsonObject jsonobject) {
+                    jsonobject.addProperty("text", this.text);
+                    if(this.title != null) jsonobject.addProperty("title", this.title);
+                }
+            }
+
+            /**
+             * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#image-pages"
+             */
+            public static class ImagePage extends Page<ImagePage> {
+                private final String[] images;
+                private @Nullable String title;
+                private boolean border = false;
+                private @Nullable String text;
+
+                public ImagePage(Entry.Properties parent, String ...images) {
+                    super(parent, "patchouli:image");
+                    this.images = images;
+                }
+
+                public ImagePage setTitle(String title) {
+                    this.title = title;
+                    return this;
+                }
+
+                public ImagePage setBorder() {
+                    this.border = true;
+                    return this;
+                }
+
+                public ImagePage setText(String text) {
+                    this.text = text;
+                    return this;
+                }
+
+                @Override
+                protected void serializeData(JsonObject jsonobject) {
+                    JsonArray imagesJsonArray = new JsonArray();
+                    for(String image : this.images) {
+                        imagesJsonArray.add(image);
+                    }
+                    jsonobject.add("images", imagesJsonArray);
+                    if(this.title != null) jsonobject.addProperty("title", this.title);
+                    if(this.border) jsonobject.addProperty("border", this.border);
+                    if(this.text != null) jsonobject.addProperty("text", this.text);
+                }
+            }
+
+            /**
+             * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#crafting-recipe-pages"
+             */
+            public static class CraftingRecipePage extends Page<CraftingRecipePage> {
+                private final ResourceLocation recipe;
+                private @Nullable ResourceLocation recipe2;
+                private @Nullable String title;
+                private @Nullable String title2;
+                private @Nullable String text;
+
+                public CraftingRecipePage(Entry.Properties parent, ResourceLocation recipe) {
+                    super(parent, "patchouli:crafting");
+                    this.recipe = recipe;
+                }
+
+                public CraftingRecipePage setRecipe2(ItemEntry<? extends Item> item) {
+                    return this.setRecipe2(item.getId());
+                }
+
+                public CraftingRecipePage setRecipe2(BlockEntry<? extends Block> block) {
+                    return this.setRecipe2(block.getId());
+                }
+
+                public CraftingRecipePage setRecipe2(ResourceLocation recipe2) {
+                    this.recipe2 = recipe2;
+                    return this;
+                }
+
+                public CraftingRecipePage setTitle(String title) {
+                    this.title = title;
+                    return this;
+                }
+
+                public CraftingRecipePage setText(String text) {
+                    this.text = text;
+                    return this;
+                }
+
+                @Override
+                protected void serializeData(JsonObject jsonobject) {
+                    jsonobject.addProperty("recipe", this.recipe.toString());
+                    if(this.recipe2 != null) jsonobject.addProperty("recipe2", this.recipe2.toString());
+                    if(this.title != null) jsonobject.addProperty("title", this.title);
+                    if(this.text != null) jsonobject.addProperty("text", this.text);
+                }
+            }
+
+            /**
+             * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#smelting-recipe-pages"
+             */
+            public static class SmeltingRecipePage extends Page<SmeltingRecipePage> {
+                private final ResourceLocation recipe;
+                private @Nullable ResourceLocation recipe2;
+                private @Nullable String title;
+                private @Nullable String text;
+
+                public SmeltingRecipePage(Entry.Properties parent, ResourceLocation recipe) {
+                    super(parent, "patchouli:smelting");
+                    this.recipe = recipe;
+                }
+
+                public SmeltingRecipePage setRecipe2(ResourceLocation recipe2) {
+                    this.recipe2 = recipe2;
+                    return this;
+                }
+
+                public SmeltingRecipePage setTitle(String title) {
+                    this.title = title;
+                    return this;
+                }
+
+                public SmeltingRecipePage setText(String text) {
+                    this.text = text;
+                    return this;
+                }
+
+                @Override
+                protected void serializeData(JsonObject jsonobject) {
+                    jsonobject.addProperty("recipe", this.recipe.toString());
+                    if(this.recipe2 != null) jsonobject.addProperty("recipe2", this.recipe2.toString());
+                    if(this.title != null) jsonobject.addProperty("title", this.title);
+                    if(this.text != null) jsonobject.addProperty("text", this.text);
+                }
+            }
+
+            /**
+             * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#multiblock-pages"
+             */
+            public static class MultiblockPage extends Page<MultiblockPage> {
+                private final String name;
+                private @Nullable String multiblockId;
+                private MultiblockProperties multiblock;
+                private boolean enableVisualize = true;
+                private @Nullable String text;
+
+                public MultiblockPage(Entry.Properties parent, String name) {
+                    super(parent, "patchouli:multiblock");
+                    this.name = name;
+                    this.multiblock = new MultiblockProperties(this);
+                }
+
+                public MultiblockPage setMultiblockId(String multiblockId) {
+                    this.multiblockId = multiblockId;
+                    return this;
+                }
+
+                public MultiblockPage setDisableVisualize() {
+                    this.enableVisualize = false;
+                    return this;
+                }
+
+                public MultiblockPage setText(String text) {
+                    this.text = text;
+                    return this;
+                }
+
+                @Override
+                protected void serializeData(JsonObject jsonobject) {
+                    jsonobject.addProperty("name", this.name);
+                    if(this.multiblockId != null) jsonobject.addProperty("multiblock_id", this.multiblockId);
+                    jsonobject.addProperty("enable_visualize", this.enableVisualize);
+                    if(this.text != null) jsonobject.addProperty("text", this.text);
+
+                    JsonObject multiblockJson = new JsonObject();
+
+                    JsonObject mappingJson = new JsonObject();
+                    for(Map.Entry<String, String> entry : this.multiblock.properties.entrySet()) {
+                        mappingJson.addProperty(entry.getKey(), entry.getValue());
+                    }
+                    multiblockJson.add("mapping", mappingJson);
+
+                    JsonArray patternJson = new JsonArray();
+                    for(String[] pattern : this.multiblock.pattern) {
+                        JsonArray patternRowJson = new JsonArray();
+                        for(String patternRow : pattern) {
+                            patternRowJson.add(patternRow);
+                        }
+                        patternJson.add(patternRowJson);
+                    }
+                    multiblockJson.add("pattern", patternJson);
+
+                    multiblockJson.addProperty("symmetrical", this.multiblock.symmetrical);
+
+                    if(this.multiblock.offset != null) {
+                        JsonArray offsetJson = new JsonArray();
+                        for(int offset : this.multiblock.offset) {
+                            offsetJson.add(offset);
+                        }
+                        multiblockJson.add("offset", offsetJson);
+                    }
+
+                    jsonobject.add("multiblock", multiblockJson);
+                }
+
+                public static class MultiblockProperties {
+                    private final MultiblockPage parent;
+                    private final HashMap<String, String> properties = new HashMap<>();
+                    private final NonNullList<String[]> pattern = NonNullList.create();
+                    private boolean symmetrical = false;
+                    private @Nullable int[] offset;
+
+                    public MultiblockProperties(MultiblockPage parent) {
+                        this.parent = parent;
+                    }
+
+                    public MultiblockProperties addMapping(String key, String value) {
+                        this.properties.put(key, value);
+                        return this;
+                    }
+
+                    public MultiblockProperties addPattern(String ...pattern) {
+                        this.pattern.add(pattern);
+                        return this;
+                    }
+
+                    public MultiblockProperties setSymmetrical() {
+                        this.symmetrical = true;
+                        return this;
+                    }
+
+                    public MultiblockProperties setOffset(int x, int y, int z) {
+                        this.offset = new int[] {x, y, z};
+                        return this;
+                    }
+
+                    public MultiblockPage build() {
+                        return this.parent;
+                    }
+                }
+            }
+
+            /**
+             * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#entity-pages"
+             */
+            public static class EntityPage extends Page<EntityPage> {
+                private final String entity;
+                private Optional<Float> scale = Optional.empty();
+                private Optional<Float> offset = Optional.empty();
+                private boolean rotate = true;
+                private Optional<Float> defaultRotation = Optional.empty();
+                private @Nullable String name;
+                private @Nullable String text;
+
+                public EntityPage(Entry.Properties parent, String entity) {
+                    super(parent, "patchouli:entity");
+                    this.entity = entity;
+                }
+
+                public EntityPage setScale(float scale) {
+                    this.scale = Optional.of(scale);
+                    return this;
+                }
+
+                public EntityPage setOffset(float offset) {
+                    this.offset = Optional.of(offset);
+                    return this;
+                }
+
+                public EntityPage setNoRotate() {
+                    this.rotate = false;
+                    return this;
+                }
+
+                public EntityPage setDefaultRotation(float defaultRotation) {
+                    this.defaultRotation = Optional.of(defaultRotation);
+                    return this;
+                }
+
+                public EntityPage setName(String name) {
+                    this.name = name;
+                    return this;
+                }
+
+                public EntityPage setText(String text) {
+                    this.text = text;
+                    return this;
+                }
+
+                @Override
+                protected void serializeData(JsonObject jsonobject) {
+                    jsonobject.addProperty("entity", this.entity);
+                    this.scale.ifPresent(aFloat -> jsonobject.addProperty("scale", aFloat));
+                    this.offset.ifPresent(aFloat -> jsonobject.addProperty("offset", aFloat));
+                    jsonobject.addProperty("rotate", this.rotate);
+                    this.defaultRotation.ifPresent(aFloat -> jsonobject.addProperty("default_rotation", aFloat));
+                    if(this.name != null) jsonobject.addProperty("name", this.name);
+                    if(this.text != null) jsonobject.addProperty("text", this.text);
+                }
+            }
+
+            /**
+             * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#spotlight-pages"
+             */
+            public static class SpotlightPage extends Page<SpotlightPage> {
+                private String item;
+                private @Nullable String title;
+                private boolean linkRecipe = false;
+                private @Nullable String text;
+
+                public SpotlightPage(Entry.Properties parent, String item) {
+                    super(parent, "patchouli:spotlight");
+                    this.item = item;
+                }
+
+                public SpotlightPage setTitle(String title) {
+                    this.title = title;
+                    return this;
+                }
+
+                public SpotlightPage setLinkRecipe() {
+                    this.linkRecipe = true;
+                    return this;
+                }
+
+                public SpotlightPage setText(String text) {
+                    this.text = text;
+                    return this;
+                }
+
+                @Override
+                protected void serializeData(JsonObject jsonobject) {
+                    jsonobject.addProperty("item", this.item);
+                    if(this.title != null) jsonobject.addProperty("title", this.title);
+                    jsonobject.addProperty("link_recipe", this.linkRecipe);
+                    if(this.text != null) jsonobject.addProperty("text", this.text);
+                }
+            }
+
+            /**
+             * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#link-pages"
+             */
+            public static class LinkPage extends Page<LinkPage> {
+                private final String url;
+                private final String linkText;
+
+                public LinkPage(Entry.Properties parent, String url, String linkText) {
+                    super(parent, "patchouli:link");
+                    this.url = url;
+                    this.linkText = linkText;
+                }
+
+                @Override
+                protected void serializeData(JsonObject jsonobject) {
+                    jsonobject.addProperty("url", this.url);
+                    jsonobject.addProperty("link_text", this.linkText);
+                }
+            }
+
+            /**
+             * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#relations-pages"
+             */
+            public static class RelationsPage extends Page<RelationsPage> {
+                private final NonNullList<String> entries = NonNullList.create();
+                private @Nullable String title;
+                private @Nullable String text;
+
+                public RelationsPage(Entry.Properties parent) {
+                    super(parent, "patchouli:relations");
+                }
+
+                public RelationsPage addEntry(String entry) {
+                    this.entries.add(entry);
+                    return this;
+                }
+
+                public RelationsPage setTitle(String title) {
+                    this.title = title;
+                    return this;
+                }
+
+                public RelationsPage setText(String text) {
+                    this.text = text;
+                    return this;
+                }
+
+                @Override
+                protected void serializeData(JsonObject jsonobject) {
+                    JsonObject entriesJson = new JsonObject();
+                    for(String entry : this.entries) {
+                        entriesJson.addProperty(entry, entry);
+                    }
+                    jsonobject.add("entries", entriesJson);
+                    if(this.title != null) jsonobject.addProperty("title", this.title);
+                    if(this.text != null) jsonobject.addProperty("text", this.text);
+                }
+            }
+
+            /**
+             * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#quest-pages"
+             */
+            public static class QuestPage extends Page<QuestPage> {
+                private @Nullable String trigger;
+                private @Nullable String title;
+                private @Nullable String text;
+
+                public QuestPage(Entry.Properties parent) {
+                    super(parent, "patchouli:quest");
+                }
+
+                public QuestPage setTrigger(String trigger) {
+                    this.trigger = trigger;
+                    return this;
+                }
+
+                public QuestPage setTitle(String title) {
+                    this.title = title;
+                    return this;
+                }
+
+                public QuestPage setText(String text) {
+                    this.text = text;
+                    return this;
+                }
+
+                @Override
+                protected void serializeData(JsonObject jsonobject) {
+                    if(this.trigger != null) jsonobject.addProperty("trigger", this.trigger);
+                    if(this.title != null) jsonobject.addProperty("title", this.title);
+                    if(this.text != null) jsonobject.addProperty("text", this.text);
+                }
+            }
+
+            /**
+             * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#empty-pages"
+             */
+            public static class EmptyPage extends Page<EmptyPage> {
+                private boolean drawFiller = true;
+
+                public EmptyPage(Entry.Properties parent) {
+                    super(parent, "patchouli:empty");
+                }
+
+                public EmptyPage setNoFiller() {
+                    this.drawFiller = false;
+                    return this;
+                }
+
+                @Override
+                protected void serializeData(JsonObject jsonobject) {
+                    jsonobject.addProperty("draw_filler", this.drawFiller);
+                }
+            }
         }
     }
 

@@ -1,7 +1,7 @@
 {
   "name": "Loot Fabricator",
-  "icon": "dmlreloaded:extraction_chamber",
   "category": "dmlreloaded:1_machines",
+  "icon": "dmlreloaded:extraction_chamber",
   "pages": [
     {
       "type": "patchouli:text",
