@@ -1,0 +1,27 @@
+{
+  "name": "Deep Mob Learning",
+  "landing_text": "$(dml) adds new ways to acquire loot that normally drops from mobs, the intent is to remove the need for a big laggy mobfarm.$(br2)The mod is inspired by $(l:https://minecraft.curseforge.com/projects/soul-shards-respawn)Soul shards$() and $(l:https://minecraft.curseforge.com/projects/woot)Woot$().$(br2)This guide was written with $(l:https://minecraft.curseforge.com/projects/patchouli)Patchouli$(), a $(o)neat$() mod by $(l:https://twitter.com/Vazkii)Vazkii$().",
+  "book_texture": "dmlreloaded:textures/gui/patchouli/book_gray.png",
+  "crafting_texture": "dmlreloaded:textures/gui/patchouli/crafting.png",
+  "model": "dmlreloaded:book",
+  "text_color": "DDDDDD",
+  "header_color": "16EFF7",
+  "nameplate_color": "16EFF7",
+  "link_color": "16EFF7",
+  "link_hover_color": "FFC0",
+  "show_progress": false,
+  "subtitle": "A not-so comprehensive Guide",
+  "creative_tab": "deep_mob_learning_reloaded",
+  "dont_generate_book": false,
+  "show_toasts": true,
+  "use_blocky_font": false,
+  "i18n": true,
+  "macros": {
+    "$(primary)": "$(#16EFF7)",
+    "$(item)": "$(#ff8c00)",
+    "$(dmlbm)": "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning-blood-magic-addon)Deep Mob Learning - BM Addon$()",
+    "$(dml)": "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning)Deep Mob Learning$()"
+  },
+  "pause_game": false,
+  "allow_extensions": true
+}

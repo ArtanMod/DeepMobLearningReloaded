@@ -7,6 +7,7 @@ import jp.artan.dmlreloaded.init.*;
 import jp.artan.dmlreloaded.plugin.PluginInit;
 import jp.artan.dmlreloaded.provider.ModGlobalLootModifierProvider;
 import jp.artan.dmlreloaded.provider.ModRecipeProvider;
+import jp.artan.dmlreloaded.provider.ModRegistratePatchouliProvider;
 import jp.artan.dmlreloaded.screen.DataOverlay;
 import jp.artan.repack.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.data.DataGenerator;
@@ -44,6 +45,7 @@ public class DeepMobLearningReloaded {
     private static final NonNullSupplier<DeepMobLearningReloadedRegistrate> REGISTRATE = DeepMobLearningReloadedRegistrate.lazy(MOD_ID);
 
     public DeepMobLearningReloaded() {
+
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         DropModifier.GLM.register(modEventBus);
         BlockEntityInit.BET.register(modEventBus);
@@ -87,6 +89,9 @@ public class DeepMobLearningReloaded {
         if(event.includeServer()) {
             gen.addProvider(new ModGlobalLootModifierProvider(gen, MOD_ID));
             gen.addProvider(new ModRecipeProvider(gen));
+        }
+        if(event.includeClient()) {
+            gen.addProvider(new ModRegistratePatchouliProvider(MOD_ID, gen, event.getExistingFileHelper()));
         }
     }
 }
