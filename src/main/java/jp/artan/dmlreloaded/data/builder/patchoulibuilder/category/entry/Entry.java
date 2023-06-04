@@ -1,9 +1,9 @@
-package jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry;
+package jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.entry;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
-import jp.artan.dmlreloaded.data.builder.patchoulibuilder.pages.*;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.entry.pages.*;
 import jp.artan.dmlreloaded.data.providers.RegistratePatchouliProvider;
 import jp.artan.repack.registrate.util.entry.BlockEntry;
 import jp.artan.repack.registrate.util.entry.ItemEntry;

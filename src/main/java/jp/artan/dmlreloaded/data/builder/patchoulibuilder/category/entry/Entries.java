@@ -1,4 +1,4 @@
-package jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry;
+package jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.entry;
 
 
 import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;

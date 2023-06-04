@@ -1,8 +1,8 @@
-package jp.artan.dmlreloaded.data.builder.patchoulibuilder.pages;
+package jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.entry.pages;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.entry.Entry;
 import net.minecraft.core.NonNullList;
 
 import javax.annotation.Nullable;

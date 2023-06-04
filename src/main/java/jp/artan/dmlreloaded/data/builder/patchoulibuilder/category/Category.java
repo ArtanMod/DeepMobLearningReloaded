@@ -3,8 +3,8 @@ package jp.artan.dmlreloaded.data.builder.patchoulibuilder.category;
 
 import com.google.gson.JsonObject;
 import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
-import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entries;
-import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.entry.Entries;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.entry.Entry;
 import jp.artan.dmlreloaded.data.providers.RegistratePatchouliProvider;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;

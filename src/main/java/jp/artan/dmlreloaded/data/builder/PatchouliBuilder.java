@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import jp.artan.dmlreloaded.data.builder.patchoulibuilder.Book;
 import jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.Categories;
 import jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.Category;
-import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.entry.Entry;
 import jp.artan.dmlreloaded.data.providers.RegistratePatchouliProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
