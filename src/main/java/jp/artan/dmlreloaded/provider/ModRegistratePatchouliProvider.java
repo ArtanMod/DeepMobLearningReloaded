@@ -6,6 +6,7 @@ import jp.artan.dmlreloaded.init.BlockInit;
 import jp.artan.dmlreloaded.init.ItemGroupInit;
 import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.function.Consumer;
@@ -37,7 +38,10 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                                 .addMacros("$(dml)", "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning)Deep Mob Learning$()")
                                 .addMacros("$(dmlbm)", "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning-blood-magic-addon)Deep Mob Learning - BM Addon$()")
                                 .setI18n()
-                ).build()
+                ).shapelessRecipe().properties(
+                        p -> p.requires(Items.BOOK)
+                                .requires(ItemInit.SOOT_COVERED_REDSTONE.get())
+                ).build().build()
                 .categories()
                 .addCategory(
                         "Introduction",

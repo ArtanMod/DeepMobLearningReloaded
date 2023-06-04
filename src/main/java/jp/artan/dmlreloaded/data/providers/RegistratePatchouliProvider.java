@@ -132,6 +132,7 @@ public abstract class RegistratePatchouliProvider implements RegistrateProvider 
     public enum ProviderType {
         BOOK_ITEM,
         BOOK_CATEGORY,
-        BOOK_ENTRY
+        BOOK_ENTRY,
+        BOOK_RECIPE
     }
 }

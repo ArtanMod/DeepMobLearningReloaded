@@ -42,6 +42,9 @@ public class PatchouliBuilder {
 
     public void save(Consumer<RegistratePatchouliProvider.Result> consumer) {
         consumer.accept(this.book);
+        if(this.book.getRecipe() != null) {
+            consumer.accept(this.book.getRecipe());
+        }
         for(Category category : categories.getCategories()) {
             consumer.accept(category);
             for(Entry entry : category.getEntries()) {

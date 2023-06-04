@@ -3,13 +3,19 @@ package jp.artan.dmlreloaded.data.builder.patchoulibuilder;
 import com.google.gson.JsonObject;
 import jp.artan.artansprojectcoremod.tabs.CreativeTab;
 import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.recipe.Recipe;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.recipe.ShapedRecipe;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.recipe.ShapelessRecipe;
 import jp.artan.dmlreloaded.data.providers.RegistratePatchouliProvider;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
 
 import javax.annotation.Nullable;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 import static jp.artan.dmlreloaded.data.builder.PatchouliBuilder.getBasePath;
@@ -18,6 +24,8 @@ public class Book implements RegistratePatchouliProvider.Result {
     private final ResourceLocation id;
     private final PatchouliBuilder parent;
     private final Book.Properties properties;
+    private Consumer<Consumer<FinishedRecipe>> pFinishedRecipeConsumer;
+    private @Nullable Recipe recipe;
     public Book(
             ResourceLocation id,
             PatchouliBuilder parent
@@ -30,6 +38,20 @@ public class Book implements RegistratePatchouliProvider.Result {
     public Book properties(Function<Properties, Properties> properties) {
         properties.apply(this.properties);
         return this;
+    }
+
+    public ShapelessRecipe shapelessRecipe() {
+        this.recipe = new ShapelessRecipe(this);
+        return (ShapelessRecipe) this.recipe;
+    }
+
+    public ShapedRecipe shapedRecipe() {
+        this.recipe = new ShapedRecipe(this);
+        return (ShapedRecipe) this.recipe;
+    }
+
+    public @Nullable Recipe getRecipe() {
+        return this.recipe;
     }
 
     public PatchouliBuilder build() {
@@ -92,8 +114,7 @@ public class Book implements RegistratePatchouliProvider.Result {
     public RegistratePatchouliProvider.ProviderType getProviderType() {
         return RegistratePatchouliProvider.ProviderType.BOOK_ITEM;
     }
-
-    /**
+                                     /**
      * @see "https://vazkiimods.github.io/Patchouli/docs/reference/book-json/"
      */
     public static class Properties {
