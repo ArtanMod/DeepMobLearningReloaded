@@ -2,6 +2,7 @@
   "name": "Simulation Chamber",
   "category": "dmlreloaded:1_machines",
   "icon": "dmlreloaded:simulation_chamber",
+  "sortnum": 0,
   "pages": [
     {
       "type": "patchouli:text",

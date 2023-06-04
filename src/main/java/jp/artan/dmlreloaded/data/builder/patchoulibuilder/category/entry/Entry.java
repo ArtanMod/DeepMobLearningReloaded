@@ -13,9 +13,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 
-import javax.annotation.Nullable;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 
 import static jp.artan.dmlreloaded.data.builder.PatchouliBuilder.getBasePath;
@@ -62,6 +63,20 @@ public class Entry implements RegistratePatchouliProvider.Result {
         jsonobject.addProperty("name", this.properties.name);
         jsonobject.addProperty("category", this.properties.category);
         jsonobject.addProperty("icon", this.properties.icon);
+        this.properties.advancement.ifPresent(advancement -> jsonobject.addProperty("advancement", advancement.toString()));
+        this.properties.flag.ifPresent(flag -> jsonobject.addProperty("flag", flag));
+        this.properties.priority.ifPresent(priority -> jsonobject.addProperty("priority", priority));
+        this.properties.secret.ifPresent(secret -> jsonobject.addProperty("secret", secret));
+        this.properties.readByDefault.ifPresent(readByDefault -> jsonobject.addProperty("read_by_default", readByDefault));
+        this.properties.sortnum.ifPresent(sortnum -> jsonobject.addProperty("sortnum", sortnum));
+
+        if(!this.properties.extraRecipeMappings.isEmpty()) {
+            JsonObject extraRecipeMappingsJsonObject = new JsonObject();
+            for(Map.Entry<String, Integer> extraRecipeMapping : this.properties.extraRecipeMappings.entrySet()) {
+                extraRecipeMappingsJsonObject.addProperty(extraRecipeMapping.getKey(), extraRecipeMapping.getValue());
+            }
+            jsonobject.add("extra_recipe_mappings", extraRecipeMappingsJsonObject);
+        }
 
         JsonArray pagesJsonArray = new JsonArray();
         for(Page page : this.properties.pages) {
@@ -83,7 +98,7 @@ public class Entry implements RegistratePatchouliProvider.Result {
     }
 
     private String getEntryId() {
-        return this.getCategoryId() + "/" + this.properties.sortnum + "_" + this.properties.name.replace(" ", "_").toLowerCase();
+        return this.getCategoryId() + "/" + this.properties.sortnum.get() + "_" + this.properties.name.replace(" ", "_").toLowerCase();
     }
 
     private String getCategoryId() {
@@ -96,12 +111,12 @@ public class Entry implements RegistratePatchouliProvider.Result {
         private final String category;
         private final String icon;
         private final NonNullList<Page<?>> pages = NonNullList.create();
-        private @Nullable String advancement;
-        private @Nullable String flag;
-        private boolean priority = false;
-        private boolean secret = false;
-        private boolean readByDefault = false;
-        private int sortnum;
+        private Optional<String> advancement = Optional.empty();
+        private Optional<String> flag = Optional.empty();
+        private Optional<Boolean> priority = Optional.empty();
+        private Optional<Boolean> secret = Optional.empty();
+        private Optional<Boolean> readByDefault = Optional.empty();
+        private Optional<Integer> sortnum;
         private HashMap<String, Integer> extraRecipeMappings = new HashMap<>();
 
         public Properties(
@@ -113,36 +128,36 @@ public class Entry implements RegistratePatchouliProvider.Result {
             this.name = name;
             this.category = category;
             this.icon = icon;
-            this.sortnum = sortnum;
+            this.sortnum = Optional.of(sortnum);
         }
 
         public Properties getAdvancement(String advancement) {
-            this.advancement = advancement;
+            this.advancement = Optional.of(advancement);
             return this;
         }
 
         public Properties setFlag(String flag) {
-            this.flag = flag;
+            this.flag = Optional.of(flag);
             return this;
         }
 
-        public Properties setHighPriority() {
-            this.priority = true;
+        public Properties sePriority(boolean priority) {
+            this.priority = Optional.of(priority);
             return this;
         }
 
-        public Properties setSecret() {
-            this.secret = true;
+        public Properties setSecret(boolean secret) {
+            this.secret = Optional.of(secret);
             return this;
         }
 
-        public Properties setOpenYet() {
-            this.readByDefault = true;
+        public Properties setReadByDefault(boolean readByDefault) {
+            this.readByDefault = Optional.of(readByDefault);
             return this;
         }
 
         public Properties setSortnum(int sortnum) {
-            this.sortnum = sortnum;
+            this.sortnum = Optional.of(sortnum);
             return this;
         }
 

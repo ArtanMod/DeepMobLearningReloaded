@@ -12,16 +12,11 @@
   "show_progress": false,
   "subtitle": "A not-so comprehensive Guide",
   "creative_tab": "deep_mob_learning_reloaded",
-  "dont_generate_book": false,
-  "show_toasts": true,
-  "use_blocky_font": false,
   "i18n": true,
   "macros": {
     "$(primary)": "$(#16EFF7)",
     "$(item)": "$(#ff8c00)",
     "$(dmlbm)": "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning-blood-magic-addon)Deep Mob Learning - BM Addon$()",
     "$(dml)": "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning)Deep Mob Learning$()"
-  },
-  "pause_game": false,
-  "allow_extensions": true
+  }
 }

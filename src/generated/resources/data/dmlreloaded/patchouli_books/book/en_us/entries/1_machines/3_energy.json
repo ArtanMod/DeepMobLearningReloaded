@@ -2,12 +2,12 @@
   "name": "Energy",
   "category": "dmlreloaded:1_machines",
   "icon": "minecraft:redstone",
+  "sortnum": 3,
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "minecraft:redstone",
       "title": "Energy",
-      "link_recipe": false,
       "text": "This mod adds no way of producing $(item)Energy$(), so you will need some sort of $(item)Generator$() from another mod to power the $(item)Machines$()."
     },
     {

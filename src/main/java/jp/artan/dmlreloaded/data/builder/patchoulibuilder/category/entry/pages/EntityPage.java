@@ -13,10 +13,10 @@ public class EntityPage extends Page<EntityPage> {
     private final String entity;
     private Optional<Float> scale = Optional.empty();
     private Optional<Float> offset = Optional.empty();
-    private boolean rotate = true;
+    private Optional<Boolean> rotate = Optional.empty();
     private Optional<Float> defaultRotation = Optional.empty();
-    private @Nullable String name;
-    private @Nullable String text;
+    private Optional<String> name = Optional.empty();
+    private Optional<String> text = Optional.empty();
 
     public EntityPage(Entry.Properties parent, String entity) {
         super(parent, "patchouli:entity");
@@ -34,7 +34,7 @@ public class EntityPage extends Page<EntityPage> {
     }
 
     public EntityPage setNoRotate() {
-        this.rotate = false;
+        this.rotate = Optional.of(false);
         return this;
     }
 
@@ -44,12 +44,12 @@ public class EntityPage extends Page<EntityPage> {
     }
 
     public EntityPage setName(String name) {
-        this.name = name;
+        this.name = Optional.of(name);
         return this;
     }
 
     public EntityPage setText(String text) {
-        this.text = text;
+        this.text = Optional.of(text);
         return this;
     }
 
@@ -58,10 +58,10 @@ public class EntityPage extends Page<EntityPage> {
         jsonobject.addProperty("entity", this.entity);
         this.scale.ifPresent(aFloat -> jsonobject.addProperty("scale", aFloat));
         this.offset.ifPresent(aFloat -> jsonobject.addProperty("offset", aFloat));
-        jsonobject.addProperty("rotate", this.rotate);
+        this.rotate.ifPresent(aBoolean -> jsonobject.addProperty("rotate", aBoolean));
         this.defaultRotation.ifPresent(aFloat -> jsonobject.addProperty("default_rotation", aFloat));
-        if(this.name != null) jsonobject.addProperty("name", this.name);
-        if(this.text != null) jsonobject.addProperty("text", this.text);
+        this.name.ifPresent(name -> jsonobject.addProperty("name", name));
+        this.text.ifPresent(text -> jsonobject.addProperty("text", text));
     }
 }
 

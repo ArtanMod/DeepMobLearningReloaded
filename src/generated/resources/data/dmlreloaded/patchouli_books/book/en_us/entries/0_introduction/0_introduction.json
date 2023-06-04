@@ -2,6 +2,7 @@
   "name": "Introduction",
   "category": "dmlreloaded:0_introduction",
   "icon": "dmlreloaded:soot_covered_redstone",
+  "sortnum": 0,
   "pages": [
     {
       "type": "patchouli:text",
@@ -12,7 +13,6 @@
       "anchor": "sooted_redstone",
       "item": "dmlreloaded:soot_covered_redstone",
       "title": "Sooting Redstone",
-      "link_recipe": false,
       "text": "$(item)Soot-covered Redstone$() can be created by crushing some $(item)Redstone$() against a $(item)Block of Coal$().$(br2)This sooty marvel will be required to craft most things this $(item)Mod$() has to offer."
     },
     {

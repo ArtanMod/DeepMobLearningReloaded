@@ -2,6 +2,7 @@
   "name": "Data Models",
   "category": "dmlreloaded:0_introduction",
   "icon": "dmlreloaded:data_model_guardian",
+  "sortnum": 2,
   "pages": [
     {
       "type": "patchouli:crafting",
@@ -12,7 +13,6 @@
       "type": "patchouli:spotlight",
       "anchor": "data_models",
       "item": "dmlreloaded:data_model_guardian",
-      "link_recipe": false,
       "text": "All of the $(item)Data Models$() start at the \\\"$(8)Faulty$()\\\" tier, this tier goes up as the $(item)Data Models$() gather more $(item)Data$().$(br2)As you $(item)Tier$() up you will gain more $(item)Data$() from the mobs you defeat.$(br2)$(item)Data Models$() can be put inside a $(l:1_machines/0_simulation_chamber)Simulation chamber$()"
     },
     {

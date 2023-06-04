@@ -5,15 +5,16 @@ import com.google.gson.JsonObject;
 import jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.entry.Entry;
 
 import javax.annotation.Nullable;
+import java.util.Optional;
 
 /**
  * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#image-pages"
  */
 public class ImagePage extends Page<ImagePage> {
     private final String[] images;
-    private @Nullable String title;
-    private boolean border = false;
-    private @Nullable String text;
+    private Optional<String> title = Optional.empty();
+    private Optional<Boolean> border = Optional.empty();
+    private Optional<String> text = Optional.empty();
 
     public ImagePage(Entry.Properties parent, String ...images) {
         super(parent, "patchouli:image");
@@ -21,17 +22,17 @@ public class ImagePage extends Page<ImagePage> {
     }
 
     public ImagePage setTitle(String title) {
-        this.title = title;
+        this.title = Optional.of(title);
         return this;
     }
 
-    public ImagePage setBorder() {
-        this.border = true;
+    public ImagePage setBorder(boolean border) {
+        this.border = Optional.of(border);
         return this;
     }
 
     public ImagePage setText(String text) {
-        this.text = text;
+        this.text = Optional.of(text);
         return this;
     }
 
@@ -42,9 +43,9 @@ public class ImagePage extends Page<ImagePage> {
             imagesJsonArray.add(image);
         }
         jsonobject.add("images", imagesJsonArray);
-        if(this.title != null) jsonobject.addProperty("title", this.title);
-        if(this.border) jsonobject.addProperty("border", this.border);
-        if(this.text != null) jsonobject.addProperty("text", this.text);
+        this.title.ifPresent(title -> jsonobject.addProperty("title", title));
+        this.border.ifPresent(border -> jsonobject.addProperty("border", border));
+        this.text.ifPresent(text -> jsonobject.addProperty("text", text));
     }
 }
 

@@ -5,14 +5,15 @@ import jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.entry.Entry;
 import net.minecraft.core.NonNullList;
 
 import javax.annotation.Nullable;
+import java.util.Optional;
 
 /**
  * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#relations-pages"
  */
 public class RelationsPage extends Page<RelationsPage> {
     private final NonNullList<String> entries = NonNullList.create();
-    private @Nullable String title;
-    private @Nullable String text;
+    private Optional<String> title = Optional.empty();
+    private Optional<String> text = Optional.empty();
 
     public RelationsPage(Entry.Properties parent) {
         super(parent, "patchouli:relations");
@@ -24,12 +25,12 @@ public class RelationsPage extends Page<RelationsPage> {
     }
 
     public RelationsPage setTitle(String title) {
-        this.title = title;
+        this.title = Optional.of(title);
         return this;
     }
 
     public RelationsPage setText(String text) {
-        this.text = text;
+        this.text = Optional.of(text);
         return this;
     }
 
@@ -40,8 +41,8 @@ public class RelationsPage extends Page<RelationsPage> {
             entriesJson.addProperty(entry, entry);
         }
         jsonobject.add("entries", entriesJson);
-        if(this.title != null) jsonobject.addProperty("title", this.title);
-        if(this.text != null) jsonobject.addProperty("text", this.text);
+        this.title.ifPresent(title -> jsonobject.addProperty("title", title));
+        this.text.ifPresent(text -> jsonobject.addProperty("text", text));
     }
 }
 

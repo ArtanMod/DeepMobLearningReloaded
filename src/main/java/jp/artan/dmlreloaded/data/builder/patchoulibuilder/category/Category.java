@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nullable;
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.function.Function;
 
 import static jp.artan.dmlreloaded.data.builder.PatchouliBuilder.getBasePath;
@@ -63,10 +64,10 @@ public class Category implements RegistratePatchouliProvider.Result {
         jsonobject.addProperty("name", this.properties.name);
         jsonobject.addProperty("description", this.properties.description);
         jsonobject.addProperty("icon", this.properties.icon);
-        if(this.properties.parent != null) jsonobject.addProperty("parent", this.properties.parent);
-        if(this.properties.flag != null) jsonobject.addProperty("flag", this.properties.flag);
-        jsonobject.addProperty("sortnum", this.properties.sortnum);
-        jsonobject.addProperty("secret", this.properties.secret);
+        this.properties.parent.ifPresent(parent -> jsonobject.addProperty("parent", parent));
+        this.properties.flag.ifPresent(flag -> jsonobject.addProperty("flag", flag));
+        this.properties.sortnum.ifPresent(sortnum -> jsonobject.addProperty("sortnum", sortnum));
+        this.properties.secret.ifPresent(secret -> jsonobject.addProperty("secret", secret));
         return jsonobject;
     }
 
@@ -81,7 +82,7 @@ public class Category implements RegistratePatchouliProvider.Result {
     }
 
     public String getCategoryId() {
-        return this.properties.sortnum + "_" + this.properties.name.replace(" ", "_").toLowerCase();
+        return this.properties.sortnum.get() + "_" + this.properties.name.replace(" ", "_").toLowerCase();
     }
 
     /**
@@ -91,10 +92,10 @@ public class Category implements RegistratePatchouliProvider.Result {
         private final String name;
         private final String description;
         private final String icon;
-        private @Nullable String parent;
-        private @Nullable String flag;
-        private int sortnum;
-        private boolean secret = false;
+        private Optional<String> parent = Optional.empty();
+        private Optional<String> flag = Optional.empty();
+        private Optional<Integer> sortnum = Optional.empty();
+        private Optional<Boolean> secret = Optional.empty();
         public Properties(
                 String name,
                 String description,
@@ -104,26 +105,26 @@ public class Category implements RegistratePatchouliProvider.Result {
             this.name = name;
             this.description = description;
             this.icon = icon;
-            this.sortnum = sortnum;
+            this.sortnum = Optional.of(sortnum);
         }
 
         public Properties setParent(String parent) {
-            this.parent = parent;
+            this.parent = Optional.of(parent);
             return this;
         }
 
         public Properties setFlag(String flag) {
-            this.flag = flag;
+            this.flag = Optional.of(flag);
             return this;
         }
 
         public Properties setSortnum(int sortnum) {
-            this.sortnum = sortnum;
+            this.sortnum = Optional.of(sortnum);
             return this;
         }
 
-        public Properties setSecret() {
-            this.secret = true;
+        public Properties setSecret(boolean secret) {
+            this.secret = Optional.of(secret);
             return this;
         }
     }

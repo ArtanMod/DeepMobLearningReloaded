@@ -8,16 +8,17 @@ import net.minecraft.core.NonNullList;
 import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/#multiblock-pages"
  */
 public class MultiblockPage extends Page<MultiblockPage> {
     private final String name;
-    private @Nullable String multiblockId;
+    private Optional<String> multiblockId = Optional.empty();
     private MultiblockProperties multiblock;
-    private boolean enableVisualize = true;
-    private @Nullable String text;
+    private Optional<Boolean> enableVisualize = Optional.empty();
+    private Optional<String> text = Optional.empty();
 
     public MultiblockPage(Entry.Properties parent, String name) {
         super(parent, "patchouli:multiblock");
@@ -26,26 +27,26 @@ public class MultiblockPage extends Page<MultiblockPage> {
     }
 
     public MultiblockPage setMultiblockId(String multiblockId) {
-        this.multiblockId = multiblockId;
+        this.multiblockId = Optional.of(multiblockId);
         return this;
     }
 
-    public MultiblockPage setDisableVisualize() {
-        this.enableVisualize = false;
+    public MultiblockPage setEnableVisualize(boolean enableVisualize) {
+        this.enableVisualize = Optional.of(enableVisualize);
         return this;
     }
 
     public MultiblockPage setText(String text) {
-        this.text = text;
+        this.text = Optional.of(text);
         return this;
     }
 
     @Override
     protected void serializeData(JsonObject jsonobject) {
         jsonobject.addProperty("name", this.name);
-        if(this.multiblockId != null) jsonobject.addProperty("multiblock_id", this.multiblockId);
-        jsonobject.addProperty("enable_visualize", this.enableVisualize);
-        if(this.text != null) jsonobject.addProperty("text", this.text);
+        this.multiblockId.ifPresent(multiblockId -> jsonobject.addProperty("multiblock", multiblockId));
+        this.enableVisualize.ifPresent(enableVisualize -> jsonobject.addProperty("enable_visualize", enableVisualize));
+        this.text.ifPresent(text -> jsonobject.addProperty("text", text));
 
         JsonObject multiblockJson = new JsonObject();
 
@@ -65,15 +66,15 @@ public class MultiblockPage extends Page<MultiblockPage> {
         }
         multiblockJson.add("pattern", patternJson);
 
-        multiblockJson.addProperty("symmetrical", this.multiblock.symmetrical);
+        this.multiblock.symmetrical.ifPresent(symmetrical -> multiblockJson.addProperty("symmetrical", symmetrical));
 
-        if(this.multiblock.offset != null) {
+        this.multiblock.offset.ifPresent(offset -> {
             JsonArray offsetJson = new JsonArray();
-            for(int offset : this.multiblock.offset) {
-                offsetJson.add(offset);
+            for(int offsetValue : offset) {
+                offsetJson.add(offsetValue);
             }
             multiblockJson.add("offset", offsetJson);
-        }
+        });
 
         jsonobject.add("multiblock", multiblockJson);
     }
@@ -85,8 +86,8 @@ public class MultiblockPage extends Page<MultiblockPage> {
         private final MultiblockPage parent;
         private final HashMap<String, String> properties = new HashMap<>();
         private final NonNullList<String[]> pattern = NonNullList.create();
-        private boolean symmetrical = false;
-        private @Nullable int[] offset;
+        private Optional<Boolean> symmetrical = Optional.empty();
+        private Optional<int[]> offset = Optional.empty();
 
         public MultiblockProperties(MultiblockPage parent) {
             this.parent = parent;
@@ -102,13 +103,13 @@ public class MultiblockPage extends Page<MultiblockPage> {
             return this;
         }
 
-        public MultiblockProperties setSymmetrical() {
-            this.symmetrical = true;
+        public MultiblockProperties setSymmetrical(boolean symmetrical) {
+            this.symmetrical = Optional.of(symmetrical);
             return this;
         }
 
         public MultiblockProperties setOffset(int x, int y, int z) {
-            this.offset = new int[] {x, y, z};
+            this.offset = Optional.of(new int[]{x, y, z});
             return this;
         }
 
