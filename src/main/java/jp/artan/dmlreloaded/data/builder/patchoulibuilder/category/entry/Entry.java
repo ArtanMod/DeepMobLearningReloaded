@@ -95,7 +95,7 @@ public class Entry implements RegistratePatchouliProvider.Result {
         private final String name;
         private final String category;
         private final String icon;
-        private NonNullList<Page> pages = NonNullList.create();
+        private final NonNullList<Page<?>> pages = NonNullList.create();
         private @Nullable String advancement;
         private @Nullable String flag;
         private boolean priority = false;

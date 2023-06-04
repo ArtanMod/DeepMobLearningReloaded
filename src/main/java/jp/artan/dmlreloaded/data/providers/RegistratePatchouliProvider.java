@@ -133,6 +133,7 @@ public abstract class RegistratePatchouliProvider implements RegistrateProvider 
         BOOK_ITEM,
         BOOK_CATEGORY,
         BOOK_ENTRY,
-        BOOK_RECIPE
+        BOOK_RECIPE,
+        BOOK_TEMPLATE
     }
 }

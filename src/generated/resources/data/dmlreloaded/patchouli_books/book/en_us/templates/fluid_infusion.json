@@ -1,0 +1,84 @@
+{
+  "components": [
+    {
+      "type": "patchouli:header",
+      "x": -1,
+      "y": -1,
+      "text": "#title"
+    },
+    {
+      "type": "patchouli:separator",
+      "x": -1,
+      "y": -1
+    },
+    {
+      "type": "patchouli:item",
+      "x": 27,
+      "y": 30,
+      "item": "#input1",
+      "framed": true
+    },
+    {
+      "type": "patchouli:item",
+      "x": 50,
+      "y": 30,
+      "item": "#input2",
+      "framed": true
+    },
+    {
+      "type": "patchouli:item",
+      "x": 73,
+      "y": 30,
+      "item": "#input3",
+      "framed": true
+    },
+    {
+      "type": "patchouli:image",
+      "x": 50,
+      "y": 50,
+      "image": "dmlreloaded:textures/gui/patchouli/arrow_down.png",
+      "width": 16,
+      "height": 16,
+      "texture_width": 16,
+      "texture_height": 16
+    },
+    {
+      "type": "patchouli:image",
+      "x": 50,
+      "y": 65,
+      "image": "#fluid",
+      "width": 16,
+      "height": 16,
+      "texture_width": 16,
+      "texture_height": 16
+    },
+    {
+      "type": "patchouli:tooltip",
+      "x": 49,
+      "y": 64,
+      "tooltip": [
+        "#fluidTooltip"
+      ],
+      "width": 16,
+      "height": 16
+    },
+    {
+      "type": "patchouli:image",
+      "x": 50,
+      "y": 84,
+      "image": "dmlreloaded:textures/gui/patchouli/arrow_down.png",
+      "width": 16,
+      "height": 16,
+      "texture_width": 16,
+      "texture_height": 16
+    },
+    {
+      "type": "patchouli:item",
+      "x": 50,
+      "y": 102,
+      "item": "#output",
+      "framed": true,
+      "link_recipe": true
+    }
+  ]
+}

@@ -5,6 +5,8 @@ import jp.artan.dmlreloaded.data.builder.patchoulibuilder.Book;
 import jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.Categories;
 import jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.Category;
 import jp.artan.dmlreloaded.data.builder.patchoulibuilder.category.entry.Entry;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.template.Template;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.template.Templates;
 import jp.artan.dmlreloaded.data.providers.RegistratePatchouliProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
@@ -20,6 +22,8 @@ public class PatchouliBuilder {
     private final Book book;
     private final Categories categories;
 
+    private final Templates templates;
+
     public PatchouliBuilder(
             String modId,
             String name,
@@ -30,6 +34,7 @@ public class PatchouliBuilder {
         this.existingFileHelper = existingFileHelper;
         this.book = new Book(this.location, this);
         this.categories = new Categories(this);
+        this.templates = new Templates(this);
     }
 
     public Book book() {
@@ -40,10 +45,17 @@ public class PatchouliBuilder {
         return this.categories;
     }
 
+    public Templates getTemplates() {
+        return this.templates;
+    }
+
     public void save(Consumer<RegistratePatchouliProvider.Result> consumer) {
         consumer.accept(this.book);
         if(this.book.getRecipe() != null) {
             consumer.accept(this.book.getRecipe());
+        }
+        for(Template template : this.templates.getTemplates()) {
+            consumer.accept(template);
         }
         for(Category category : categories.getCategories()) {
             consumer.accept(category);
