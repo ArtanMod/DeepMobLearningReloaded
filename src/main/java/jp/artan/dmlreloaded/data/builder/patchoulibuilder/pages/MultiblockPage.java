@@ -2,7 +2,7 @@ package jp.artan.dmlreloaded.data.builder.patchoulibuilder.pages;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
 import net.minecraft.core.NonNullList;
 
 import javax.annotation.Nullable;
@@ -19,7 +19,7 @@ public class MultiblockPage extends Page<MultiblockPage> {
     private boolean enableVisualize = true;
     private @Nullable String text;
 
-    public MultiblockPage(PatchouliBuilder.Entry.Properties parent, String name) {
+    public MultiblockPage(Entry.Properties parent, String name) {
         super(parent, "patchouli:multiblock");
         this.name = name;
         this.multiblock = new MultiblockProperties(this);

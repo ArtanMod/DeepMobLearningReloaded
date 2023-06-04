@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.data.builder.patchoulibuilder.pages;
 
 import com.google.gson.JsonObject;
-import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
 
 import javax.annotation.Nullable;
 
@@ -14,7 +14,7 @@ public class SpotlightPage extends Page<SpotlightPage> {
     private boolean linkRecipe = false;
     private @Nullable String text;
 
-    public SpotlightPage(PatchouliBuilder.Entry.Properties parent, String item) {
+    public SpotlightPage(Entry.Properties parent, String item) {
         super(parent, "patchouli:spotlight");
         this.item = item;
     }

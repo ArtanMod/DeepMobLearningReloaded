@@ -2,7 +2,7 @@ package jp.artan.dmlreloaded.data.builder.patchoulibuilder.pages;
 
 
 import com.google.gson.JsonObject;
-import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
 
 import javax.annotation.Nullable;
 
@@ -13,7 +13,7 @@ public class TextPage extends Page<TextPage> {
     private final String text;
     private @Nullable String title;
 
-    public TextPage(PatchouliBuilder.Entry.Properties parent, String text) {
+    public TextPage(Entry.Properties parent, String text) {
         super(parent, "patchouli:text");
         this.text = text;
     }

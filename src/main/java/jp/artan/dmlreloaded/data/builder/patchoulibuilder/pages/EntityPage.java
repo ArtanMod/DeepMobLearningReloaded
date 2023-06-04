@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.data.builder.patchoulibuilder.pages;
 
 import com.google.gson.JsonObject;
-import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -18,7 +18,7 @@ public class EntityPage extends Page<EntityPage> {
     private @Nullable String name;
     private @Nullable String text;
 
-    public EntityPage(PatchouliBuilder.Entry.Properties parent, String entity) {
+    public EntityPage(Entry.Properties parent, String entity) {
         super(parent, "patchouli:entity");
         this.entity = entity;
     }

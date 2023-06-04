@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.data.builder.patchoulibuilder.pages;
 
 import com.google.gson.JsonObject;
-import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
 import net.minecraft.core.NonNullList;
 
 import javax.annotation.Nullable;
@@ -14,7 +14,7 @@ public class RelationsPage extends Page<RelationsPage> {
     private @Nullable String title;
     private @Nullable String text;
 
-    public RelationsPage(PatchouliBuilder.Entry.Properties parent) {
+    public RelationsPage(Entry.Properties parent) {
         super(parent, "patchouli:relations");
     }
 

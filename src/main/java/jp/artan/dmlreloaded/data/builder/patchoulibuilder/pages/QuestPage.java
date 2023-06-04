@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.data.builder.patchoulibuilder.pages;
 
 import com.google.gson.JsonObject;
-import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
 
 import javax.annotation.Nullable;
 
@@ -13,7 +13,7 @@ public class QuestPage extends Page<QuestPage> {
     private @Nullable String title;
     private @Nullable String text;
 
-    public QuestPage(PatchouliBuilder.Entry.Properties parent) {
+    public QuestPage(Entry.Properties parent) {
         super(parent, "patchouli:quest");
     }
 

@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.data.builder.patchoulibuilder.pages;
 
 import com.google.gson.JsonObject;
-import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
 import jp.artan.repack.registrate.util.entry.BlockEntry;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.resources.ResourceLocation;
@@ -20,7 +20,7 @@ public class CraftingRecipePage extends Page<CraftingRecipePage> {
     private @Nullable String title2;
     private @Nullable String text;
 
-    public CraftingRecipePage(PatchouliBuilder.Entry.Properties parent, ResourceLocation recipe) {
+    public CraftingRecipePage(Entry.Properties parent, ResourceLocation recipe) {
         super(parent, "patchouli:crafting");
         this.recipe = recipe;
     }

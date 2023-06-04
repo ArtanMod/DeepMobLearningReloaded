@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.data.builder.patchoulibuilder.pages;
 
 import com.google.gson.JsonObject;
-import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
 
 import javax.annotation.Nullable;
 
@@ -9,13 +9,13 @@ import javax.annotation.Nullable;
  * @see "https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/page-types/"
  */
 public abstract class Page<T extends Page<T>> {
-    private final PatchouliBuilder.Entry.Properties parent;
+    private final Entry.Properties parent;
     private final String type;
     private @Nullable String advancement;
     private @Nullable String flag;
     private @Nullable String anchor;
 
-    public Page(PatchouliBuilder.Entry.Properties parent, String type) {
+    public Page(Entry.Properties parent, String type) {
         this.parent = parent;
         this.type = type;
     }
@@ -45,7 +45,7 @@ public abstract class Page<T extends Page<T>> {
         return jsonobject;
     }
 
-    public PatchouliBuilder.Entry.Properties build() {
+    public Entry.Properties build() {
         return this.parent;
     }
 

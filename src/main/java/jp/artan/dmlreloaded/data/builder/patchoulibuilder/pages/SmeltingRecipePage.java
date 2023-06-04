@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.data.builder.patchoulibuilder.pages;
 
 import com.google.gson.JsonObject;
-import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
 import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nullable;
@@ -15,7 +15,7 @@ public class SmeltingRecipePage extends Page<SmeltingRecipePage> {
     private @Nullable String title;
     private @Nullable String text;
 
-    public SmeltingRecipePage(PatchouliBuilder.Entry.Properties parent, ResourceLocation recipe) {
+    public SmeltingRecipePage(Entry.Properties parent, ResourceLocation recipe) {
         super(parent, "patchouli:smelting");
         this.recipe = recipe;
     }

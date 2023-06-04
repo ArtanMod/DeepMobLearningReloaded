@@ -2,7 +2,7 @@ package jp.artan.dmlreloaded.data.builder.patchoulibuilder.pages;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import jp.artan.dmlreloaded.data.builder.PatchouliBuilder;
+import jp.artan.dmlreloaded.data.builder.patchoulibuilder.entry.Entry;
 
 import javax.annotation.Nullable;
 
@@ -15,7 +15,7 @@ public class ImagePage extends Page<ImagePage> {
     private boolean border = false;
     private @Nullable String text;
 
-    public ImagePage(PatchouliBuilder.Entry.Properties parent, String ...images) {
+    public ImagePage(Entry.Properties parent, String ...images) {
         super(parent, "patchouli:image");
         this.images = images;
     }
