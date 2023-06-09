@@ -129,7 +129,7 @@ public abstract class MobMetaData {
         return Vector3f.ZP.rotationDegrees(0.0F);
     }
 
-    public void setPose(PoseStack poseStack, int xPos, int yPos, long gameTime) {
+    public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
         poseStack.scale(1.2F, 1.2F, -1.2F);
     }
 

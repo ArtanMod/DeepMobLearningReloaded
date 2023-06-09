@@ -231,45 +231,8 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         LivingEntity entity= meta.getEntity(world);;
         Quaternion quaternion1 = meta.getEntityXRotation();
         Quaternion quaternion = meta.getEntityZRotation();
+        meta.setPose(posestack, xPos, yPos, world);
 
-        if(meta.getKey() == MobKey.DRAGON) {
-            posestack.scale(0.19F, 0.19F, -0.19F);
-            quaternion1 = Vector3f.XP.rotationDegrees(10.0F);
-            quaternion = Vector3f.ZP.rotationDegrees(180.0F);
-            posestack.translate((double)xPos-67, (double)yPos - 200 + Math.sin(world.getGameTime()/13.0d)*3.0d, 1050.0D);
-        } else if(meta.getKey() == MobKey.WITHER) {
-            posestack.scale(0.7F, 0.7F, -0.7F);
-            quaternion1 = Vector3f.XP.rotationDegrees(180.0F);
-            quaternion = Vector3f.ZP.rotationDegrees(0.0F);
-            posestack.translate((double)(xPos-68), (double)(yPos- 87 + Math.sin(world.getGameTime()/13.0d)*3.0d), 1050.0D);
-        } else if(meta.getKey() == MobKey.GHAST) {
-            posestack.scale(0.33F, 0.33F, -0.33F);
-            quaternion1 = Vector3f.XP.rotationDegrees(180.0F);
-            quaternion = Vector3f.ZP.rotationDegrees(0.0F);
-            posestack.translate((double)(xPos-68), (double)(yPos- 188 + Math.sin(world.getGameTime()/13.0d)*0.001d), 0.0D);
-        } else if(meta.getKey() == MobKey.SPIDER) {
-            posestack.scale(1.02F, 1.02F, -1.02F);
-            quaternion1 = Vector3f.XP.rotationDegrees(180.0F);
-            quaternion = Vector3f.ZP.rotationDegrees(0.0F);
-            posestack.translate((double)(xPos-68), (double)(yPos- 110 + Math.sin(world.getGameTime()/13.0d)*3.0d), 0.0D);
-        } else if(meta.getKey() == MobKey.WITCH) {
-            posestack.scale(1.2F, 1.2F, -1.2F);
-            quaternion1 = Vector3f.XP.rotationDegrees(180.0F);
-            quaternion = Vector3f.ZP.rotationDegrees(0.0F);
-            posestack.translate((double)(xPos-68), (double)(yPos- 97 + Math.sin(world.getGameTime()/13.0d)*0.001d), 0.0D);
-        } else if(meta.getKey() == MobKey.ENDERMAN) {
-            posestack.scale(1.02F, 1.02F, -1.02F);
-            quaternion1 = Vector3f.XP.rotationDegrees(180.0F);
-            quaternion = Vector3f.ZP.rotationDegrees(0.0F);
-            posestack.translate((double)(xPos-68), (double)(yPos- 99 + Math.sin(world.getGameTime()/13.0d)*0.00001d), 0.0D);
-        } else if(meta.getKey() == MobKey.SLIME) {
-            posestack.scale(2F, 2F, -2F);
-            quaternion1 = Vector3f.XP.rotationDegrees(180.0F);
-            quaternion = Vector3f.ZP.rotationDegrees(0.0F);
-            posestack.translate((double)(xPos-68), (double)(yPos- 110 + Math.sin(world.getGameTime()/13.0d)*3.0d), 0.0D);
-        } else {
-            meta.setPose(posestack, xPos, yPos, world.getGameTime());
-        }
         RenderSystem.applyModelViewMatrix();
         PoseStack posestack1 = new PoseStack();
         posestack1.translate(0.0D, 0.0D, 1000.0D);

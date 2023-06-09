@@ -49,7 +49,6 @@ public enum MobKey implements IMobKey {
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.EMERALD, 8));
         add(() -> new ItemStack(Items.TOTEM_OF_UNDYING, 1));
-        add(() -> new ItemStack(Items.EMERALD, 8));
         add(() -> new ItemStack(Items.BOOK, 64));
     }}),
     GHAST("ghast", GhastMeta::new, LivingMatterType.HELLISH, new ArrayList<>(){{
