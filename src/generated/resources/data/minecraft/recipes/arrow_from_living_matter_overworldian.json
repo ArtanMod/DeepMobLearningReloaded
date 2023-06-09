@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dmlreloaded:living_matter_overworldian"
+    },
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "minecraft:flint"
+    }
+  ],
+  "result": {
+    "item": "minecraft:arrow",
+    "count": 12
+  }
+}

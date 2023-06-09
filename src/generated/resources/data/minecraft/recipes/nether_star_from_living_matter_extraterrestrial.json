@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X#X",
+    "YYY",
+    " Y "
+  ],
+  "key": {
+    "#": {
+      "item": "dmlreloaded:living_matter_extraterrestrial"
+    },
+    "X": {
+      "item": "minecraft:wither_skeleton_skull"
+    },
+    "Y": {
+      "item": "minecraft:soul_sand"
+    }
+  },
+  "result": {
+    "item": "minecraft:nether_star"
+  }
+}

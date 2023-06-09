@@ -11,6 +11,7 @@ import jp.artan.repack.registrate.providers.RegistrateRecipeProvider;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -594,25 +595,167 @@ public class ItemInit {
     }
 
     public static class LivingMatter {
-        public static final ItemEntry<ItemLivingMatter> OVERWORLDIAN = REGISTRATE.item("living_matter_overworldian", p -> new ItemLivingMatter(p, LivingMatterType.OVERWORLDIAN))
-                .lang("Overworldian Matter")
-                .jpLang("Overworldianマター")
-                .addRawLang(LivingMatterType.OVERWORLDIAN.getLangId(), "Overworldian")
-                .addRawJPLang(LivingMatterType.OVERWORLDIAN.getLangId(), "Overworldian")
+
+        public static final ItemEntry<ItemLivingMatter> EXTRATERRESTRIAL = REGISTRATE.item("living_matter_extraterrestrial", p -> new ItemLivingMatter(p, LivingMatterType.EXTRATERRESTRIAL))
+                .recipe((ctx, prov) -> {
+                    ShapelessRecipeBuilder.shapeless(Items.CHORUS_FRUIT)
+                            .requires(ctx.get())
+                            .requires(Items.APPLE)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "chorus_flower_from_living_matter_extraterrestrial");
+                    ShapelessRecipeBuilder.shapeless(Blocks.END_STONE, 8)
+                            .requires(ctx.get())
+                            .requires(Blocks.SANDSTONE, 2)
+                            .requires(Items.ENDER_PEARL)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "ender_stone_from_living_matter_extraterrestrial");
+                    ShapedRecipeBuilder.shaped(Items.NETHER_STAR)
+                            .define('#', ctx.get())
+                            .define('X', Blocks.WITHER_SKELETON_SKULL)
+                            .define('Y', Blocks.SOUL_SAND)
+                            .pattern("X#X")
+                            .pattern("YYY")
+                            .pattern(" Y ")
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "nether_star_from_living_matter_extraterrestrial");
+                    ShapelessRecipeBuilder.shapeless(Items.ENDER_PEARL)
+                            .requires(ctx.get())
+                            .requires(Items.EMERALD)
+                            .requires(Items.SNOWBALL)
+                            .requires(Items.SLIME_BALL)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ItemInit.LivingMatter.EXTRATERRESTRIAL.get()))
+                            .save(prov, DeepMobLearningReloaded.getResource("ender_pearl_from_extraterrestrial_living_matter"));
+                })
+                .lang("Extraterrestrial Matter")
+                .jpLang("Extraterrestrialマター")
+                .addRawLang(LivingMatterType.EXTRATERRESTRIAL.getLangId(), "Extraterrestrial")
+                .addRawJPLang(LivingMatterType.EXTRATERRESTRIAL.getLangId(), "Extraterrestrial")
                 .register();
 
         public static final ItemEntry<ItemLivingMatter> HELLISH = REGISTRATE.item("living_matter_hellish", p -> new ItemLivingMatter(p, LivingMatterType.HELLISH))
+                .recipe((ctx, prov) -> {
+                    ShapelessRecipeBuilder.shapeless(Items.BLAZE_POWDER, 2)
+                            .requires(ctx.get())
+                            .requires(Items.GUNPOWDER)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "blaze_powder_from_living_matter_hellish");
+                    ShapedRecipeBuilder.shaped(EXTRATERRESTRIAL.get())
+                            .define('#', ctx.get())
+                            .define('X', Blocks.END_STONE)
+                            .pattern(" # ")
+                            .pattern("#X#")
+                            .pattern(" # ")
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "living_matter_extraterrestrial_from_living_matter_hellish");
+                    ShapelessRecipeBuilder.shapeless(Items.BLAZE_ROD)
+                            .requires(ctx.get(), 2)
+                            .requires(Items.BONE)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "blaze_rod_from_living_matter_hellish");
+                    ShapelessRecipeBuilder.shapeless(Items.GHAST_TEAR, 3)
+                            .requires(ctx.get(), 2)
+                            .requires(Items.SUGAR)
+                            .requires(Items.SPIDER_EYE)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "ghast_tear_from_living_matter_hellish");
+                    ShapelessRecipeBuilder.shapeless(Blocks.SOUL_SAND, 4)
+                            .requires(ctx.get())
+                            .requires(Blocks.SAND)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ItemInit.LivingMatter.HELLISH.get()))
+                            .save(prov, DeepMobLearningReloaded.getResource("soul_sand_from_hellish_living_matter"));
+                    ShapelessRecipeBuilder.shapeless(Items.NETHER_WART, 4)
+                            .requires(ctx.get())
+                            .requires(Blocks.RED_MUSHROOM)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "nether_wart_from_living_matter_hellish");
+                    ShapelessRecipeBuilder.shapeless(Items.GOLD_INGOT, 6)
+                            .requires(ctx.get())
+                            .requires(Items.IRON_INGOT)
+                            .requires(Items.GLOWSTONE_DUST)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "gold_ingot_from_living_matter_hellish");
+                })
                 .lang("Hellish Matter")
                 .jpLang("Hellishマター")
                 .addRawLang(LivingMatterType.HELLISH.getLangId(), "Hellish")
                 .addRawJPLang(LivingMatterType.HELLISH.getLangId(), "Hellish")
                 .register();
 
-        public static final ItemEntry<ItemLivingMatter> EXTRATERRESTRIAL = REGISTRATE.item("living_matter_extraterrestrial", p -> new ItemLivingMatter(p, LivingMatterType.EXTRATERRESTRIAL))
-                .lang("Extraterrestrial Matter")
-                .jpLang("Extraterrestrialマター")
-                .addRawLang(LivingMatterType.EXTRATERRESTRIAL.getLangId(), "Extraterrestrial")
-                .addRawJPLang(LivingMatterType.EXTRATERRESTRIAL.getLangId(), "Extraterrestrial")
+        public static final ItemEntry<ItemLivingMatter> OVERWORLDIAN = REGISTRATE.item("living_matter_overworldian", p -> new ItemLivingMatter(p, LivingMatterType.OVERWORLDIAN))
+                .recipe((ctx, prov) -> {
+                    ShapelessRecipeBuilder.shapeless(Blocks.GRASS, 4)
+                            .requires(ctx.get())
+                            .requires(Blocks.DIRT)
+                            .requires(ItemTags.LEAVES)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "grass_from_living_matter_overworldian");
+                    ShapedRecipeBuilder.shaped(HELLISH.get())
+                            .define('#', ctx.get())
+                            .define('X', Blocks.NETHERRACK)
+                            .pattern(" # ")
+                            .pattern("#X#")
+                            .pattern(" # ")
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "hellish_from_living_matter_overworldian");
+                    ShapelessRecipeBuilder.shapeless(Items.CARROT, 2)
+                            .requires(ctx.get())
+                            .requires(Items.WHEAT_SEEDS)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "carrot_from_living_matter_overworldian");
+                    ShapelessRecipeBuilder.shapeless(Items.PRISMARINE_SHARD, 2)
+                            .requires(ctx.get())
+                            .requires(Items.QUARTZ)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "prismarine_shard_from_living_matter_overworldian");
+                    ShapelessRecipeBuilder.shapeless(Items.IRON_INGOT, 8)
+                            .requires(ctx.get(), 4)
+                            .requires(Items.ROTTEN_FLESH)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "iron_ingot_from_living_matter_overworldian");
+                    ShapelessRecipeBuilder.shapeless(Items.POTATO, 2)
+                            .requires(ctx.get())
+                            .requires(Items.STICK)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "potato_from_living_matter_overworldian");
+                    ShapelessRecipeBuilder.shapeless(Items.GUNPOWDER, 16)
+                            .requires(ctx.get())
+                            .requires(Items.COAL)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "gunpowder_from_living_matter_overworldian");
+                    ShapelessRecipeBuilder.shapeless(Items.ARROW, 12)
+                            .requires(ctx.get())
+                            .requires(Items.STICK)
+                            .requires(Items.FLINT)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "arrow_from_living_matter_overworldian");
+                    ShapelessRecipeBuilder.shapeless(Items.BONE, 22)
+                            .requires(ctx.get())
+                            .requires(Items.BONE_MEAL)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "bone_from_living_matter_overworldian");
+                    ShapelessRecipeBuilder.shapeless(Items.ROTTEN_FLESH, 16)
+                            .requires(ctx.get())
+                            .requires(Items.PORKCHOP)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "rotten_flesh_from_living_matter_overworldian");
+                    ShapelessRecipeBuilder.shapeless(Items.SPIDER_EYE, 2)
+                            .requires(ctx.get())
+                            .requires(Items.ROTTEN_FLESH)
+                            .requires(Items.APPLE)
+                            .requires(Items.RED_MUSHROOM)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "spider_eye_from_living_matter_overworldian");
+                    ShapelessRecipeBuilder.shapeless(Blocks.COBWEB, 4)
+                            .requires(ctx.get(), 2)
+                            .requires(Items.STRING)
+                            .requires(Items.SLIME_BALL)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "cobweb_from_living_matter_overworldian");
+                })
+                .lang("Overworldian Matter")
+                .jpLang("Overworldianマター")
+                .addRawLang(LivingMatterType.OVERWORLDIAN.getLangId(), "Overworldian")
+                .addRawJPLang(LivingMatterType.OVERWORLDIAN.getLangId(), "Overworldian")
                 .register();
 
         public static void register() {

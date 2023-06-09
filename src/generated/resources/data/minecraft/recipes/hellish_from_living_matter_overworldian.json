@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "dmlreloaded:living_matter_overworldian"
+    },
+    "X": {
+      "item": "minecraft:netherrack"
+    }
+  },
+  "result": {
+    "item": "dmlreloaded:living_matter_hellish"
+  }
+}
