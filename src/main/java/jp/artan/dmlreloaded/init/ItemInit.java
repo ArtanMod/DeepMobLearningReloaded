@@ -282,9 +282,19 @@ public class ItemInit {
                 .jpLang("ドラゴンのデータモデル")
                 .register();
 
+        public static final ItemEntry<ItemDataModel> ELDER_GUARDIAN = registerDataModel("data_model_elder_guardian", MobKey.ELDER_GUARDIAN, () -> Items.SPONGE)
+                .lang("Elder Guardian Data Model")
+                .jpLang("エルダーガーディアンのデータモデル")
+                .register();
+
         public static final ItemEntry<ItemDataModel> ENDERMAN = registerDataModel("data_model_enderman", MobKey.ENDERMAN, () -> Items.ENDER_PEARL)
                 .lang("Enderman Data Model")
                 .jpLang("エンダーマンのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> EVOKER = registerDataModel("data_model_evoker", MobKey.EVOKER, () -> Items.TOTEM_OF_UNDYING)
+                .lang("Evoker Data Model")
+                .jpLang("エヴォーカーのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> GHAST = registerDataModel("data_model_ghast", MobKey.GHAST, () -> Items.GHAST_TEAR)
@@ -295,6 +305,39 @@ public class ItemInit {
         public static final ItemEntry<ItemDataModel> GUARDIAN = registerDataModel("data_model_guardian", MobKey.GUARDIAN, () -> Items.PRISMARINE_SHARD)
                 .lang("Guardian Data Model")
                 .jpLang("ガーディアンのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> HOGLIN = registerDataModel("data_model_hoglin", MobKey.HOGLIN)
+                .recipe((ctx, prov) -> {
+                    ShapelessRecipeBuilder.shapeless(ctx.get())
+                            .requires(BLANK.get())
+                            .requires(Items.LEATHER)
+                            .requires(Items.PORKCHOP)
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
+                            .save(prov);
+                })
+                .lang("Hoglin Data Model")
+                .jpLang("ホグリンのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> MAGMA_CUBE = registerDataModel("data_model_magma_cube", MobKey.MAGMA_CUBE, () -> Items.MAGMA_CREAM)
+                .lang("Magma Cube Data Model")
+                .jpLang("マグマキューブのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> PHANTOM = registerDataModel("data_model_phantom", MobKey.PHANTOM, () -> Items.PHANTOM_MEMBRANE)
+                .lang("Phantom Data Model")
+                .jpLang("ファントムのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> PIGLIN = registerDataModel("data_model_piglin", MobKey.PIGLIN, () -> Items.GOLD_INGOT)
+                .lang("Piglin Data Model")
+                .jpLang("ピグリンのデータモデル")
+                .register();
+
+        public static final ItemEntry<ItemDataModel> RAVAGER = registerDataModel("data_model_ravager", MobKey.RAVAGER, () -> Items.SADDLE)
+                .lang("Ravager Data Model")
+                .jpLang("ラヴェジャーのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> SHULKER = registerDataModel("data_model_shulker", MobKey.SHULKER, () -> Items.SHULKER_SHELL)
@@ -340,9 +383,13 @@ public class ItemInit {
         public static void register() {
 
         }
+
+        private static ModItemBuilder<ItemDataModel, DeepMobLearningReloadedRegistrate> registerDataModel(String id, MobKey key) {
+            return REGISTRATE.item(id, p -> new ItemDataModel(p, key));
+        }
         
         private static ModItemBuilder<ItemDataModel, DeepMobLearningReloadedRegistrate> registerDataModel(String id, MobKey key, Supplier<? extends Item> material) {
-            return REGISTRATE.item(id, p -> new ItemDataModel(p, key))
+            return registerDataModel(id, key)
                     .properties(p -> p.stacksTo(1))
                     .recipe((ctx, prov) -> {
                         ShapelessRecipeBuilder.shapeless(ctx.get())
@@ -384,6 +431,13 @@ public class ItemInit {
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.DRAGON, 1), "")
                 .register();
 
+        public static final ItemEntry<ItemPristineMatter> ELDER_GUARDIAN = REGISTRATE.item("pristine_matter_elder_guardian", p -> new ItemPristineMatter(p, MobKey.ELDER_GUARDIAN))
+                .lang("Elder Guardian Dragon Matter")
+                .jpLang("綺麗なエルダーガーディアンマター")
+//                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
+                .register();
+
         public static final ItemEntry<ItemPristineMatter> ENDERMAN = REGISTRATE.item("pristine_matter_enderman", p -> new ItemPristineMatter(p, MobKey.ENDERMAN))
                 .lang("Pristine Enderman Matter")
                 .jpLang("綺麗なエンダーマンマター")
@@ -391,6 +445,13 @@ public class ItemInit {
                 .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ENDERMAN, 1), "Teleports short distances")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ENDERMAN, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ENDERMAN, 1), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> EVOKER = REGISTRATE.item("pristine_matter_evoker", p -> new ItemPristineMatter(p, MobKey.EVOKER))
+                .lang("Evoker Dragon Matter")
+                .jpLang("綺麗なエヴォーカーマター")
+//                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> GHAST = REGISTRATE.item("pristine_matter_ghast", p -> new ItemPristineMatter(p, MobKey.GHAST))
@@ -411,6 +472,41 @@ public class ItemInit {
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.GUARDIAN, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.GUARDIAN, 1), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.GUARDIAN, 2), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> HOGLIN = REGISTRATE.item("pristine_matter_hoglin", p -> new ItemPristineMatter(p, MobKey.HOGLIN))
+                .lang("Hoglin Dragon Matter")
+                .jpLang("綺麗なホグリンマター")
+//                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> MAGMA_CUBE = REGISTRATE.item("pristine_matter_magma_cube", p -> new ItemPristineMatter(p, MobKey.MAGMA_CUBE))
+                .lang("Magma Cube Dragon Matter")
+                .jpLang("綺麗なマグマキューブマター")
+//                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> PHANTOM = REGISTRATE.item("pristine_matter_phantom", p -> new ItemPristineMatter(p, MobKey.PHANTOM))
+                .lang("Phantom Dragon Matter")
+                .jpLang("綺麗なファントムマター")
+//                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> PIGLIN = REGISTRATE.item("pristine_matter_piglin", p -> new ItemPristineMatter(p, MobKey.PIGLIN))
+                .lang("Piglin Dragon Matter")
+                .jpLang("綺麗なピグリンマター")
+//                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> RAVAGER = REGISTRATE.item("pristine_matter_ravager", p -> new ItemPristineMatter(p, MobKey.RAVAGER))
+                .lang("Ravager Dragon Matter")
+                .jpLang("綺麗なラヴェジャーマター")
+//                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> SHULKER = REGISTRATE.item("pristine_matter_shulker", p -> new ItemPristineMatter(p, MobKey.SHULKER))

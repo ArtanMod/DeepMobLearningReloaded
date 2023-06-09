@@ -1,11 +1,8 @@
 package jp.artan.dmlreloaded.common;
 
 import jp.artan.dmlreloaded.common.mobmetas.*;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.util.NonNullSupplier;
 
@@ -30,12 +27,13 @@ public enum MobKey implements IMobKey {
         add(() -> new ItemStack(Items.DRAGON_BREATH, 22));
         add(() -> new ItemStack(Items.DRAGON_EGG, 1));
     }}),
-    ELDER_GUARDIAN("elder_guardian", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    ELDER_GUARDIAN("elder_guardian", ElderGuardianMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new Mob("minecraft:elder_guardian"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.PRISMARINE_SHARD, 32));
         add(() -> new ItemStack(Items.PRISMARINE_CRYSTALS, 32));
         add(() -> new ItemStack(Items.COD, 64));
+        add(() -> new ItemStack(Items.SPONGE, 4));
     }}),
     ENDERMAN("enderman", EndermanMeta::new, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
         add(new Mob("minecraft:enderman"));
@@ -43,7 +41,7 @@ public enum MobKey implements IMobKey {
         add(() -> new ItemStack(Items.ENDER_PEARL, 6));
         add(() -> new ItemStack(Items.END_CRYSTAL, 1));
     }}),
-    EVOKER("evoker", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    EVOKER("evoker", EvokerMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new Mob("minecraft:evoker"));
         add(new Mob("minecraft:vex"));
         add(new Mob("minecraft:pillager"));
@@ -66,23 +64,23 @@ public enum MobKey implements IMobKey {
         add(() -> new ItemStack(Items.PRISMARINE_CRYSTALS, 32));
         add(() -> new ItemStack(Items.COD, 64));
     }}),
-    HOGLIN("hoglin", () -> null, LivingMatterType.HELLISH, new ArrayList<>(){{
+    HOGLIN("hoglin", HoglinMeta::new, LivingMatterType.HELLISH, new ArrayList<>(){{
         add(new Mob("minecraft:hoglin"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.LEATHER, 32));
         add(() -> new ItemStack(Items.PORKCHOP, 32));
     }}),
-    MAGMA_CUBE("magma_cube", () -> null, LivingMatterType.HELLISH, new ArrayList<>(){{
+    MAGMA_CUBE("magma_cube", MagmaCubeMeta::new, LivingMatterType.HELLISH, new ArrayList<>(){{
         add(new Mob("minecraft:magma_cube"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.MAGMA_CREAM, 32));
     }}),
-    PHONTOM("phontom", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
-        add(new Mob("minecraft:phontom"));
+    PHANTOM("phantom", PhantomMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+        add(new Mob("minecraft:phantom"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.PHANTOM_MEMBRANE, 8));
     }}),
-    PIGLIN("piglin", () -> null, LivingMatterType.HELLISH, new ArrayList<>(){{
+    PIGLIN("piglin", PiglinMeta::new, LivingMatterType.HELLISH, new ArrayList<>(){{
         add(new Mob("minecraft:piglin"));
         add(new Mob("minecraft:piglin_brute"));
         add(new Mob("minecraft:zombie_pigman"));
@@ -90,11 +88,11 @@ public enum MobKey implements IMobKey {
         add(() -> new ItemStack(Items.GOLD_INGOT, 16));
     }}),
 
-    RAVAGER("ravager", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    RAVAGER("ravager", RavagerMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new Mob("minecraft:ravager"));
     }}, new ArrayList<>(){{
-        add(() -> new ItemStack(Items.SADDLE, 4));
-        add(() -> new ItemStack(Items.DIAMOND, 2));
+        add(() -> new ItemStack(Items.SADDLE, 64));
+        add(() -> new ItemStack(Items.DIAMOND, 8));
     }}),
     SHULKER("shulker", ShulkerMeta::new, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
         add(new Mob("minecraft:shulker"));

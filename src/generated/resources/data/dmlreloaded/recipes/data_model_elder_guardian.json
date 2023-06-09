@@ -5,10 +5,10 @@
       "item": "dmlreloaded:data_model_blank"
     },
     {
-      "item": "minecraft:blaze_rod"
+      "item": "minecraft:sponge"
     }
   ],
   "result": {
-    "item": "dmlreloaded:data_model_blaze"
+    "item": "dmlreloaded:data_model_elder_guardian"
   }
 }

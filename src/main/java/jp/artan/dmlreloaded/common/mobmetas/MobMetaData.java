@@ -31,6 +31,17 @@ public abstract class MobMetaData {
             int simulationTickCost,
             int numberOfHearts,
             ItemPristineMatter pristineMatter,
+            Item spawnEggItem
+    ) {
+        this(key, entityId, simulationTickCost, numberOfHearts, pristineMatter, spawnEggItem, 0);
+    }
+
+    public MobMetaData(
+            IMobKey key,
+            String entityId,
+            int simulationTickCost,
+            int numberOfHearts,
+            ItemPristineMatter pristineMatter,
             Item spawnEggItem,
             int mobTriviaLine
     ) {

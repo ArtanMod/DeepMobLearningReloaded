@@ -5,10 +5,10 @@
       "item": "dmlreloaded:data_model_blank"
     },
     {
-      "item": "minecraft:blaze_rod"
+      "item": "minecraft:magma_cream"
     }
   ],
   "result": {
-    "item": "dmlreloaded:data_model_blaze"
+    "item": "dmlreloaded:data_model_magma_cube"
   }
 }

@@ -5,10 +5,13 @@
       "item": "dmlreloaded:data_model_blank"
     },
     {
-      "item": "minecraft:blaze_rod"
+      "item": "minecraft:leather"
+    },
+    {
+      "item": "minecraft:porkchop"
     }
   ],
   "result": {
-    "item": "dmlreloaded:data_model_blaze"
+    "item": "dmlreloaded:data_model_hoglin"
   }
 }
