@@ -1,5 +1,6 @@
 package jp.artan.dmlreloaded.init;
 
+import jp.artan.artansprojectcoremod.plugin.registrate.builder.ModItemBuilder;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.common.LivingMatterType;
 import jp.artan.dmlreloaded.common.MobKey;
@@ -14,6 +15,8 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+
+import java.util.function.Supplier;
 
 public class ItemInit {
     private static final DeepMobLearningReloadedRegistrate REGISTRATE = DeepMobLearningReloaded.registrate().creativeModeTab(() -> ItemGroupInit.DEEP_MOB_LEARNING_RELOADED);
@@ -264,190 +267,90 @@ public class ItemInit {
                 .addRawJPLang("dmlreloaded.tiers.increase_tier", "%1$sが%2$sの階級にアップデート")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> BLAZE = REGISTRATE.item("data_model_blaze", p -> new ItemDataModel(p, MobKey.BLAZE))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Items.BLAZE_POWDER)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> BLAZE = registerDataModel("data_model_blaze", MobKey.BLAZE, () -> Items.BLAZE_ROD)
                 .lang("Blaze Data Model")
                 .jpLang("ブレイズのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> CREEPER = REGISTRATE.item("data_model_creeper", p -> new ItemDataModel(p, MobKey.CREEPER))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Items.GUNPOWDER)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> CREEPER = registerDataModel("data_model_creeper", MobKey.CREEPER, () -> Items.GUNPOWDER)
                 .lang("Creeper Data Model")
                 .jpLang("クリーパーのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> DRAGON = REGISTRATE.item("data_model_dragon", p -> new ItemDataModel(p, MobKey.DRAGON))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Blocks.DRAGON_EGG)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> DRAGON = registerDataModel("data_model_dragon", MobKey.DRAGON, () -> Items.DRAGON_EGG)
                 .lang("Dragon Data Model")
                 .jpLang("ドラゴンのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> ENDERMAN = REGISTRATE.item("data_model_enderman", p -> new ItemDataModel(p, MobKey.ENDERMAN))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Items.ENDER_PEARL)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> ENDERMAN = registerDataModel("data_model_enderman", MobKey.ENDERMAN, () -> Items.ENDER_PEARL)
                 .lang("Enderman Data Model")
                 .jpLang("エンダーマンのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> GHAST = REGISTRATE.item("data_model_ghast", p -> new ItemDataModel(p, MobKey.GHAST))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Items.GHAST_TEAR)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> GHAST = registerDataModel("data_model_ghast", MobKey.GHAST, () -> Items.GHAST_TEAR)
                 .lang("Ghast Data Model")
                 .jpLang("ガストのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> GUARDIAN = REGISTRATE.item("data_model_guardian", p -> new ItemDataModel(p, MobKey.GUARDIAN))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Items.PRISMARINE_SHARD)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> GUARDIAN = registerDataModel("data_model_guardian", MobKey.GUARDIAN, () -> Items.PRISMARINE_SHARD)
                 .lang("Guardian Data Model")
                 .jpLang("ガーディアンのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> SHULKER = REGISTRATE.item("data_model_shulker", p -> new ItemDataModel(p, MobKey.SHULKER))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Items.SHULKER_SHELL)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> SHULKER = registerDataModel("data_model_shulker", MobKey.SHULKER, () -> Items.SHULKER_SHELL)
                 .lang("Shulker Data Model")
                 .jpLang("シェルカーのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> SKELETON = REGISTRATE.item("data_model_skeleton", p -> new ItemDataModel(p, MobKey.SKELETON))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Items.BONE)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> SKELETON = registerDataModel("data_model_skeleton", MobKey.SKELETON, () -> Items.BONE)
                 .lang("Skeleton Data Model")
                 .jpLang("スケルトンのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> SLIME = REGISTRATE.item("data_model_slime", p -> new ItemDataModel(p, MobKey.SLIME))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Items.SLIME_BALL)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> SLIME = registerDataModel("data_model_slime", MobKey.SLIME, () -> Items.SLIME_BALL)
                 .lang("Slime Data Model")
                 .jpLang("スライムのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> SPIDER = REGISTRATE.item("data_model_spider", p -> new ItemDataModel(p, MobKey.SPIDER))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Items.SPIDER_EYE)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> SPIDER = registerDataModel("data_model_spider", MobKey.SPIDER, () -> Items.SPIDER_EYE)
                 .lang("Spider Data Model")
                 .jpLang("クモのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> WITCH = REGISTRATE.item("data_model_witch", p -> new ItemDataModel(p, MobKey.WITCH))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Items.GLASS_BOTTLE)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> WITCH = registerDataModel("data_model_witch", MobKey.WITCH, () -> Items.GLASS_BOTTLE)
                 .lang("Witch Data Model")
                 .jpLang("ウィッチのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> WITHER_SKELETON = REGISTRATE.item("data_model_wither_skeleton", p -> new ItemDataModel(p, MobKey.WITHER_SKELETON))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Blocks.WITHER_SKELETON_SKULL)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> WITHER_SKELETON = registerDataModel("data_model_wither_skeleton", MobKey.WITHER_SKELETON, () -> Items.WITHER_SKELETON_SKULL)
                 .lang("Wither Skeleton Data Model")
                 .jpLang("ウィザースケルトンのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> WITHER = REGISTRATE.item("data_model_wither", p -> new ItemDataModel(p, MobKey.WITHER))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Items.NETHER_STAR)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> WITHER = registerDataModel("data_model_wither", MobKey.WITHER, () -> Items.NETHER_STAR)
                 .lang("Wither Data Model")
                 .jpLang("ウィザーのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> ZOMBIE = REGISTRATE.item("data_model_zombie", p -> new ItemDataModel(p, MobKey.ZOMBIE))
-                .properties(p -> p.stacksTo(1))
-                .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
-                            .requires(BLANK.get())
-                            .requires(Items.ROTTEN_FLESH)
-                            .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
-                            .save(prov);
-                })
+        public static final ItemEntry<ItemDataModel> ZOMBIE = registerDataModel("data_model_zombie", MobKey.ZOMBIE, () -> Items.ROTTEN_FLESH)
                 .lang("Zombie Data Model")
                 .jpLang("ゾンビのデータモデル")
                 .register();
 
         public static void register() {
 
+        }
+        
+        private static ModItemBuilder<ItemDataModel, DeepMobLearningReloadedRegistrate> registerDataModel(String id, MobKey key, Supplier<? extends Item> material) {
+            return REGISTRATE.item(id, p -> new ItemDataModel(p, key))
+                    .properties(p -> p.stacksTo(1))
+                    .recipe((ctx, prov) -> {
+                        ShapelessRecipeBuilder.shapeless(ctx.get())
+                                .requires(BLANK.get())
+                                .requires(material.get())
+                                .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
+                                .save(prov);
+                    });
         }
     }
 
