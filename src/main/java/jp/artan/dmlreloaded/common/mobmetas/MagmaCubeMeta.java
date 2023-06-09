@@ -15,7 +15,7 @@ public class MagmaCubeMeta extends MobMetaData {
         super(
                 MobKey.MAGMA_CUBE,
                 "entity.minecraft.magma_cube",
-                819, 8,
+                150, 8,
                 ItemInit.PristineMatter.MAGMA_CUBE.get(),
                 Items.MAGMA_CUBE_SPAWN_EGG
         );

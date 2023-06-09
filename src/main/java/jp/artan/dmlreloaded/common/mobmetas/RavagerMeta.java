@@ -14,7 +14,7 @@ public class RavagerMeta extends MobMetaData {
         super(
                 MobKey.RAVAGER,
                 "entity.minecraft.ravager",
-                5120, 50,
+                372, 50,
                 ItemInit.PristineMatter.RAVAGER.get(),
                 Items.RAVAGER_SPAWN_EGG
         );

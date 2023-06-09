@@ -13,7 +13,7 @@ public class PhantomMeta extends MobMetaData {
         super(
                 MobKey.PHANTOM,
                 "entity.minecraft.phantom",
-                1024, 10,
+                512, 10,
                 ItemInit.PristineMatter.PHANTOM.get(),
                 Items.PHANTOM_SPAWN_EGG
         );

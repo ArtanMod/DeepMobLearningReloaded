@@ -12,7 +12,7 @@ public class EvokerMeta extends MobMetaData {
         super(
                 MobKey.EVOKER,
                 "entity.minecraft.evoker",
-                1024, 12,
+                512, 12,
                 ItemInit.PristineMatter.EVOKER.get(),
                 Items.EVOKER_SPAWN_EGG
         );

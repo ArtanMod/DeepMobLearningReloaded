@@ -13,7 +13,7 @@ public class HoglinMeta extends MobMetaData {
         super(
                 MobKey.HOGLIN,
                 "entity.minecraft.hoglin",
-                1024, 20,
+                512, 20,
                 ItemInit.PristineMatter.HOGLIN.get(),
                 Items.HOGLIN_SPAWN_EGG
         );

@@ -12,7 +12,7 @@ public class PiglinMeta extends MobMetaData {
         super(
                 MobKey.PIGLIN,
                 "entity.minecraft.piglin",
-                819, 8,
+                80, 8,
                 ItemInit.PristineMatter.PIGLIN.get(),
                 Items.PIGLIN_SPAWN_EGG
         );
