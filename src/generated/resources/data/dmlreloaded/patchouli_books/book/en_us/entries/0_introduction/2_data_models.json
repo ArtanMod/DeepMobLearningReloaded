@@ -60,6 +60,29 @@
       "recipe": "dmlreloaded:data_model_shulker",
       "recipe2": "dmlreloaded:data_model_guardian",
       "title": "Shulker / Guardian"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_elder_guardian",
+      "recipe2": "dmlreloaded:data_model_evoker",
+      "title": "Elder Guardian / Evoker"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_hoglin",
+      "recipe2": "dmlreloaded:data_model_magma_cube",
+      "title": "Hoglin / Magma Cube"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_phantom",
+      "recipe2": "dmlreloaded:data_model_piglin",
+      "title": "Phantom / Piglin"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_ravager",
+      "title": "Ravager"
     }
   ]
 }

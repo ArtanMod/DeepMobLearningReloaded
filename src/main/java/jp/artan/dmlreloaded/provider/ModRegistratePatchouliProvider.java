@@ -111,6 +111,21 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                             .setRecipe2(ItemInit.DataModel.GUARDIAN)
                             .setTitle("Shulker / Guardian")
                             .build();
+                    p.addCraftingRecipePage(ItemInit.DataModel.ELDER_GUARDIAN)
+                            .setRecipe2(ItemInit.DataModel.EVOKER)
+                            .setTitle("Elder Guardian / Evoker")
+                            .build();
+                    p.addCraftingRecipePage(ItemInit.DataModel.HOGLIN)
+                            .setRecipe2(ItemInit.DataModel.MAGMA_CUBE)
+                            .setTitle("Hoglin / Magma Cube")
+                            .build();
+                    p.addCraftingRecipePage(ItemInit.DataModel.PHANTOM)
+                            .setRecipe2(ItemInit.DataModel.PIGLIN)
+                            .setTitle("Phantom / Piglin")
+                            .build();
+                    p.addCraftingRecipePage(ItemInit.DataModel.RAVAGER)
+                            .setTitle("Ravager")
+                            .build();
                     return p;
                 }).build()
                 .build()
