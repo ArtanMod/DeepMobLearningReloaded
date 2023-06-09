@@ -26,13 +26,14 @@ public class Category implements RegistratePatchouliProvider.Result {
             PatchouliBuilder parent,
             Categories categories,
             int index,
-            String name,
+            String fileName,
+            String lang,
             String description,
             String icon
     ) {
         this.parent = parent;
         this.categories = categories;
-        this.properties = new Category.Properties(name, description, icon, index);
+        this.properties = new Category.Properties(fileName, lang, description, icon, index);
         this.entries = new Entries(parent, this);
     }
 
@@ -61,7 +62,7 @@ public class Category implements RegistratePatchouliProvider.Result {
     @Override
     public JsonObject serialize() {
         JsonObject jsonobject = new JsonObject();
-        jsonobject.addProperty("name", this.properties.name);
+        jsonobject.addProperty("name", this.properties.lang);
         jsonobject.addProperty("description", this.properties.description);
         jsonobject.addProperty("icon", this.properties.icon);
         this.properties.parent.ifPresent(parent -> jsonobject.addProperty("parent", parent));
@@ -82,14 +83,15 @@ public class Category implements RegistratePatchouliProvider.Result {
     }
 
     public String getCategoryId() {
-        return this.properties.sortnum.get() + "_" + this.properties.name.replace(" ", "_").toLowerCase();
+        return this.properties.sortnum.get() + "_" + this.properties.fileName.replace(" ", "_").toLowerCase();
     }
 
     /**
      * @see "https://vazkiimods.github.io/Patchouli/docs/reference/category-json/"
      */
     public static class Properties {
-        private final String name;
+        private final String fileName;
+        private final String lang;
         private final String description;
         private final String icon;
         private Optional<String> parent = Optional.empty();
@@ -97,12 +99,14 @@ public class Category implements RegistratePatchouliProvider.Result {
         private Optional<Integer> sortnum = Optional.empty();
         private Optional<Boolean> secret = Optional.empty();
         public Properties(
-                String name,
+                String fileName,
+                String lang,
                 String description,
                 String icon,
                 int sortnum
         ) {
-            this.name = name;
+            this.fileName = fileName;
+            this.lang = lang;
             this.description = description;
             this.icon = icon;
             this.sortnum = Optional.of(sortnum);

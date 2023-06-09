@@ -20,16 +20,16 @@ public class Categories {
         return this.categories;
     }
 
-    public Category addCategory(String name, String description, ItemEntry<? extends Item> item) {
-        return this.addCategory(name, description, item.getId().toString());
+    public Category addCategory(String fileName, String lang,String description, ItemEntry<? extends Item> item) {
+        return this.addCategory(fileName, lang, description, item.getId().toString());
     }
 
-    public Category addCategory(String name, String description, BlockEntry<? extends Block> block) {
-        return this.addCategory(name, description, block.getId().toString());
+    public Category addCategory(String fileName, String lang,String description, BlockEntry<? extends Block> block) {
+        return this.addCategory(fileName, lang, description, block.getId().toString());
     }
 
-    public Category addCategory(String name, String description, String icon) {
-        Category category = new Category(this.parent, this, categories.size(), name, description, icon);
+    public Category addCategory(String fileName, String lang,String description, String icon) {
+        Category category = new Category(this.parent, this, categories.size(), fileName, lang, description, icon);
         this.categories.add(category);
         return category;
     }

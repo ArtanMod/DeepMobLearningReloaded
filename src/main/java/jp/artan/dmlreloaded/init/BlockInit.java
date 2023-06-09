@@ -37,8 +37,8 @@ public class BlockInit {
                         .unlockedBy("has_item", RegistrateRecipeProvider.has(ItemInit.SOOT_COVERED_PLATE.get()))
                         .save(prov);
             })
-            .lang("Glitch Infused Block")
-            .jpLang("グリッチが染み込んだブロック")
+            .lang("Machine Casing")
+            .jpLang("機械の枠")
             .register();
 
     public static final BlockEntry<BlockSimulationChamber> SIMULATION_CHAMBER = REGISTRATE.block("simulation_chamber", BlockSimulationChamber::new)

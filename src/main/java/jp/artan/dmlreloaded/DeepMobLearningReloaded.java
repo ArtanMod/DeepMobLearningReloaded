@@ -50,6 +50,7 @@ public class DeepMobLearningReloaded {
         DropModifier.GLM.register(modEventBus);
         BlockEntityInit.BET.register(modEventBus);
         RecipeSerializerInit.RECIPE.register(modEventBus);
+        ModRegistratePatchouliProvider.addLang(registrate());
 
         modEventBus.addListener(this::registerProviders);
         modEventBus.addListener(this::commonSetup);

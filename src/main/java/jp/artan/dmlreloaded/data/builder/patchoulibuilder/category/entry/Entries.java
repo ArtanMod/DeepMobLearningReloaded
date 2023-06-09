@@ -23,17 +23,17 @@ public class Entries {
         return this.entries;
     }
 
-    public Entry addEntry(String name, ItemEntry<? extends Item> itemIcon) {
-        return this.addEntry(name, itemIcon.getId().toString());
+    public Entry addEntry(String name, String lang,ItemEntry<? extends Item> itemIcon) {
+        return this.addEntry(name, lang, itemIcon.getId().toString());
     }
 
-    public Entry addEntry(String name, BlockEntry<? extends Block> blockIcon) {
-        return this.addEntry(name, blockIcon.getId().toString());
+    public Entry addEntry(String name, String lang,BlockEntry<? extends Block> blockIcon) {
+        return this.addEntry(name, lang, blockIcon.getId().toString());
     }
 
-    public Entry addEntry(String name, String icon) {
+    public Entry addEntry(String name, String lang,String icon) {
         String category = this.parent.modId + ":" + this.category.getCategoryId();
-        Entry entry = new Entry(parent, this, this.entries.size(), name, category, icon);
+        Entry entry = new Entry(parent, this, this.entries.size(), name, lang, category, icon);
         this.entries.add(entry);
         return entry;
     }

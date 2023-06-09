@@ -33,13 +33,14 @@ public class Entry implements RegistratePatchouliProvider.Result {
             Entries entries,
             int index,
             String name,
+            String lang,
             String category,
             String icon
     ) {
         this.parent = parent;
 
         this.entries = entries;
-        this.properties = new Entry.Properties(name, category, icon, index);
+        this.properties = new Entry.Properties(name, lang, category, icon, index);
     }
 
     public Entry properties(Function<Properties, Properties> properties) {
@@ -108,6 +109,7 @@ public class Entry implements RegistratePatchouliProvider.Result {
     public static class Properties {
 
         private final String name;
+        private final String lang;
         private final String category;
         private final String icon;
         private final NonNullList<Page<?>> pages = NonNullList.create();
@@ -121,11 +123,13 @@ public class Entry implements RegistratePatchouliProvider.Result {
 
         public Properties(
                 String name,
+                String lang,
                 String category,
                 String icon,
                 int sortnum
         ) {
             this.name = name;
+            this.lang = lang;
             this.category = category;
             this.icon = icon;
             this.sortnum = Optional.of(sortnum);

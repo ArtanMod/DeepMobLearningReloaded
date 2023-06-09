@@ -1,6 +1,6 @@
 {
   "name": "Deep Mob Learning",
-  "landing_text": "$(dml) adds new ways to acquire loot that normally drops from mobs, the intent is to remove the need for a big laggy mobfarm.$(br2)The mod is inspired by $(l:https://minecraft.curseforge.com/projects/soul-shards-respawn)Soul shards$() and $(l:https://minecraft.curseforge.com/projects/woot)Woot$().$(br2)This guide was written with $(l:https://minecraft.curseforge.com/projects/patchouli)Patchouli$(), a $(o)neat$() mod by $(l:https://twitter.com/Vazkii)Vazkii$().",
+  "landing_text": "patchouli.book.landing_text",
   "book_texture": "dmlreloaded:textures/gui/patchouli/book_gray.png",
   "crafting_texture": "dmlreloaded:textures/gui/patchouli/crafting.png",
   "model": "dmlreloaded:book",
@@ -10,7 +10,7 @@
   "link_color": "16EFF7",
   "link_hover_color": "FFC0",
   "show_progress": false,
-  "subtitle": "A not-so comprehensive Guide",
+  "subtitle": "patchouli.book.sub_title",
   "creative_tab": "deep_mob_learning_reloaded",
   "i18n": true,
   "macros": {

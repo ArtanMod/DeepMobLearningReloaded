@@ -6,28 +6,28 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "There are two kinds of $(item)Matter$(), $(item)Living$() and $(item)Pristine$().$(br2)You will always get one$(br)$(item)Living Matter$() from running a $(l:1_machines/0_simulation_chamber)Simulation$().$(br2)There is also a chance to produce $(item)Pristine Matter$(), the chance depends on the $(item)Tier$() of the $(l:0_introduction/2_data_models#data_models)Data Model$() currently in the $(l:1_machines/0_simulation_chamber)Simulation Chamber$()."
+      "text": "patchouli.category.2.introduction.entry.2.page.1.text"
     },
     {
       "type": "patchouli:spotlight",
       "anchor": "living",
       "item": "dmlreloaded:living_matter_hellish",
-      "title": "Living Matter",
-      "text": "$(item)Living Matter$() is a versatile matter that can be used to $(item)Transmute$() ingredients local to that $(item)Habitat$(), check $(item)JEI$() to see what recipes are available.$(br2)You can also consume $(item)Living Matter$() to gain $(item)Experience$()."
+      "title": "patchouli.category.2.introduction.entry.2.page.2.title",
+      "text": "patchouli.category.2.introduction.entry.2.page.2.text"
     },
     {
       "type": "patchouli:crafting",
       "anchor": "living_transmute",
       "recipe": "dmlreloaded:soul_sand_from_hellish_living_matter",
       "recipe2": "dmlreloaded:ender_pearl_from_extraterrestrial_living_matter",
-      "title": "Example Transmutes"
+      "title": "patchouli.category.2.introduction.entry.2.page.3.title"
     },
     {
       "type": "patchouli:spotlight",
       "anchor": "pristine",
       "item": "dmlreloaded:pristine_matter_zombie",
-      "title": "Pristine Matter",
-      "text": "Secondary output from the $(l:1_machines/0_simulation_chamber)Simulation Chamber$().$(br2)The type of $(item)Pristine Matter$() you will produce depends on the type of the $(l:0_introduction/2_data_models#data_models)Data Model$().$(br2)$(item)Pristine Matter$() will produce mob drops in the$(br)$(l:1_machines/2_loot_fabricator)Loot Fabricator$()."
+      "title": "patchouli.category.2.introduction.entry.2.page.4.title",
+      "text": "patchouli.category.2.introduction.entry.2.page.4.text"
     }
   ]
 }

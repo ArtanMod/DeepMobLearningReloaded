@@ -7,82 +7,82 @@
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_blank",
-      "text": "You can craft a $(item)Blank Data Model$() with some of that$(br)$(l:0_introduction/0_introduction#sooted_redstone)Soot-covered Redstone$() you made earlier."
+      "text": "patchouli.category.1.introduction.entry.3.page.1.text"
     },
     {
       "type": "patchouli:spotlight",
       "anchor": "data_models",
       "item": "dmlreloaded:data_model_guardian",
-      "text": "All of the $(item)Data Models$() start at the \\\"$(8)Faulty$()\\\" tier, this tier goes up as the $(item)Data Models$() gather more $(item)Data$().$(br2)As you $(item)Tier$() up you will gain more $(item)Data$() from the mobs you defeat.$(br2)$(item)Data Models$() can be put inside a $(l:1_machines/0_simulation_chamber)Simulation chamber$()"
+      "text": "patchouli.category.1.introduction.entry.3.page.2.text"
     },
     {
       "type": "patchouli:text",
-      "text": "$(item)Data Models$() are split into $(item)Types$() depending on their $(item)Habitat$().$(br2)The basic $(item)Habitats$() are: $(a)Overworldian$(), $(c)Hellish$() and $(d)Extraterrestrial$().$(br2)The type of the $(item)Data Model$() will determine what kind of $(l:1_machines/1_matter#living)Living Matter$() and $(l:1_machines/1_matter#pristine)Pristine Matter$() the $(l:1_machines/0_simulation_chamber)Simulation Chamber$() will produce."
+      "text": "patchouli.category.1.introduction.entry.3.page.3.text"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_zombie",
       "recipe2": "dmlreloaded:data_model_skeleton",
-      "title": "Zombie / Skeleton"
+      "title": "patchouli.category.1.introduction.entry.3.page.4.title"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_creeper",
       "recipe2": "dmlreloaded:data_model_spider",
-      "title": "Creeper / Spider"
+      "title": "patchouli.category.1.introduction.entry.3.page.5.title"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_slime",
       "recipe2": "dmlreloaded:data_model_witch",
-      "title": "Slime / Witch"
+      "title": "patchouli.category.1.introduction.entry.3.page.6.title"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_blaze",
       "recipe2": "dmlreloaded:data_model_ghast",
-      "title": "Blaze / Ghast"
+      "title": "patchouli.category.1.introduction.entry.3.page.7.title"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_wither_skeleton",
       "recipe2": "dmlreloaded:data_model_enderman",
-      "title": "Wither Skeleton / Enderman"
+      "title": "patchouli.category.1.introduction.entry.3.page.8.title"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_wither",
       "recipe2": "dmlreloaded:data_model_dragon",
-      "title": "Wither / Dragon"
+      "title": "patchouli.category.1.introduction.entry.3.page.9.title"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_shulker",
       "recipe2": "dmlreloaded:data_model_guardian",
-      "title": "Shulker / Guardian"
+      "title": "patchouli.category.1.introduction.entry.3.page.10.title"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_elder_guardian",
       "recipe2": "dmlreloaded:data_model_evoker",
-      "title": "Elder Guardian / Evoker"
+      "title": "patchouli.category.1.introduction.entry.3.page.11.title"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_hoglin",
       "recipe2": "dmlreloaded:data_model_magma_cube",
-      "title": "Hoglin / Magma Cube"
+      "title": "patchouli.category.1.introduction.entry.3.page.12.title"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_phantom",
       "recipe2": "dmlreloaded:data_model_piglin",
-      "title": "Phantom / Piglin"
+      "title": "patchouli.category.1.introduction.entry.3.page.13.title"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_ravager",
-      "title": "Ravager"
+      "title": "patchouli.category.1.introduction.entry.3.page.14.title"
     }
   ]
 }

@@ -7,13 +7,13 @@
     {
       "type": "patchouli:spotlight",
       "item": "minecraft:redstone",
-      "title": "Energy",
-      "text": "This mod adds no way of producing $(item)Energy$(), so you will need some sort of $(item)Generator$() from another mod to power the $(item)Machines$()."
+      "title": "patchouli.category.2.introduction.entry.4.page.1.title",
+      "text": "patchouli.category.2.introduction.entry.4.page.1.text"
     },
     {
       "type": "patchouli:text",
-      "text": "Both $(item)Forge Energy (FE)$() and $(item)Redstone Flux (RF)$() will work.$(br2)Below are some example mods that could work to power your $(item)Machines$().$(br2)$(l:https://www.curseforge.com/minecraft/mc-mods/simple-generators)Simple Generators$() (Misc)$(br)$(l:https://www.curseforge.com/minecraft/mc-mods/mekanism-generators)Mekanism Generators$() (Reactors)$(br)$(l:https://minecraft.curseforge.com/projects/advanced-generators)Advanced Generators$()",
-      "title": "Power Units"
+      "text": "patchouli.category.2.introduction.entry.4.page.2.text",
+      "title": "patchouli.category.2.introduction.entry.4.page.2.title"
     }
   ]
 }
