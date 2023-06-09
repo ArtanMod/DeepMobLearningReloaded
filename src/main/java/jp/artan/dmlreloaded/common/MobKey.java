@@ -46,9 +46,13 @@ public enum MobKey implements IMobKey {
     EVOKER("evoker", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new Mob("minecraft:evoker"));
         add(new Mob("minecraft:vex"));
+        add(new Mob("minecraft:pillager"));
+        add(new Mob("minecraft:vindicator"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.EMERALD, 8));
         add(() -> new ItemStack(Items.TOTEM_OF_UNDYING, 1));
+        add(() -> new ItemStack(Items.EMERALD, 8));
+        add(() -> new ItemStack(Items.BOOK, 64));
     }}),
     GHAST("ghast", GhastMeta::new, LivingMatterType.HELLISH, new ArrayList<>(){{
         add(new Mob("minecraft:ghast"));
@@ -85,13 +89,7 @@ public enum MobKey implements IMobKey {
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.GOLD_INGOT, 16));
     }}),
-    PILLAGER("pillager", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
-        add(new Mob("minecraft:pillager"));
-        add(new Mob("minecraft:vindicator"));
-    }}, new ArrayList<>(){{
-        add(() -> new ItemStack(Items.EMERALD, 8));
-        add(() -> new ItemStack(Items.BOOK, 64));
-    }}),
+
     RAVAGER("ravager", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new Mob("minecraft:ravager"));
     }}, new ArrayList<>(){{
