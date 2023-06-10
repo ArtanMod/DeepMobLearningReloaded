@@ -198,10 +198,6 @@ dependencies {
 
     // The Twilight Forest
     implementation fg.deobf("teamtwilight:twilightforest:${twilight_forest_version}:universal")
-
-    // Tinkers Construct
-//    implementation fg.deobf("slimeknights.mantle:Mantle:${minecraft_version}-${mantle_version}")
-//    implementation fg.deobf("slimeknights.tconstruct:TConstruct:${minecraft_version}-${tinkers_construct_version}")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
