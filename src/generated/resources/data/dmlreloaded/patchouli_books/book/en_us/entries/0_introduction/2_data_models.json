@@ -83,6 +83,12 @@
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_ravager",
       "title": "patchouli.category.1.introduction.entry.3.page.14.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "flag": "mod:tconstruct",
+      "recipe": "dmlreloaded:data_model_tinker_slime",
+      "title": "patchouli.category.1.introduction.entry.3.page.15.title"
     }
   ]
 }

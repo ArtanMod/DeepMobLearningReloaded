@@ -21,14 +21,14 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class ItemDataModel extends Item {
-    private final MobKey mobKey;
+    private final IMobKey mobKey;
 
-    public ItemDataModel(Properties properties, MobKey mobKey) {
+    public ItemDataModel(Properties properties, IMobKey mobKey) {
         super(properties);
         this.mobKey = mobKey;
     }
 
-    public MobKey getMobKey() {
+    public IMobKey getMobKey() {
         return this.mobKey;
     }
 

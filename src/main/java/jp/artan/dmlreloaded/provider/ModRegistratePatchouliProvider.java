@@ -6,6 +6,7 @@ import jp.artan.dmlreloaded.data.providers.RegistratePatchouliProvider;
 import jp.artan.dmlreloaded.init.BlockInit;
 import jp.artan.dmlreloaded.init.ItemGroupInit;
 import jp.artan.dmlreloaded.init.ItemInit;
+import jp.artan.dmlreloaded.plugin.tconstruct.init.TiCItemInit;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -78,6 +79,8 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                     registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.13.title", "ファントム / ピグリン");
                     registrate.addRawLang("patchouli.category.1.introduction.entry.3.page.14.title", "Ravager");
                     registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.14.title", "ラヴェジャー");
+                    registrate.addRawLang("patchouli.category.1.introduction.entry.3.page.15.title", "Blue Slime");
+                    registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.15.title", "ブルースライム");
                 }
             }
             {
@@ -246,6 +249,10 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                             .build();
                     p.addCraftingRecipePage(ItemInit.DataModel.RAVAGER)
                             .setTitle("patchouli.category.1.introduction.entry.3.page.14.title")
+                            .build();
+                    p.addCraftingRecipePage(TiCItemInit.DataModel.BLUE_SLIME)
+                            .setFlag("mod:tconstruct")
+                            .setTitle("patchouli.category.1.introduction.entry.3.page.15.title")
                             .build();
                     return p;
                 }).build()
