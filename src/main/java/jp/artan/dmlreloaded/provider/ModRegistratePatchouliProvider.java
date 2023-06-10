@@ -250,10 +250,10 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                     p.addCraftingRecipePage(ItemInit.DataModel.RAVAGER)
                             .setTitle("patchouli.category.1.introduction.entry.3.page.14.title")
                             .build();
-                    p.addCraftingRecipePage(TiCItemInit.DataModel.BLUE_SLIME)
-                            .setFlag("mod:tconstruct")
-                            .setTitle("patchouli.category.1.introduction.entry.3.page.15.title")
-                            .build();
+//                    p.addCraftingRecipePage(TiCItemInit.DataModel.BLUE_SLIME)
+//                            .setFlag("mod:tconstruct")
+//                            .setTitle("patchouli.category.1.introduction.entry.3.page.15.title")
+//                            .build();
                     return p;
                 }).build()
                 .build()

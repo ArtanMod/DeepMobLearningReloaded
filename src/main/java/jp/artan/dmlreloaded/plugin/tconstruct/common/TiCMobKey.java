@@ -8,8 +8,6 @@ import jp.artan.dmlreloaded.plugin.tconstruct.common.mobmetas.TinkerSlimeMeta;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.util.NonNullSupplier;
-import slimeknights.tconstruct.shared.TinkerCommons;
-import slimeknights.tconstruct.shared.block.SlimeType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +21,8 @@ public enum TiCMobKey implements IMobKey {
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.SLIME_BALL, 32));
         add(() -> new ItemStack(Items.CLAY_BALL, 32));
-        add(() -> new ItemStack(TinkerCommons.slimeball.get(SlimeType.SKY), 32));
-        add(() -> new ItemStack(TinkerCommons.slimeball.get(SlimeType.ENDER), 32));
+//        add(() -> new ItemStack(TinkerCommons.slimeball.get(SlimeType.SKY), 32));
+//        add(() -> new ItemStack(TinkerCommons.slimeball.get(SlimeType.ENDER), 32));
     }});
 
     private final String id;

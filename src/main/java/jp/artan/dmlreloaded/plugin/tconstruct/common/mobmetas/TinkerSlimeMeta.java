@@ -3,15 +3,11 @@ package jp.artan.dmlreloaded.plugin.tconstruct.common.mobmetas;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
-import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
-import jp.artan.dmlreloaded.init.ItemInit;
 import jp.artan.dmlreloaded.plugin.tconstruct.common.TiCMobKey;
-import jp.artan.dmlreloaded.plugin.tconstruct.init.TiCItemInit;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class TinkerSlimeMeta extends MobMetaData {
@@ -20,7 +16,8 @@ public class TinkerSlimeMeta extends MobMetaData {
                 TiCMobKey.SLIME,
                 "entity.tconstruct.sky_slime",
                 150, 8,
-                TiCItemInit.PristineMatter.BLUE_SLIME.get(),
+//                TiCItemInit.PristineMatter.BLUE_SLIME.get(),
+                null,
                 null
         );
     }

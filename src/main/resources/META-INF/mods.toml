@@ -66,10 +66,3 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magn
     versionRange="[2.0.7,2.1.0)"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.dmlreloaded]]
-    modId="tconstruct"
-    mandatory=true
-    versionRange="[3.6.4.113,3.7.0.0)"
-    ordering="AFTER"
-    side="BOTH"
-
