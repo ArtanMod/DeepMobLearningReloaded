@@ -195,6 +195,13 @@ dependencies {
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
     // at runtime, use the full Patchouli jar
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+
+    // The Twilight Forest
+    implementation fg.deobf("curse.maven:twilight-227639:${twilight_forest_version}")
+
+    // Tinkers Construct
+    implementation fg.deobf("curse.maven:mantle-74924:${mantle_version}")
+    implementation fg.deobf("curse.maven:tconstruct-74072:${tinkers_construct_version}")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
