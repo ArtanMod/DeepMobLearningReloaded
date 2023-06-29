@@ -81,8 +81,16 @@
     },
     {
       "type": "patchouli:crafting",
+      "flag": "!mod:twilightforest",
       "recipe": "dmlreloaded:data_model_ravager",
       "title": "patchouli.category.1.introduction.entry.3.page.14.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "flag": "mod:twilightforest",
+      "recipe": "dmlreloaded:data_model_ravager",
+      "recipe2": "dmlreloaded:data_model_twilight_naga",
+      "title": "patchouli.category.1.introduction.entry.3.page.15.title"
     }
   ]
 }
