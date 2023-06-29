@@ -80,13 +80,6 @@ public enum TwilightMobKey implements IMobKey {
         add(() -> new ItemStack(Blocks.PACKED_ICE, 64));
         add(() -> new ItemStack(Items.SNOWBALL, 64));
         add(() -> new ItemStack(TFItems.ICE_BOMB.get(), 32));
-    }}),
-    GIANT("giant", () -> null, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
-        add(new Mob("twilightforest:armored_giant"));
-        add(new Mob("twilightforest:giant_miner"));
-    }}, new ArrayList<>(){{
-        add(() -> new ItemStack(TFItems.GIANT_PICKAXE.get(), 1));
-        add(() -> new ItemStack(TFItems.GIANT_SWORD.get(), 1));
     }});
 
     private final String id;
