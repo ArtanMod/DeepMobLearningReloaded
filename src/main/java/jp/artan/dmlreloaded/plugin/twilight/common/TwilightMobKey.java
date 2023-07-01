@@ -5,6 +5,7 @@ import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.common.LivingMatterType;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.plugin.twilight.common.mobmetas.*;
+import jp.artan.dmlreloaded.plugin.twilight.init.TwilightItemInit;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -16,13 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum TwilightMobKey implements IMobKey {
-    NAGA("naga", NagaMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    NAGA("naga", NagaMeta::new, TwilightLivingMatterType.TWILIGHT, new ArrayList<>(){{
         add(new TwilightMob("twilightforest:naga"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(TFBlocks.NAGA_TROPHY.get(), 1));
         add(() -> new ItemStack(TFItems.NAGA_SCALE.get(), 32));
     }}),
-    LICH("lich", LichMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    LICH("lich", LichMeta::new, TwilightLivingMatterType.TWILIGHT, new ArrayList<>(){{
         add(new TwilightMob("twilightforest:lich"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(TFBlocks.LICH_TROPHY.get(), 1));
@@ -34,21 +35,21 @@ public enum TwilightMobKey implements IMobKey {
         add(() -> new ItemStack(Items.BONE, 32));
         add(() -> new ItemStack(Items.GOLD_NUGGET, 64));
     }}),
-    MINOSHROOM("minoshroom", MinoshroomMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    MINOSHROOM("minoshroom", MinoshroomMeta::new, TwilightLivingMatterType.TWILIGHT, new ArrayList<>(){{
         add(new TwilightMob("twilightforest:minoshroom"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(TFBlocks.MINOSHROOM_TROPHY.get(), 1));
         add(() -> new ItemStack(TFItems.MEEF_STROGANOFF.get(), 32));
         add(() -> new ItemStack(TFItems.DIAMOND_MINOTAUR_AXE.get(), 1));
     }}),
-    HYDRA("hydra", HydraMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    HYDRA("hydra", HydraMeta::new, TwilightLivingMatterType.TWILIGHT, new ArrayList<>(){{
         add(new TwilightMob("twilightforest:hydra"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(TFBlocks.HYDRA_TROPHY.get(), 1));
         add(() -> new ItemStack(TFItems.HYDRA_CHOP.get(), 32));
         add(() -> new ItemStack(TFItems.FIERY_BLOOD.get(), 32));
     }}),
-    KNIGHT_PHANTOM("knight_phantom", KnightPhantomMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    KNIGHT_PHANTOM("knight_phantom", KnightPhantomMeta::new, TwilightLivingMatterType.TWILIGHT, new ArrayList<>(){{
         add(new TwilightMob("twilightforest:knight_phantom"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(TFBlocks.KNIGHT_PHANTOM_WALL_TROPHY.get(), 1));
@@ -56,7 +57,7 @@ public enum TwilightMobKey implements IMobKey {
         add(() -> new ItemStack(TFItems.PHANTOM_CHESTPLATE.get(), 1));
         add(() -> new ItemStack(TFItems.KNIGHTMETAL_INGOT.get(), 32));
     }}),
-    UR_GHAST("ur_ghast", URGhastMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    UR_GHAST("ur_ghast", URGhastMeta::new, TwilightLivingMatterType.TWILIGHT, new ArrayList<>(){{
         add(new TwilightMob("twilightforest:ur_ghast"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(TFBlocks.UR_GHAST_TROPHY.get(), 1));
@@ -64,14 +65,14 @@ public enum TwilightMobKey implements IMobKey {
         add(() -> new ItemStack(TFItems.FIERY_TEARS.get(), 32));
         add(() -> new ItemStack(TFItems.CARMINITE.get(), 32));
     }}),
-    ALPHA_YETI("alpha_yeti", AlphaYetiMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    ALPHA_YETI("alpha_yeti", AlphaYetiMeta::new, TwilightLivingMatterType.TWILIGHT, new ArrayList<>(){{
         add(new TwilightMob("twilightforest:alpha_yeti"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(TFBlocks.ALPHA_YETI_TROPHY.get(), 1));
         add(() -> new ItemStack(TFItems.ICE_BOMB.get(), 32));
         add(() -> new ItemStack(TFItems.ALPHA_YETI_FUR.get(), 32));
     }}),
-    SNOW_QUEEN("snow_queen", SnowQueenMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
+    SNOW_QUEEN("snow_queen", SnowQueenMeta::new, TwilightLivingMatterType.TWILIGHT, new ArrayList<>(){{
         add(new TwilightMob("twilightforest:snow_queen"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(TFBlocks.SNOW_QUEEN_TROPHY.get(), 1));
