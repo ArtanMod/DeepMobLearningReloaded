@@ -91,6 +91,33 @@
       "recipe": "dmlreloaded:data_model_ravager",
       "recipe2": "dmlreloaded:data_model_twilight_naga",
       "title": "patchouli.category.1.introduction.entry.3.page.15.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "flag": "mod:twilightforest",
+      "recipe": "dmlreloaded:data_model_twilight_lich",
+      "recipe2": "dmlreloaded:data_model_twilight_minoshroom",
+      "title": "patchouli.category.1.introduction.entry.3.page.16.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "flag": "mod:twilightforest",
+      "recipe": "dmlreloaded:data_model_twilight_hydra",
+      "recipe2": "dmlreloaded:data_model_twilight_knight_phantom",
+      "title": "patchouli.category.1.introduction.entry.3.page.17.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "flag": "mod:twilightforest",
+      "recipe": "dmlreloaded:data_model_twilight_ur_ghast",
+      "recipe2": "dmlreloaded:data_model_twilight_alpha_yeti",
+      "title": "patchouli.category.1.introduction.entry.3.page.18.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "flag": "mod:twilightforest",
+      "recipe": "dmlreloaded:data_model_twilight_snow_queen",
+      "title": "patchouli.category.1.introduction.entry.3.page.19.title"
     }
   ]
 }

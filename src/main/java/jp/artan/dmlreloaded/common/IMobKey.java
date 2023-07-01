@@ -21,9 +21,7 @@ public interface IMobKey {
     class Mob {
         private final String entityId;
         private final String langId;
-        public Mob(String entityId) {
-            this(entityId, entityId.replace("minecraft:", "entity.minecraft."));
-        }
+
         public Mob(String entityId, String langId) {
             this.entityId = entityId;
             this.langId = langId;

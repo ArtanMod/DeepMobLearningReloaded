@@ -7,25 +7,27 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import twilightforest.entity.TFEntities;
 import twilightforest.entity.TFEntityNames;
+import twilightforest.entity.boss.Hydra;
 
-public class NagaMeta extends TwilightMobMetaData {
-    public NagaMeta() {
+public class HydraMeta extends TwilightMobMetaData {
+    public HydraMeta() {
         super(
-                TwilightMobKey.NAGA,
-                "entity.twilightforest.naga",
-                4096, 200,
-                TwilightItemInit.PristineMatter.NAGA.get(),
-                TFEntityNames.NAGA
+                TwilightMobKey.HYDRA,
+                "entity.twilightforest.hydra",
+                4096, 360,
+                TwilightItemInit.PristineMatter.HYDRA.get(),
+                TFEntityNames.HYDRA
         );
     }
 
     @Override
     public LivingEntity getEntity(Level world) {
-        return TFEntities.NAGA.get().create(world);
+//        return TFEntities.HYDRA.get().create(world);
+        return null;
     }
 
     @Override
     public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(0.7F, 0.7F, -0.7F);
+        poseStack.scale(0.3F, 0.3F, -0.3F);
     }
 }

@@ -8,24 +8,24 @@ import net.minecraft.world.level.Level;
 import twilightforest.entity.TFEntities;
 import twilightforest.entity.TFEntityNames;
 
-public class NagaMeta extends TwilightMobMetaData {
-    public NagaMeta() {
+public class AlphaYetiMeta extends TwilightMobMetaData {
+    public AlphaYetiMeta() {
         super(
-                TwilightMobKey.NAGA,
-                "entity.twilightforest.naga",
+                TwilightMobKey.ALPHA_YETI,
+                "entity.twilightforest.alpha_yeti",
                 4096, 200,
-                TwilightItemInit.PristineMatter.NAGA.get(),
-                TFEntityNames.NAGA
+                TwilightItemInit.PristineMatter.ALPHA_YETI.get(),
+                TFEntityNames.ALPHA_YETI
         );
     }
 
     @Override
     public LivingEntity getEntity(Level world) {
-        return TFEntities.NAGA.get().create(world);
+        return TFEntities.ALPHA_YETI.get().create(world);
     }
 
     @Override
     public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(0.7F, 0.7F, -0.7F);
+        poseStack.scale(0.3F, 0.3F, -0.3F);
     }
 }

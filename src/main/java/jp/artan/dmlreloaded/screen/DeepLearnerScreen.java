@@ -228,7 +228,10 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         PoseStack posestack = RenderSystem.getModelViewStack();
         posestack.pushPose();
         posestack.translate((double)xPos, (double)yPos + Math.sin(world.getGameTime()/13.0d)*3.0d, 1050.0D);
-        LivingEntity entity= meta.getEntity(world);;
+        LivingEntity entity = meta.getEntity(world);
+        if(entity == null) {
+            return;
+        }
         Quaternion quaternion1 = meta.getEntityXRotation();
         Quaternion quaternion = meta.getEntityZRotation();
         meta.setPose(posestack, xPos, yPos, world);

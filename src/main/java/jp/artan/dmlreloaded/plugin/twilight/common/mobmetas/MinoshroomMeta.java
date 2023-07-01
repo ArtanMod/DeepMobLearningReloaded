@@ -8,24 +8,24 @@ import net.minecraft.world.level.Level;
 import twilightforest.entity.TFEntities;
 import twilightforest.entity.TFEntityNames;
 
-public class NagaMeta extends TwilightMobMetaData {
-    public NagaMeta() {
+public class MinoshroomMeta extends TwilightMobMetaData {
+    public MinoshroomMeta() {
         super(
                 TwilightMobKey.NAGA,
-                "entity.twilightforest.naga",
-                4096, 200,
-                TwilightItemInit.PristineMatter.NAGA.get(),
-                TFEntityNames.NAGA
+                "entity.twilightforest.minoshroom",
+                4096, 120,
+                TwilightItemInit.PristineMatter.MINOSHROOM.get(),
+                TFEntityNames.MINOSHROOM
         );
     }
 
     @Override
     public LivingEntity getEntity(Level world) {
-        return TFEntities.NAGA.get().create(world);
+        return TFEntities.MINOSHROOM.get().create(world);
     }
 
     @Override
     public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(0.7F, 0.7F, -0.7F);
+        poseStack.scale(0.8F, 0.8F, -0.8F);
     }
 }
