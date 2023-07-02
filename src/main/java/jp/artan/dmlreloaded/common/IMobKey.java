@@ -15,24 +15,18 @@ public interface IMobKey {
     ILivingMatterType getLivingMatterType();
     List<Mob> getMobs();
     List<NonNullSupplier<ItemStack>> getLoot();
-    void addMob(String entityId, String langId);
+    void addMob(String mobLangId);
     void addLoot(NonNullSupplier<ItemStack> itemStack);
 
     class Mob {
-        private final String entityId;
-        private final String langId;
+        private final String mobLangId;
 
-        public Mob(String entityId, String langId) {
-            this.entityId = entityId;
-            this.langId = langId;
+        public Mob(String mobLangId) {
+            this.mobLangId = mobLangId;
         }
 
-        public String getEntityId() {
-            return this.entityId;
-        }
-
-        public String getLangId() {
-            return this.langId;
+        public String getMobLangId() {
+            return this.mobLangId;
         }
     }
 
