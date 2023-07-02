@@ -5,7 +5,7 @@ import jp.artan.dmlreloaded.plugin.twilight.common.TwilightMobKey;
 import jp.artan.dmlreloaded.plugin.twilight.init.TwilightItemInit;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import twilightforest.entity.TFEntities;
+import twilightforest.init.TFEntities;
 import twilightforest.entity.TFEntityNames;
 
 public class URGhastMeta extends TwilightMobMetaData {

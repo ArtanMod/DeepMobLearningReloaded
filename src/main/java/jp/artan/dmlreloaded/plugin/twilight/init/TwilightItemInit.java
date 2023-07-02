@@ -14,7 +14,7 @@ import jp.artan.repack.registrate.providers.RegistrateRecipeProvider;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.level.block.Block;
-import twilightforest.block.TFBlocks;
+import twilightforest.init.TFBlocks;
 
 import java.util.function.Supplier;
 

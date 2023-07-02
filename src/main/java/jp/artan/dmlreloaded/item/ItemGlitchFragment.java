@@ -4,8 +4,6 @@ import jp.artan.dmlreloaded.config.BalanceConfigs;
 import jp.artan.dmlreloaded.item.entity.ItemEntityGlitchFragment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
@@ -25,16 +23,16 @@ public class ItemGlitchFragment extends Item {
     @Override
     public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flagIn) {
         if(BalanceConfigs.isSootedRedstoneCraftingEnabled.get()) {
-            list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_fragment_1", new TranslatableComponent("item.dmlreloaded.glitch_heart").withStyle(t->t.withColor(ChatFormatting.AQUA))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
-            list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_fragment_2", new TextComponent(new ItemStack(Items.OBSIDIAN).getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.DARK_PURPLE))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
-            list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_fragment_3").withStyle(t->t.withColor(ChatFormatting.GRAY)));
-            list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_fragment_4").withStyle(t->t.withColor(ChatFormatting.GRAY)));
+            list.add(Component.translatable("dmlreloaded.hover_text.glitch_fragment_1", Component.translatable("item.dmlreloaded.glitch_heart").withStyle(t->t.withColor(ChatFormatting.AQUA))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
+            list.add(Component.translatable("dmlreloaded.hover_text.glitch_fragment_2", Component.literal(new ItemStack(Items.OBSIDIAN).getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.DARK_PURPLE))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
+            list.add(Component.translatable("dmlreloaded.hover_text.glitch_fragment_3").withStyle(t->t.withColor(ChatFormatting.GRAY)));
+            list.add(Component.translatable("dmlreloaded.hover_text.glitch_fragment_4").withStyle(t->t.withColor(ChatFormatting.GRAY)));
         }
     }
 
     @Override
     public Component getName(ItemStack p_41458_) {
-        return new TranslatableComponent(super.getName(p_41458_).getString()).withStyle(t -> t.withColor(ChatFormatting.AQUA));
+        return Component.translatable(super.getName(p_41458_).getString()).withStyle(t->t.withColor(ChatFormatting.AQUA));
     }
 
     @Override

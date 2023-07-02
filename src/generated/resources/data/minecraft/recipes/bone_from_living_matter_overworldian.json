@@ -9,7 +9,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:bone",
-    "count": 22
+    "count": 22,
+    "item": "minecraft:bone"
   }
 }

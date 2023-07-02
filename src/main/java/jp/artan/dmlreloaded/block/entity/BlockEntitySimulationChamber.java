@@ -17,8 +17,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.energy.CapabilityEnergy;
 
 import java.util.Random;
 
@@ -71,7 +71,7 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-        return cap == CapabilityEnergy.ENERGY ? this.energy.cast() : super.getCapability(cap, side);
+        return cap == ForgeCapabilities.ENERGY ? this.energy.cast() : super.getCapability(cap, side);
     }
 
     private DeepEnergyStorage createEnergyStorage() {

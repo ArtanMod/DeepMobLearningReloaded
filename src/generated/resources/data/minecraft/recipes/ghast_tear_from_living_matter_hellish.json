@@ -15,7 +15,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:ghast_tear",
-    "count": 3
+    "count": 3,
+    "item": "minecraft:ghast_tear"
   }
 }

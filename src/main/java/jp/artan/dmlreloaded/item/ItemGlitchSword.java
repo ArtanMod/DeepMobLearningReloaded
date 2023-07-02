@@ -11,8 +11,6 @@ import jp.artan.dmlreloaded.util.NBTHelper;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -44,9 +42,10 @@ public class ItemGlitchSword extends SwordItem {
             setPermanentWeaponDamage(sword, current + DAMAGE_BONUS >= DAMAGE_BONUS_MAX ? DAMAGE_BONUS_MAX : current + DAMAGE_BONUS);
 
             if(getPermanentWeaponDamage(sword) >= DAMAGE_BONUS_MAX) {
-                player.displayClientMessage(new TranslatableComponent("dmlreloaded.messages.sword_levelup.max",new TextComponent(sword.getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.AQUA))), true);
+
+                player.displayClientMessage(Component.translatable("dmlreloaded.messages.sword_levelup.max", Component.literal(sword.getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.AQUA))), true);
             } else {
-                player.displayClientMessage(new TranslatableComponent("dmlreloaded.messages.sword_levelup",new TextComponent(sword.getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.AQUA))), true);
+                player.displayClientMessage(Component.translatable("dmlreloaded.messages.sword_levelup", Component.literal(sword.getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.AQUA))), true);
             }
         }
     }
@@ -72,17 +71,17 @@ public class ItemGlitchSword extends SwordItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_sword_1"));
-        //list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_sword_2"));
-        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_sword_3").withStyle(t->t.withColor(ChatFormatting.GOLD)));
-        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_sword_4").withStyle(t->t.withColor(ChatFormatting.GOLD)));
-        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_sword_5").withStyle(t->t.withColor(ChatFormatting.GOLD)));
-        list.add(new TextComponent(""));
-        list.add(new TranslatableComponent("dmlreloaded.hover_text.glitch_infused_sword_6", new TextComponent(Integer.toString(getPermanentWeaponDamage(stack))).withStyle(t->t.withColor(ChatFormatting.AQUA)), new TextComponent(Integer.toString(DAMAGE_BONUS_MAX)).withStyle(t->t.withColor(ChatFormatting.WHITE))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
+        list.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_1"));
+//        list.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_2"));
+        list.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_3").withStyle(t->t.withColor(ChatFormatting.GOLD)));
+        list.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_4").withStyle(t->t.withColor(ChatFormatting.GOLD)));
+        list.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_5").withStyle(t->t.withColor(ChatFormatting.GOLD)));
+        list.add(Component.literal(""));
+        list.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_6", Component.literal(Integer.toString(getPermanentWeaponDamage(stack))).withStyle(t->t.withColor(ChatFormatting.AQUA)), Component.literal(Integer.toString(DAMAGE_BONUS_MAX)).withStyle(t->t.withColor(ChatFormatting.WHITE))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
     }
 
     @Override
     public Component getName(ItemStack p_41458_) {
-        return new TranslatableComponent(super.getName(p_41458_).getString()).withStyle(t -> t.withColor(ChatFormatting.AQUA));
+        return Component.translatable(super.getName(p_41458_).getString()).withStyle(t->t.withColor(ChatFormatting.AQUA));
     }
 }

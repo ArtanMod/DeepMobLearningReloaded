@@ -2,7 +2,7 @@ package jp.artan.dmlreloaded.util;
 
 import jp.artan.dmlreloaded.item.ItemDeepLearner;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.PlayerList;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,12 +21,11 @@ public class PlayerHelper {
         return world.getEntitiesOfClass(ServerPlayer.class, new AABB(point1, point2), LivingEntity::isAlive);
     }
 
-
-    public static void sendMessage(ServerPlayer player, TextComponent component) {
-        if(player != null) {
-            player.sendMessage(component, player.getUUID());
-        }
-    }
+//    public static void sendMessage(ServerPlayer player, MutableComponent component) {
+//        if(player != null) {
+//            player.sendMessage(component, player.getUUID());
+//        }
+//    }
 
     public static ServerPlayer getPlayerFromUUID(UUID uuid) {
         PlayerList list = ServerLifecycleHooks.getCurrentServer().getPlayerList();

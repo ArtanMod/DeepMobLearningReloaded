@@ -34,7 +34,7 @@ public class CraftingRecipeMaker {
                 ItemStack output = metaData.getSpawnEgg();
                 if(!output.isEmpty()) {
                     recipes.add(new ShapelessRecipe(
-                            DeepMobLearningReloaded.getResource(output.getItem().getRegistryName().getPath()),
+                            DeepMobLearningReloaded.getResource(output.getItem().toString()),
                             null,
                             output,
                             NonNullList.of(

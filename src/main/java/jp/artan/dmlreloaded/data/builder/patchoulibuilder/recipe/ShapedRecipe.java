@@ -33,7 +33,7 @@ public class ShapedRecipe extends Recipe<ShapedRecipe, ShapedRecipe.Properties> 
         JsonObject jsonobject1 = new JsonObject();
         for (Map.Entry<Character, ItemLike> define : this.properties.defines.entrySet()) {
             JsonObject jsonobject2 = new JsonObject();
-            jsonobject2.addProperty("item", define.getValue().asItem().getRegistryName().toString());
+            jsonobject2.addProperty("item", define.getValue().asItem().toString());
             jsonobject1.add(define.getKey().toString(), jsonobject2);
         }
         jsonobject.add("key", jsonobject1);

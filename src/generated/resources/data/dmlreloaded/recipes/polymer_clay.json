@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "Y# ",
-    "#Z#",
-    " #X"
-  ],
   "key": {
     "#": {
       "item": "minecraft:clay_ball"
@@ -19,8 +14,13 @@
       "item": "minecraft:lapis_lazuli"
     }
   },
+  "pattern": [
+    "Y# ",
+    "#Z#",
+    " #X"
+  ],
   "result": {
-    "item": "dmlreloaded:polymer_clay",
-    "count": 16
+    "count": 16,
+    "item": "dmlreloaded:polymer_clay"
   }
 }

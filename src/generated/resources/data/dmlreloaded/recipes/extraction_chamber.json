@@ -1,27 +1,27 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " # ",
-    "XYX",
-    "ABA"
-  ],
   "key": {
     "#": {
       "item": "minecraft:gold_ingot"
-    },
-    "X": {
-      "item": "minecraft:diamond"
-    },
-    "Y": {
-      "item": "dmlreloaded:machine_casing"
     },
     "A": {
       "item": "minecraft:dandelion"
     },
     "B": {
       "item": "minecraft:comparator"
+    },
+    "X": {
+      "item": "minecraft:diamond"
+    },
+    "Y": {
+      "item": "dmlreloaded:machine_casing"
     }
   },
+  "pattern": [
+    " # ",
+    "XYX",
+    "ABA"
+  ],
   "result": {
     "item": "dmlreloaded:extraction_chamber"
   }

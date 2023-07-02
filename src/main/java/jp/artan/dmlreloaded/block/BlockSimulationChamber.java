@@ -4,7 +4,8 @@ import jp.artan.dmlreloaded.block.entity.BlockEntitySimulationChamber;
 import jp.artan.dmlreloaded.container.SimulationChamberContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.ComponentContents;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -65,8 +66,8 @@ public class BlockSimulationChamber extends HorizontalDirectionalBlock implement
         if (!pLevel.isClientSide
                 && pLevel.getBlockEntity(pPos) instanceof final BlockEntitySimulationChamber generator) {
             final MenuProvider container = new SimpleMenuProvider(
-                    SimulationChamberContainer.getServerContainer(generator, pPos), TextComponent.EMPTY);
-            NetworkHooks.openGui((ServerPlayer) pPlayer, container);
+                    SimulationChamberContainer.getServerContainer(generator, pPos), MutableComponent.create(ComponentContents.EMPTY));
+            NetworkHooks.openScreen((ServerPlayer) pPlayer, container);
         }
         return InteractionResult.SUCCESS;
     }

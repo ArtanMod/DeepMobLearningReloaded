@@ -16,7 +16,7 @@ import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.util.NonNullSupplier;
@@ -44,7 +44,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipes(RecipeTypes.CRAFTING, CraftingRecipeMaker.getCraftingRecipes());
         this.addSimulationChamberRecipe(registration);
         this.addExtractionChamberRecipe(registration);
-        registration.addIngredientInfo(new ItemStack(ItemInit.GLITCH_INGOT.get()), VanillaTypes.ITEM_STACK, new TranslatableComponent("jei.dmlreloaded.glitch_ingot"));
+        registration.addIngredientInfo(new ItemStack(ItemInit.GLITCH_INGOT.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.dmlreloaded.glitch_ingot"));
     }
 
     @Override

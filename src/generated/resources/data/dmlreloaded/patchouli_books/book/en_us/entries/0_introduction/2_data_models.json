@@ -1,8 +1,7 @@
 {
-  "name": "Data Models",
   "category": "dmlreloaded:0_introduction",
   "icon": "dmlreloaded:data_model_guardian",
-  "sortnum": 2,
+  "name": "Data Models",
   "pages": [
     {
       "type": "patchouli:crafting",
@@ -119,5 +118,6 @@
       "recipe": "dmlreloaded:data_model_twilight_snow_queen",
       "title": "patchouli.category.1.introduction.entry.3.page.19.title"
     }
-  ]
+  ],
+  "sortnum": 2
 }

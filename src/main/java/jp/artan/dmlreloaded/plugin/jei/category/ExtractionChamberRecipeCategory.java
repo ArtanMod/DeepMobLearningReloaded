@@ -16,13 +16,13 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 public class ExtractionChamberRecipeCategory implements IRecipeCategory<ExtractionChamberRecipeCategory.ExtractionChamberRecipes> {
 
-    public static TranslatableComponent title = new TranslatableComponent("block.dmlreloaded.extraction_chamber");
+    public static MutableComponent title = Component.translatable("block.dmlreloaded.extraction_chamber");
     public static ResourceLocation id = new ResourceLocation(DeepMobLearningReloaded.MOD_ID, "extraction_chamber");
     public static RecipeType<ExtractionChamberRecipes> type = RecipeType.create(DeepMobLearningReloaded.MOD_ID, "extraction_chamber", ExtractionChamberRecipes.class);
     private IDrawable icon;
@@ -64,20 +64,20 @@ public class ExtractionChamberRecipeCategory implements IRecipeCategory<Extracti
         progress.draw(stack,34,12);
     }
 
-    @Override
-    public ResourceLocation getUid() {
-        return id;
-    }
+//    @Override
+//    public ResourceLocation getUid() {
+//        return id;
+//    }
 
     @Override
     public RecipeType<ExtractionChamberRecipes> getRecipeType() {
         return type;
     }
 
-    @Override
-    public Class<? extends ExtractionChamberRecipes> getRecipeClass() {
-        return ExtractionChamberRecipes.class;
-    }
+//    @Override
+//    public Class<? extends ExtractionChamberRecipes> getRecipeClass() {
+//        return ExtractionChamberRecipes.class;
+//    }
 
     public static class ExtractionChamberRecipes {
 

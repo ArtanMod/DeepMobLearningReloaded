@@ -1,6 +1,5 @@
 package jp.artan.dmlreloaded.provider;
 
-import jp.artan.dmlreloaded.init.DropModifier;
 import jp.artan.dmlreloaded.loot.GlitchFragmentModifier;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -13,7 +12,7 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        add("glitch_fragment_all_entities", DropModifier.GLITCH_FRAGMENT.get(), new GlitchFragmentModifier(new LootItemCondition[] {}));
+        add("glitch_fragment_all_entities", new GlitchFragmentModifier(new LootItemCondition[] {}));
     }
 }
 

@@ -1,8 +1,7 @@
 {
-  "name": "Simulation Chamber",
   "category": "dmlreloaded:1_machines",
   "icon": "dmlreloaded:simulation_chamber",
-  "sortnum": 0,
+  "name": "Simulation Chamber",
   "pages": [
     {
       "type": "patchouli:text",
@@ -20,5 +19,6 @@
       "recipe": "dmlreloaded:polymer_clay",
       "text": "patchouli.category.2.introduction.entry.1.page.3.text"
     }
-  ]
+  ],
+  "sortnum": 0
 }

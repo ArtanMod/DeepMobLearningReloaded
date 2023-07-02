@@ -5,7 +5,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.ComponentContents;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -30,7 +31,7 @@ public class SelectButton extends Button {
     }
 
     public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, boolean selected, ResourceLocation pResourceLocation, int pTextureWidth, int pTextureHeight, Button.OnPress pOnPress) {
-        this(pX, pY, pWidth, pHeight, pXTexStart, pYTexStart, pYDiffTex, pXSelTex, selected, pResourceLocation, pTextureWidth, pTextureHeight, pOnPress, TextComponent.EMPTY);
+        this(pX, pY, pWidth, pHeight, pXTexStart, pYTexStart, pYDiffTex, pXSelTex, selected, pResourceLocation, pTextureWidth, pTextureHeight, pOnPress, MutableComponent.create(ComponentContents.EMPTY));
     }
 
     public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, boolean selected, ResourceLocation pResourceLocation, int pTextureWidth, int pTextureHeight, Button.OnPress pOnPress, Component pMessage) {

@@ -1,27 +1,27 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " # ",
-    "XYX",
-    "ABA"
-  ],
   "key": {
     "#": {
       "item": "minecraft:glass_pane"
-    },
-    "X": {
-      "item": "minecraft:ender_pearl"
-    },
-    "Y": {
-      "item": "dmlreloaded:machine_casing"
     },
     "A": {
       "item": "minecraft:cyan_dye"
     },
     "B": {
       "item": "minecraft:comparator"
+    },
+    "X": {
+      "item": "minecraft:ender_pearl"
+    },
+    "Y": {
+      "item": "dmlreloaded:machine_casing"
     }
   },
+  "pattern": [
+    " # ",
+    "XYX",
+    "ABA"
+  ],
   "result": {
     "item": "dmlreloaded:simulation_chamber"
   }

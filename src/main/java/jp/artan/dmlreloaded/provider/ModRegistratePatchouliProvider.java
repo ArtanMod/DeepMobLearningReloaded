@@ -14,8 +14,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import java.util.function.Consumer;
 
 public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider {
-    public ModRegistratePatchouliProvider(String modid, DataGenerator pGenerator, ExistingFileHelper existingFileHelper) {
-        super(modid, pGenerator, existingFileHelper);
+    public ModRegistratePatchouliProvider(boolean pRun, String modid, DataGenerator pGenerator, ExistingFileHelper existingFileHelper) {
+        super(pRun, modid, pGenerator, existingFileHelper);
     }
 
     public static void addLang(DeepMobLearningReloadedRegistrate registrate) {

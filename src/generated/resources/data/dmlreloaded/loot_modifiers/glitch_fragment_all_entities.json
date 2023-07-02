@@ -1,7 +1,4 @@
 {
-  "conditions": [],
-  "chanceFragment": 3,
-  "chanceHeart": 0.5,
-  "enabled": true,
-  "type": "dmlreloaded:glitch_fragment_all_entities"
+  "type": "dmlreloaded:glitch_fragment_all_entities",
+  "conditions": []
 }

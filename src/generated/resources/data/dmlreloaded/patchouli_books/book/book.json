@@ -1,22 +1,22 @@
 {
-  "name": "Deep Mob Learning",
-  "landing_text": "patchouli.book.landing_text",
   "book_texture": "dmlreloaded:textures/gui/patchouli/book_gray.png",
   "crafting_texture": "dmlreloaded:textures/gui/patchouli/crafting.png",
-  "model": "dmlreloaded:book",
-  "text_color": "DDDDDD",
+  "creative_tab": "deep_mob_learning_reloaded",
   "header_color": "16EFF7",
-  "nameplate_color": "16EFF7",
+  "i18n": true,
+  "landing_text": "patchouli.book.landing_text",
   "link_color": "16EFF7",
   "link_hover_color": "FFC0",
+  "macros": {
+    "$(dml)": "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning)Deep Mob Learning$()",
+    "$(dmlbm)": "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning-blood-magic-addon)Deep Mob Learning - BM Addon$()",
+    "$(item)": "$(#ff8c00)",
+    "$(primary)": "$(#16EFF7)"
+  },
+  "model": "dmlreloaded:book",
+  "name": "Deep Mob Learning",
+  "nameplate_color": "16EFF7",
   "show_progress": false,
   "subtitle": "patchouli.book.sub_title",
-  "creative_tab": "deep_mob_learning_reloaded",
-  "i18n": true,
-  "macros": {
-    "$(primary)": "$(#16EFF7)",
-    "$(item)": "$(#ff8c00)",
-    "$(dmlbm)": "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning-blood-magic-addon)Deep Mob Learning - BM Addon$()",
-    "$(dml)": "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning)Deep Mob Learning$()"
-  }
+  "text_color": "DDDDDD"
 }

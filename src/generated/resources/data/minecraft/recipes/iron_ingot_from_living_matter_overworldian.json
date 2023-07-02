@@ -18,7 +18,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:iron_ingot",
-    "count": 8
+    "count": 8,
+    "item": "minecraft:iron_ingot"
   }
 }

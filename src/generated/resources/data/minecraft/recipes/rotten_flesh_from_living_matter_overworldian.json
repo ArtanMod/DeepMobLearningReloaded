@@ -9,7 +9,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:rotten_flesh",
-    "count": 16
+    "count": 16,
+    "item": "minecraft:rotten_flesh"
   }
 }

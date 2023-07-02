@@ -3,10 +3,10 @@
   "book": "dmlreloaded:book",
   "ingredients": [
     {
-      "item": "minecraft:book"
+      "item": "book"
     },
     {
-      "item": "dmlreloaded:soot_covered_redstone"
+      "item": "soot_covered_redstone"
     }
   ]
 }

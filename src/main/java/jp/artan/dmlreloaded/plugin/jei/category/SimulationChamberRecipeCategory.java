@@ -19,12 +19,12 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 public class SimulationChamberRecipeCategory implements IRecipeCategory<SimulationChamberRecipeCategory.SimulationChamberRecipes> {
-    public static TranslatableComponent title = new TranslatableComponent("block.dmlreloaded.simulation_chamber");
+    public static MutableComponent title = Component.translatable("block.dmlreloaded.simulation_chamber");
     public static RecipeType<SimulationChamberRecipes> type = RecipeType.create(DeepMobLearningReloaded.MOD_ID, "simulation_chamber", SimulationChamberRecipes.class);
     private IDrawable icon;
     private IDrawable background;
@@ -67,15 +67,15 @@ public class SimulationChamberRecipeCategory implements IRecipeCategory<Simulati
         progress.draw(stack,52,9);
     }
 
-    @Override
-    public ResourceLocation getUid() {
-        return DeepMobLearningReloadedRecipeCategoryUid.SIMULATION_CHAMBER_ID;
-    }
-
-    @Override
-    public Class<? extends SimulationChamberRecipes> getRecipeClass() {
-        return SimulationChamberRecipes.class;
-    }
+//    @Override
+//    public ResourceLocation getUid() {
+//        return DeepMobLearningReloadedRecipeCategoryUid.SIMULATION_CHAMBER_ID;
+//    }
+//
+//    @Override
+//    public Class<? extends SimulationChamberRecipes> getRecipeClass() {
+//        return SimulationChamberRecipes.class;
+//    }
 
     @Override
     public RecipeType<SimulationChamberRecipes> getRecipeType() {

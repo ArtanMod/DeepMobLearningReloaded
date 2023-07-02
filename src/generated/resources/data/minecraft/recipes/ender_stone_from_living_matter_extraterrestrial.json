@@ -15,7 +15,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:end_stone",
-    "count": 8
+    "count": 8,
+    "item": "minecraft:end_stone"
   }
 }

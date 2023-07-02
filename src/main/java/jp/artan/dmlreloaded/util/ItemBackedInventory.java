@@ -1,10 +1,12 @@
 package jp.artan.dmlreloaded.util;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class ItemBackedInventory extends SimpleContainer {
@@ -23,16 +25,14 @@ public class ItemBackedInventory extends SimpleContainer {
                 setItem(i, ItemStack.of(lst.getCompound(i)));
             }
             this.stack = iStack;
-        }
-        else if(tempObj instanceof BlockEntity bEntity) {
-            ListTag lst = bEntity.getTileData().getList(TAG_ITEMS, Tag.TAG_COMPOUND);
+        } else if(tempObj instanceof BlockEntity bEntity) {
+            ListTag lst = bEntity.getPersistentData().getList(TAG_ITEMS, Tag.TAG_COMPOUND);
             int i = 0;
             for (; i < expectedSize && i < lst.size(); i++) {
                 setItem(i, ItemStack.of(lst.getCompound(i)));
             }
             this.stack = bEntity;
-        }
-        else{
+        } else{
             this.stack = null;
         }
 
@@ -45,9 +45,8 @@ public class ItemBackedInventory extends SimpleContainer {
         }
         if(stack instanceof ItemStack iStack) {
             iStack.getOrCreateTag().put(TAG_ITEMS, list);
-        }
-        else if(stack instanceof BlockEntity bEntity) {
-            bEntity.getTileData().put(TAG_ITEMS, list);
+        } else if(stack instanceof BlockEntity bEntity) {
+            bEntity.getPersistentData().put(TAG_ITEMS, list);
         }
 
     }

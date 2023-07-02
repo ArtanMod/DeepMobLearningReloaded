@@ -7,13 +7,14 @@ import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
 public abstract class MobMetaData {
@@ -102,12 +103,12 @@ public abstract class MobMetaData {
         return "dmlreloaded.gui.mob." + key.getId() + ".trivia." + index;
     }
 
-    public TranslatableComponent getMobTrivia(int index) {
-        return new TranslatableComponent(getMobTriviaLangId(this.getKey(), index));
+    public MutableComponent getMobTrivia(int index) {
+        return Component.translatable(getMobTriviaLangId(this.getKey(), index));
     }
 
     public boolean entityLivingMatchesMob(LivingEntity entity) {
-        ResourceLocation registryName = entity.getType().getRegistryName();
+        ResourceLocation registryName = entity.getType().getDefaultLootTable();
         if (registryName != null) {
             String name = registryName.toString();
             for (IMobKey.Mob mobRegname : getKey().getMobs()) {

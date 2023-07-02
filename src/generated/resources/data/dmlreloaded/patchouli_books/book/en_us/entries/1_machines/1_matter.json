@@ -1,8 +1,7 @@
 {
-  "name": "Matter",
   "category": "dmlreloaded:1_machines",
   "icon": "dmlreloaded:living_matter_hellish",
-  "sortnum": 1,
+  "name": "Matter",
   "pages": [
     {
       "type": "patchouli:text",
@@ -12,8 +11,8 @@
       "type": "patchouli:spotlight",
       "anchor": "living",
       "item": "dmlreloaded:living_matter_hellish",
-      "title": "patchouli.category.2.introduction.entry.2.page.2.title",
-      "text": "patchouli.category.2.introduction.entry.2.page.2.text"
+      "text": "patchouli.category.2.introduction.entry.2.page.2.text",
+      "title": "patchouli.category.2.introduction.entry.2.page.2.title"
     },
     {
       "type": "patchouli:crafting",
@@ -26,8 +25,9 @@
       "type": "patchouli:spotlight",
       "anchor": "pristine",
       "item": "dmlreloaded:pristine_matter_zombie",
-      "title": "patchouli.category.2.introduction.entry.2.page.4.title",
-      "text": "patchouli.category.2.introduction.entry.2.page.4.text"
+      "text": "patchouli.category.2.introduction.entry.2.page.4.text",
+      "title": "patchouli.category.2.introduction.entry.2.page.4.title"
     }
-  ]
+  ],
+  "sortnum": 1
 }

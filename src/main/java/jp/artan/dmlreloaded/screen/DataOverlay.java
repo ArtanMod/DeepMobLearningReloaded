@@ -12,15 +12,14 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import java.text.DecimalFormat;
 
-public class DataOverlay extends Screen{
+public class DataOverlay extends Screen {
 
     private Minecraft mc;
     private ItemStack deepLearner;
@@ -36,10 +35,10 @@ public class DataOverlay extends Screen{
     }
 
     @SubscribeEvent(priority=EventPriority.NORMAL)
-    public void renderOverlay(RenderGameOverlayEvent.Post event) {
-        if (event.getType() != RenderGameOverlayEvent.ElementType.LAYER) {
-            return;
-        }
+    public void renderOverlay(RenderGuiOverlayEvent.Post event) {
+//        if (event.getType() != RenderGuiOverlayEvent.ElementType.LAYER) {
+//            return;
+//        }
 
         if(!mc.isWindowActive()) {
             return;
@@ -87,7 +86,7 @@ public class DataOverlay extends Screen{
             double k = DataModelHelper.getKillsToNextTier(stack);
             double c = DataModelHelper.getCurrentTierKillCountWithSims(stack);
             int roof = DataModelHelper.getTierRoofAsKills(stack);
-            PoseStack pose = event.getMatrixStack();
+            PoseStack pose = event.getPoseStack();
             drawExperienceBar(pose, x, y, i, tierName, tier, k, c, roof, stack);
         }
     }
@@ -96,7 +95,7 @@ public class DataOverlay extends Screen{
         DecimalFormat f = new DecimalFormat("0.#");
 
         drawItemStack(x - 18, y - 2 + barSpacing + (index * componentHeight), stack);
-        drawString(pose, mc.font, new TranslatableComponent("dmlreloaded.gui.deep_learner.overlay",tierName), x - 14, y + (index * componentHeight) + 2, 0xFFFFFF);
+        drawString(pose, mc.font, Component.translatable("dmlreloaded.gui.deep_learner.overlay",tierName), x - 14, y + (index * componentHeight) + 2, 0xFFFFFF);
 
         // Draw the bar
         RenderSystem.setShader(GameRenderer::getPositionTexShader);

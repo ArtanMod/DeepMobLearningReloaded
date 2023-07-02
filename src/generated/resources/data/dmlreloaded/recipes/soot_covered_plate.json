@@ -1,9 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "XX",
-    "XY"
-  ],
   "key": {
     "X": {
       "item": "minecraft:obsidian"
@@ -12,8 +8,12 @@
       "item": "dmlreloaded:soot_covered_redstone"
     }
   },
+  "pattern": [
+    "XX",
+    "XY"
+  ],
   "result": {
-    "item": "dmlreloaded:soot_covered_plate",
-    "count": 8
+    "count": 8,
+    "item": "dmlreloaded:soot_covered_plate"
   }
 }

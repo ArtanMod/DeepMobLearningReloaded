@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "  #",
-    "X# ",
-    "YX "
-  ],
   "key": {
     "#": {
       "item": "dmlreloaded:glitch_infused_ingot"
@@ -16,6 +11,11 @@
       "item": "minecraft:stick"
     }
   },
+  "pattern": [
+    "  #",
+    "X# ",
+    "YX "
+  ],
   "result": {
     "item": "dmlreloaded:glitch_infused_sword"
   }

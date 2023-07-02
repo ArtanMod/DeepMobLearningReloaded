@@ -1,8 +1,7 @@
 {
-  "name": "Data",
   "category": "dmlreloaded:0_introduction",
   "icon": "dmlreloaded:deep_learner",
-  "sortnum": 1,
+  "name": "Data",
   "pages": [
     {
       "type": "patchouli:text",
@@ -18,5 +17,6 @@
       "item": "dmlreloaded:deep_learner",
       "text": "patchouli.category.1.introduction.entry.2.page.3.text"
     }
-  ]
+  ],
+  "sortnum": 1
 }

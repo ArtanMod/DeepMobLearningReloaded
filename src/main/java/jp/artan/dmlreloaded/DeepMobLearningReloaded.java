@@ -11,15 +11,16 @@ import jp.artan.dmlreloaded.provider.ModRegistratePatchouliProvider;
 import jp.artan.dmlreloaded.screen.DataOverlay;
 import jp.artan.repack.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.ComponentContents;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -77,7 +78,7 @@ public class DeepMobLearningReloaded {
 
     public void onFMLClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            MinecraftForge.EVENT_BUS.register(new DataOverlay(TextComponent.EMPTY));
+            MinecraftForge.EVENT_BUS.register(new DataOverlay(MutableComponent.create(ComponentContents.EMPTY)));
         });
     }
 
@@ -87,12 +88,8 @@ public class DeepMobLearningReloaded {
 
     void registerProviders(GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
-        if(event.includeServer()) {
-            gen.addProvider(new ModGlobalLootModifierProvider(gen, MOD_ID));
-            gen.addProvider(new ModRecipeProvider(gen));
-        }
-        if(event.includeClient()) {
-            gen.addProvider(new ModRegistratePatchouliProvider(MOD_ID, gen, event.getExistingFileHelper()));
-        }
+        gen.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(gen, MOD_ID));
+        gen.addProvider(event.includeServer(), new ModRecipeProvider(gen));
+        gen.addProvider(event.includeClient(), new ModRegistratePatchouliProvider(event.includeClient(), MOD_ID, gen, event.getExistingFileHelper()));
     }
 }

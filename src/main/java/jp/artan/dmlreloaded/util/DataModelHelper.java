@@ -8,8 +8,8 @@ import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.item.ItemGlitchSword;
 import net.minecraft.core.NonNullList;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -150,7 +150,7 @@ public class DataModelHelper {
         setTotalKillCount(stack, getTotalKillCount(stack) + 1);
 
         if(DataModelLevelupHelper.shouldIncreaseTier(tier, i, getCurrentTierSimulationCount(stack))) {
-            player.displayClientMessage(new TranslatableComponent("dmlreloaded.tiers.increase_tier", stack.getHoverName(), getTierName(stack, true)), true);
+            player.displayClientMessage(Component.translatable("dmlreloaded.tiers.increase_tier", stack.getHoverName(), getTierName(stack, true)), true);
 
             setCurrentTierKillCount(stack, 0);
             setCurrentTierSimulationCount(stack, 0);

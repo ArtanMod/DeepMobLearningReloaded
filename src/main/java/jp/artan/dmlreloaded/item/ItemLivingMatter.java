@@ -3,8 +3,6 @@ package jp.artan.dmlreloaded.item;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -30,9 +28,9 @@ public class ItemLivingMatter extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flag) {
-        list.add(new TranslatableComponent("dmlreloaded.living_matter.exp_consume", new TextComponent("(Right-Click)").withStyle(t -> t.withColor(ChatFormatting.WHITE))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
-        list.add(new TranslatableComponent("dmlreloaded.living_matter.exp_consume_stack", new TextComponent("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
-        list.add(new TranslatableComponent("dmlreloaded.living_matter.exp", new TextComponent(Integer.toString(getType().getExp())).withStyle(t -> t.withColor(ChatFormatting.GREEN))));
+        list.add(Component.translatable("dmlreloaded.living_matter.exp_consume", Component.literal("(Right-Click)").withStyle(t -> t.withColor(ChatFormatting.WHITE)).withStyle(t -> t.withColor(ChatFormatting.GRAY))));
+        list.add(Component.translatable("dmlreloaded.living_matter.exp_consume_stack", Component.literal("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
+        list.add(Component.translatable("dmlreloaded.living_matter.exp", Component.literal(Integer.toString(getType().getExp())).withStyle(t -> t.withColor(ChatFormatting.GREEN))));
     }
 
     @Override
@@ -53,6 +51,6 @@ public class ItemLivingMatter extends Item {
 
     @Override
     public Component getName(ItemStack p_41458_) {
-        return new TranslatableComponent(super.getName(p_41458_).getString()).withStyle(t -> t.withColor(getType().getColor()));
+        return Component.translatable(super.getName(p_41458_).getString()).withStyle(t -> t.withColor(getType().getColor()));
     }
 }

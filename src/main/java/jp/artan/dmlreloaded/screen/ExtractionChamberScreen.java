@@ -16,8 +16,6 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
@@ -101,15 +99,15 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
             if(6 <= x && x < 13) {
                 // Tooltip for energy
                 List<Component> tooltip = new ArrayList<>();
-                tooltip.add(new TranslatableComponent("dmlreloaded.gui.energy.energystored", f.format(energyStored), f.format(maxEnergy)));
-                tooltip.add(new TranslatableComponent("dmlreloaded.gui.extraction_chamber.opcost", f.format(EnergyCostConfig.FECOSTEXTRACTIONCHAMBER.get())));
+                tooltip.add(Component.translatable("dmlreloaded.gui.energy.energystored", f.format(energyStored), f.format(maxEnergy)));
+                tooltip.add(Component.translatable("dmlreloaded.gui.extraction_chamber.opcost", f.format(EnergyCostConfig.FECOSTEXTRACTIONCHAMBER.get())));
                 renderComponentTooltip(pose, tooltip, pMouseX + 1, pMouseY - 11);
             }
         }
         if (23 <= y && y < 58) {
             if(84 <= x && x < 90) {
                 List<Component> tooltip = new ArrayList<>();
-                tooltip.add(new TextComponent(progress + "/" + 100));
+                tooltip.add(Component.literal(progress + "/" + 100));
                 renderComponentTooltip(pose, tooltip, pMouseX - 1, pMouseY - 11);
             }
         }

@@ -9,7 +9,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:nether_wart",
-    "count": 4
+    "count": 4,
+    "item": "minecraft:nether_wart"
   }
 }

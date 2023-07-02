@@ -28,7 +28,7 @@ public class ShapelessRecipe extends Recipe<ShapelessRecipe, ShapelessRecipe.Pro
         JsonArray jsonarray = new JsonArray();
         for (ItemLike item : this.properties.requires) {
             JsonObject jsonobject1 = new JsonObject();
-            jsonobject1.addProperty("item", item.asItem().getRegistryName().toString());
+            jsonobject1.addProperty("item", item.asItem().toString());
             jsonarray.add(jsonobject1);
         }
         jsonobject.add("ingredients", jsonarray);

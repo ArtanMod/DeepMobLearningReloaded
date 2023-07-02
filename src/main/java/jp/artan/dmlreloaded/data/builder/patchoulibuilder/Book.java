@@ -8,9 +8,8 @@ import jp.artan.dmlreloaded.data.builder.patchoulibuilder.recipe.ShapedRecipe;
 import jp.artan.dmlreloaded.data.builder.patchoulibuilder.recipe.ShapelessRecipe;
 import jp.artan.dmlreloaded.data.providers.RegistratePatchouliProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.ItemLike;
 
 import javax.annotation.Nullable;
 import java.nio.file.Path;
@@ -313,7 +312,7 @@ public class Book implements RegistratePatchouliProvider.Result {
         }
 
         public Properties setCreativeTab(CreativeTab creativeTab) {
-            this.creativeTab = Optional.of(((TranslatableComponent)creativeTab.getDisplayName()).getKey().replace("itemGroup.", ""));
+            this.creativeTab = Optional.of(((TranslatableContents)creativeTab.getDisplayName().getContents()).getKey().replace("itemGroup.", ""));
             return this;
         }
 

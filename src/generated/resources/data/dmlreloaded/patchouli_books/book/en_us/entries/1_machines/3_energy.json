@@ -1,19 +1,19 @@
 {
-  "name": "Energy",
   "category": "dmlreloaded:1_machines",
   "icon": "minecraft:redstone",
-  "sortnum": 3,
+  "name": "Energy",
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "minecraft:redstone",
-      "title": "patchouli.category.2.introduction.entry.4.page.1.title",
-      "text": "patchouli.category.2.introduction.entry.4.page.1.text"
+      "text": "patchouli.category.2.introduction.entry.4.page.1.text",
+      "title": "patchouli.category.2.introduction.entry.4.page.1.title"
     },
     {
       "type": "patchouli:text",
       "text": "patchouli.category.2.introduction.entry.4.page.2.text",
       "title": "patchouli.category.2.introduction.entry.4.page.2.title"
     }
-  ]
+  ],
+  "sortnum": 3
 }

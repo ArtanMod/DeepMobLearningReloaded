@@ -12,7 +12,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:grass",
-    "count": 4
+    "count": 4,
+    "item": "minecraft:grass"
   }
 }

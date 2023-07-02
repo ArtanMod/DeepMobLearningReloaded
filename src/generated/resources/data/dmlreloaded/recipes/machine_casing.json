@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "#X#",
-    "XYX",
-    "#X#"
-  ],
   "key": {
     "#": {
       "item": "dmlreloaded:soot_covered_plate"
@@ -16,8 +11,13 @@
       "item": "dmlreloaded:soot_covered_redstone"
     }
   },
+  "pattern": [
+    "#X#",
+    "XYX",
+    "#X#"
+  ],
   "result": {
-    "item": "dmlreloaded:machine_casing",
-    "count": 8
+    "count": 8,
+    "item": "dmlreloaded:machine_casing"
   }
 }
