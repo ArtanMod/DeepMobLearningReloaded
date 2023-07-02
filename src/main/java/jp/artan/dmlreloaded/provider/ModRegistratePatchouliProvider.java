@@ -1,8 +1,8 @@
 package jp.artan.dmlreloaded.provider;
 
+import jp.artan.artansprojectcoremod.provider.RegistratePatchouliProvider;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
-import jp.artan.dmlreloaded.data.providers.RegistratePatchouliProvider;
 import jp.artan.dmlreloaded.init.BlockInit;
 import jp.artan.dmlreloaded.init.ItemGroupInit;
 import jp.artan.dmlreloaded.init.ItemInit;
