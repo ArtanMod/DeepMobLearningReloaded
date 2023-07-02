@@ -107,16 +107,12 @@ public abstract class MobMetaData {
     }
 
     public boolean entityLivingMatchesMob(LivingEntity entity) {
-        ResourceLocation registryName = entity.getType().getRegistryName();
-        if (registryName != null) {
-            String name = registryName.toString();
-            for (IMobKey.Mob mobRegname : getKey().getMobs()) {
-                if (mobRegname.getEntityId().equals(name)) {
-                    return true;
-                }
+        String name = entity.getType().getDescriptionId();
+        for (IMobKey.Mob mobRegname : getKey().getMobs()) {
+            if (mobRegname.getMobLangId().equals(name)) {
+                return true;
             }
         }
-
         return false;
     }
 

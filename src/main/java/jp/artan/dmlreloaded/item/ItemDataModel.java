@@ -56,7 +56,7 @@ public class ItemDataModel extends Item {
             List<IMobKey.Mob> mobs = this.getMobKey().getMobs();
             list.add(new TranslatableComponent("dmlreloaded.learning_target"));
             for(int i = 0; i < mobs.size(); i++) {
-                String mob = mobs.get(i).getLangId();
+                String mob = mobs.get(i).getMobLangId();
                 list.add(new TranslatableComponent("%1$s. %2$s", i + 1, new TranslatableComponent(mob)));
             }
         } else {
