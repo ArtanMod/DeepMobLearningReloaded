@@ -228,9 +228,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         posestack.pushPose();
         posestack.translate((double)xPos, (double)yPos + Math.sin(world.getGameTime()/13.0d)*3.0d, 1050.0D);
         LivingEntity entity = meta.getEntity(world);
-        if(entity == null) {
-            return;
-        }
+
         Quaternion quaternion1 = meta.getEntityXRotation();
         Quaternion quaternion = meta.getEntityZRotation();
         meta.setPose(posestack, xPos, yPos, world);
@@ -241,22 +239,28 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         posestack1.scale((float)scale, (float)scale, (float)scale);
         quaternion.mul(quaternion1);
         posestack1.mulPose(quaternion);
-        entity.yBodyRot =  0.0f + (float) (world.getGameTime()*1.2d);
-        entity.yHeadRot =  0.0f + (float) (world.getGameTime()*1.2d);
-        if(entity instanceof WitherBoss wither) {
-            wither.setYHeadRot(0.0f + (float) (world.getGameTime()*1.2d));
+        if(entity != null) {
+            entity.yBodyRot =  0.0f + (float) (world.getGameTime()*1.2d);
+            entity.yHeadRot =  0.0f + (float) (world.getGameTime()*1.2d);
+            if(entity instanceof WitherBoss wither) {
+                wither.setYHeadRot(0.0f + (float) (world.getGameTime()*1.2d));
+            }
         }
         Lighting.setupForEntityInInventory();
         EntityRenderDispatcher entityrenderdispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
         entityrenderdispatcher.setRenderShadow(false);
         MultiBufferSource.BufferSource multibuffersource$buffersource = Minecraft.getInstance().renderBuffers().bufferSource();
-        RenderSystem.runAsFancy(() -> {
-            entityrenderdispatcher.render(entity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, posestack1, multibuffersource$buffersource, 15728880);
-        });
+        if(entity != null) {
+            RenderSystem.runAsFancy(() -> {
+                entityrenderdispatcher.render(entity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, posestack1, multibuffersource$buffersource, 15728880);
+            });
+        }
         multibuffersource$buffersource.endBatch();
         entityrenderdispatcher.setRenderShadow(true);
-        entity.yBodyRot = 0.0F;
-        entity.yHeadRot = 0.0f;
+        if(entity != null) {
+            entity.yBodyRot = 0.0F;
+            entity.yHeadRot = 0.0f;
+        }
         posestack.popPose();
         RenderSystem.applyModelViewMatrix();
         Lighting.setupFor3DItems();
