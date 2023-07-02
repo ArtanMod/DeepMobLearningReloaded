@@ -31,7 +31,7 @@ logoFile="dmlreloaded.png" #optional
 # A text field displayed in the mod UI
 credits="Thanks for this example mod goes to Java" #optional
 # A text field displayed in the mod UI
-authors="Artan" #optional
+authors="Artan, rikukiimomo" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
 This is a long form description of the mod. You can write whatever you want here
