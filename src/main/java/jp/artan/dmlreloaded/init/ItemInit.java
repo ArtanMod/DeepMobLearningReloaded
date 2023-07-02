@@ -343,7 +343,7 @@ public class ItemInit {
 
         public static final ItemEntry<ItemDataModel> SHULKER = registerDataModel("data_model_shulker", MobKey.SHULKER, () -> Items.SHULKER_SHELL)
                 .lang("Shulker Data Model")
-                .jpLang("シェルカーのデータモデル")
+                .jpLang("シュルカーのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> SKELETON = registerDataModel("data_model_skeleton", MobKey.SKELETON, () -> Items.BONE)
@@ -512,7 +512,7 @@ public class ItemInit {
 
         public static final ItemEntry<ItemPristineMatter> SHULKER = REGISTRATE.item("pristine_matter_shulker", p -> new ItemPristineMatter(p, MobKey.SHULKER))
                 .lang("Pristine Shulker Matter")
-                .jpLang("綺麗なシェルカーマター")
+                .jpLang("綺麗なシュルカーマター")
                 .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SHULKER, 0), "Found in End cities")
                 .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SHULKER, 1), "Sneaky little buggers")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SHULKER, 0), "")
