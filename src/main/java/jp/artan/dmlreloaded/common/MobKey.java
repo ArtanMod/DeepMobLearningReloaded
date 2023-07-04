@@ -90,7 +90,7 @@ public enum MobKey implements IMobKey {
     RAVAGER("ravager", RavagerMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new VanillaMob("ravager"));
     }}, new ArrayList<>(){{
-        add(() -> new ItemStack(Items.SADDLE, 64));
+        add(() -> new ItemStack(Items.SADDLE, 1));
         add(() -> new ItemStack(Items.DIAMOND, 8));
     }}),
     SHULKER("shulker", ShulkerMeta::new, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
