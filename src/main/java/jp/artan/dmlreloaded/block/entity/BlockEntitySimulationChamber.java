@@ -119,6 +119,10 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
                 //energyStorage.voidEnergy(rfTickCost);
                 this.energyStorage.setEnergy(this.energyStorage.getEnergyStored() - rfTickCost);
 
+                if(DeepMobLearningReloaded.DEBUG_MODE) {
+                    this.energyStorage = this.createEnergyStorage();
+                }
+
                 // It takes 15 seconds to complete one cycle
                 if (ticks % ((DeepMobLearningReloaded.TICKS_TO_SECOND * 15) / 100) == 0) {
                     percentDone++;
