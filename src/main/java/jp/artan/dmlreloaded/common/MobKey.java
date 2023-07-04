@@ -65,7 +65,6 @@ public enum MobKey implements IMobKey {
     }}),
     HOGLIN("hoglin", HoglinMeta::new, LivingMatterType.HELLISH, new ArrayList<>(){{
         add(new VanillaMob("hoglin"));
-        add(new VanillaMob("zoglin"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.LEATHER, 32));
         add(() -> new ItemStack(Items.PORKCHOP, 32));
@@ -83,7 +82,7 @@ public enum MobKey implements IMobKey {
     PIGLIN("piglin", PiglinMeta::new, LivingMatterType.HELLISH, new ArrayList<>(){{
         add(new VanillaMob("piglin"));
         add(new VanillaMob("piglin_brute"));
-        add(new VanillaMob("zombified_piglin"));
+        add(new VanillaMob("zombie_pigman"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.GOLD_INGOT, 16));
     }}),
@@ -199,8 +198,8 @@ public enum MobKey implements IMobKey {
     }
 
     @Override
-    public void addMob(String mobLangId) {
-        mobs.add(new Mob(mobLangId));
+    public void addMob(String entityId, String langId) {
+        mobs.add(new Mob(entityId, langId));
     }
 
     @Override
@@ -209,8 +208,8 @@ public enum MobKey implements IMobKey {
     }
 
     public static class VanillaMob extends Mob {
-        public VanillaMob(String mobName) {
-            super("entity.minecraft." + mobName);
+        public VanillaMob(String entityId) {
+            super("minecraft:" + entityId, "entity.minecraft." + entityId);
         }
     }
 }

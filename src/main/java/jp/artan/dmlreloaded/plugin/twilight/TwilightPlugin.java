@@ -13,16 +13,16 @@ public class TwilightPlugin {
     }
 
     public static void registerMobKey() {
-        MobKey.SPIDER.addMob("entity.twilightforest.carminite_broodling");
-        MobKey.SPIDER.addMob("entity.twilightforest.hedge_spider");
-        MobKey.SPIDER.addMob("entity.twilightforest.king_spider");
-        MobKey.SPIDER.addMob("entity.twilightforest.swarm_spider");
+        MobKey.SPIDER.addMob("twilightforest:carminite_broodling", "entity.twilightforest.carminite_broodling");
+        MobKey.SPIDER.addMob("twilightforest:hedge_spider", "entity.twilightforest.hedge_spider");
+        MobKey.SPIDER.addMob("twilightforest:king_spider", "entity.twilightforest.king_spider");
+        MobKey.SPIDER.addMob("twilightforest:swarm_spider", "entity.twilightforest.swarm_spider");
 
-        MobKey.GHAST.addMob("entity.twilightforest.carminite_ghastling");
+        MobKey.GHAST.addMob("twilightforest:carminite_ghastling", "entity.twilightforest.carminite_ghastling");
 
-        MobKey.SLIME.addMob("entity.twilightforest.maze_slime");
-        MobKey.SLIME.addMob("entity.twilightforest.slime_beetle");
+        MobKey.SLIME.addMob("twilightforest:maze_slime", "entity.twilightforest.maze_slime");
+        MobKey.SLIME.addMob("twilightforest:slime_beetle", "entity.twilightforest.slime_beetle");
 
-        MobKey.SKELETON.addMob("entity.twilightforest.skeleton_druid");
+        MobKey.SKELETON.addMob("twilightforest:skeleton_druid", "entity.twilightforest.skeleton_druid");
     }
 }

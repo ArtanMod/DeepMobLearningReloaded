@@ -11,7 +11,7 @@ import twilightforest.entity.TFEntityNames;
 public class MinoshroomMeta extends TwilightMobMetaData {
     public MinoshroomMeta() {
         super(
-                TwilightMobKey.NAGA,
+                TwilightMobKey.MINOSHROOM,
                 "entity.twilightforest.minoshroom",
                 4096, 120,
                 TwilightItemInit.PristineMatter.MINOSHROOM.get(),
