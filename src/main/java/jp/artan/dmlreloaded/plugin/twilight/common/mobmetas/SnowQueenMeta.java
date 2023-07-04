@@ -14,7 +14,8 @@ public class SnowQueenMeta extends TwilightMobMetaData {
                 TwilightMobKey.SNOW_QUEEN,
                 "entity.twilightforest.snow_queen",
                 4096, 200,
-                TwilightItemInit.PristineMatter.SNOW_QUEEN.get(),
+//                TwilightItemInit.PristineMatter.SNOW_QUEEN.get(),
+                null,
                 TFEntityNames.SNOW_QUEEN
         );
     }
