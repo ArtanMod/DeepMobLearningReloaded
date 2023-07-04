@@ -50,10 +50,10 @@ public class TwilightItemInit {
                 .lang("Alpha Yeti Data Model")
                 .jpLang("アルファイエティのデータモデル")
                 .register();
-        public static final ItemEntry<ItemDataModel> SNOW_QUEEN = registerDataModel("data_model_twilight_snow_queen", TwilightMobKey.SNOW_QUEEN, TFBlocks.SNOW_QUEEN_TROPHY::get)
-                .lang("Snow Queen Data Model")
-                .jpLang("雪の女王のデータモデル")
-                .register();
+//        public static final ItemEntry<ItemDataModel> SNOW_QUEEN = registerDataModel("data_model_twilight_snow_queen", TwilightMobKey.SNOW_QUEEN, TFBlocks.SNOW_QUEEN_TROPHY::get)
+//                .lang("Snow Queen Data Model")
+//                .jpLang("雪の女王のデータモデル")
+//                .register();
 
         public static void register() {
 
@@ -101,10 +101,10 @@ public class TwilightItemInit {
                 .lang("Pristine Alpha Yeti Matter")
                 .jpLang("綺麗なアルファイエティマター")
                 .register();
-        public static final ItemEntry<ItemPristineMatter> SNOW_QUEEN = REGISTRATE.item("pristine_matter_twilight_snow_queen", p -> new ItemPristineMatter(p, TwilightMobKey.SNOW_QUEEN))
-                .lang("Pristine Snow Queen Matter")
-                .jpLang("綺麗な雪の女王マター")
-                .register();
+//        public static final ItemEntry<ItemPristineMatter> SNOW_QUEEN = REGISTRATE.item("pristine_matter_twilight_snow_queen", p -> new ItemPristineMatter(p, TwilightMobKey.SNOW_QUEEN))
+//                .lang("Pristine Snow Queen Matter")
+//                .jpLang("綺麗な雪の女王マター")
+//                .register();
 
         public static void register() {
 

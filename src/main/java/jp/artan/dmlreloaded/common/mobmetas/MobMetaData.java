@@ -108,7 +108,7 @@ public abstract class MobMetaData {
     }
 
     public boolean entityLivingMatchesMob(LivingEntity entity) {
-        ResourceLocation registryName = entity.getType().getRegistryName();
+        ResourceLocation registryName = entity.getType().getDefaultLootTable();
         if (registryName != null) {
             String name = registryName.toString();
             for (IMobKey.Mob mobRegname : getKey().getMobs()) {

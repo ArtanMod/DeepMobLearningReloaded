@@ -55,7 +55,7 @@ public class ItemDataModel extends Item {
             list.add(Component.translatable("dmlreloaded.learning_target"));
             for(int i = 0; i < mobs.size(); i++) {
                 String mob = mobs.get(i).getLangId();
-                list.add(new TranslatableComponent("%1$s. %2$s", i + 1, new TranslatableComponent(mob)));
+                list.add(Component.translatable("%1$s. %2$s", i + 1, Component.translatable(mob)));
             }
         } else {
             list.add(Component.translatable("dmlreloaded.holdshift", Component.literal("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE).withItalic(true))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));

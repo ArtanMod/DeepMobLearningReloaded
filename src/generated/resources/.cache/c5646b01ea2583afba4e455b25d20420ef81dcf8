@@ -1,11 +1,11 @@
-// 1.19.2	2023-07-02T16:51:20.1035617	Registrate Provider for dmlreloaded [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Languages: ja_jp]
+// 1.19.2	2023-07-04T21:15:22.8988474	Registrate Provider for dmlreloaded [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Languages: ja_jp]
 819921f79d5bc5a94cda4e0dc90357991620b552 assets/dmlreloaded/blockstates/extraction_chamber.json
 7a8b89ed39829d397ac598a7550cb633cd26410a assets/dmlreloaded/blockstates/infused_ingot_block.json
 5fad5624a4cb6b6d52251013da821f6764bcf790 assets/dmlreloaded/blockstates/machine_casing.json
 e130c6997edd2e5cf1cd8828052853849de6adf3 assets/dmlreloaded/blockstates/simulation_chamber.json
-f955613014cd26e7783b90342a91657987ee402b assets/dmlreloaded/lang/en_ud.json
-bd2959a00359904c265ad1ac797b3d0289b9c388 assets/dmlreloaded/lang/en_us.json
-c40e64865d06607c20ddaf81110257d7732a14be assets/dmlreloaded/lang/ja_jp.json
+e727e45021cf8613b7a7c8e131b9ae0960388643 assets/dmlreloaded/lang/en_ud.json
+c6b770535d6684dae36aad05186b55709fa939b6 assets/dmlreloaded/lang/en_us.json
+f32b1fa010db3ed96d0fbf8071518b38d92eabbb assets/dmlreloaded/lang/ja_jp.json
 25e3af13647f0152e43c04d7886508e526392b61 assets/dmlreloaded/models/block/infused_ingot_block.json
 5dbf1ec55ec3833bd0d0689fb955ce175dbd678f assets/dmlreloaded/models/block/machine_casing.json
 d6a5f3e1430bf4e6a2aab8589b6bd6e96b99ec5c assets/dmlreloaded/models/item/data_model_blank.json
@@ -32,7 +32,6 @@ ace609fdf63ac677fd521739bcc1e15cd8ba9f8e assets/dmlreloaded/models/item/data_mod
 cb7419fef5b95b6fc8f3ce87be4f92e32bb1231d assets/dmlreloaded/models/item/data_model_twilight_lich.json
 5e6dc8a215f7f40e98b53ca88d2c14d5434b553b assets/dmlreloaded/models/item/data_model_twilight_minoshroom.json
 16184245cca0d03c2a7020a93b241205503a669a assets/dmlreloaded/models/item/data_model_twilight_naga.json
-baa836258c44db8d800dd4556b29df73c6573da8 assets/dmlreloaded/models/item/data_model_twilight_snow_queen.json
 d1110a69ce58e83f83bab86981090ae7c254698b assets/dmlreloaded/models/item/data_model_twilight_ur_ghast.json
 73fd8571f69278c63bf02dd7fe924451ff35a56a assets/dmlreloaded/models/item/data_model_witch.json
 4493af84bb2dcf8e8f0423271cbd3964c565fd0d assets/dmlreloaded/models/item/data_model_wither.json
@@ -78,7 +77,6 @@ c32c2af79ec3c77d79a03ca7a2cf2f63d45d5b5d assets/dmlreloaded/models/item/pristine
 b888f857f27d7e043f068b2bbb2e4f82cd32cfed assets/dmlreloaded/models/item/pristine_matter_twilight_lich.json
 279ddd02bd676276943f5a2491dba4c8356e4190 assets/dmlreloaded/models/item/pristine_matter_twilight_minoshroom.json
 70e9761e00750b08c59ea8913a117beab18dd729 assets/dmlreloaded/models/item/pristine_matter_twilight_naga.json
-24b71952c20b97eb8949b8661febff105337e6fd assets/dmlreloaded/models/item/pristine_matter_twilight_snow_queen.json
 aa14f4ce87fec8b6c152269e428c576374fde6e4 assets/dmlreloaded/models/item/pristine_matter_twilight_ur_ghast.json
 9a5f71c593a53122567630292dda190be1c6cccf assets/dmlreloaded/models/item/pristine_matter_witch.json
 fe198aa8cbfffca0ffda0063cb2df5b9f9e3dcc7 assets/dmlreloaded/models/item/pristine_matter_wither.json
@@ -112,7 +110,6 @@ b61ffd4b74fd1eae22afe6ab4768f7f4c8b35245 data/dmlreloaded/advancements/recipes/d
 c04b7f5a02ede5584ea33e97a961a9d47c20f240 data/dmlreloaded/advancements/recipes/deep_mob_learning_reloaded/data_model_twilight_lich.json
 569ebc1338845de7f65a75614da88b1883381e16 data/dmlreloaded/advancements/recipes/deep_mob_learning_reloaded/data_model_twilight_minoshroom.json
 940e21c6f265b77991d84c77d55b525e913ab149 data/dmlreloaded/advancements/recipes/deep_mob_learning_reloaded/data_model_twilight_naga.json
-da4dfc859e6096d39f8ed14af77ada0456cff9f7 data/dmlreloaded/advancements/recipes/deep_mob_learning_reloaded/data_model_twilight_snow_queen.json
 a1e3167c81415f4e1446247dd4f77e072dcf0631 data/dmlreloaded/advancements/recipes/deep_mob_learning_reloaded/data_model_twilight_ur_ghast.json
 cdf5c934c9db0e38083ea5a109f5852634365495 data/dmlreloaded/advancements/recipes/deep_mob_learning_reloaded/data_model_witch.json
 514de6a8d3b43206139953c8fab3f8eef93dbfd0 data/dmlreloaded/advancements/recipes/deep_mob_learning_reloaded/data_model_wither.json
@@ -160,7 +157,6 @@ ce219c426839bc44c9e873083a5451429376e1fa data/dmlreloaded/recipes/data_model_twi
 aa9fd56606663edb89651d527a8b9e8e5ed4078f data/dmlreloaded/recipes/data_model_twilight_lich.json
 f38163f4db06ab268b2979652acbb59c55840060 data/dmlreloaded/recipes/data_model_twilight_minoshroom.json
 c0204cf4ec6b0c54c005328da86bbc6d4cb39ffd data/dmlreloaded/recipes/data_model_twilight_naga.json
-7e987247e83bb9de488f34074da534f9ba06e609 data/dmlreloaded/recipes/data_model_twilight_snow_queen.json
 385021cd11a5bf596596184ef533f341641cfc45 data/dmlreloaded/recipes/data_model_twilight_ur_ghast.json
 daf6ed7961de738528655a2ae0ccb32127ce5f7e data/dmlreloaded/recipes/data_model_witch.json
 091a7afea8dee3e39ce5af273410fb3f25b1984e data/dmlreloaded/recipes/data_model_wither.json
