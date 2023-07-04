@@ -110,7 +110,7 @@ public abstract class MobMetaData {
     public boolean entityLivingMatchesMob(LivingEntity entity) {
         String name = entity.getType().getDescriptionId();
         for (IMobKey.Mob mobRegname : getKey().getMobs()) {
-            if (mobRegname.getEntityId().equals(name)) {
+            if (mobRegname.getLangId().equals(name)) {
                 return true;
             }
         }

@@ -105,6 +105,10 @@ public class BlockEntityExtractionChamber extends InventoryBlockEntity{
                 if(hasEnergyForNextTick()) {
                     this.energyStorage.setEnergy(this.energyStorage.getEnergyStored() - energyCost);
                     percentDone++;
+
+                    if(DeepMobLearningReloaded.DEBUG_MODE) {
+                        this.energyStorage = this.createEnergyStorage();
+                    }
                 }
 
                 // Notify while crafting every 5sec, this is done more frequently when the container is open
@@ -116,7 +120,6 @@ public class BlockEntityExtractionChamber extends InventoryBlockEntity{
                     finishCraft(false);
                 }
             }
-
             // Save to disk every 5 seconds if energy changed
             //doStaggeredDiskSave(100);
         }
