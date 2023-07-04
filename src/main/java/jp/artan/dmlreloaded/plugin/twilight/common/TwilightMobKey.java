@@ -39,7 +39,7 @@ public enum TwilightMobKey implements IMobKey {
         add(new TwilightMob("minoshroom"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(TFBlocks.MINOSHROOM_TROPHY.get(), 1));
-        add(() -> new ItemStack(TFItems.MEEF_STROGANOFF.get(), 32));
+        add(() -> new ItemStack(TFItems.MEEF_STROGANOFF.get(), 1));
         add(() -> new ItemStack(TFItems.DIAMOND_MINOTAUR_AXE.get(), 1));
     }}),
     HYDRA("hydra", HydraMeta::new, TwilightLivingMatterType.TWILIGHT, new ArrayList<>(){{

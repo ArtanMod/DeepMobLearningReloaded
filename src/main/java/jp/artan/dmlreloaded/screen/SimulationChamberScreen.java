@@ -125,7 +125,10 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
 
         int leftTopConsole = left - 11;
         if(!(getMenu().getDataModel().getItem() instanceof ItemDataModel)) {
-            lines = new Component[] {Component.translatable("dmlreloaded.gui.simulation_chamber.insert"), Component.translatable("dmlreloaded.gui.simulation_chamber.to_begin")};
+            lines = new Component[] {
+                Component.translatable("dmlreloaded.gui.simulation_chamber.insert"), 
+                Component.translatable("dmlreloaded.gui.simulation_chamber.to_begin")
+            };
 
             Animation a1 = getAnimation("pleaseInsert1");
             Animation a2 = getAnimation("pleaseInsert2");
@@ -135,7 +138,11 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
 
         } else if(DataModelHelper.getTier(getMenu().getDataModel()) == 0) {
 
-            lines = new Component[] {Component.literal("Insufficient data in model"), Component.literal("please insert a basic model"), Component.literal("or better ")};
+            lines = new Component[] {
+                    Component.translatable("dmlreloaded.gui.simulation_chamber.tier1.1"),
+                    Component.translatable("dmlreloaded.gui.simulation_chamber.tier1.2"),
+                    Component.translatable("dmlreloaded.gui.simulation_chamber.tier1.3")
+            };
 
             Animation insufData = getAnimation("insufData1");
             Animation insufData2 = getAnimation("insufData2");
