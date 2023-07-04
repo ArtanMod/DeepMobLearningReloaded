@@ -82,7 +82,7 @@ public enum MobKey implements IMobKey {
     PIGLIN("piglin", PiglinMeta::new, LivingMatterType.HELLISH, new ArrayList<>(){{
         add(new VanillaMob("piglin"));
         add(new VanillaMob("piglin_brute"));
-        add(new VanillaMob("zombie_pigman"));
+        add(new VanillaMob("zombified_piglin"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.GOLD_INGOT, 16));
     }}),
