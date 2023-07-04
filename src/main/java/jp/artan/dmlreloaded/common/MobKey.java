@@ -198,8 +198,8 @@ public enum MobKey implements IMobKey {
     }
 
     @Override
-    public void addMob(String entityId, String langId) {
-        mobs.add(new Mob(entityId, langId));
+    public void addMob(String mobLangId) {
+        mobs.add(new Mob(mobLangId));
     }
 
     @Override
@@ -209,7 +209,7 @@ public enum MobKey implements IMobKey {
 
     public static class VanillaMob extends Mob {
         public VanillaMob(String entityId) {
-            super("minecraft:" + entityId, "entity.minecraft." + entityId);
+            super("entity.minecraft." + entityId);
         }
     }
 }

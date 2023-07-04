@@ -129,8 +129,8 @@ public enum TwilightMobKey implements IMobKey {
     }
 
     @Override
-    public void addMob(String entityId, String langId) {
-        mobs.add(new Mob(entityId, langId));
+    public void addMob(String mobLangId) {
+        mobs.add(new Mob(mobLangId));
     }
 
     @Override
@@ -140,7 +140,7 @@ public enum TwilightMobKey implements IMobKey {
 
     public static class TwilightMob extends Mob {
         public TwilightMob(String entityId) {
-            super("twilightforest:" + entityId, "entity.twilightforest." + entityId);
+            super("entity.twilightforest." + entityId);
         }
     }
 }
