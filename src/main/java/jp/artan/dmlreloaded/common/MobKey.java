@@ -127,7 +127,7 @@ public enum MobKey implements IMobKey {
         add(() -> new ItemStack(Items.GLOWSTONE_DUST, 32));
         add(() -> new ItemStack(Items.SUGAR, 64));
     }}),
-    WITHER_SKELETON("wither_skeleton", WitherSkeletonMeta::new, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
+    WITHER_SKELETON("wither_skeleton", WitherSkeletonMeta::new, LivingMatterType.HELLISH, new ArrayList<>(){{
         add(new VanillaMob("wither_skeleton"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Blocks.WITHER_SKELETON_SKULL, 18));
