@@ -22,8 +22,6 @@ import java.util.function.Supplier;
 public class ItemInit {
     private static final DeepMobLearningReloadedRegistrate REGISTRATE = DeepMobLearningReloaded.registrate().creativeModeTab(() -> ItemGroupInit.DEEP_MOB_LEARNING_RELOADED);
 
-
-
     public static final ItemEntry<ItemSootedRedstone> SOOT_COVERED_REDSTONE = REGISTRATE.item("soot_covered_redstone", ItemSootedRedstone::new)
             .lang("Soot Covered Redstone")
             .jpLang("煤で覆われたレッドストーン")
