@@ -29,18 +29,4 @@ public interface IMobKey {
             return this.mobLangId;
         }
     }
-
-    class Loot {
-        private final NonNullSupplier<ItemLike> item;
-        private final int amount;
-
-        public Loot(NonNullSupplier<ItemLike> item, int amount) {
-            this.item = item;
-            this.amount = amount;
-        }
-
-        public ItemStack getItemStack() {
-            return new ItemStack(this.item.get(), this.amount);
-        }
-    }
 }
