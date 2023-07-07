@@ -46,7 +46,7 @@
   "dmlreloaded.hover_text.glitch_infused_armor_1": "\u30DC\u30FC\u30CA\u30B9: \u30D5\u30EB\u30BB\u30C3\u30C8\u88C5\u5099\u6642",
   "dmlreloaded.hover_text.glitch_infused_armor_2": "(\u30DC\u30FC\u30CA\u30B9\u306F\u8A66\u7DF4\u4E2D\u306F\u7121\u52B9\u3067\u3059)",
   "dmlreloaded.hover_text.glitch_infused_armor_3": "  1.  \u30C7\u30FC\u30BF\u30E2\u30C7\u30EB\u304C\u30C7\u30FC\u30BF\u3092\u7372\u5F97\u3057\u305F\u3068\u304D\u306B",
-  "dmlreloaded.hover_text.glitch_infused_armor_4": "     %1$s%%\u306E\u78BA\u7387\u3067%2$s\u306E\u7DBA\u9E97\u306A\u30DE\u30BF\u30FC\u3092\u30C9\u30ED\u30C3\u30D7\u3057\u307E\u3059",
+  "dmlreloaded.hover_text.glitch_infused_armor_4": "     \u4E00\u5B9A\u306E\u78BA\u7387\u3067\u7DBA\u9E97\u306A\u30DE\u30BF\u30FC\u3092\u30C9\u30ED\u30C3\u30D7\u3057\u307E\u3059",
   "dmlreloaded.hover_text.glitch_infused_armor_5": "  2. \u98DB\u884C\u3068\u843D\u4E0B\u30C0\u30E1\u30FC\u30B8\u7121\u52B9",
   "dmlreloaded.hover_text.glitch_infused_sword_1": "\u30DC\u30FC\u30CA\u30B9: \u30AF\u30A4\u30C3\u30AF\u30E9\u30FC\u30CB\u30F3\u30B0",
   "dmlreloaded.hover_text.glitch_infused_sword_2": "(\u30DC\u30FC\u30CA\u30B9\u306F\u8A66\u7DF4\u4E2D\u306F\u7121\u52B9\u3067\u3059)",

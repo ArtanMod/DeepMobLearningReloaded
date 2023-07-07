@@ -209,13 +209,13 @@ public class ItemInit {
         // 共通翻訳情報: GLITCH_HELMET GLITCH_CHEST GLITCH_LEGGINGS GLITCH_BOOTS
         REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_1", "Bonus while full set is equipped");
         REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_2", "(Bonuses are disabled during Trials)");
-        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_3", "  1.  %1$s%% chance to drop %2$s Pristine Matter");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_3", "  1.  Certain probability of drop Pristine Matter");
         REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_4", "     when a Data Model gains Data.");
         REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_5", "  2. Flight & Immunity against fall damage");
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_1", "ボーナス: フルセット装備時");
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_2", "(ボーナスは試練中は無効です)");
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_3", "  1.  データモデルがデータを獲得したときに");
-        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_4", "     %1$s%%の確率で%2$sの綺麗なマターをドロップします");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_4", "     一定の確率で綺麗なマターをドロップします");
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_5", "  2. 飛行と落下ダメージ無効");
     }
 
