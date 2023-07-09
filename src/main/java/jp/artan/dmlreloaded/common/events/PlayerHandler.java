@@ -116,11 +116,18 @@ public class PlayerHandler {
                             (double) blockPos.getY() + 1, (double) blockPos.getZ() + 0.5d, 0d, 0.03d, 0d);
                     event.setCanceled(true);
                 }
+            }
+        }
+    }
 
-            } else if(event.getItemStack().getItem() == Items.REDSTONE) {
+    @SubscribeEvent
+    public static void playerLeftClickedBlock(PlayerInteractEvent.LeftClickBlock event) {
+        Player player = event.getEntity();
+        if (!player.isCrouching() && BalanceConfigs.isSootedRedstoneCraftingEnabled.get()) {
+            ThreadLocalRandom rand = ThreadLocalRandom.current();
+            if (event.getItemStack().getItem() == Items.REDSTONE && rand.nextInt(0, 10) <= 3) {
                 BlockPos blockPos = event.getPos();
-                if(player.getLevel().getBlockState(event.getPos()).getBlock() == Blocks.COAL_BLOCK
-                        && rand.nextInt(0, 10) <= 3) {
+                if (player.getLevel().getBlockState(event.getPos()).getBlock() == Blocks.COAL_BLOCK) {
                     ItemEntity drop = new ItemEntity(player.getLevel(), blockPos.getX(), blockPos.getY(),
                             blockPos.getZ(), new ItemStack(ItemInit.SOOT_COVERED_REDSTONE.get(), 1));
                     drop.setDefaultPickUpDelay();
@@ -133,7 +140,6 @@ public class PlayerHandler {
                             (double) blockPos.getZ() + rand.nextDouble(0, 1), 0d, 0.03d, 0d);
                     event.setCanceled(true);
                 }
-
             }
         }
     }
