@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "dmlreloaded:data_model_dragon"
+      "dmlreloaded:data_model_ender_dragon"
     ]
   },
   "criteria": {
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "dmlreloaded:data_model_dragon"
+        "recipe": "dmlreloaded:data_model_ender_dragon"
       }
     }
   },

@@ -11,13 +11,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
-public class DragonMeta extends MobMetaData{
-    public DragonMeta() {
+public class EnderDragonMeta extends MobMetaData{
+    public EnderDragonMeta() {
         super(
-                MobKey.DRAGON,
+                MobKey.ENDER_DRAGON,
                 "entity.minecraft.ender_dragon",
                 4096, 100,
-                ItemInit.PristineMatter.DRAGON.get(),
+                ItemInit.PristineMatter.ENDER_DRAGON.get(),
                 null,
                 2
         );

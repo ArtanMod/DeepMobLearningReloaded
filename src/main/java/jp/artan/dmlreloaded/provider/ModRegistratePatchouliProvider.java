@@ -67,7 +67,7 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                     registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.7.title", "ブレイズ / ガスト");
                     registrate.addRawLang("patchouli.category.1.introduction.entry.3.page.8.title", "Wither Skeleton / Enderman");
                     registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.8.title", "ウィザースケルトン / エンダーマン");
-                    registrate.addRawLang("patchouli.category.1.introduction.entry.3.page.9.title", "Wither / Dragon");
+                    registrate.addRawLang("patchouli.category.1.introduction.entry.3.page.9.title", "Wither / Ender Dragon");
                     registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.9.title", "ウィザー / エンダードラゴン");
                     registrate.addRawLang("patchouli.category.1.introduction.entry.3.page.10.title", "Shulker / Guardian");
                     registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.10.title", "シュルカー / ガーディアン");
@@ -236,7 +236,7 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                             .setTitle("patchouli.category.1.introduction.entry.3.page.8.title")
                             .build();
                     p.addCraftingRecipePage(ItemInit.DataModel.WITHER)
-                            .setRecipe2(ItemInit.DataModel.DRAGON)
+                            .setRecipe2(ItemInit.DataModel.ENDER_DRAGON)
                             .setTitle("patchouli.category.1.introduction.entry.3.page.9.title")
                             .build();
                     p.addCraftingRecipePage(ItemInit.DataModel.SHULKER)
