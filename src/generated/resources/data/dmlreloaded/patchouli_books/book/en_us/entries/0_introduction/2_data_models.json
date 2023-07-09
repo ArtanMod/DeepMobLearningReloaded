@@ -51,7 +51,7 @@
     {
       "type": "patchouli:crafting",
       "recipe": "dmlreloaded:data_model_wither",
-      "recipe2": "dmlreloaded:data_model_dragon",
+      "recipe2": "dmlreloaded:data_model_ender_dragon",
       "title": "patchouli.category.1.introduction.entry.3.page.9.title"
     },
     {

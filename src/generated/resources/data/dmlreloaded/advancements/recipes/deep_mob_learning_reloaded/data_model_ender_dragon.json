@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dmlreloaded:data_model_dragon"
+        "recipe": "dmlreloaded:data_model_ender_dragon"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "dmlreloaded:data_model_dragon"
+      "dmlreloaded:data_model_ender_dragon"
     ]
   }
 }

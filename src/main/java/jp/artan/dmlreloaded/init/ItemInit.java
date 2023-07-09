@@ -276,9 +276,9 @@ public class ItemInit {
                 .jpLang("クリーパーのデータモデル")
                 .register();
 
-        public static final ItemEntry<ItemDataModel> DRAGON = registerDataModel("data_model_dragon", MobKey.DRAGON, () -> Items.DRAGON_EGG)
-                .lang("Dragon Data Model")
-                .jpLang("ドラゴンのデータモデル")
+        public static final ItemEntry<ItemDataModel> ENDER_DRAGON = registerDataModel("data_model_ender_dragon", MobKey.ENDER_DRAGON, () -> Items.DRAGON_EGG)
+                .lang("Ender Dragon Data Model")
+                .jpLang("エンダードラゴンのデータモデル")
                 .register();
 
         public static final ItemEntry<ItemDataModel> ELDER_GUARDIAN = registerDataModel("data_model_elder_guardian", MobKey.ELDER_GUARDIAN, () -> Items.SPONGE)
@@ -421,13 +421,13 @@ public class ItemInit {
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.CREEPER, 1), "")
                 .register();
 
-        public static final ItemEntry<ItemPristineMatter> DRAGON = REGISTRATE.item("pristine_matter_dragon", p -> new ItemPristineMatter(p, MobKey.DRAGON))
-                .lang("Pristine Dragon Matter")
-                .jpLang("綺麗なドラゴンマター")
-                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.DRAGON, 0), "Resides in the end, does not harbor treasure")
-                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.DRAGON, 1), "Destroy its crystals, break the cycle.")
-//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.DRAGON, 0), "")
-//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.DRAGON, 1), "")
+        public static final ItemEntry<ItemPristineMatter> ENDER_DRAGON = REGISTRATE.item("pristine_matter_ender_dragon", p -> new ItemPristineMatter(p, MobKey.ENDER_DRAGON))
+                .lang("Pristine Ender Dragon Matter")
+                .jpLang("綺麗なエンダードラゴンマター")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ENDER_DRAGON, 0), "Resides in the end, does not harbor treasure")
+                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ENDER_DRAGON, 1), "Destroy its crystals, break the cycle.")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ENDER_DRAGON, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ENDER_DRAGON, 1), "")
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> ELDER_GUARDIAN = REGISTRATE.item("pristine_matter_elder_guardian", p -> new ItemPristineMatter(p, MobKey.ELDER_GUARDIAN))

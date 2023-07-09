@@ -21,7 +21,7 @@ public enum MobKey implements IMobKey {
         add(() -> new ItemStack(Items.GUNPOWDER, 64));
         add(() -> new ItemStack(Items.CREEPER_HEAD, 6));
     }}),
-    DRAGON("dragon", DragonMeta::new, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
+    ENDER_DRAGON("ender_dragon", EnderDragonMeta::new, LivingMatterType.EXTRATERRESTRIAL, new ArrayList<>(){{
         add(new VanillaMob("ender_dragon"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.DRAGON_BREATH, 32));
