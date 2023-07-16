@@ -26,9 +26,9 @@ public class ItemInit {
             .lang("Soot Covered Redstone")
             .jpLang("煤で覆われたレッドストーン")
             .addRawLang("dmlreloaded.hover_text.soot_covered_redstone_1", "Crafted by crushing %1$s against")
-            .addRawLang("dmlreloaded.hover_text.soot_covered_redstone_2", "a %1$s (Left click)")
+            .addRawLang("dmlreloaded.hover_text.soot_covered_redstone_2", "against some %1$s (Left click)")
             .addRawJPLang("dmlreloaded.hover_text.soot_covered_redstone_1", "%1$sを押し潰して作成します")
-            .addRawJPLang("dmlreloaded.hover_text.soot_covered_redstone_2", "%1$s(左クリック)")
+            .addRawJPLang("dmlreloaded.hover_text.soot_covered_redstone_2", "%1$sに対して(左クリック)")
             .register();
 
     public static final ItemEntry<Item> SOOT_COVERED_PLATE = REGISTRATE.item("soot_covered_plate", Item::new)
@@ -209,12 +209,12 @@ public class ItemInit {
         // 共通翻訳情報: GLITCH_HELMET GLITCH_CHEST GLITCH_LEGGINGS GLITCH_BOOTS
         REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_1", "Bonus while full set is equipped");
         REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_2", "(Bonuses are disabled during Trials)");
-        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_3", "  1.  Certain probability of drop Pristine Matter");
+        REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_3", "  1. Certain probability of drop Pristine Matter");
         REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_4", "     when a Data Model gains Data.");
         REGISTRATE.addRawLang("dmlreloaded.hover_text.glitch_infused_armor_5", "  2. Flight & Immunity against fall damage");
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_1", "ボーナス: フルセット装備時");
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_2", "(ボーナスは試練中は無効です)");
-        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_3", "  1.  データモデルがデータを獲得したときに");
+        REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_3", "  1. データモデルがデータを獲得したときに");
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_4", "     一定の確率で綺麗なマターをドロップします");
         REGISTRATE.addRawJPLang("dmlreloaded.hover_text.glitch_infused_armor_5", "  2. 飛行と落下ダメージ無効");
     }
