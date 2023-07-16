@@ -431,7 +431,7 @@ public class ItemInit {
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> ELDER_GUARDIAN = REGISTRATE.item("pristine_matter_elder_guardian", p -> new ItemPristineMatter(p, MobKey.ELDER_GUARDIAN))
-                .lang("Elder Guardian Dragon Matter")
+                .lang("Pristine Elder Guardian Matter")
                 .jpLang("綺麗なエルダーガーディアンマター")
 //                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
@@ -447,7 +447,7 @@ public class ItemInit {
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> EVOKER = REGISTRATE.item("pristine_matter_evoker", p -> new ItemPristineMatter(p, MobKey.EVOKER))
-                .lang("Evoker Dragon Matter")
+                .lang("Pristine Evoker Matter")
                 .jpLang("綺麗なエヴォーカーマター")
 //                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
@@ -474,35 +474,35 @@ public class ItemInit {
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> HOGLIN = REGISTRATE.item("pristine_matter_hoglin", p -> new ItemPristineMatter(p, MobKey.HOGLIN))
-                .lang("Hoglin Dragon Matter")
+                .lang("Pristine Hoglin Matter")
                 .jpLang("綺麗なホグリンマター")
 //                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> MAGMA_CUBE = REGISTRATE.item("pristine_matter_magma_cube", p -> new ItemPristineMatter(p, MobKey.MAGMA_CUBE))
-                .lang("Magma Cube Dragon Matter")
+                .lang("Pristine Magma Cube Matter")
                 .jpLang("綺麗なマグマキューブマター")
 //                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> PHANTOM = REGISTRATE.item("pristine_matter_phantom", p -> new ItemPristineMatter(p, MobKey.PHANTOM))
-                .lang("Phantom Dragon Matter")
+                .lang("Pristine Phantom Matter")
                 .jpLang("綺麗なファントムマター")
 //                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> PIGLIN = REGISTRATE.item("pristine_matter_piglin", p -> new ItemPristineMatter(p, MobKey.PIGLIN))
-                .lang("Piglin Dragon Matter")
+                .lang("Pristine Piglin Matter")
                 .jpLang("綺麗なピグリンマター")
 //                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> RAVAGER = REGISTRATE.item("pristine_matter_ravager", p -> new ItemPristineMatter(p, MobKey.RAVAGER))
-                .lang("Ravager Dragon Matter")
+                .lang("Pristine Ravager Matter")
                 .jpLang("綺麗なラヴェジャーマター")
 //                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.ELDER_GUARDIAN, 0), "")
