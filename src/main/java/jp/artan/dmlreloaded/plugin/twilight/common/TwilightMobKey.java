@@ -63,7 +63,6 @@ public enum TwilightMobKey implements IMobKey {
         add(() -> new ItemStack(TFBlocks.UR_GHAST_TROPHY.get(), 1));
         add(() -> new ItemStack(TFItems.CARMINITE.get(), 32));
         add(() -> new ItemStack(TFItems.FIERY_TEARS.get(), 32));
-        add(() -> new ItemStack(TFItems.CARMINITE.get(), 32));
     }}),
     ALPHA_YETI("alpha_yeti", AlphaYetiMeta::new, TwilightLivingMatterType.TWILIGHT, new ArrayList<>(){{
         add(new TwilightMob("alpha_yeti"));
