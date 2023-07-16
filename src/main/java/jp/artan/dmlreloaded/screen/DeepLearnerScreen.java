@@ -130,7 +130,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         int spacing = 12;
 
         drawString(pose, font, Component.translatable("dmlreloaded.gui.name"), leftStart, topStart + spacing, 0x55FFFF);
-        drawString(pose, font, Component.translatable("dmlreloaded.gui.mob_name", Component.literal(meta.getEntityId())), leftStart, topStart + (spacing *  2), 0xFFFFFF);
+        drawString(pose, font, Component.translatable("dmlreloaded.gui.mob_name", Component.translatable(meta.getEntityId())), leftStart, topStart + (spacing *  2), 0xFFFFFF);
         drawString(pose, font, Component.translatable("dmlreloaded.gui.information"), leftStart, topStart + (spacing *  3), 0xFFFFFF);
         int mobTriviaLine = meta.getMobTriviaLine();
         for (int i = 0; i < mobTriviaLine; i++) {
