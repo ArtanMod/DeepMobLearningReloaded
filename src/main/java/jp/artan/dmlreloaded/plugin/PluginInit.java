@@ -9,7 +9,7 @@ public class PluginInit {
 
     public static void init(IEventBus modEventBus){
         if (TWILIGHT_ACTIVE) {
-            TwilightPlugin.init(modEventBus);
+//            TwilightPlugin.init(modEventBus);
         }
     }
 }

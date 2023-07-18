@@ -256,29 +256,29 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                             .setTitle("patchouli.category.1.introduction.entry.3.page.13.title")
                             .build();
                     p.addCraftingRecipePage(ItemInit.DataModel.RAVAGER)
-                            .setFlag("!mod:twilightforest")
+//                            .setFlag("!mod:twilightforest")
                             .setTitle("patchouli.category.1.introduction.entry.3.page.14.title")
                             .build();
-                    p.addCraftingRecipePage(ItemInit.DataModel.RAVAGER)
-                            .setRecipe2(TwilightItemInit.DataModel.NAGA)
-                            .setFlag("mod:twilightforest")
-                            .setTitle("patchouli.category.1.introduction.entry.3.page.15.title")
-                            .build();
-                    p.addCraftingRecipePage(TwilightItemInit.DataModel.LICH)
-                            .setRecipe2(TwilightItemInit.DataModel.MINOSHROOM)
-                            .setFlag("mod:twilightforest")
-                            .setTitle("patchouli.category.1.introduction.entry.3.page.16.title")
-                            .build();
-                    p.addCraftingRecipePage(TwilightItemInit.DataModel.HYDRA)
-                            .setRecipe2(TwilightItemInit.DataModel.KNIGHT_PHANTOM)
-                            .setFlag("mod:twilightforest")
-                            .setTitle("patchouli.category.1.introduction.entry.3.page.17.title")
-                            .build();
-                    p.addCraftingRecipePage(TwilightItemInit.DataModel.UR_GHAST)
-                            .setRecipe2(TwilightItemInit.DataModel.ALPHA_YETI)
-                            .setFlag("mod:twilightforest")
-                            .setTitle("patchouli.category.1.introduction.entry.3.page.18.title")
-                            .build();
+//                    p.addCraftingRecipePage(ItemInit.DataModel.RAVAGER)
+//                            .setRecipe2(TwilightItemInit.DataModel.NAGA)
+//                            .setFlag("mod:twilightforest")
+//                            .setTitle("patchouli.category.1.introduction.entry.3.page.15.title")
+//                            .build();
+//                    p.addCraftingRecipePage(TwilightItemInit.DataModel.LICH)
+//                            .setRecipe2(TwilightItemInit.DataModel.MINOSHROOM)
+//                            .setFlag("mod:twilightforest")
+//                            .setTitle("patchouli.category.1.introduction.entry.3.page.16.title")
+//                            .build();
+//                    p.addCraftingRecipePage(TwilightItemInit.DataModel.HYDRA)
+//                            .setRecipe2(TwilightItemInit.DataModel.KNIGHT_PHANTOM)
+//                            .setFlag("mod:twilightforest")
+//                            .setTitle("patchouli.category.1.introduction.entry.3.page.17.title")
+//                            .build();
+//                    p.addCraftingRecipePage(TwilightItemInit.DataModel.UR_GHAST)
+//                            .setRecipe2(TwilightItemInit.DataModel.ALPHA_YETI)
+//                            .setFlag("mod:twilightforest")
+//                            .setTitle("patchouli.category.1.introduction.entry.3.page.18.title")
+//                            .build();
 //                    p.addCraftingRecipePage(TwilightItemInit.DataModel.SNOW_QUEEN)
 //                            .setFlag("mod:twilightforest")
 //                            .setTitle("patchouli.category.1.introduction.entry.3.page.19.title")
