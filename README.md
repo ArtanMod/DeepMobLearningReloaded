@@ -1,17 +1,26 @@
 # DeepMobLearningReloaded
 
-**DeepMobLearningReloaded** は、Deep Mob Learning: Reforgedをベースに外部MODとの連携をしやすくなるように変更したMODです。
+**DeepMobLearningReloaded** は、Deep Mob Learning: Reforgedをベースに対応するデータモデルを追加したMODです。
+
+追加したデータモデルのMob
+- エルダーガーディアン
+- エヴォーカー
+- ホグリン
+- マグマキューブ
+- ファントム
+- ピグリン
+- ラヴェジャー
+
+計21種類のデータモデル
+![DataModels](./img/img1.png)
+
+データモデルの学習できるモブの一覧はデータモデルをマウスオーバーした状態で「Ctrl」を押すことで確認することができます。
+![Ctrl key pressed](./img/img3.png)
 
 [参考MOD]
 
 - [Deep Mob Learning](https://www.curseforge.com/minecraft/mc-mods/deep-mob-learning), by [IterationFunk](https://legacy.curseforge.com/members/iterationfunk/projects)
 - [Deep Mob Learning: Reforged](https://www.curseforge.com/minecraft/mc-mods/deep-mob-learning-reforged), by [yollotwitch](https://legacy.curseforge.com/members/yollotwitch/projects)
-
-敵対モブ21種類のデータモデルを追加
-![](./img/img1.png)
-
-データモデルの学習できるモブの一覧はデータモデルをマウスオーバーした状態で「Ctrl」を押すことで確認することができます。
-![Alt text](./img/img3.png)
 
 ## Original mod description
 
@@ -27,12 +36,6 @@ End mobs -> Extraterrestrial matter
 
 These can be used to transmute items that come from that corresponding dimension/origin.
 
-## Twilight Forestとの連携
+## ライセンス
 
-TwilightForestのボス8種類のデータモデルを追加
-
-![](./img/img2.png)
-
-## License
-
-This project is licensed under the MIT License, see the LICENSE.txt file for details
+本ModはMITライセンスを適用しています。詳細はLICENSE.txtを参照してください。
