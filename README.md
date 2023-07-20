@@ -1,6 +1,11 @@
 # DeepMobLearningReloaded
 
-Deep Mob Learning: Reforgedをベースに外部MODとの連携をしやすくなるように変更
+**DeepMobLearningReloaded** は、Deep Mob Learning: Reforgedをベースに外部MODとの連携をしやすくなるように変更したMODです。
+
+[参考MOD]
+
+- [Deep Mob Learning](https://www.curseforge.com/minecraft/mc-mods/deep-mob-learning), by [IterationFunk](https://legacy.curseforge.com/members/iterationfunk/projects)
+- [Deep Mob Learning: Reforged](https://www.curseforge.com/minecraft/mc-mods/deep-mob-learning-reforged), by [yollotwitch](https://legacy.curseforge.com/members/yollotwitch/projects)
 
 敵対モブ21種類のデータモデルを追加
 ![](./img/img1.png)
@@ -8,7 +13,7 @@ Deep Mob Learning: Reforgedをベースに外部MODとの連携をしやすく�
 データモデルの学習できるモブの一覧はデータモデルをマウスオーバーした状態で「Ctrl」を押すことで確認することができます。
 ![Alt text](./img/img3.png)
 
-## Original mod description:
+## Original mod description
 
 This mod however uses "Data models" that you train by defeating monsters both by hand or by simulation(In the simulation chamber).
 
@@ -27,3 +32,7 @@ These can be used to transmute items that come from that corresponding dimension
 TwilightForestのボス8種類のデータモデルを追加
 
 ![](./img/img2.png)
+
+## License
+
+This project is licensed under the MIT License, see the LICENSE.txt file for details
