@@ -20,19 +20,15 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 
 public class BlockSimulationChamber extends HorizontalDirectionalBlock implements EntityBlock {
 
     public BlockSimulationChamber(Properties properties) {
-        super(BlockBehaviour.Properties.of(Material.STONE).lightLevel((blockstate) -> {
-            return 7;
-        }).strength(4f, 3000.0f));
+        super(properties);
         registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
