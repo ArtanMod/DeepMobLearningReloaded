@@ -154,18 +154,7 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
             animateString(pGuiGraphics, lines[2], insufData3, insufData2, 1, false,  leftTopConsole, topStart + (spacing * 3), 0xFFFFFF);
 
         } else {
-            // Draw current data model data
-            if(DataModelHelper.getTier(getMenu().getDataModel()) == DeepMobLearningReloaded.DATA_MODEL_MAXIMUM_TIER) {
-                pGuiGraphics.blit(base, leftTopConsole + 6,  top + 48, 18, 141, 7, 87);
-            } else {
-                int collectedData = DataModelHelper.getCurrentTierSimulationCountWithKills(getMenu().getDataModel());
-                int tierRoof = DataModelHelper.getTierRoof(getMenu().getDataModel());
-
-                int experienceBarHeight = (int) (((float) collectedData / tierRoof * 87));
-                int experienceBarOffset = 87 - experienceBarHeight;
-                pGuiGraphics.blit(base, leftTopConsole + 6,  top + 48 + experienceBarOffset, 18, 141, 7, experienceBarHeight);
-            }
-
+            pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.tiers.tier", DataModelHelper.getTierName(getMenu().getDataModel(), false)), leftTopConsole, topStart + spacing, 0xFFFFFF);
             pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.tiers.tier", DataModelHelper.getTierName(getMenu().getDataModel(), false)), leftTopConsole, topStart + spacing, 0xFFFFFF);
             pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.simulation_chamber.iterations", f.format(DataModelHelper.getTotalSimulationCount(getMenu().getDataModel()))), leftTopConsole, topStart + spacing * 2, 0xFFFFFF);
             pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.simulation_chamber.pristine_chance", DataModelHelper.getPristineChance(getMenu().getDataModel())), leftTopConsole, topStart + spacing * 3, 0xFFFFFF);
