@@ -111,6 +111,10 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         this.renderTooltip(pGuiGraphics, p_97796_, p_97797_);
     }
 
+    @Override
+    protected void renderLabels(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
+    }
+
     private void renderDefaultScreen(GuiGraphics pGuiGraphics) {
         int leftStart = getGuiLeft() - 32;
         int top = getGuiTop() - 32;
