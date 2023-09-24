@@ -9,10 +9,12 @@ import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import jp.artan.dmlreloaded.item.*;
 import jp.artan.repack.registrate.providers.RegistrateRecipeProvider;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -20,7 +22,7 @@ import net.minecraft.world.level.block.Blocks;
 import java.util.function.Supplier;
 
 public class ItemInit {
-    private static final DeepMobLearningReloadedRegistrate REGISTRATE = DeepMobLearningReloaded.registrate().creativeModeTab(() -> ItemGroupInit.DEEP_MOB_LEARNING_RELOADED);
+    private static final DeepMobLearningReloadedRegistrate REGISTRATE = DeepMobLearningReloaded.registrate().useCreativeTab(ItemGroupInit.DEEP_MOB_LEARNING_RELOADED);
 
     public static final ItemEntry<ItemSootedRedstone> SOOT_COVERED_REDSTONE = REGISTRATE.item("soot_covered_redstone", ItemSootedRedstone::new)
             .lang("Soot Covered Redstone")
@@ -33,7 +35,7 @@ public class ItemInit {
 
     public static final ItemEntry<Item> SOOT_COVERED_PLATE = REGISTRATE.item("soot_covered_plate", Item::new)
             .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get(), 8)
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get(), 8)
                         .define('X', Items.OBSIDIAN)
                         .define('Y', SOOT_COVERED_REDSTONE.get())
                         .pattern("XX")
@@ -47,7 +49,7 @@ public class ItemInit {
 
     public static final ItemEntry<ItemDeepLearner> DEEP_LEARNER = REGISTRATE.item("deep_learner", ItemDeepLearner::new)
             .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get())
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
                         .define('#', SOOT_COVERED_PLATE.get())
                         .define('X', Items.REPEATER)
                         .define('Y', Blocks.GLASS_PANE)
@@ -84,7 +86,7 @@ public class ItemInit {
 
     public static final ItemEntry<ItemGlitchIngot> GLITCH_INGOT = REGISTRATE.item("glitch_infused_ingot", ItemGlitchIngot::new)
             .recipe((ctx, prov) -> {
-                ShapelessRecipeBuilder.shapeless(ctx.get(), 9).requires(BlockInit.INFUSED_INGOT_BLOCK.get())
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ctx.get(), 9).requires(BlockInit.INFUSED_INGOT_BLOCK.get())
                         .unlockedBy("has_item", RegistrateRecipeProvider.has(ItemInit.GLITCH_INGOT.get()))
                         .save(prov);
             })
@@ -100,7 +102,7 @@ public class ItemInit {
 
     public static final ItemEntry<Item> POLYMER_CLAY = REGISTRATE.item("polymer_clay", Item::new)
             .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get(), 16)
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get(), 16)
                         .define('#', Items.CLAY_BALL)
                         .define('X', Items.IRON_INGOT)
                         .define('Y', Items.GOLD_INGOT)
@@ -117,7 +119,7 @@ public class ItemInit {
 
     public static final ItemEntry<ItemGlitchSword> GLITCH_SWORD = REGISTRATE.item("glitch_infused_sword", ItemGlitchSword::new)
             .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get())
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
                         .define('#', GLITCH_INGOT.get())
                         .define('X', Items.IRON_NUGGET)
                         .define('Y', Items.STICK)
@@ -147,9 +149,9 @@ public class ItemInit {
             .addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_6", "現在の耐久値増加: %1$s (最大 %2$s)")
             .register();
 
-    public static final ItemEntry<ItemGlitchArmor> GLITCH_HELMET = REGISTRATE.item("glitch_infused_helmet", p -> new ItemGlitchArmor(EquipmentSlot.HEAD, p))
+    public static final ItemEntry<ItemGlitchArmor> GLITCH_HELMET = REGISTRATE.item("glitch_infused_helmet", p -> new ItemGlitchArmor(ArmorItem.Type.HELMET, p))
             .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get())
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
                         .define('#', GLITCH_INGOT.get())
                         .pattern("###")
                         .pattern("# #")
@@ -160,9 +162,9 @@ public class ItemInit {
             .jpLang("グリッチが染み込んだヘルメット")
             .register();
 
-    public static final ItemEntry<ItemGlitchArmor> GLITCH_CHEST = REGISTRATE.item("glitch_infused_chestplate", p -> new ItemGlitchArmor(EquipmentSlot.CHEST, p))
+    public static final ItemEntry<ItemGlitchArmor> GLITCH_CHEST = REGISTRATE.item("glitch_infused_chestplate", p -> new ItemGlitchArmor(ArmorItem.Type.CHESTPLATE, p))
             .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get())
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
                         .define('#', GLITCH_INGOT.get())
                         .pattern("# #")
                         .pattern("###")
@@ -174,9 +176,9 @@ public class ItemInit {
             .jpLang("グリッチが染み込んだチェストプレート")
             .register();
 
-    public static final ItemEntry<ItemGlitchArmor> GLITCH_LEGGINGS = REGISTRATE.item("glitch_infused_leggings", p -> new ItemGlitchArmor(EquipmentSlot.LEGS, p))
+    public static final ItemEntry<ItemGlitchArmor> GLITCH_LEGGINGS = REGISTRATE.item("glitch_infused_leggings", p -> new ItemGlitchArmor(ArmorItem.Type.LEGGINGS, p))
             .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get())
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
                         .define('#', GLITCH_INGOT.get())
                         .pattern("###")
                         .pattern("# #")
@@ -188,9 +190,9 @@ public class ItemInit {
             .jpLang("グリッチが染み込んだレギンス")
             .register();
 
-    public static final ItemEntry<ItemGlitchArmor> GLITCH_BOOTS = REGISTRATE.item("glitch_infused_boots", p -> new ItemGlitchArmor(EquipmentSlot.FEET, p))
+    public static final ItemEntry<ItemGlitchArmor> GLITCH_BOOTS = REGISTRATE.item("glitch_infused_boots", p -> new ItemGlitchArmor(ArmorItem.Type.BOOTS, p))
             .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get())
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
                         .define('#', GLITCH_INGOT.get())
                         .pattern("# #")
                         .pattern("# #")
@@ -222,7 +224,7 @@ public class ItemInit {
     public static class DataModel {
         public static final ItemEntry<Item> BLANK = REGISTRATE.item("data_model_blank", Item::new)
                 .recipe((ctx, prov) -> {
-                    ShapedRecipeBuilder.shaped(ctx.get())
+                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
                             .define('#', Items.LAPIS_LAZULI)
                             .define('A', Items.REPEATER)
                             .define('B', SOOT_COVERED_REDSTONE.get())
@@ -308,7 +310,7 @@ public class ItemInit {
 
         public static final ItemEntry<ItemDataModel> HOGLIN = registerDataModel("data_model_hoglin", MobKey.HOGLIN)
                 .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(ctx.get())
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ctx.get())
                             .requires(BLANK.get())
                             .requires(Items.LEATHER)
                             .requires(Items.PORKCHOP)
@@ -391,7 +393,7 @@ public class ItemInit {
             return registerDataModel(id, key)
                     .properties(p -> p.stacksTo(1))
                     .recipe((ctx, prov) -> {
-                        ShapelessRecipeBuilder.shapeless(ctx.get())
+                        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ctx.get())
                                 .requires(BLANK.get())
                                 .requires(material.get())
                                 .unlockedBy("has_item", RegistrateRecipeProvider.has(BLANK.get()))
@@ -596,18 +598,18 @@ public class ItemInit {
 
         public static final ItemEntry<ItemLivingMatter> EXTRATERRESTRIAL = REGISTRATE.item("living_matter_extraterrestrial", p -> new ItemLivingMatter(p, LivingMatterType.EXTRATERRESTRIAL))
                 .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(Items.CHORUS_FRUIT)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.CHORUS_FRUIT)
                             .requires(ctx.get())
                             .requires(Items.APPLE)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "chorus_flower_from_living_matter_extraterrestrial");
-                    ShapelessRecipeBuilder.shapeless(Blocks.END_STONE, 8)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Blocks.END_STONE, 8)
                             .requires(ctx.get())
                             .requires(Blocks.SANDSTONE, 2)
                             .requires(Items.ENDER_PEARL)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "ender_stone_from_living_matter_extraterrestrial");
-                    ShapedRecipeBuilder.shaped(Items.NETHER_STAR)
+                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.NETHER_STAR)
                             .define('#', ctx.get())
                             .define('X', Blocks.WITHER_SKELETON_SKULL)
                             .define('Y', Blocks.SOUL_SAND)
@@ -616,7 +618,7 @@ public class ItemInit {
                             .pattern(" Y ")
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "nether_star_from_living_matter_extraterrestrial");
-                    ShapelessRecipeBuilder.shapeless(Items.ENDER_PEARL)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.ENDER_PEARL)
                             .requires(ctx.get())
                             .requires(Items.EMERALD)
                             .requires(Items.SNOWBALL)
@@ -632,12 +634,12 @@ public class ItemInit {
 
         public static final ItemEntry<ItemLivingMatter> HELLISH = REGISTRATE.item("living_matter_hellish", p -> new ItemLivingMatter(p, LivingMatterType.HELLISH))
                 .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(Items.BLAZE_POWDER, 2)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BLAZE_POWDER, 2)
                             .requires(ctx.get())
                             .requires(Items.GUNPOWDER)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "blaze_powder_from_living_matter_hellish");
-                    ShapedRecipeBuilder.shaped(EXTRATERRESTRIAL.get())
+                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EXTRATERRESTRIAL.get())
                             .define('#', ctx.get())
                             .define('X', Blocks.END_STONE)
                             .pattern(" # ")
@@ -645,28 +647,28 @@ public class ItemInit {
                             .pattern(" # ")
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "living_matter_extraterrestrial_from_living_matter_hellish");
-                    ShapelessRecipeBuilder.shapeless(Items.BLAZE_ROD)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BLAZE_ROD)
                             .requires(ctx.get(), 2)
                             .requires(Items.BONE)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "blaze_rod_from_living_matter_hellish");
-                    ShapelessRecipeBuilder.shapeless(Items.GHAST_TEAR, 3)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.GHAST_TEAR, 3)
                             .requires(ctx.get(), 2)
                             .requires(Items.SUGAR)
                             .requires(Items.SPIDER_EYE)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "ghast_tear_from_living_matter_hellish");
-                    ShapelessRecipeBuilder.shapeless(Blocks.SOUL_SAND, 4)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Blocks.SOUL_SAND, 4)
                             .requires(ctx.get())
                             .requires(Blocks.SAND)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ItemInit.LivingMatter.HELLISH.get()))
                             .save(prov, DeepMobLearningReloaded.getResource("soul_sand_from_hellish_living_matter"));
-                    ShapelessRecipeBuilder.shapeless(Items.NETHER_WART, 4)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.NETHER_WART, 4)
                             .requires(ctx.get())
                             .requires(Blocks.RED_MUSHROOM)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "nether_wart_from_living_matter_hellish");
-                    ShapelessRecipeBuilder.shapeless(Items.GOLD_INGOT, 6)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.GOLD_INGOT, 6)
                             .requires(ctx.get())
                             .requires(Items.IRON_INGOT)
                             .requires(Items.GLOWSTONE_DUST)
@@ -681,13 +683,13 @@ public class ItemInit {
 
         public static final ItemEntry<ItemLivingMatter> OVERWORLDIAN = REGISTRATE.item("living_matter_overworldian", p -> new ItemLivingMatter(p, LivingMatterType.OVERWORLDIAN))
                 .recipe((ctx, prov) -> {
-                    ShapelessRecipeBuilder.shapeless(Blocks.GRASS, 4)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Blocks.GRASS, 4)
                             .requires(ctx.get())
                             .requires(Blocks.DIRT)
                             .requires(ItemTags.LEAVES)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "grass_from_living_matter_overworldian");
-                    ShapedRecipeBuilder.shaped(HELLISH.get())
+                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HELLISH.get())
                             .define('#', ctx.get())
                             .define('X', Blocks.NETHERRACK)
                             .pattern(" # ")
@@ -695,55 +697,55 @@ public class ItemInit {
                             .pattern(" # ")
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "hellish_from_living_matter_overworldian");
-                    ShapelessRecipeBuilder.shapeless(Items.CARROT, 2)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.CARROT, 2)
                             .requires(ctx.get())
                             .requires(Items.WHEAT_SEEDS)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "carrot_from_living_matter_overworldian");
-                    ShapelessRecipeBuilder.shapeless(Items.PRISMARINE_SHARD, 2)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.PRISMARINE_SHARD, 2)
                             .requires(ctx.get())
                             .requires(Items.QUARTZ)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "prismarine_shard_from_living_matter_overworldian");
-                    ShapelessRecipeBuilder.shapeless(Items.IRON_INGOT, 8)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.IRON_INGOT, 8)
                             .requires(ctx.get(), 4)
                             .requires(Items.ROTTEN_FLESH)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "iron_ingot_from_living_matter_overworldian");
-                    ShapelessRecipeBuilder.shapeless(Items.POTATO, 2)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.POTATO, 2)
                             .requires(ctx.get())
                             .requires(Items.STICK)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "potato_from_living_matter_overworldian");
-                    ShapelessRecipeBuilder.shapeless(Items.GUNPOWDER, 16)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.GUNPOWDER, 16)
                             .requires(ctx.get())
                             .requires(Items.COAL)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "gunpowder_from_living_matter_overworldian");
-                    ShapelessRecipeBuilder.shapeless(Items.ARROW, 12)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.ARROW, 12)
                             .requires(ctx.get())
                             .requires(Items.STICK)
                             .requires(Items.FLINT)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "arrow_from_living_matter_overworldian");
-                    ShapelessRecipeBuilder.shapeless(Items.BONE, 22)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE, 22)
                             .requires(ctx.get())
                             .requires(Items.BONE_MEAL)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "bone_from_living_matter_overworldian");
-                    ShapelessRecipeBuilder.shapeless(Items.ROTTEN_FLESH, 16)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.ROTTEN_FLESH, 16)
                             .requires(ctx.get())
                             .requires(Items.PORKCHOP)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "rotten_flesh_from_living_matter_overworldian");
-                    ShapelessRecipeBuilder.shapeless(Items.SPIDER_EYE, 2)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.SPIDER_EYE, 2)
                             .requires(ctx.get())
                             .requires(Items.ROTTEN_FLESH)
                             .requires(Items.APPLE)
                             .requires(Items.RED_MUSHROOM)
                             .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
                             .save(prov, "spider_eye_from_living_matter_overworldian");
-                    ShapelessRecipeBuilder.shapeless(Blocks.COBWEB, 4)
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Blocks.COBWEB, 4)
                             .requires(ctx.get(), 2)
                             .requires(Items.STRING)
                             .requires(Items.SLIME_BALL)

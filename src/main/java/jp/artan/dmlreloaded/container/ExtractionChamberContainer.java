@@ -31,7 +31,7 @@ public class ExtractionChamberContainer extends AbstractContainerMenu{
     public ExtractionChamberContainer(MenuType<?> menuType, int pContainerId, Inventory pInventory, BaseStackHandler handler, BlockPos pPos, ContainerData data) {
         super(menuType, pContainerId);
         this.handler = handler;
-        this.containerAccess = ContainerLevelAccess.create(pInventory.player.level, pPos);
+        this.containerAccess = ContainerLevelAccess.create(pInventory.player.level(), pPos);
         this.data = data;
         this.pos = pPos;
         addInventorySlots(pInventory);

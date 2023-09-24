@@ -1,7 +1,7 @@
 {
   "book_texture": "dmlreloaded:textures/gui/patchouli/book_gray.png",
   "crafting_texture": "dmlreloaded:textures/gui/patchouli/crafting.png",
-  "creative_tab": "deep_mob_learning_reloaded",
+  "creative_tab": "dmlreloaded:deep_mob_learning_reloaded",
   "header_color": "16EFF7",
   "i18n": true,
   "landing_text": "patchouli.book.landing_text",
@@ -18,5 +18,6 @@
   "nameplate_color": "16EFF7",
   "show_progress": false,
   "subtitle": "patchouli.book.sub_title",
-  "text_color": "DDDDDD"
+  "text_color": "DDDDDD",
+  "use_resource_pack": true
 }

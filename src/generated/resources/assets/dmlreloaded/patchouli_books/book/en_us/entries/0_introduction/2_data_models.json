@@ -1,0 +1,88 @@
+{
+  "category": "dmlreloaded:0_introduction",
+  "icon": "dmlreloaded:data_model_guardian",
+  "name": "patchouli.category.1.introduction.entry.3.title",
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_blank",
+      "text": "patchouli.category.1.introduction.entry.3.page.1.text"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "anchor": "data_models",
+      "item": "dmlreloaded:data_model_guardian",
+      "text": "patchouli.category.1.introduction.entry.3.page.2.text"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.category.1.introduction.entry.3.page.3.text"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_zombie",
+      "recipe2": "dmlreloaded:data_model_skeleton",
+      "title": "patchouli.category.1.introduction.entry.3.page.4.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_creeper",
+      "recipe2": "dmlreloaded:data_model_spider",
+      "title": "patchouli.category.1.introduction.entry.3.page.5.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_slime",
+      "recipe2": "dmlreloaded:data_model_witch",
+      "title": "patchouli.category.1.introduction.entry.3.page.6.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_blaze",
+      "recipe2": "dmlreloaded:data_model_ghast",
+      "title": "patchouli.category.1.introduction.entry.3.page.7.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_wither_skeleton",
+      "recipe2": "dmlreloaded:data_model_enderman",
+      "title": "patchouli.category.1.introduction.entry.3.page.8.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_wither",
+      "recipe2": "dmlreloaded:data_model_ender_dragon",
+      "title": "patchouli.category.1.introduction.entry.3.page.9.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_shulker",
+      "recipe2": "dmlreloaded:data_model_guardian",
+      "title": "patchouli.category.1.introduction.entry.3.page.10.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_elder_guardian",
+      "recipe2": "dmlreloaded:data_model_evoker",
+      "title": "patchouli.category.1.introduction.entry.3.page.11.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_hoglin",
+      "recipe2": "dmlreloaded:data_model_magma_cube",
+      "title": "patchouli.category.1.introduction.entry.3.page.12.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_phantom",
+      "recipe2": "dmlreloaded:data_model_piglin",
+      "title": "patchouli.category.1.introduction.entry.3.page.13.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:data_model_ravager",
+      "title": "patchouli.category.1.introduction.entry.3.page.14.title"
+    }
+  ],
+  "sortnum": 2
+}

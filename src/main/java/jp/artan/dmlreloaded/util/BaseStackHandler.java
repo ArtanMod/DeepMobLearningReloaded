@@ -20,7 +20,7 @@ public class BaseStackHandler extends ItemStackHandler{
         for(int i = 0; i < size; i++) {
             if(getStackInSlot(i).isEmpty()) {
                 availableSlots = availableSlots + stack.getMaxStackSize();
-            } else if(ItemStack.isSame(getStackInSlot(i), stack)) {
+            } else if(ItemStack.isSameItem(getStackInSlot(i), stack)) {
                 availableSlots = availableSlots + stack.getMaxStackSize() - getStackInSlot(i).getCount();
             }
         }

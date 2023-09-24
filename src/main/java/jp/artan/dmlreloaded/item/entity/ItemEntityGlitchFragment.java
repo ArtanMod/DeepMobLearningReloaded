@@ -35,7 +35,7 @@ public class ItemEntityGlitchFragment extends ItemEntity {
 
         if(isInWater()) {
             AABB box = new AABB(position().x - 1, position().y - 1, position().z - 1, position().x + 1, position().y + 1, position().z + 1);
-            List<ItemEntity> entities = level.getEntitiesOfClass(ItemEntity.class, box);
+            List<ItemEntity> entities = level().getEntitiesOfClass(ItemEntity.class, box);
 
             progress++;
             boolean isValidEntities = isItemListValid(entities);
@@ -45,7 +45,7 @@ public class ItemEntityGlitchFragment extends ItemEntity {
 
 
 
-            if(!level.isClientSide) {
+            if(!level().isClientSide) {
                 if (progress >= 23) {
                     entities.forEach(entityItem -> {
                         if (!(entityItem.getItem().getItem() instanceof ItemGlitchIngot)) {
@@ -60,9 +60,9 @@ public class ItemEntityGlitchFragment extends ItemEntity {
                         }
                     });
 
-                    ItemEntity newItem = new ItemEntity(level, position().x, position().y + 0.6D, position().z, new ItemStack(ItemInit.GLITCH_INGOT.get(), 1));
+                    ItemEntity newItem = new ItemEntity(level(), position().x, position().y + 0.6D, position().z, new ItemStack(ItemInit.GLITCH_INGOT.get(), 1));
                     newItem.setDefaultPickUpDelay();
-                    level.addFreshEntity(newItem);
+                    level().addFreshEntity(newItem);
                     //level.addParticle(ParticleTypes.LARGE_SMOKE, (double) position().x+ 0.5d,(double) position().y+1,(double) position().z+0.5d, 0d, 0.03d, 0d);
                     //((ServerLevel) level).sendParticles(ParticleTypes.LARGE_SMOKE, position().x, position().y, position().z, 1, 0.5d, 1d, 0.5d, 0d);
                 }
@@ -76,10 +76,10 @@ public class ItemEntityGlitchFragment extends ItemEntity {
         boolean foundLapis = false;
 
         for (ItemEntity entityItem : list) {
-            if(ItemStack.isSame(entityItem.getItem(), new ItemStack(Items.GOLD_INGOT))) {
+            if(ItemStack.isSameItem(entityItem.getItem(), new ItemStack(Items.GOLD_INGOT))) {
                 foundGold = true;
             }
-            if(ItemStack.isSame(entityItem.getItem(), new ItemStack(Items.LAPIS_LAZULI, entityItem.getItem().getCount()))) {
+            if(ItemStack.isSameItem(entityItem.getItem(), new ItemStack(Items.LAPIS_LAZULI, entityItem.getItem().getCount()))) {
                 foundLapis = true;
             }
         }

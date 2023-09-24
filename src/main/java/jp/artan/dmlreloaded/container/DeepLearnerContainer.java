@@ -35,14 +35,14 @@ public class DeepLearnerContainer extends AbstractContainerMenu {
     //Server
     public DeepLearnerContainer(MenuType<?> menuType, int id, Inventory playerInv, ItemStack deepLearner) {
         super(menuType, id);
-        ContainerLevelAccess.create(playerInv.player.level, BlockPos.ZERO);
+        ContainerLevelAccess.create(playerInv.player.level(), BlockPos.ZERO);
         this.player = playerInv.player;
         this.usedHand = player.getMainHandItem().getItem() instanceof ItemDeepLearner ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
         ItemStack heldItem = player.getMainHandItem().getItem() instanceof ItemDeepLearner ? player.getMainHandItem() : player.getOffhandItem();
         this.deepLearner = heldItem;
 
         this.deepLearner = deepLearner;
-        if (!playerInv.player.level.isClientSide) {
+        if (!playerInv.player.level().isClientSide) {
             deepLearnerInv = ItemDeepLearner.getInventory(deepLearner);
         } else {
             deepLearnerInv = new ItemBackedInventory(deepLearner, DeepMobLearningReloaded.DEEP_LEARNER_INTERNAL_SLOTS_SIZE);

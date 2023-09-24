@@ -5,6 +5,7 @@ import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -20,23 +21,23 @@ public class GlitchArmorMaterial implements ArmorMaterial {
     }
 
     @Override
-    public int getDurabilityForSlot(EquipmentSlot slot) {
-        switch (slot) {
-            case FEET: return 400;
-            case HEAD: return 400;
-            case LEGS: return 400;
-            case CHEST: return 400;
+    public int getDurabilityForType(ArmorItem.Type pType) {
+        switch (pType) {
+            case HELMET: return 400;
+            case CHESTPLATE: return 400;
+            case LEGGINGS: return 400;
+            case BOOTS: return 400;
             default: return 0;
         }
     }
 
     @Override
-    public int getDefenseForSlot(EquipmentSlot slot) {
-        switch (slot) {
-            case FEET: return 3;
-            case HEAD: return 3;
-            case LEGS: return 6;
-            case CHEST: return 8;
+    public int getDefenseForType(ArmorItem.Type pType) {
+        switch (pType) {
+            case HELMET: return 3;
+            case CHESTPLATE: return 3;
+            case LEGGINGS: return 6;
+            case BOOTS: return 8;
             default: return 0;
         }
     }

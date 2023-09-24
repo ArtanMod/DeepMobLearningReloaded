@@ -1,0 +1,24 @@
+{
+  "category": "dmlreloaded:0_introduction",
+  "icon": "dmlreloaded:soot_covered_redstone",
+  "name": "patchouli.category.1.introduction.entry.1.title",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.category.1.introduction.entry.1.page.1.text"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "anchor": "sooted_redstone",
+      "item": "dmlreloaded:soot_covered_redstone",
+      "text": "patchouli.category.1.introduction.entry.1.page.2.text",
+      "title": "item.dmlreloaded.soot_covered_redstone"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:soot_covered_plate",
+      "recipe2": "dmlreloaded:machine_casing"
+    }
+  ],
+  "sortnum": 0
+}

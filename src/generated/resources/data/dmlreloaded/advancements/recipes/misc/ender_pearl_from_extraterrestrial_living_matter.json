@@ -30,5 +30,6 @@
     "recipes": [
       "dmlreloaded:ender_pearl_from_extraterrestrial_living_matter"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -8,6 +8,7 @@ import jp.artan.dmlreloaded.item.ItemDeepLearner;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import jp.artan.dmlreloaded.util.PlayerHelper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.NonNullList;
@@ -86,34 +87,34 @@ public class DataOverlay extends Screen {
             double k = DataModelHelper.getKillsToNextTier(stack);
             double c = DataModelHelper.getCurrentTierKillCountWithSims(stack);
             int roof = DataModelHelper.getTierRoofAsKills(stack);
-            PoseStack pose = event.getPoseStack();
-            drawExperienceBar(pose, x, y, i, tierName, tier, k, c, roof, stack);
+            GuiGraphics guiGraphics = event.getGuiGraphics();
+            drawExperienceBar(guiGraphics, x, y, i, tierName, tier, k, c, roof, stack);
         }
     }
 
-    private void drawExperienceBar(PoseStack pose, int x, int y, int index, Component tierName, int tier, double killsToNextTier, double currenKillCount, int tierRoof, ItemStack stack) {
+    private void drawExperienceBar(GuiGraphics guiGraphics, int x, int y, int index, Component tierName, int tier, double killsToNextTier, double currenKillCount, int tierRoof, ItemStack stack) {
         DecimalFormat f = new DecimalFormat("0.#");
 
-        drawItemStack(x - 18, y - 2 + barSpacing + (index * componentHeight), stack);
-        drawString(pose, mc.font, Component.translatable("dmlreloaded.gui.deep_learner.overlay",tierName), x - 14, y + (index * componentHeight) + 2, 0xFFFFFF);
+        drawItemStack(guiGraphics, x - 18, y - 2 + barSpacing + (index * componentHeight), stack);
+        guiGraphics.drawString(mc.font, Component.translatable("dmlreloaded.gui.deep_learner.overlay",tierName), x - 14, y + (index * componentHeight) + 2, 0xFFFFFF);
 
         // Draw the bar
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, experienceBar);
-        blit(pose, x, y + barSpacing + (index * componentHeight), 0, 0, 89, 12);
+        guiGraphics.blit(experienceBar, x, y + barSpacing + (index * componentHeight), 0, 0, 89, 12);
 
         if(tier == DeepMobLearningReloaded.DATA_MODEL_MAXIMUM_TIER) {
-            blit(pose, x + 1,  y + 1 + barSpacing + (index * componentHeight), 0, 12, 89, 11);
+            guiGraphics.blit(experienceBar, x + 1,  y + 1 + barSpacing + (index * componentHeight), 0, 12, 89, 11);
         } else {
-            blit(pose, x + 1,  y + 1 + barSpacing + (index * componentHeight), 0, 12,
+            guiGraphics.blit(experienceBar, x + 1,  y + 1 + barSpacing + (index * componentHeight), 0, 12,
                     (int) (((float) currenKillCount / tierRoof * 89)), 11);
-            drawString(pose, mc.font, f.format(killsToNextTier) + " to go", x + 3, y + 2 + barSpacing + (index * componentHeight), 0xFFFFFF);
+            guiGraphics.drawString(mc.font, f.format(killsToNextTier) + " to go", x + 3, y + 2 + barSpacing + (index * componentHeight), 0xFFFFFF);
         }
     }
 
-    private void drawItemStack(int x, int y, ItemStack stack) {
-        mc.getItemRenderer().renderAndDecorateFakeItem(stack, x, y);
+    private void drawItemStack(GuiGraphics guiGraphics, int x, int y, ItemStack stack) {
+        guiGraphics.renderItem(stack, x, y);
     }
 
     private int getLeftCornerX() {

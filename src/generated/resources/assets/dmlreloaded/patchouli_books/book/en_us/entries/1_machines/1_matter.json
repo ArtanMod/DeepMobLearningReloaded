@@ -1,0 +1,33 @@
+{
+  "category": "dmlreloaded:1_machines",
+  "icon": "dmlreloaded:living_matter_hellish",
+  "name": "patchouli.category.2.introduction.entry.2.title",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.category.2.introduction.entry.2.page.1.text"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "anchor": "living",
+      "item": "dmlreloaded:living_matter_hellish",
+      "text": "patchouli.category.2.introduction.entry.2.page.2.text",
+      "title": "patchouli.category.2.introduction.entry.2.page.2.title"
+    },
+    {
+      "type": "patchouli:crafting",
+      "anchor": "living_transmute",
+      "recipe": "dmlreloaded:soul_sand_from_hellish_living_matter",
+      "recipe2": "dmlreloaded:ender_pearl_from_extraterrestrial_living_matter",
+      "title": "patchouli.category.2.introduction.entry.2.page.3.title"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "anchor": "pristine",
+      "item": "dmlreloaded:pristine_matter_zombie",
+      "text": "patchouli.category.2.introduction.entry.2.page.4.text",
+      "title": "patchouli.category.2.introduction.entry.2.page.4.title"
+    }
+  ],
+  "sortnum": 1
+}

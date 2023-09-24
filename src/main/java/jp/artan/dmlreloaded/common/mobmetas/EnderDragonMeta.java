@@ -1,8 +1,6 @@
 package jp.artan.dmlreloaded.common.mobmetas;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.world.entity.EntityType;
@@ -10,6 +8,7 @@ import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import org.joml.Quaternionf;
 
 public class EnderDragonMeta extends MobMetaData{
     public EnderDragonMeta() {
@@ -33,13 +32,15 @@ public class EnderDragonMeta extends MobMetaData{
     }
 
     @Override
-    public Quaternion getEntityXRotation() {
-        return Vector3f.XP.rotationDegrees(10.0F);
+    public Quaternionf getEntityXRotation() {
+        return (new Quaternionf()).rotateX(10.0F);
+//        return Vector3f.XP.rotationDegrees(10.0F);
     }
 
     @Override
-    public Quaternion getEntityZRotation() {
-        return Vector3f.ZP.rotationDegrees(180.0F);
+    public Quaternionf getEntityZRotation() {
+        return (new Quaternionf()).rotateZ(180.0F);
+//        return Vector3f.ZP.rotationDegrees(180.0F);
     }
 
     @Override

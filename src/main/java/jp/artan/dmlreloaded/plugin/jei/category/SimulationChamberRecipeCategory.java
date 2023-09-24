@@ -18,6 +18,7 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -63,8 +64,8 @@ public class SimulationChamberRecipeCategory implements IRecipeCategory<Simulati
     }
 
     @Override
-    public void draw(SimulationChamberRecipes recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
-        progress.draw(stack,52,9);
+    public void draw(SimulationChamberRecipes recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        progress.draw(guiGraphics,52,9);
     }
 
 //    @Override

@@ -1,0 +1,24 @@
+{
+  "category": "dmlreloaded:1_machines",
+  "icon": "dmlreloaded:simulation_chamber",
+  "name": "patchouli.category.2.introduction.entry.1.title",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.category.2.introduction.entry.1.page.1.text"
+    },
+    {
+      "type": "patchouli:crafting",
+      "anchor": "simulation_chamber",
+      "recipe": "dmlreloaded:simulation_chamber",
+      "text": "patchouli.category.2.introduction.entry.1.page.2.text"
+    },
+    {
+      "type": "patchouli:crafting",
+      "anchor": "simulation_chamber",
+      "recipe": "dmlreloaded:polymer_clay",
+      "text": "patchouli.category.2.introduction.entry.1.page.3.text"
+    }
+  ],
+  "sortnum": 0
+}

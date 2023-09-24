@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "#": {
       "item": "minecraft:lapis_lazuli"
@@ -24,5 +25,6 @@
   ],
   "result": {
     "item": "dmlreloaded:data_model_blank"
-  }
+  },
+  "show_notification": true
 }

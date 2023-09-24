@@ -36,7 +36,7 @@ public class ServerboundResultingItemPacket {
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            final BlockEntity blockEntity = ctx.get().getSender().level.getBlockEntity(this.bPos);
+            final BlockEntity blockEntity = ctx.get().getSender().level().getBlockEntity(this.bPos);
             if (blockEntity instanceof final BlockEntityExtractionChamber eCham) {
                 eCham.setResultingItem(this.stack);
                 eCham.setResultingIndex(this.index);

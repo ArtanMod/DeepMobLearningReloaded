@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "#": {
       "item": "dmlreloaded:soot_covered_plate"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "dmlreloaded:deep_learner"
-  }
+  },
+  "show_notification": true
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "#": {
       "item": "dmlreloaded:soot_covered_plate"
@@ -19,5 +20,6 @@
   "result": {
     "count": 8,
     "item": "dmlreloaded:machine_casing"
-  }
+  },
+  "show_notification": true
 }

@@ -9,6 +9,7 @@ import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.util.Animation;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import jp.artan.dmlreloaded.util.MathHelper;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -40,11 +41,11 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
         super(container, playerInv, component);
 
         this.animationList = new HashMap<>();
-        this.level = playerInv.player.level;
+        this.level = playerInv.player.level();
     }
 
     @Override
-    protected void renderBg(PoseStack pose, float pPartialTick, int pMouseX, int pMouseY) {
+    protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         int left = getGuiLeft();
         int top = getGuiTop();
         int topStart = top - 39;
@@ -55,30 +56,30 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, base);
-        blit(pose, left - 20, top - 36, 0, 0, 216, 141);
+        pGuiGraphics.blit(base, left - 20, top - 36, 0, 0, 216, 141);
 
         // Render data model slot
-        blit(pose, left - 41, top - 36, 0, 141, 18, 18);
+        pGuiGraphics.blit(base, left - 41, top - 36, 0, 141, 18, 18);
 
         // Render current energy
         int energyBarHeight = MathHelper.ensureRange((int) ((float) this.menu.data.get(1) / (this.menu.data.get(2) - data.getSimulationTickCost()) * 87), 0, 87);
         int energyBarOffset = 87 - energyBarHeight;
-        blit(pose, left + 183,  top + 12 + energyBarOffset, 25, 141, 7, energyBarHeight);
+        pGuiGraphics.blit(base, left + 183,  top + 12 + energyBarOffset, 25, 141, 7, energyBarHeight);
 
         // Render current data
         if (DataModelHelper
                 .getTier(getMenu().getDataModel()) != DeepMobLearningReloaded.DATA_MODEL_MAXIMUM_TIER) {
             int dataBarHeight = MathHelper.ensureRange((int) ((float) DataModelHelper.getCurrentTierSimulationCountWithKills(getMenu().getDataModel()) / DataModelHelper.getTierRoof(getMenu().getDataModel()) * 87), 0, 87);
             int dataBarOffset = 87 - dataBarHeight;
-            blit(pose, left-14,  top + 12 + dataBarOffset, 18, 141, 7, dataBarHeight);
+            pGuiGraphics.blit(base, left-14,  top + 12 + dataBarOffset, 18, 141, 7, dataBarHeight);
         } else {
-            blit(pose, left-14,  top+12, 18, 141, 7, 87);
+            pGuiGraphics.blit(base, left-14,  top+12, 18, 141, 7, 87);
         }
 
 
         // Render playerInv
         RenderSystem.setShaderTexture(0, defaultGui);
-        blit(pose, left + 0, top + 111, 0, 0, 176, 90);
+        pGuiGraphics.blit(defaultGui, left + 0, top + 111, 0, 0, 176, 90);
 
         if(dataModelChanged()) {
             resetAnimations();
@@ -108,7 +109,7 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
                 } else {
                     tooltip.add(Component.translatable("dmlreloaded.gui.simulation_chamber.missing"));
                 }
-                renderComponentTooltip(pose, tooltip, pMouseX + 2, pMouseY + 2);
+                pGuiGraphics.renderComponentTooltip(this.font, tooltip, pMouseX + 2, pMouseY + 2);
             } else if(182 <= x && x < 191) {
                 // Tooltip for energy
                 tooltip.add(Component.translatable("dmlreloaded.gui.energy.energystored", f.format(energyStored), f.format(maxEnergy)));
@@ -116,7 +117,7 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
                     MobMetaData meta = DataModelHelper.getMobMetaData(getMenu().getDataModel());
                     tooltip.add(Component.translatable("dmlreloaded.gui.simulation_chamber.drain", f.format(meta.getSimulationTickCost())));
                 }
-                renderComponentTooltip(pose, tooltip, pMouseX - 90, pMouseY - 16);
+                pGuiGraphics.renderComponentTooltip(this.font, tooltip, pMouseX - 90, pMouseY - 16);
             }
         }
 
@@ -133,8 +134,8 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
             Animation a1 = getAnimation("pleaseInsert1");
             Animation a2 = getAnimation("pleaseInsert2");
 
-            animateString(pose, lines[0], a1, null, 1, false, leftTopConsole , topStart + spacing, 0xFFFFFF);
-            animateString(pose, lines[1], a2, a1, 1, false, leftTopConsole, topStart + (spacing * 2), 0xFFFFFF);
+            animateString(pGuiGraphics, lines[0], a1, null, 1, false, leftTopConsole , topStart + spacing, 0xFFFFFF);
+            animateString(pGuiGraphics, lines[1], a2, a1, 1, false, leftTopConsole, topStart + (spacing * 2), 0xFFFFFF);
 
         } else if(DataModelHelper.getTier(getMenu().getDataModel()) == 0) {
 
@@ -148,47 +149,47 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
             Animation insufData2 = getAnimation("insufData2");
             Animation insufData3 = getAnimation("insufData3");
 
-            animateString(pose, lines[0], insufData, null, 1, false, leftTopConsole, topStart + spacing, 0xFFFFFF);
-            animateString(pose, lines[1], insufData2, insufData, 1, false,  leftTopConsole, topStart + (spacing * 2), 0xFFFFFF);
-            animateString(pose, lines[2], insufData3, insufData2, 1, false,  leftTopConsole, topStart + (spacing * 3), 0xFFFFFF);
+            animateString(pGuiGraphics, lines[0], insufData, null, 1, false, leftTopConsole, topStart + spacing, 0xFFFFFF);
+            animateString(pGuiGraphics, lines[1], insufData2, insufData, 1, false,  leftTopConsole, topStart + (spacing * 2), 0xFFFFFF);
+            animateString(pGuiGraphics, lines[2], insufData3, insufData2, 1, false,  leftTopConsole, topStart + (spacing * 3), 0xFFFFFF);
 
         } else {
             // Draw current data model data
             if(DataModelHelper.getTier(getMenu().getDataModel()) == DeepMobLearningReloaded.DATA_MODEL_MAXIMUM_TIER) {
-                blit(pose, leftTopConsole + 6,  top + 48, 18, 141, 7, 87);
+                pGuiGraphics.blit(base, leftTopConsole + 6,  top + 48, 18, 141, 7, 87);
             } else {
                 int collectedData = DataModelHelper.getCurrentTierSimulationCountWithKills(getMenu().getDataModel());
                 int tierRoof = DataModelHelper.getTierRoof(getMenu().getDataModel());
 
                 int experienceBarHeight = (int) (((float) collectedData / tierRoof * 87));
                 int experienceBarOffset = 87 - experienceBarHeight;
-                blit(pose, leftTopConsole + 6,  top + 48 + experienceBarOffset, 18, 141, 7, experienceBarHeight);
+                pGuiGraphics.blit(base, leftTopConsole + 6,  top + 48 + experienceBarOffset, 18, 141, 7, experienceBarHeight);
             }
 
-            drawString(pose, font, Component.translatable("dmlreloaded.tiers.tier", DataModelHelper.getTierName(getMenu().getDataModel(), false)), leftTopConsole, topStart + spacing, 0xFFFFFF);
-            drawString(pose, font, Component.translatable("dmlreloaded.gui.simulation_chamber.iterations", f.format(DataModelHelper.getTotalSimulationCount(getMenu().getDataModel()))), leftTopConsole, topStart + spacing * 2, 0xFFFFFF);
-            drawString(pose, font, Component.translatable("dmlreloaded.gui.simulation_chamber.pristine_chance", DataModelHelper.getPristineChance(getMenu().getDataModel())), leftTopConsole, topStart + spacing * 3, 0xFFFFFF);
+            pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.tiers.tier", DataModelHelper.getTierName(getMenu().getDataModel(), false)), leftTopConsole, topStart + spacing, 0xFFFFFF);
+            pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.simulation_chamber.iterations", f.format(DataModelHelper.getTotalSimulationCount(getMenu().getDataModel()))), leftTopConsole, topStart + spacing * 2, 0xFFFFFF);
+            pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.simulation_chamber.pristine_chance", DataModelHelper.getPristineChance(getMenu().getDataModel())), leftTopConsole, topStart + spacing * 3, 0xFFFFFF);
         }
 
-        drawConsoleText(pose, spacing);
+        drawConsoleText(pGuiGraphics, spacing);
 
     }
 
-    private void drawConsoleText(PoseStack pose, int spacing) {
+    private void drawConsoleText(GuiGraphics pGuiGraphics, int spacing) {
         Component[] lines;
         int leftStart = getGuiLeft();
         int topStart = getGuiTop()+14;
         if(getMenu().getDataModel().isEmpty() || DataModelHelper.getTier(getMenu().getDataModel()) == 0) {
-            animateString(pose, Component.literal("_"), getAnimation("blinkingUnderline"), null, 16, true, leftStart, topStart, 0xFFFFFF);
+            animateString(pGuiGraphics, Component.literal("_"), getAnimation("blinkingUnderline"), null, 16, true, leftStart, topStart, 0xFFFFFF);
         } else if(getMenu().getPolymerClay().isEmpty() && this.menu.data.get(0) == 0) {
             lines = new Component[] {Component.translatable("dmlreloaded.gui.simulation_chamber.cannot_begin"), Component.translatable("dmlreloaded.gui.simulation_chamber.missing_polymer"), Component.literal("_")};
             Animation a1 = getAnimation("inputSlotEmpty1");
             Animation a2 = getAnimation("inputSlotEmpty2");
             Animation a3 = getAnimation("blinkingUnderline1");
 
-            animateString(pose, lines[0], a1, null, 1, false, leftStart, topStart, 0xFFFFFF);
-            animateString(pose, lines[1], a2, a1, 1, false, leftStart, topStart + spacing, 0xFFFFFF);
-            animateString(pose, lines[2], a3, a2, 16, true, leftStart, topStart + (spacing * 2), 0xFFFFFF);
+            animateString(pGuiGraphics, lines[0], a1, null, 1, false, leftStart, topStart, 0xFFFFFF);
+            animateString(pGuiGraphics, lines[1], a2, a1, 1, false, leftStart, topStart + spacing, 0xFFFFFF);
+            animateString(pGuiGraphics, lines[2], a3, a2, 16, true, leftStart, topStart + (spacing * 2), 0xFFFFFF);
 
         } else if(getMenu().data.get(1) < (300 * DataModelHelper.getSimulationTickCost(getMenu().getDataModel())) && this.menu.data.get(0) == 0) {
             lines = new Component[] {Component.literal("Cannot begin simulation"), Component.literal("System energy levels critical"), Component.literal("_")};
@@ -196,52 +197,52 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
             Animation a2 = getAnimation("lowEnergy2");
             Animation a3 = getAnimation("blinkingUnderline2");
 
-            animateString(pose, lines[0], a1, null, 1, false, leftStart, topStart, 0xFFFFFF);
-            animateString(pose, lines[1], a2, a1, 1, false, leftStart, topStart + spacing, 0xFFFFFF);
-            animateString(pose, lines[2], a3, a2, 16, true, leftStart, topStart + (spacing * 2), 0xFFFFFF);
+            animateString(pGuiGraphics, lines[0], a1, null, 1, false, leftStart, topStart, 0xFFFFFF);
+            animateString(pGuiGraphics, lines[1], a2, a1, 1, false, leftStart, topStart + spacing, 0xFFFFFF);
+            animateString(pGuiGraphics, lines[2], a3, a2, 16, true, leftStart, topStart + (spacing * 2), 0xFFFFFF);
         } else if(getMenu().outputIsFull() || getMenu().pristineIsFull() && this.menu.data.get(0) == 0) {
             lines = new Component[] {Component.literal("Cannot begin simulation"), Component.literal("Output or pristine buffer is full"), Component.literal("_")};
             Animation a1 = getAnimation("outputSlotFilled1");
             Animation a2 = getAnimation("outputSlotFilled2");
             Animation a3 = getAnimation("blinkingUnderline3");
 
-            animateString(pose, lines[0], a1, null, 1, false, leftStart, topStart, 0xFFFFFF);
-            animateString(pose, lines[1], a2, a1, 1, false, leftStart, topStart + spacing, 0xFFFFFF);
-            animateString(pose, lines[2], a3, a2, 16, true, leftStart, topStart + (spacing * 2), 0xFFFFFF);
+            animateString(pGuiGraphics, lines[0], a1, null, 1, false, leftStart, topStart, 0xFFFFFF);
+            animateString(pGuiGraphics, lines[1], a2, a1, 1, false, leftStart, topStart + spacing, 0xFFFFFF);
+            animateString(pGuiGraphics, lines[2], a3, a2, 16, true, leftStart, topStart + (spacing * 2), 0xFFFFFF);
         } else if(this.menu.data.get(0) > 0) {
             updateSimulationText(getMenu().getDataModel(), this.menu.data.get(3));
 
-            drawString(pose, font, getMenu().data.get(0) + "%", leftStart+158, 134, 0x55FFFF);
+            pGuiGraphics.drawString(font, getMenu().data.get(0) + "%", leftStart+158, 134, 0x55FFFF);
 
-            drawString(pose, font, getSimulationText("simulationProgressLine1"), leftStart, topStart, 0xFFFFFF);
-            drawString(pose, font, getSimulationText("simulationProgressLine1Version"), leftStart + 102, topStart, 0xFFFFFF);
+            pGuiGraphics.drawString(font, getSimulationText("simulationProgressLine1"), leftStart, topStart, 0xFFFFFF);
+            pGuiGraphics.drawString(font, getSimulationText("simulationProgressLine1Version"), leftStart + 102, topStart, 0xFFFFFF);
 
-            drawString(pose, font, getSimulationText("simulationProgressLine2"), leftStart, topStart + spacing, 0xFFFFFF);
+            pGuiGraphics.drawString(font, getSimulationText("simulationProgressLine2"), leftStart, topStart + spacing, 0xFFFFFF);
 
-            drawString(pose, font, getSimulationText("simulationProgressLine3"), leftStart, topStart + (spacing * 2), 0xFFFFFF);
-            drawString(pose, font, getSimulationText("simulationProgressLine4"), leftStart, topStart + (spacing * 3), 0xFFFFFF);
-            drawString(pose, font, getSimulationText("simulationProgressLine5"), leftStart, topStart + (spacing * 4), 0xFFFFFF);
+            pGuiGraphics.drawString(font, getSimulationText("simulationProgressLine3"), leftStart, topStart + (spacing * 2), 0xFFFFFF);
+            pGuiGraphics.drawString(font, getSimulationText("simulationProgressLine4"), leftStart, topStart + (spacing * 3), 0xFFFFFF);
+            pGuiGraphics.drawString(font, getSimulationText("simulationProgressLine5"), leftStart, topStart + (spacing * 4), 0xFFFFFF);
 
-            drawString(pose, font, getSimulationText("simulationProgressLine6"), leftStart, topStart + (spacing * 5), 0xFFFFFF);
-            drawString(pose, font, getSimulationText("simulationProgressLine6Result"), leftStart + 118, topStart + (spacing * 5), 0xFFFFFF);
+            pGuiGraphics.drawString(font, getSimulationText("simulationProgressLine6"), leftStart, topStart + (spacing * 5), 0xFFFFFF);
+            pGuiGraphics.drawString(font, getSimulationText("simulationProgressLine6Result"), leftStart + 118, topStart + (spacing * 5), 0xFFFFFF);
 
-            drawString(pose, font, getSimulationText("simulationProgressLine7"), leftStart, topStart + (spacing * 6), 0xFFFFFF);
-            drawString(pose, font, getSimulationText("blinkingDots1"), getGuiLeft() + 109, topStart + (spacing * 6), 0xFFFFFF);
+            pGuiGraphics.drawString(font, getSimulationText("simulationProgressLine7"), leftStart, topStart + (spacing * 6), 0xFFFFFF);
+            pGuiGraphics.drawString(font, getSimulationText("blinkingDots1"), getGuiLeft() + 109, topStart + (spacing * 6), 0xFFFFFF);
 
         } else {
-            animateString(pose, Component.literal("_"), getAnimation("blinkingUnderline"), null, 16, true, leftStart, topStart + 49, 0xFFFFFF);
+            animateString(pGuiGraphics, Component.literal("_"), getAnimation("blinkingUnderline"), null, 16, true, leftStart, topStart + 49, 0xFFFFFF);
         }
     }
 
     @Override
-    protected void renderLabels(PoseStack pPoseStack, int pMouseX, int pMouseY) {
+    protected void renderLabels(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
     }
 
     @Override
-    public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {
-        this.renderBackground(pPoseStack);
-        super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
-        this.renderTooltip(pPoseStack, pMouseX, pMouseY);
+    public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
+        this.renderBackground(pGuiGraphics);
+        super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
+        this.renderTooltip(pGuiGraphics, pMouseX, pMouseY);
     }
 
     private void resetAnimations() {
@@ -266,17 +267,17 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
         }
     }
 
-    private void animateString(PoseStack pose, Component string, Animation anim, Animation precedingAnim, int delay, boolean loop, int left, int top, int color) {
+    private void animateString(GuiGraphics pGuiGraphics, Component string, Animation anim, Animation precedingAnim, int delay, boolean loop, int left, int top, int color) {
         if(precedingAnim != null) {
             if (precedingAnim.hasFinished()) {
                 String result = anim.animate(string.getString(), delay, level.getGameTime(), loop);
-                drawString(pose, font, result, left, top, color);
+                pGuiGraphics.drawString(font, result, left, top, color);
             } else {
                 return;
             }
         }
         String result = anim.animate(string.getString(), delay, level.getGameTime(), loop);
-        drawString(pose, font, result, left, top, color);
+        pGuiGraphics.drawString(font, result, left, top, color);
     }
 
     public String getSimulationText(String key) {

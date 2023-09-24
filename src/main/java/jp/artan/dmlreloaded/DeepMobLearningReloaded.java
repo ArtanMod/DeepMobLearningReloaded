@@ -11,6 +11,7 @@ import jp.artan.dmlreloaded.provider.ModRegistratePatchouliProvider;
 import jp.artan.dmlreloaded.screen.DataOverlay;
 import jp.artan.repack.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.ComponentContents;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -38,7 +39,7 @@ public class DeepMobLearningReloaded {
     public static final int DATA_MODEL_MAXIMUM_TIER = 4;
 
     // Debug Mode
-    public static final boolean DEBUG_MODE = false;
+    public static final boolean DEBUG_MODE = true;
 
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -51,6 +52,7 @@ public class DeepMobLearningReloaded {
         DropModifier.GLM.register(modEventBus);
         BlockEntityInit.BET.register(modEventBus);
         RecipeSerializerInit.RECIPE.register(modEventBus);
+        ItemGroupInit.TAB_REGISTER.register(modEventBus);
         ModRegistratePatchouliProvider.addLang(registrate());
 
         modEventBus.addListener(this::registerProviders);
@@ -88,8 +90,9 @@ public class DeepMobLearningReloaded {
 
     void registerProviders(GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
-        gen.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(gen, MOD_ID));
-        gen.addProvider(event.includeServer(), new ModRecipeProvider(gen));
+        PackOutput packOutput = gen.getPackOutput();
+        gen.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(packOutput, MOD_ID));
+        gen.addProvider(event.includeServer(), new ModRecipeProvider(packOutput));
         gen.addProvider(event.includeClient(), new ModRegistratePatchouliProvider(event.includeClient(), MOD_ID, gen, event.getExistingFileHelper()));
     }
 }

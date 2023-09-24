@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "#": {
       "item": "dmlreloaded:glitch_infused_ingot"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "dmlreloaded:glitch_infused_sword"
-  }
+  },
+  "show_notification": true
 }

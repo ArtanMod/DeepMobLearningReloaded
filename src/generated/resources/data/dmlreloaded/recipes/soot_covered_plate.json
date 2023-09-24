@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "X": {
       "item": "minecraft:obsidian"
@@ -15,5 +16,6 @@
   "result": {
     "count": 8,
     "item": "dmlreloaded:soot_covered_plate"
-  }
+  },
+  "show_notification": true
 }

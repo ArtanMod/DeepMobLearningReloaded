@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "#": {
       "item": "minecraft:clay_ball"
@@ -22,5 +23,6 @@
   "result": {
     "count": 16,
     "item": "dmlreloaded:polymer_clay"
-  }
+  },
+  "show_notification": true
 }

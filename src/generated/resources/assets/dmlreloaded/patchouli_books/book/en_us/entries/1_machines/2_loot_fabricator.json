@@ -1,0 +1,17 @@
+{
+  "category": "dmlreloaded:1_machines",
+  "icon": "dmlreloaded:extraction_chamber",
+  "name": "patchouli.category.2.introduction.entry.3.title",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.category.2.introduction.entry.3.page.1.text"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:extraction_chamber",
+      "text": "patchouli.category.2.introduction.entry.3.page.2.text"
+    }
+  ],
+  "sortnum": 2
+}

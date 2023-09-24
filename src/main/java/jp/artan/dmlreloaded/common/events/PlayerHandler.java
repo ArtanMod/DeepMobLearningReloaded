@@ -31,7 +31,7 @@ public class PlayerHandler {
     public static void playerEuqipmentUpdate(LivingEquipmentChangeEvent event) {
         if (event.getEntity() instanceof Player player) {
             Abilities cap = player.getAbilities();
-            if (!player.level.isClientSide) {
+            if (!player.level().isClientSide) {
                 boolean isMayFly = cap.mayfly;
                 boolean isFlyEnabledAndFullSet = ItemGlitchArmor.isFlyEnabledAndFullSet((ServerPlayer) player);
                 boolean isSpectator = player.isSpectator();
@@ -55,7 +55,7 @@ public class PlayerHandler {
     public static void playerLogIn(PlayerEvent.PlayerLoggedInEvent event) {
         Player player = event.getEntity();
         Abilities cap = player.getAbilities();
-        if (!player.level.isClientSide) {
+        if (!player.level().isClientSide) {
             boolean isMayFly = cap.mayfly;
             boolean isFlyEnabledAndFullSet = ItemGlitchArmor.isFlyEnabledAndFullSet((ServerPlayer) player);
             boolean isSpectator = player.isSpectator();
@@ -78,7 +78,7 @@ public class PlayerHandler {
     public static void playerChangeGamemode(PlayerEvent.PlayerChangeGameModeEvent event) {
         Player player = event.getEntity();
         Abilities cap = player.getAbilities();
-        if (!player.level.isClientSide) {
+        if (!player.level().isClientSide) {
             boolean isMayFly = cap.mayfly;
             boolean isFlyEnabledAndFullSet = ItemGlitchArmor.isFlyEnabledAndFullSet((ServerPlayer) player);
             boolean isSpectator = player.isSpectator();
@@ -104,15 +104,15 @@ public class PlayerHandler {
             ThreadLocalRandom rand = ThreadLocalRandom.current();
             if(event.getItemStack().getItem() instanceof ItemGlitchHeart && rand.nextInt(0, 10) <= 3) {
                 BlockPos blockPos = event.getPos();
-                if(player.getLevel().getBlockState(event.getPos()).getBlock() == Blocks.OBSIDIAN) {
-                    ItemEntity drop = new ItemEntity(player.getLevel(), blockPos.getX(), blockPos.getY(),
+                if(player.level().getBlockState(event.getPos()).getBlock() == Blocks.OBSIDIAN) {
+                    ItemEntity drop = new ItemEntity(player.level(), blockPos.getX(), blockPos.getY(),
                             blockPos.getZ(), new ItemStack(ItemInit.GLITCH_FRAGMENT.get(), 3));
                     drop.setDefaultPickUpDelay();
-                    player.getLevel().addFreshEntity(drop);
+                    player.level().addFreshEntity(drop);
                     event.getItemStack().shrink(1);
-                    player.getLevel().playSound(null, blockPos, SoundEvents.ANCIENT_DEBRIS_BREAK,
+                    player.level().playSound(null, blockPos, SoundEvents.ANCIENT_DEBRIS_BREAK,
                             SoundSource.NEUTRAL, 1f, 1.1f);
-                    player.getLevel().addParticle(ParticleTypes.POOF, (double) blockPos.getX() + 0.5d,
+                    player.level().addParticle(ParticleTypes.POOF, (double) blockPos.getX() + 0.5d,
                             (double) blockPos.getY() + 1, (double) blockPos.getZ() + 0.5d, 0d, 0.03d, 0d);
                     event.setCanceled(true);
                 }
@@ -127,15 +127,15 @@ public class PlayerHandler {
             ThreadLocalRandom rand = ThreadLocalRandom.current();
             if (event.getItemStack().getItem() == Items.REDSTONE && rand.nextInt(0, 10) <= 3) {
                 BlockPos blockPos = event.getPos();
-                if (player.getLevel().getBlockState(event.getPos()).getBlock() == Blocks.COAL_BLOCK) {
-                    ItemEntity drop = new ItemEntity(player.getLevel(), blockPos.getX(), blockPos.getY(),
+                if (player.level().getBlockState(event.getPos()).getBlock() == Blocks.COAL_BLOCK) {
+                    ItemEntity drop = new ItemEntity(player.level(), blockPos.getX(), blockPos.getY(),
                             blockPos.getZ(), new ItemStack(ItemInit.SOOT_COVERED_REDSTONE.get(), 1));
                     drop.setDefaultPickUpDelay();
-                    player.getLevel().addFreshEntity(drop);
+                    player.level().addFreshEntity(drop);
                     event.getItemStack().shrink(1);
-                    player.getLevel().playSound(null, blockPos, SoundEvents.AMETHYST_CLUSTER_BREAK,
+                    player.level().playSound(null, blockPos, SoundEvents.AMETHYST_CLUSTER_BREAK,
                             SoundSource.NEUTRAL, 1f, 0.1f);
-                    player.getLevel().addParticle(ParticleTypes.FLAME,
+                    player.level().addParticle(ParticleTypes.FLAME,
                             (double) blockPos.getX() + rand.nextDouble(0, 1), (double) blockPos.getY() + 1,
                             (double) blockPos.getZ() + rand.nextDouble(0, 1), 0d, 0.03d, 0d);
                     event.setCanceled(true);

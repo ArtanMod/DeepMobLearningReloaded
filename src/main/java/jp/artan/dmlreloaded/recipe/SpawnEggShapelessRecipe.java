@@ -1,6 +1,5 @@
 package jp.artan.dmlreloaded.recipe;
 
-import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.init.RecipeSerializerInit;
 import jp.artan.dmlreloaded.item.ItemDataModel;
@@ -8,20 +7,22 @@ import jp.artan.dmlreloaded.item.ItemPristineMatter;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import jp.artan.dmlreloaded.util.TierHelper;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.SimpleRecipeSerializer;
+import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 
 public class SpawnEggShapelessRecipe extends CustomRecipe {
-    public SpawnEggShapelessRecipe(ResourceLocation p_43833_) {
-        super(p_43833_);
+    public SpawnEggShapelessRecipe(ResourceLocation pId, CraftingBookCategory pCategory) {
+        super(pId, pCategory);
     }
 
     @Override
@@ -40,8 +41,8 @@ public class SpawnEggShapelessRecipe extends CustomRecipe {
     }
 
     @Override
-    public ItemStack assemble(CraftingContainer inventory) {
-        MobMetaData metaData = this.getMobMetaData(inventory);
+    public ItemStack assemble(CraftingContainer pContainer, RegistryAccess pRegistryAccess) {
+        MobMetaData metaData = this.getMobMetaData(pContainer);
         if(metaData == null) {
             return ItemStack.EMPTY;
         }
@@ -96,7 +97,7 @@ public class SpawnEggShapelessRecipe extends CustomRecipe {
         return RecipeSerializerInit.CRAFTING_SPECIAL_SPAWN_EGG_RECIPE.get();
     }
 
-    public static class Serializer extends SimpleRecipeSerializer<SpawnEggShapelessRecipe> {
+    public static class Serializer extends SimpleCraftingRecipeSerializer<SpawnEggShapelessRecipe> {
         public Serializer() {
             super(SpawnEggShapelessRecipe::new);
         }

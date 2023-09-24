@@ -1,0 +1,19 @@
+{
+  "category": "dmlreloaded:1_machines",
+  "icon": "minecraft:redstone",
+  "name": "patchouli.category.2.introduction.entry.4.title",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:redstone",
+      "text": "patchouli.category.2.introduction.entry.4.page.1.text",
+      "title": "patchouli.category.2.introduction.entry.4.page.1.title"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.category.2.introduction.entry.4.page.2.text",
+      "title": "patchouli.category.2.introduction.entry.4.page.2.title"
+    }
+  ],
+  "sortnum": 3
+}

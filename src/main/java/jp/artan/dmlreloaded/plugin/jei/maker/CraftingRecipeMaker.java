@@ -8,6 +8,7 @@ import jp.artan.dmlreloaded.util.TierHelper;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
@@ -36,6 +37,7 @@ public class CraftingRecipeMaker {
                     recipes.add(new ShapelessRecipe(
                             DeepMobLearningReloaded.getResource(output.getItem().toString()),
                             null,
+                            CraftingBookCategory.MISC,
                             output,
                             NonNullList.of(
                                     Ingredient.EMPTY,

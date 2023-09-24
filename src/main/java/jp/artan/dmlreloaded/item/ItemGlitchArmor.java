@@ -24,7 +24,7 @@ public class ItemGlitchArmor extends ArmorItem{
     private static final int HEART_SET_CHANCE = 1;
     private static final int PRISTINE_SET_NUMBER_OF_DROPS = 2;
 
-    public ItemGlitchArmor(EquipmentSlot p_40387_, Properties p_40388_) {
+    public ItemGlitchArmor(ArmorItem.Type p_40387_, Properties p_40388_) {
         super(new GlitchArmorMaterial(), p_40387_, p_40388_);
     }
 

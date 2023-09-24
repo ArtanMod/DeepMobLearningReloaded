@@ -1,12 +1,13 @@
 package jp.artan.dmlreloaded.provider;
 
+import com.google.gson.JsonObject;
 import jp.artan.artansprojectcoremod.provider.RegistratePatchouliProvider;
+import jp.artan.artansprojectcoremod.provider.builder.patchoulibuilder.category.entry.pages.Page;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import jp.artan.dmlreloaded.init.BlockInit;
 import jp.artan.dmlreloaded.init.ItemGroupInit;
 import jp.artan.dmlreloaded.init.ItemInit;
-import jp.artan.dmlreloaded.plugin.twilight.init.TwilightItemInit;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -151,8 +152,7 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
     protected void registerPatchouli(Consumer<RegistratePatchouliProvider.Result> consumer) {
         this.book("book")
                 .book().properties(
-                        p -> p.setName("Deep Mob Learning")
-                                .setLandingText("patchouli.book.landing_text")
+                        p -> p.setName("Deep Mob Learning", "patchouli.book.landing_text")
                                 .setBookTexture(DeepMobLearningReloaded.getResource("textures/gui/patchouli/book_gray.png"))
                                 .setCrafterTexture(DeepMobLearningReloaded.getResource("textures/gui/patchouli/crafting.png"))
                                 .setModel(DeepMobLearningReloaded.getResource("book"))
@@ -349,19 +349,19 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                 .build()
                 .build()
                 .getTemplates()
-                .addTemplate("fluid_infusion").properties(p -> {
-                    p.addHeaderComponent("#title").setX(-1).setY(-1).build();
-                    p.addSeparatorComponent().setX(-1).setY(-1).build();
-                    p.addItemComponent("#input1").setFramed(true).setX(27).setY(30).build();
-                    p.addItemComponent("#input2").setFramed(true).setX(50).setY(30).build();
-                    p.addItemComponent("#input3").setFramed(true).setX(73).setY(30).build();
-                    p.addImageComponent("dmlreloaded:textures/gui/patchouli/arrow_down.png", 16, 16).setX(50).setY(50).setTextureWidth(16).setTextureHeight(16).build();
-                    p.addImageComponent("#fluid", 16, 16).setX(50).setY(65).setTextureWidth(16).setTextureHeight(16).build();
-                    p.addTooltipComponent().addTooltip("#fluidTooltip").setX(49).setY(64).setHeight(16).setWidth(16).build();
-                    p.addImageComponent("dmlreloaded:textures/gui/patchouli/arrow_down.png", 16, 16).setX(50).setY(84).setTextureWidth(16).setTextureHeight(16).build();
-                    p.addItemComponent("#output").setX(50).setY(102).setFramed(true).setLinkRecipe(true).build();
-                    return p;
-                }).build()
+//                .addTemplate("fluid_infusion").properties(p -> {
+//                    p.addHeaderComponent("#title").setX(-1).setY(-1).build();
+//                    p.addSeparatorComponent().setX(-1).setY(-1).build();
+//                    p.addItemComponent("#input1").setFramed(true).setX(27).setY(30).build();
+//                    p.addItemComponent("#input2").setFramed(true).setX(50).setY(30).build();
+//                    p.addItemComponent("#input3").setFramed(true).setX(73).setY(30).build();
+//                    p.addImageComponent("dmlreloaded:textures/gui/patchouli/arrow_down.png", 16, 16).setX(50).setY(50).setTextureWidth(16).setTextureHeight(16).build();
+//                    p.addImageComponent("#fluid", 16, 16).setX(50).setY(65).setTextureWidth(16).setTextureHeight(16).build();
+//                    p.addTooltipComponent().addTooltip("#fluidTooltip").setX(49).setY(64).setHeight(16).setWidth(16).build();
+//                    p.addImageComponent("dmlreloaded:textures/gui/patchouli/arrow_down.png", 16, 16).setX(50).setY(84).setTextureWidth(16).setTextureHeight(16).build();
+//                    p.addItemComponent("#output").setX(50).setY(102).setFramed(true).setLinkRecipe(true).build();
+//                    return p;
+//                }).build()
                 .build()
                 .save(consumer);
     }

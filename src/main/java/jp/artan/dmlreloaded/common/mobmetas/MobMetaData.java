@@ -1,8 +1,6 @@
 package jp.artan.dmlreloaded.common.mobmetas;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
@@ -16,6 +14,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.joml.AxisAngle4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public abstract class MobMetaData {
     protected String entityId;
@@ -118,12 +119,14 @@ public abstract class MobMetaData {
     }
 
     // DeepLearnerScreen Function
-    public Quaternion getEntityXRotation() {
-        return Vector3f.XP.rotationDegrees(180.0F);
+    public Quaternionf getEntityXRotation() {
+        return (new Quaternionf()).rotateX(180.0F);
+//        return Vector3f.XP.rotationDegrees(180.0F);
     }
 
-    public Quaternion getEntityZRotation() {
-        return Vector3f.ZP.rotationDegrees(0.0F);
+    public Quaternionf getEntityZRotation() {
+        return (new Quaternionf()).rotateZ(0.0F);
+//        return Vector3f.ZP.rotationDegrees(0.0F);
     }
 
     public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
