@@ -5,18 +5,14 @@ import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
+import jp.artan.dmlreloaded.util.RenderInfo;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.contents.TranslatableContents;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import org.joml.AxisAngle4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
 public abstract class MobMetaData {
     protected String entityId;
@@ -119,18 +115,12 @@ public abstract class MobMetaData {
     }
 
     // DeepLearnerScreen Function
-    public Quaternionf getEntityXRotation() {
-        return (new Quaternionf()).rotateX(180.0F);
-//        return Vector3f.XP.rotationDegrees(180.0F);
+    public int getOffsetY(LivingEntity livingEntity) {
+        return 0;
     }
 
-    public Quaternionf getEntityZRotation() {
-        return (new Quaternionf()).rotateZ(0.0F);
-//        return Vector3f.ZP.rotationDegrees(0.0F);
-    }
-
-    public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(1.2F, 1.2F, -1.2F);
+    public RenderInfo transform(RenderInfo renderInfo, LivingEntity entity) {
+        return renderInfo;
     }
 
     // Have to implement, different for every Meta

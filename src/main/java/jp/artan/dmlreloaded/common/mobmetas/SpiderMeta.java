@@ -24,10 +24,4 @@ public class SpiderMeta extends MobMetaData {
     public Spider getEntity(Level world) {
         return new Spider(EntityType.SPIDER, world);
     }
-
-    @Override
-    public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(1.02F, 1.02F, -1.02F);
-        poseStack.translate((double)(xPos-68), (double)(yPos- 110 + Math.sin(world.getGameTime()/13.0d)*3.0d), 0.0D);
-    }
 }

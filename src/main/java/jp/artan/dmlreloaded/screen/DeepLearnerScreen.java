@@ -9,6 +9,7 @@ import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.container.DeepLearnerContainer;
 import jp.artan.dmlreloaded.item.ItemDeepLearner;
 import jp.artan.dmlreloaded.util.DataModelHelper;
+import jp.artan.dmlreloaded.util.RenderHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
@@ -95,7 +96,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
             this.meta = DataModelHelper.getMobMetaData(validDataModels.get(validDataModels.size() >= 1 ? fixPos : currentItem));
             renderMetaDataText(meta, left, top, validDataModels.get(fixPos), pGuiGraphics);
             renderMobDisplayBox(pGuiGraphics, left, top);
-            renderEntityInInventory(getGuiLeft() - 85, getGuiTop() + 52, 30, partialTicks, meta, world);
+            renderEntityInInventory(pGuiGraphics, getGuiLeft() - 85, getGuiTop() + 52, meta, mouseX, mouseY, world);
             /*if(meta instanceof ZombieMeta || meta instanceof SpiderMeta) {
                 renderEntityInInventory(getGuiLeft() + 51, getGuiTop() + 75, 30, (float)(getGuiLeft() + 51) - this.xMouse, (float)(getGuiTop() + 75 - 50) - this.yMouse,(LivingEntity) meta.getExtraEntity(world));
             }*/
@@ -224,47 +225,39 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
     }
 
     @SuppressWarnings("deprecation")
-    public static void renderEntityInInventory(int xPos, int yPos, int scale, float partialTicks, MobMetaData meta, Level world) {
-        PoseStack posestack = RenderSystem.getModelViewStack();
-        posestack.pushPose();
-        posestack.translate((double)xPos, (double)yPos + Math.sin(world.getGameTime()/13.0d)*3.0d, 1050.0D);
+    public static void renderEntityInInventory(GuiGraphics pGuiGraphics, int xPos, int yPos, MobMetaData meta, double mouseX, double mouseY, Level world) {
         LivingEntity entity = meta.getEntity(world);
+        if(entity != null) {
+            float scale = getScale(entity);
+            int offsetY = meta.getOffsetY(entity);
+            RenderHelper.renderEntity(
+                    pGuiGraphics,
+                    xPos, yPos - offsetY, scale,
+                    38 - mouseX,
+                    70 - offsetY - mouseY,
+                    entity,
+                    meta
+            );
+        }
+    }
 
-        Quaternionf quaternion1 = meta.getEntityXRotation();
-        Quaternionf quaternion = meta.getEntityZRotation();
-        meta.setPose(posestack, xPos, yPos, world);
-
-        RenderSystem.applyModelViewMatrix();
-        PoseStack posestack1 = new PoseStack();
-        posestack1.translate(0.0D, 0.0D, 1000.0D);
-        posestack1.scale((float)scale, (float)scale, (float)scale);
-        quaternion.mul(quaternion1);
-        posestack1.mulPose(quaternion);
-        if(entity != null) {
-            entity.yBodyRot =  0.0f + (float) (world.getGameTime()*1.2d);
-            entity.yHeadRot =  0.0f + (float) (world.getGameTime()*1.2d);
-            if(entity instanceof WitherBoss wither) {
-                wither.setYHeadRot(0.0f + (float) (world.getGameTime()*1.2d));
-            }
+    private static float getScale(LivingEntity livingEntity) {
+        float width = livingEntity.getBbWidth();
+        float height = livingEntity.getBbHeight();
+        if (width <= height) {
+            if (height < 0.9) return 50.0F;
+            else if (height < 1) return 35.0F;
+            else if (height < 1.8) return 33.0F;
+            else if (height < 2) return 32.0F;
+            else if (height < 3) return 24.0F;
+            else if (height < 4) return 20.0F;
+            else return 10.0F;
+        } else {
+            if (width < 1) return 38.0F;
+            else if (width < 2) return 27.0F;
+            else if (width < 3) return 13.0F;
+            else return 9.0F;
         }
-        Lighting.setupForEntityInInventory();
-        EntityRenderDispatcher entityrenderdispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
-        entityrenderdispatcher.setRenderShadow(false);
-        MultiBufferSource.BufferSource multibuffersource$buffersource = Minecraft.getInstance().renderBuffers().bufferSource();
-        if(entity != null) {
-            RenderSystem.runAsFancy(() -> {
-                entityrenderdispatcher.render(entity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, posestack1, multibuffersource$buffersource, 15728880);
-            });
-        }
-        multibuffersource$buffersource.endBatch();
-        entityrenderdispatcher.setRenderShadow(true);
-        if(entity != null) {
-            entity.yBodyRot = 0.0F;
-            entity.yHeadRot = 0.0f;
-        }
-        posestack.popPose();
-        RenderSystem.applyModelViewMatrix();
-        Lighting.setupFor3DItems();
     }
 
     private int nextItemIndex() {
