@@ -359,6 +359,11 @@ public class ItemInit {
                 .jpLang("クモのデータモデル")
                 .register();
 
+        public static final ItemEntry<ItemDataModel> WARDEN = registerDataModel("data_model_warden", MobKey.WARDEN, () -> Items.ECHO_SHARD)
+                .lang("Warden Data Model")
+                .jpLang("ウォーデンのデータモデル")
+                .register();
+
         public static final ItemEntry<ItemDataModel> WITCH = registerDataModel("data_model_witch", MobKey.WITCH, () -> Items.GLASS_BOTTLE)
                 .lang("Witch Data Model")
                 .jpLang("ウィッチのデータモデル")
@@ -546,6 +551,13 @@ public class ItemInit {
                 .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 1), "Drops strands of string for some reason..")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 1), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> WARDEN = REGISTRATE.item("pristine_matter_warden", p -> new ItemPristineMatter(p, MobKey.WITCH))
+                .lang("Pristine Warden Matter")
+                .jpLang("綺麗なウォーデンマター")
+//                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.WARDEN, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.WARDEN, 0), "")
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> WITCH = REGISTRATE.item("pristine_matter_witch", p -> new ItemPristineMatter(p, MobKey.WITCH))

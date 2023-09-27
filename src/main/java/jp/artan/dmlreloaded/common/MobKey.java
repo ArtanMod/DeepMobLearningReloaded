@@ -120,6 +120,17 @@ public enum MobKey implements IMobKey {
         add(() -> new ItemStack(Items.STRING, 64));
         add(() -> new ItemStack(Blocks.COBWEB, 8));
     }}),
+    WARDEN("warden", WardenMeta::new, LivingMatterType.HELLISH, new ArrayList<>(){{
+        add(new VanillaMob("warden"));
+    }}, new ArrayList<>(){{
+        add(() -> new ItemStack(Items.SCULK_CATALYST, 16));
+        add(() -> new ItemStack(Items.ECHO_SHARD, 8));
+        add(() -> new ItemStack(Items.DISC_FRAGMENT_5, 1));
+        add(() -> new ItemStack(Items.SCULK_SENSOR, 16));
+        add(() -> new ItemStack(Items.SCULK_SHRIEKER, 16));
+        add(() -> new ItemStack(Items.SCULK, 16));
+        add(() -> new ItemStack(Items.REINFORCED_DEEPSLATE, 8));
+    }}),
     WITCH("witch", WitchMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new VanillaMob("witch"));
     }}, new ArrayList<>(){{
