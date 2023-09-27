@@ -1,11 +1,10 @@
 package jp.artan.dmlreloaded.plugin.DIvineRPG;
 
-import divinerpg.DivineRPG;
 import jp.artan.dmlreloaded.common.MobKey;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 public class DivineRPGPlugin {
-    public static final String NAME = DivineRPG.MODID;
+    public static final String NAME = "divinerpg";
 
     public static void init(IEventBus modEventBus) {
         registerMobKey();
