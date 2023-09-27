@@ -201,6 +201,9 @@ dependencies {
 
     // Reliquary Reincarnations
     implementation fg.deobf("curse.maven:reliquary-241319:${reliquary_reincarnations}")
+
+    // DivineRPG
+    implementation fg.deobf("curse.maven:official-divinerpg-363543:${divinerpg}")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
