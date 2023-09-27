@@ -198,6 +198,9 @@ dependencies {
 
     // The Twilight Forest
     implementation fg.deobf("teamtwilight:twilightforest:${twilight_forest_version}:universal")
+
+    // Reliquary Reincarnations
+    implementation fg.deobf("curse.maven:reliquary-241319:${reliquary_reincarnations}")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
