@@ -175,6 +175,10 @@ repositories {
         name = "Patchouli Maven"
         url = 'https://maven.blamejared.com'
     }
+    maven {
+        name = 'GeckoLib'
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    }
 }
 
 dependencies {
@@ -210,6 +214,12 @@ dependencies {
     runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")     // Mekanism: Additions
     runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")    // Mekanism: Generators
     runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")         // Mekanism: Tools
+
+    // GeckoLib
+    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
+
+    // Deeper and Darker
+    implementation fg.deobf("curse.maven:deeperdarker-659011:${deeper_and_darker}")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
