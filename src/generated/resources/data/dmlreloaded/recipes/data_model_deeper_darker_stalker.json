@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dmlreloaded:data_model_blank"
+    },
+    {
+      "item": "deeperdarker:soul_crystal"
+    }
+  ],
+  "result": {
+    "item": "dmlreloaded:data_model_deeper_darker_stalker"
+  }
+}
