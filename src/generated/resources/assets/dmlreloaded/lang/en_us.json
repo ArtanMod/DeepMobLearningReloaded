@@ -3,6 +3,7 @@
   "block.dmlreloaded.infused_ingot_block": "Glitch Infused Block",
   "block.dmlreloaded.machine_casing": "Machine Casing",
   "block.dmlreloaded.simulation_chamber": "Simulation Chamber",
+  "curios.identifier.deep_learner": "Deep Learner",
   "dmlreloaded.data_model.data.collected": "Data collected: %1$s/%2$s",
   "dmlreloaded.data_model.data.killmultiplier": "Data per kill: %1$s",
   "dmlreloaded.data_model.rfcost": "Simulation cost: %1$s RF/t",

@@ -1,11 +1,11 @@
-// 1.19.2	2023-09-27T21:16:27.1676467	Registrate Provider for dmlreloaded [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Languages: ja_jp]
+// 1.19.2	2023-10-02T20:52:47.3928075	Registrate Provider for dmlreloaded [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Languages: ja_jp]
 819921f79d5bc5a94cda4e0dc90357991620b552 assets/dmlreloaded/blockstates/extraction_chamber.json
 7a8b89ed39829d397ac598a7550cb633cd26410a assets/dmlreloaded/blockstates/infused_ingot_block.json
 5fad5624a4cb6b6d52251013da821f6764bcf790 assets/dmlreloaded/blockstates/machine_casing.json
 e130c6997edd2e5cf1cd8828052853849de6adf3 assets/dmlreloaded/blockstates/simulation_chamber.json
-a459ae3c3fe98daff27a94222a1c628fc3f927a9 assets/dmlreloaded/lang/en_ud.json
-ba207cce2ab107963864ece8ee19603b28343f48 assets/dmlreloaded/lang/en_us.json
-d72c9754b37f3bc124cca64a0f2c30111878d8ef assets/dmlreloaded/lang/ja_jp.json
+6ac5e1a3136ac58c7d26ff6cb35eaffee5c3cf5b assets/dmlreloaded/lang/en_ud.json
+f1c913615a179647941a746a4fb25aada19c02e2 assets/dmlreloaded/lang/en_us.json
+9d1147ef6168c1f4c0960379c2278824bd14fedc assets/dmlreloaded/lang/ja_jp.json
 25e3af13647f0152e43c04d7886508e526392b61 assets/dmlreloaded/models/block/infused_ingot_block.json
 5dbf1ec55ec3833bd0d0689fb955ce175dbd678f assets/dmlreloaded/models/block/machine_casing.json
 d6a5f3e1430bf4e6a2aab8589b6bd6e96b99ec5c assets/dmlreloaded/models/item/data_model_blank.json
@@ -87,6 +87,7 @@ a6cdcb7cde0308d1857a0b467daa78f5786a0a75 assets/dmlreloaded/models/item/pristine
 eadc0e824bd3f3935168a7b24410ca472e407d05 assets/dmlreloaded/models/item/simulation_chamber.json
 6e6737703808199a7cceeedf29d17ebf278a9ac3 assets/dmlreloaded/models/item/soot_covered_plate.json
 d86b82de60c04d26baf4a4aa291068172cfb3465 assets/dmlreloaded/models/item/soot_covered_redstone.json
+6855a5bc96d9e353af6f9b997d8fc5612e1c0fb1 data/curios/tags/items/deep_learner.json
 b622b236490947979dffe3bacacde7a093b9b0b6 data/dmlreloaded/advancements/recipes/building_blocks/soul_sand_from_hellish_living_matter.json
 c243368363097ce77950cde1f9c80a233ff7384f data/dmlreloaded/advancements/recipes/deep_mob_learning_reloaded/data_model_blank.json
 45cdcf48a28d4ee1e06768d85bc62bf2c4604e3c data/dmlreloaded/advancements/recipes/deep_mob_learning_reloaded/data_model_blaze.json

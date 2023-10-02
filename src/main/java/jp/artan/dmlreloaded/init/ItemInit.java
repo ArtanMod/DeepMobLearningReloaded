@@ -60,6 +60,7 @@ public class ItemInit {
             })
             .lang("Deep Learner")
             .jpLang("深層学習装置")
+            .tag(ItemTagInit.CURIOS_DEEP_LEARNER)
             .register();
 
     public static final ItemEntry<ItemGlitchFragment> GLITCH_FRAGMENT = REGISTRATE.item("glitch_fragment", ItemGlitchFragment::new)

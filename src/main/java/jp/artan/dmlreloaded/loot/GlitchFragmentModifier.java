@@ -10,6 +10,8 @@ import jp.artan.dmlreloaded.init.ItemInit;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.item.ItemDeepLearner;
 import jp.artan.dmlreloaded.item.ItemGlitchArmor;
+import jp.artan.dmlreloaded.plugin.PluginInit;
+import jp.artan.dmlreloaded.plugin.curios.CuriosUtil;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerPlayer;
@@ -96,6 +98,10 @@ public class GlitchFragmentModifier extends LootModifier {
         NonNullList<ItemStack> inventory = NonNullList.create();
         inventory.addAll(player.getInventory().items);
         inventory.addAll(player.getInventory().offhand);
+
+        if(PluginInit.CURIOS_ACTIVE) {
+            inventory.add(CuriosUtil.getDeepLearnerCurioItemStack(player));
+        }
 
         // Grab the deep learners and combat trial items from a players inventory
         NonNullList<ItemStack> deepLearners = getDeepLearners(inventory);
