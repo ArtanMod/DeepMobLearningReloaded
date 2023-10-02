@@ -69,7 +69,6 @@ minecraft {
             // Make mixins work on dependencies
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
             mods {
                 dmlreloaded {
                     source sourceSets.main
@@ -175,6 +174,10 @@ repositories {
         name = "Patchouli Maven"
         url = 'https://maven.blamejared.com'
     }
+    maven {
+        name = "Curios"
+        url = "https://maven.theillusivec4.top"
+    }
 }
 
 dependencies {
@@ -190,6 +193,10 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+
+    // Curios
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
 
     // compile against the Patchouli API but do not include it at runtime
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")

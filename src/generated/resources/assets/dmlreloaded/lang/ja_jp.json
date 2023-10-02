@@ -3,6 +3,7 @@
   "block.dmlreloaded.infused_ingot_block": "\u30B0\u30EA\u30C3\u30C1\u304C\u67D3\u307F\u8FBC\u3093\u3060\u30D6\u30ED\u30C3\u30AF",
   "block.dmlreloaded.machine_casing": "\u6A5F\u68B0\u306E\u67A0",
   "block.dmlreloaded.simulation_chamber": "\u30B7\u30DF\u30E5\u30EC\u30FC\u30B7\u30E7\u30F3\u5BA4",
+  "curios.identifier.deep_learner": "\u6DF1\u5C64\u5B66\u7FD2\u88C5\u7F6E",
   "dmlreloaded.data_model.data.collected": "\u30C7\u30FC\u30BF\u53CE\u96C6: %1$s/%2$s",
   "dmlreloaded.data_model.data.killmultiplier": "\u30AD\u30EB\u6570\u3054\u3068\u306E\u5B66\u7FD2\u91CF: %1$s",
   "dmlreloaded.data_model.rfcost": "\u30B7\u30DF\u30E5\u30EC\u30FC\u30B7\u30E7\u30F3\u30B3\u30B9\u30C8: %1$s RF/t",
