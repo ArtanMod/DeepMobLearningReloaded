@@ -554,7 +554,7 @@ public class ItemInit {
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 1), "")
                 .register();
 
-        public static final ItemEntry<ItemPristineMatter> WARDEN = REGISTRATE.item("pristine_matter_warden", p -> new ItemPristineMatter(p, MobKey.WITCH))
+        public static final ItemEntry<ItemPristineMatter> WARDEN = REGISTRATE.item("pristine_matter_warden", p -> new ItemPristineMatter(p, MobKey.WARDEN))
                 .lang("Pristine Warden Matter")
                 .jpLang("綺麗なウォーデンマター")
 //                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.WARDEN, 0), "")
