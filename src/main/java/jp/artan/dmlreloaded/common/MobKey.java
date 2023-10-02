@@ -120,7 +120,7 @@ public enum MobKey implements IMobKey {
         add(() -> new ItemStack(Items.STRING, 64));
         add(() -> new ItemStack(Blocks.COBWEB, 8));
     }}),
-    WARDEN("warden", WardenMeta::new, LivingMatterType.HELLISH, new ArrayList<>(){{
+    WARDEN("warden", WardenMeta::new, LivingMatterType.OVERWORLDIAN, new ArrayList<>(){{
         add(new VanillaMob("warden"));
     }}, new ArrayList<>(){{
         add(() -> new ItemStack(Items.SCULK_CATALYST, 16));
