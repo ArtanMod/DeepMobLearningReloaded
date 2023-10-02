@@ -13,8 +13,10 @@ import jp.artan.dmlreloaded.plugin.twilight.common.TwilightMobKey;
 import jp.artan.repack.registrate.providers.RegistrateRecipeProvider;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import twilightforest.init.TFBlocks;
+import twilightforest.init.TFItems;
 
 import java.util.function.Supplier;
 
@@ -114,7 +116,11 @@ public class TwilightItemInit {
     public static class LivingMatter {
         public static final ItemEntry<ItemLivingMatter> TWILIGHT = REGISTRATE.item("living_matter_twilight", p -> new ItemLivingMatter(p, TwilightLivingMatterType.TWILIGHT))
                 .recipe((ctx, prov) -> {
-
+                    ShapelessRecipeBuilder.shapeless(TFItems.RAVEN_FEATHER.get())
+                            .requires(ctx.get())
+                            .requires(Items.FEATHER.asItem())
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov, "living_matter_twilight_to_raven_feather");
                 })
                 .lang("Twilight Matter")
                 .jpLang("Twilightマター")
