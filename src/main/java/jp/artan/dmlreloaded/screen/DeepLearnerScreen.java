@@ -47,6 +47,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
     private ImageButton imgBtnPrev;
     private ImageButton imgBtnNext;
     private static final ResourceLocation base = new ResourceLocation(DeepMobLearningReloaded.MOD_ID, "textures/gui/deeplearner_base.png");
+    private static final ResourceLocation netherite_base = new ResourceLocation(DeepMobLearningReloaded.MOD_ID, "textures/gui/netherite_deeplearner_base.png");
     private static final ResourceLocation extras = new ResourceLocation(DeepMobLearningReloaded.MOD_ID, "textures/gui/deeplearner_extras.png");
     private static final ResourceLocation defaultGui = new ResourceLocation(DeepMobLearningReloaded.MOD_ID, "textures/gui/default_gui.png");
 
@@ -55,6 +56,14 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         this.world = playerInv.player.level;
         hand = playerInv.player.getMainHandItem().getItem() instanceof ItemDeepLearner ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
         this.deepLearner = playerInv.player.getItemInHand(hand);
+    }
+
+    private ResourceLocation getBaseTexture() {
+        int loopCount = ((ItemDeepLearner)this.deepLearner.getItem()).squareSlotSize;
+        return switch(loopCount) {
+            case 3 -> netherite_base;
+            default -> base;
+        };
     }
 
     @Override
@@ -66,7 +75,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         //Render base
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
-        RenderSystem.setShaderTexture(0, base);
+        RenderSystem.setShaderTexture(0, getBaseTexture());
         blit(pose, left - 41, top-36 , 0, 0, 256, 140);
 
         //Render playerInv
@@ -151,7 +160,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         // Draw heart
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
-        RenderSystem.setShaderTexture(0, base);
+        RenderSystem.setShaderTexture(0, getBaseTexture());
         blit(pose, left + 154, topStart + (spacing * 2) - 2, 0, 140, 9, 9);
         drawString(pose, font, new TranslatableComponent("dmlreloaded.gui.deep_learner.hp"), left + 154, topStart + spacing, 0x55FFFF);
         int numOfHearts = meta.getNumberOfHearts();
@@ -197,7 +206,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
 
     public NonNullList<ItemStack> getItemStacks() {
         NonNullList<ItemStack> list = NonNullList.create();
-        int numOfSlots  = DeepMobLearningReloaded.DEEP_LEARNER_INTERNAL_SLOTS_SIZE;
+        int numOfSlots  = this.menu.getInternalSlotSize();
         for (int i = 0; i < numOfSlots; i++) {
             list.add(i, getMenu().getSlot(i).getItem());
         }

@@ -11,10 +11,12 @@ import jp.artan.repack.registrate.providers.RegistrateRecipeProvider;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.UpgradeRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Supplier;
@@ -45,7 +47,8 @@ public class ItemInit {
             .jpLang("煤で覆われたプレート")
             .register();
 
-    public static final ItemEntry<ItemDeepLearner> DEEP_LEARNER = REGISTRATE.item("deep_learner", ItemDeepLearner::new)
+    public static final ItemEntry<ItemDeepLearner> DEEP_LEARNER = REGISTRATE.item("deep_learner", p -> new ItemDeepLearner(p, DeepMobLearningReloaded.DEEP_LEARNER_INTERNAL_SLOTS_SIZE))
+            .properties(p -> p.stacksTo(1))
             .recipe((ctx, prov) -> {
                 ShapedRecipeBuilder.shaped(ctx.get())
                         .define('#', SOOT_COVERED_PLATE.get())
@@ -60,6 +63,18 @@ public class ItemInit {
             })
             .lang("Deep Learner")
             .jpLang("深層学習装置")
+            .tag(ItemTagInit.CURIOS_DEEP_LEARNER)
+            .register();
+
+    public static final ItemEntry<ItemDeepLearner> NETHERITE_DEEP_LEARNER = REGISTRATE.item("netherite_deep_learner", p -> new ItemDeepLearner(p, DeepMobLearningReloaded.NETHERITE_DEEP_LEARNER_INTERNAL_SLOTS_SIZE))
+            .properties(p -> p.stacksTo(1))
+            .recipe((ctx, prov) -> {
+                UpgradeRecipeBuilder.smithing(Ingredient.of(DEEP_LEARNER.get()), Ingredient.of(Items.NETHERITE_INGOT), ctx.get())
+                        .unlocks("has_netherite_ingot", RegistrateRecipeProvider.has(Items.NETHERITE_INGOT))
+                        .save(prov, "netherite_deep_learner_smithing");
+            })
+            .lang("Netherite Deep Learner")
+            .jpLang("ネザライト深層学習装置")
             .tag(ItemTagInit.CURIOS_DEEP_LEARNER)
             .register();
 
