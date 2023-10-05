@@ -6,6 +6,7 @@ import com.mojang.math.Vector3f;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -27,18 +28,7 @@ public class GhastMeta extends MobMetaData {
     }
 
     @Override
-    public Quaternion getEntityXRotation() {
-        return Vector3f.XP.rotationDegrees(180.0F);
-    }
-
-    @Override
-    public Quaternion getEntityZRotation() {
-        return Vector3f.ZP.rotationDegrees(0.0F);
-    }
-
-    @Override
-    public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(0.33F, 0.33F, -0.33F);
-        poseStack.translate((double)(xPos-68), (double)(yPos- 188 + Math.sin(world.getGameTime()/13.0d)*0.001d), 0.0D);
+    public int getOffsetY(LivingEntity livingEntity) {
+        return 15;
     }
 }

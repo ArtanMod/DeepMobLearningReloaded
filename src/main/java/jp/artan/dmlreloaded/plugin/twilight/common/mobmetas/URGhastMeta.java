@@ -1,8 +1,10 @@
 package jp.artan.dmlreloaded.plugin.twilight.common.mobmetas;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import jp.artan.dmlreloaded.plugin.twilight.common.TwilightMobKey;
 import jp.artan.dmlreloaded.plugin.twilight.init.TwilightItemInit;
+import jp.artan.dmlreloaded.util.RenderInfo;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import twilightforest.entity.TFEntities;
@@ -25,7 +27,9 @@ public class URGhastMeta extends TwilightMobMetaData {
     }
 
     @Override
-    public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(0.1F, 0.1F, -0.1F);
+    public RenderInfo transform(RenderInfo renderInfo, LivingEntity entity) {
+        PoseStack modelViewStack = RenderSystem.getModelViewStack();
+        modelViewStack.scale(0.1F, 0.1F, -0.1F);
+        return renderInfo;
     }
 }
