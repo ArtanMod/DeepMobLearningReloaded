@@ -7,8 +7,8 @@ import jp.artan.dmlreloaded.plugin.twilight.init.TwilightItemInit;
 import jp.artan.dmlreloaded.util.RenderInfo;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import twilightforest.init.TFEntities;
 import twilightforest.entity.TFEntityNames;
+import twilightforest.init.TFEntities;
 
 public class NagaMeta extends TwilightMobMetaData {
     public NagaMeta() {

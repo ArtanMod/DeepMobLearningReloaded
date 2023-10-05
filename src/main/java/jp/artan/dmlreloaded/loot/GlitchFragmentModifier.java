@@ -27,7 +27,6 @@ import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GlitchFragmentModifier extends LootModifier {

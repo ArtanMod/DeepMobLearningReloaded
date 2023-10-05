@@ -17,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+
 import java.text.DecimalFormat;
 
 public class DataOverlay extends Screen {

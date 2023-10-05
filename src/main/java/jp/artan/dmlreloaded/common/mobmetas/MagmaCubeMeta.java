@@ -1,8 +1,5 @@
 package jp.artan.dmlreloaded.common.mobmetas;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.init.ItemInit;
 import net.minecraft.world.entity.EntityType;

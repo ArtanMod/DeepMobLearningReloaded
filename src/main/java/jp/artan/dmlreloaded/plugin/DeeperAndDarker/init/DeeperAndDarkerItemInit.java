@@ -11,12 +11,10 @@ import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
 import jp.artan.dmlreloaded.plugin.DeeperAndDarker.common.DeeperAndDarkerLivingMatterType;
 import jp.artan.dmlreloaded.plugin.DeeperAndDarker.common.DeeperAndDarkerMobKey;
-import jp.artan.dmlreloaded.plugin.twilight.common.TwilightMobKey;
 import jp.artan.repack.registrate.providers.RegistrateRecipeProvider;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.item.Item;
-import twilightforest.init.TFBlocks;
 
 import java.util.function.Supplier;
 

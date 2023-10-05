@@ -4,7 +4,6 @@ import jp.artan.dmlreloaded.item.ItemDeepLearner;
 import jp.artan.dmlreloaded.plugin.PluginInit;
 import jp.artan.dmlreloaded.plugin.curios.CuriosUtil;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.PlayerList;
 import net.minecraft.world.entity.LivingEntity;

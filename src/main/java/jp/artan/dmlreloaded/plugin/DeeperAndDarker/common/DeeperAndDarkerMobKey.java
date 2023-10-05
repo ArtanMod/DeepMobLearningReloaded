@@ -4,7 +4,9 @@ import com.kyanite.deeperdarker.registry.items.DDItems;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
-import jp.artan.dmlreloaded.plugin.DeeperAndDarker.common.mobmetas.*;
+import jp.artan.dmlreloaded.plugin.DeeperAndDarker.common.mobmetas.SculkCentipedeMeta;
+import jp.artan.dmlreloaded.plugin.DeeperAndDarker.common.mobmetas.ShatteredMeta;
+import jp.artan.dmlreloaded.plugin.DeeperAndDarker.common.mobmetas.StalkerMeta;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.util.NonNullSupplier;
 

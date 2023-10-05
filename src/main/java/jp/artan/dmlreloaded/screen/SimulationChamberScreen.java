@@ -17,13 +17,12 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import javax.annotation.Nullable;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-
-import javax.annotation.Nullable;
 
 public class SimulationChamberScreen extends AbstractContainerScreen<SimulationChamberContainer> {
 

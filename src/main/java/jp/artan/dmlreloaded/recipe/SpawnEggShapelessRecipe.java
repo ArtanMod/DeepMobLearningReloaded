@@ -1,6 +1,5 @@
 package jp.artan.dmlreloaded.recipe;
 
-import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.init.RecipeSerializerInit;
 import jp.artan.dmlreloaded.item.ItemDataModel;

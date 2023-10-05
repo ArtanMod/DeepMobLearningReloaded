@@ -5,7 +5,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.init.BlockInit;
 import jp.artan.dmlreloaded.init.ItemInit;
-import jp.artan.dmlreloaded.plugin.jei.DeepMobLearningReloadedRecipeCategoryUid;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
