@@ -3,7 +3,6 @@ package jp.artan.dmlreloaded.plugin.twilight.common.mobmetas;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import jp.artan.dmlreloaded.plugin.twilight.common.TwilightMobKey;
-import jp.artan.dmlreloaded.plugin.twilight.init.TwilightItemInit;
 import jp.artan.dmlreloaded.util.RenderInfo;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;

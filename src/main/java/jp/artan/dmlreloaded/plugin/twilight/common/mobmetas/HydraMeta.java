@@ -7,9 +7,7 @@ import jp.artan.dmlreloaded.plugin.twilight.init.TwilightItemInit;
 import jp.artan.dmlreloaded.util.RenderInfo;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import twilightforest.entity.TFEntities;
 import twilightforest.entity.TFEntityNames;
-import twilightforest.entity.boss.Hydra;
 
 public class HydraMeta extends TwilightMobMetaData {
     public HydraMeta() {

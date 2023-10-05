@@ -1,10 +1,6 @@
 package jp.artan.dmlreloaded.config;
 
-import jp.artan.dmlreloaded.common.IMobKey;
-import jp.artan.dmlreloaded.common.MobKey;
 import net.minecraftforge.common.ForgeConfigSpec;
-
-import java.util.HashMap;
 
 public class EnergyCostConfig {
     public static ForgeConfigSpec.IntValue FECOSTEXTRACTIONCHAMBER; //256

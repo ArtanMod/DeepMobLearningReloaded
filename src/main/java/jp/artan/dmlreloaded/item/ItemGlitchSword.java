@@ -1,14 +1,9 @@
 package jp.artan.dmlreloaded.item;
 
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-
 import jp.artan.dmlreloaded.item.material.GlitchToolMaterial;
 import jp.artan.dmlreloaded.util.NBTHelper;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -22,6 +17,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ItemGlitchSword extends SwordItem {
     private static final int DAMAGE_BONUS = 1;

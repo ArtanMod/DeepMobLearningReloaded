@@ -1,20 +1,14 @@
 package jp.artan.dmlreloaded.common.mobmetas;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
 import jp.artan.dmlreloaded.util.RenderInfo;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
 public abstract class MobMetaData {

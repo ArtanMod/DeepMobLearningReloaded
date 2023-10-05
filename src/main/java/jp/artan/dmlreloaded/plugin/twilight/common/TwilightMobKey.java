@@ -2,10 +2,8 @@ package jp.artan.dmlreloaded.plugin.twilight.common;
 
 import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
-import jp.artan.dmlreloaded.common.LivingMatterType;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.plugin.twilight.common.mobmetas.*;
-import jp.artan.dmlreloaded.plugin.twilight.init.TwilightItemInit;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
