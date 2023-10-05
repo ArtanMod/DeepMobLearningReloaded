@@ -22,9 +22,4 @@ public class WardenMeta extends MobMetaData {
     public Warden getEntity(Level world) {
         return new Warden(EntityType.WARDEN , world);
     }
-
-    @Override
-    public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(0.6F, 0.6F, -0.6F);
-    }
 }

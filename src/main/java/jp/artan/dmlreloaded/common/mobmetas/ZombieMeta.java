@@ -21,12 +21,4 @@ public class ZombieMeta extends MobMetaData {
     public Zombie getEntity(Level world) {
         return new Zombie(world);
     }
-
-    @Override
-    public Zombie getExtraEntity(Level world) {
-        Zombie childEntity = new Zombie(world);
-        childEntity.setBaby(true);
-
-        return childEntity;
-    }
 }

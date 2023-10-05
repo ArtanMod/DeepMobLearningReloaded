@@ -12,11 +12,19 @@ import java.util.Optional;
 public class CuriosUtil {
 
     public static ItemStack getDeepLearnerCurioItemStack(Player player) {
-        return getDeepLearner(getDeepLearnerSlotResult(player));
+        ItemStack deepLearner = getDeepLearner(getDeepLearnerSlotResult(player));
+        if(deepLearner.isEmpty()) {
+            deepLearner = getDeepLearner(getNetheriteDeepLearnerSlotResult(player));
+        }
+        return deepLearner;
     }
 
     private static Optional<SlotResult> getDeepLearnerSlotResult(Player player) {
         return CuriosApi.getCuriosHelper().findFirstCurio(player, ItemInit.DEEP_LEARNER.get());
+    }
+
+    private static Optional<SlotResult> getNetheriteDeepLearnerSlotResult(Player player) {
+        return CuriosApi.getCuriosHelper().findFirstCurio(player, ItemInit.NETHERITE_DEEP_LEARNER.get());
     }
 
     private static ItemStack getDeepLearner(Optional<SlotResult> slotResult) {

@@ -23,9 +23,4 @@ public class RavagerMeta extends MobMetaData {
     public Ravager getEntity(Level world) {
         return new Ravager(EntityType.RAVAGER , world);
     }
-
-    @Override
-    public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(0.6F, 0.6F, -0.6F);
-    }
 }

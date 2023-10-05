@@ -22,9 +22,4 @@ public class HoglinMeta extends MobMetaData {
     public Hoglin getEntity(Level world) {
         return new Hoglin(EntityType.HOGLIN , world);
     }
-
-    @Override
-    public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(0.9F, 0.9F, -0.9F);
-    }
 }

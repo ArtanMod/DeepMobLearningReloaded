@@ -1,7 +1,5 @@
 package jp.artan.dmlreloaded.container;
 
-import jp.artan.dmlreloaded.DeepMobLearningReloaded;
-import jp.artan.dmlreloaded.init.ContainerInit;
 import jp.artan.dmlreloaded.init.ItemInit;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.item.ItemDeepLearner;
@@ -17,8 +15,6 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-
-import javax.annotation.Nullable;
 
 public class DeepLearnerContainer extends AbstractContainerMenu {
 
@@ -45,7 +41,7 @@ public class DeepLearnerContainer extends AbstractContainerMenu {
         if (!playerInv.player.level.isClientSide) {
             deepLearnerInv = ItemDeepLearner.getInventory(deepLearner);
         } else {
-            deepLearnerInv = new ItemBackedInventory(deepLearner, DeepMobLearningReloaded.DEEP_LEARNER_INTERNAL_SLOTS_SIZE);
+            deepLearnerInv = new ItemBackedInventory(deepLearner, this.getInternalSlotSize());
         }
 
         addInventorySlots();
@@ -53,10 +49,11 @@ public class DeepLearnerContainer extends AbstractContainerMenu {
     }
 
     private void addDataModelSlots() {
+        int loopCount = ((ItemDeepLearner)this.deepLearner.getItem()).squareSlotSize;
         int index = 0;
-        for(int column = 0; column < 2; column++){
-            for(int row = 0; row < 2; row++){
-                addSlot(new Slot(deepLearnerInv, index, 193- (row*18), 82 - (column*18)) {
+        for(int column = 0; column < loopCount; column++){
+            for(int row = 0; row < loopCount; row++){
+                addSlot(new Slot(deepLearnerInv, index, 193 - (row * 18), 82 - (column * 18)) {
                     @Override
                     public boolean mayPlace(ItemStack stack)
                     {
@@ -92,15 +89,13 @@ public class DeepLearnerContainer extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        if(player.getMainHandItem().getItem() == ItemInit.DEEP_LEARNER.get()) {
-            return true;
-        }
-        else if(player.getOffhandItem().getItem() == ItemInit.DEEP_LEARNER.get()){
-            return true;
-        }
-        else {
-            return false;
-        }
+        boolean isMainHand = isDataModel(player.getMainHandItem());
+        boolean isOffHand = isDataModel(player.getOffhandItem());
+        return isMainHand || isOffHand;
+    }
+
+    private boolean isDataModel(ItemStack stack) {
+        return stack.getItem() == ItemInit.DEEP_LEARNER.get() || stack.getItem() == ItemInit.NETHERITE_DEEP_LEARNER.get();
     }
 
     @Override
@@ -128,5 +123,10 @@ public class DeepLearnerContainer extends AbstractContainerMenu {
 
     public Container getDeepInv() {
         return deepLearnerInv;
+    }
+
+    public int getInternalSlotSize() {
+        ItemDeepLearner deepLearnerItem = (ItemDeepLearner) deepLearner.getItem();
+        return deepLearnerItem.internalSlotSize;
     }
 }

@@ -24,20 +24,4 @@ public class MagmaCubeMeta extends MobMetaData {
     public MagmaCube getEntity(Level world) {
         return new MagmaCube(EntityType.MAGMA_CUBE , world);
     }
-
-    @Override
-    public Quaternion getEntityXRotation() {
-        return Vector3f.XP.rotationDegrees(180.0F);
-    }
-
-    @Override
-    public Quaternion getEntityZRotation() {
-        return Vector3f.ZP.rotationDegrees(0.0F);
-    }
-
-    @Override
-    public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(2F, 2F, -2F);
-        poseStack.translate((double)(xPos-68), (double)(yPos- 110 + Math.sin(world.getGameTime()/13.0d)*3.0d), 0.0D);
-    }
 }

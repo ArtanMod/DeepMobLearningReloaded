@@ -22,9 +22,4 @@ public class PhantomMeta extends MobMetaData {
     public Phantom getEntity(Level world) {
         return new Phantom(EntityType.PHANTOM , world);
     }
-
-    @Override
-    public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(0.9F, 0.9F, -0.9F);
-    }
 }

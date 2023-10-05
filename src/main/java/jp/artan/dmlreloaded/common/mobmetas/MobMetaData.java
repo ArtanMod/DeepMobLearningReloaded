@@ -7,6 +7,7 @@ import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
+import jp.artan.dmlreloaded.util.RenderInfo;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.TranslatableContents;
@@ -118,27 +119,14 @@ public abstract class MobMetaData {
     }
 
     // DeepLearnerScreen Function
-    public Quaternion getEntityXRotation() {
-        return Vector3f.XP.rotationDegrees(180.0F);
+    public int getOffsetY(LivingEntity livingEntity) {
+        return 0;
     }
 
-    public Quaternion getEntityZRotation() {
-        return Vector3f.ZP.rotationDegrees(0.0F);
-    }
-
-    public void setPose(PoseStack poseStack, int xPos, int yPos, Level world) {
-        poseStack.scale(1.2F, 1.2F, -1.2F);
+    public RenderInfo transform(RenderInfo renderInfo, LivingEntity entity) {
+        return renderInfo;
     }
 
     // Have to implement, different for every Meta
     public abstract LivingEntity getEntity(Level world);
-
-    // Optional fields
-    public Entity getExtraEntity(Level world) {
-        return null;
-    }
-
-    public String getExtraTooltip() {
-        return null;
-    }
 }
