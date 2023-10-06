@@ -70,8 +70,8 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         //Render base
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
-        RenderSystem.setShaderTexture(0, base);
-        pGuiGraphics.blit(base, left - 41, top-36 , 0, 0, 256, 140);
+        RenderSystem.setShaderTexture(0, getBaseTexture());
+        pGuiGraphics.blit(getBaseTexture(), left - 41, top-36 , 0, 0, 256, 140);
 
         //Render playerInv
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
@@ -160,8 +160,8 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         // Draw heart
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
-        RenderSystem.setShaderTexture(0, base);
-        pGuiGraphics.blit(base, left + 154, topStart + (spacing * 2) - 2, 0, 140, 9, 9);
+        RenderSystem.setShaderTexture(0, getBaseTexture());
+        pGuiGraphics.blit(getBaseTexture(), left + 154, topStart + (spacing * 2) - 2, 0, 140, 9, 9);
         pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.deep_learner.hp"), left + 154, topStart + spacing, 0x55FFFF);
         int numOfHearts = meta.getNumberOfHearts();
         if(numOfHearts == 0) {
