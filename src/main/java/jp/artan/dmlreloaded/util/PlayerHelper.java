@@ -1,8 +1,9 @@
 package jp.artan.dmlreloaded.util;
 
 import jp.artan.dmlreloaded.item.ItemDeepLearner;
+import jp.artan.dmlreloaded.plugin.PluginInit;
+import jp.artan.dmlreloaded.plugin.curios.CuriosUtil;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.PlayerList;
 import net.minecraft.world.entity.LivingEntity;
@@ -47,6 +48,15 @@ public class PlayerHelper {
         } else if(offHandStack.getItem() instanceof ItemDeepLearner) {
             this.stack = offHandStack;
             this.isHoldingDeepLearner = true;
+        } else if(PluginInit.CURIOS_ACTIVE) {
+            ItemStack curiosSlotItem = CuriosUtil.getDeepLearnerCurioItemStack(this.player);
+            if(curiosSlotItem.isEmpty()) {
+                this.isHoldingDeepLearner = false;
+                stack = ItemStack.EMPTY;
+            } else {
+                this.stack = curiosSlotItem;
+                this.isHoldingDeepLearner = true;
+            }
         } else {
             this.isHoldingDeepLearner = false;
             stack = ItemStack.EMPTY;

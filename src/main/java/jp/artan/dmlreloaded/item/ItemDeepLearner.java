@@ -1,6 +1,5 @@
 package jp.artan.dmlreloaded.item;
 
-import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.container.DeepLearnerContainer;
 import jp.artan.dmlreloaded.init.ContainerInit;
 import jp.artan.dmlreloaded.util.InventoryItemStack;
@@ -29,10 +28,15 @@ import javax.annotation.Nonnull;
 
 public class ItemDeepLearner extends Item {
     protected InventoryItemStack deepLearnerCont;
+    public final int internalSlotSize;
+    public final int squareSlotSize;
 
-    public ItemDeepLearner(Properties properties) {
+    public ItemDeepLearner(Properties properties, int internalSlotSize) {
         super(properties);
-        this.deepLearnerCont = new InventoryItemStack(DeepMobLearningReloaded.DEEP_LEARNER_INTERNAL_SLOTS_SIZE);
+        this.internalSlotSize = internalSlotSize;
+        this.squareSlotSize = (int)Math.sqrt(internalSlotSize);
+
+        this.deepLearnerCont = new InventoryItemStack(this.internalSlotSize);
     }
 
     @Override
@@ -60,8 +64,9 @@ public class ItemDeepLearner extends Item {
     }
 
 
-    public static SimpleContainer getInventory(ItemStack stack) {
-        return new ItemBackedInventory(stack, DeepMobLearningReloaded.DEEP_LEARNER_INTERNAL_SLOTS_SIZE) {
+    public static SimpleContainer getInventory(ItemStack deepLearner) {
+        ItemDeepLearner deepLearnerItem = (ItemDeepLearner) deepLearner.getItem();
+        return new ItemBackedInventory(deepLearner, deepLearnerItem.internalSlotSize) {
             @Override
             public boolean canPlaceItem(int slot, @Nonnull ItemStack stack) {
                 return isValid(slot, stack);
@@ -71,7 +76,7 @@ public class ItemDeepLearner extends Item {
 
     public static boolean isValid(int slot, ItemStack stack) {
         Item itm = stack.getItem();
-        if (slot < 4) {
+        if (slot < 9) {
             return itm instanceof ItemDeepLearner;
         } else {
             return false;
@@ -79,13 +84,14 @@ public class ItemDeepLearner extends Item {
     }
 
     public static NonNullList<ItemStack> getContainedItems(ItemStack deepLearner) {
-        NonNullList<ItemStack> list = NonNullList.withSize(numOfInternalSlots(), ItemStack.EMPTY);
+        ItemDeepLearner deepLearnerItem = (ItemDeepLearner) deepLearner.getItem();
+        NonNullList<ItemStack> list = NonNullList.withSize(deepLearnerItem.internalSlotSize, ItemStack.EMPTY);
         if(deepLearner.hasTag()) {
             CompoundTag currentTag = deepLearner.getTag();
             if(currentTag.contains("inventory")) {
                 ListTag inventory = deepLearner.getTag().getList("inventory", Tag.TAG_COMPOUND);
 
-                for(int i = 0; i < numOfInternalSlots(); i++) {
+                for(int i = 0; i < deepLearnerItem.internalSlotSize; i++) {
                     CompoundTag tag = inventory.getCompound(i);
                     list.set(i, ItemStack.of(tag));
                 }
@@ -106,12 +112,6 @@ public class ItemDeepLearner extends Item {
         tag.put("inventory", inventory);
         deepLearner.setTag(tag);
     }
-
-
-    public static int numOfInternalSlots() {
-        return DeepMobLearningReloaded.DEEP_LEARNER_INTERNAL_SLOTS_SIZE;
-    }
-
 
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {

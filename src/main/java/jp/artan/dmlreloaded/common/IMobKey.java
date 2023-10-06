@@ -1,10 +1,7 @@
 package jp.artan.dmlreloaded.common;
 
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.util.NonNullSupplier;
 
 import java.util.List;

@@ -125,13 +125,4 @@ public abstract class MobMetaData {
 
     // Have to implement, different for every Meta
     public abstract LivingEntity getEntity(Level world);
-
-    // Optional fields
-    public Entity getExtraEntity(Level world) {
-        return null;
-    }
-
-    public String getExtraTooltip() {
-        return null;
-    }
 }

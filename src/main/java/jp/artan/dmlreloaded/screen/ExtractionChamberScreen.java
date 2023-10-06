@@ -3,7 +3,6 @@ package jp.artan.dmlreloaded.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
-import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.common.network.ServerboundResultingItemPacket;
 import jp.artan.dmlreloaded.config.EnergyCostConfig;
 import jp.artan.dmlreloaded.container.ExtractionChamberContainer;
@@ -23,7 +22,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.util.NonNullSupplier;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;

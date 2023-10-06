@@ -23,5 +23,4 @@ public class MagmaCubeMeta extends MobMetaData {
     public MagmaCube getEntity(Level world) {
         return new MagmaCube(EntityType.MAGMA_CUBE , world);
     }
-
 }

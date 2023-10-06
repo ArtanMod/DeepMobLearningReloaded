@@ -34,6 +34,7 @@ public class DeepMobLearningReloaded {
 
     // Internal inventory sizes
     public static final int DEEP_LEARNER_INTERNAL_SLOTS_SIZE = 4;
+    public static final int NETHERITE_DEEP_LEARNER_INTERNAL_SLOTS_SIZE = 9;
 
     // Data model max tier
     public static final int DATA_MODEL_MAXIMUM_TIER = 4;

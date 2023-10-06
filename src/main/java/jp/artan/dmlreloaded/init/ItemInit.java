@@ -12,11 +12,12 @@ import jp.artan.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Supplier;
@@ -47,7 +48,8 @@ public class ItemInit {
             .jpLang("煤で覆われたプレート")
             .register();
 
-    public static final ItemEntry<ItemDeepLearner> DEEP_LEARNER = REGISTRATE.item("deep_learner", ItemDeepLearner::new)
+    public static final ItemEntry<ItemDeepLearner> DEEP_LEARNER = REGISTRATE.item("deep_learner", p -> new ItemDeepLearner(p, DeepMobLearningReloaded.DEEP_LEARNER_INTERNAL_SLOTS_SIZE))
+            .properties(p -> p.stacksTo(1))
             .recipe((ctx, prov) -> {
                 ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
                         .define('#', SOOT_COVERED_PLATE.get())
@@ -62,6 +64,19 @@ public class ItemInit {
             })
             .lang("Deep Learner")
             .jpLang("深層学習装置")
+            .tag(ItemTagInit.CURIOS_DEEP_LEARNER)
+            .register();
+
+    public static final ItemEntry<ItemDeepLearner> NETHERITE_DEEP_LEARNER = REGISTRATE.item("netherite_deep_learner", p -> new ItemDeepLearner(p, DeepMobLearningReloaded.NETHERITE_DEEP_LEARNER_INTERNAL_SLOTS_SIZE))
+            .properties(p -> p.stacksTo(1))
+            .recipe((ctx, prov) -> {
+                SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(DEEP_LEARNER.get()), Ingredient.of(Items.NETHERITE_INGOT), RecipeCategory.TOOLS, ctx.get())
+                        .unlocks("has_netherite_ingot", RegistrateRecipeProvider.has(Items.NETHERITE_INGOT))
+                        .save(prov, "netherite_deep_learner_smithing");
+            })
+            .lang("Netherite Deep Learner")
+            .jpLang("ネザライト深層学習装置")
+            .tag(ItemTagInit.CURIOS_DEEP_LEARNER)
             .register();
 
     public static final ItemEntry<ItemGlitchFragment> GLITCH_FRAGMENT = REGISTRATE.item("glitch_fragment", ItemGlitchFragment::new)
@@ -361,6 +376,11 @@ public class ItemInit {
                 .jpLang("クモのデータモデル")
                 .register();
 
+        public static final ItemEntry<ItemDataModel> WARDEN = registerDataModel("data_model_warden", MobKey.WARDEN, () -> Items.ECHO_SHARD)
+                .lang("Warden Data Model")
+                .jpLang("ウォーデンのデータモデル")
+                .register();
+
         public static final ItemEntry<ItemDataModel> WITCH = registerDataModel("data_model_witch", MobKey.WITCH, () -> Items.GLASS_BOTTLE)
                 .lang("Witch Data Model")
                 .jpLang("ウィッチのデータモデル")
@@ -548,6 +568,13 @@ public class ItemInit {
                 .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 1), "Drops strands of string for some reason..")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 0), "")
 //                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.SPIDER, 1), "")
+                .register();
+
+        public static final ItemEntry<ItemPristineMatter> WARDEN = REGISTRATE.item("pristine_matter_warden", p -> new ItemPristineMatter(p, MobKey.WARDEN))
+                .lang("Pristine Warden Matter")
+                .jpLang("綺麗なウォーデンマター")
+//                .addRawLang(MobMetaData.getMobTriviaLangId(MobKey.WARDEN, 0), "")
+//                .addRawJPLang(MobMetaData.getMobTriviaLangId(MobKey.WARDEN, 0), "")
                 .register();
 
         public static final ItemEntry<ItemPristineMatter> WITCH = REGISTRATE.item("pristine_matter_witch", p -> new ItemPristineMatter(p, MobKey.WITCH))

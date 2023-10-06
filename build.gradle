@@ -78,7 +78,6 @@ minecraft {
             // Make mixins work on dependencies
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
             mods {
                 "${mod_id}" {
                     source sourceSets.main
@@ -144,6 +143,14 @@ repositories {
         name = "Patchouli Maven"
         url = 'https://maven.blamejared.com'
     }
+    maven {
+        name = 'GeckoLib'
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    }
+    maven {
+        name = "Curios"
+        url = "https://maven.theillusivec4.top"
+    }
 }
 
 dependencies {
@@ -157,15 +164,40 @@ dependencies {
     // ArtanCore
     implementation fg.deobf("curse.maven:artancore-585454:${artan_core_version}")
 
+    // JEI
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+
+    // Curios
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+
     // compile against the Patchouli API but do not include it at runtime
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
     // at runtime, use the full Patchouli jar
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 
-    // JEI
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+    // The Twilight Forest
+    implementation fg.deobf("teamtwilight:twilightforest:${twilight_forest_version}:universal")
+
+    // Reliquary Reincarnations
+    implementation fg.deobf("curse.maven:reliquary-241319:${reliquary_reincarnations}")
+
+    // DivineRPG
+    implementation fg.deobf("curse.maven:official-divinerpg-363543:${divinerpg}")
+
+    // Mekanism Additions
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")               // core
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")     // Mekanism: Additions
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")    // Mekanism: Generators
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")         // Mekanism: Tools
+
+    // GeckoLib
+    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
+
+    // Deeper and Darker
+    implementation fg.deobf("curse.maven:deeperdarker-659011:${deeper_and_darker}")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

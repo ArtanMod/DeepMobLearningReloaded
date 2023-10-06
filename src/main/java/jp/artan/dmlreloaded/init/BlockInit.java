@@ -6,7 +6,6 @@ import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.block.BlockExtractionChamber;
 import jp.artan.dmlreloaded.block.BlockSimulationChamber;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
-import jp.artan.dmlreloaded.item.ItemDeepLearner;
 import jp.artan.repack.registrate.providers.RegistrateRecipeProvider;
 import jp.artan.repack.registrate.util.entry.BlockEntry;
 import jp.artan.repack.registrate.util.entry.ItemEntry;

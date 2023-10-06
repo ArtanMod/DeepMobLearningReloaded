@@ -1,10 +1,8 @@
 package jp.artan.dmlreloaded.screen;
 
-import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
-import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.container.DeepLearnerContainer;
 import jp.artan.dmlreloaded.item.ItemDeepLearner;
@@ -15,15 +13,12 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
@@ -47,6 +42,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
     private ImageButton imgBtnPrev;
     private ImageButton imgBtnNext;
     private static final ResourceLocation base = new ResourceLocation(DeepMobLearningReloaded.MOD_ID, "textures/gui/deeplearner_base.png");
+    private static final ResourceLocation netherite_base = new ResourceLocation(DeepMobLearningReloaded.MOD_ID, "textures/gui/netherite_deeplearner_base.png");
     private static final ResourceLocation extras = new ResourceLocation(DeepMobLearningReloaded.MOD_ID, "textures/gui/deeplearner_extras.png");
     private static final ResourceLocation defaultGui = new ResourceLocation(DeepMobLearningReloaded.MOD_ID, "textures/gui/default_gui.png");
 
@@ -55,6 +51,14 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         this.world = playerInv.player.level();
         hand = playerInv.player.getMainHandItem().getItem() instanceof ItemDeepLearner ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
         this.deepLearner = playerInv.player.getItemInHand(hand);
+    }
+
+    private ResourceLocation getBaseTexture() {
+        int loopCount = ((ItemDeepLearner)this.deepLearner.getItem()).squareSlotSize;
+        return switch(loopCount) {
+            case 3 -> netherite_base;
+            default -> base;
+        };
     }
 
     @Override
@@ -197,7 +201,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
 
     public NonNullList<ItemStack> getItemStacks() {
         NonNullList<ItemStack> list = NonNullList.create();
-        int numOfSlots  = DeepMobLearningReloaded.DEEP_LEARNER_INTERNAL_SLOTS_SIZE;
+        int numOfSlots  = this.menu.getInternalSlotSize();
         for (int i = 0; i < numOfSlots; i++) {
             list.add(i, getMenu().getSlot(i).getItem());
         }

@@ -33,14 +33,6 @@ public class DataModelHelper {
         return TierHelper.getTierName(getTier(stack), getNextTierName);
     }
 
-    public static boolean hasExtraTooltip(ItemStack stack) {
-        return getExtraTooltip(stack) != null;
-    }
-
-    public static String getExtraTooltip(ItemStack stack) {
-        return getMobMetaData(stack).getExtraTooltip();
-    }
-
     public static ILivingMatterType getMatterTypeName(ItemStack stack) {
         return getMobMetaData(stack).getType();
     }

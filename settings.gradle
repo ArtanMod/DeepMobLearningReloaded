@@ -23,6 +23,14 @@ pluginManagement {
             name = "Patchouli Maven"
             url = 'https://maven.blamejared.com'
         }
+        maven {
+            name = 'GeckoLib'
+            url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        }
+        maven {
+            name = "Curios"
+            url = "https://maven.theillusivec4.top"
+        }
     }
 }
 
