@@ -7,6 +7,7 @@ import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import jp.artan.dmlreloaded.item.*;
+import jp.artan.dmlreloaded.item.material.GlitchToolMaterials;
 import jp.artan.repack.registrate.providers.RegistrateRecipeProvider;
 import jp.artan.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -67,7 +68,7 @@ public class ItemInit {
             .register();
 
     public static final ItemEntry<ItemDeepLearner> NETHERITE_DEEP_LEARNER = REGISTRATE.item("netherite_deep_learner", p -> new ItemDeepLearner(p, DeepMobLearningReloaded.NETHERITE_DEEP_LEARNER_INTERNAL_SLOTS_SIZE))
-            .properties(p -> p.stacksTo(1))
+            .properties(p -> p.stacksTo(1).fireResistant())
             .recipe((ctx, prov) -> {
                 UpgradeRecipeBuilder.smithing(Ingredient.of(DEEP_LEARNER.get()), Ingredient.of(Items.NETHERITE_INGOT), ctx.get())
                         .unlocks("has_netherite_ingot", RegistrateRecipeProvider.has(Items.NETHERITE_INGOT))
@@ -114,6 +115,20 @@ public class ItemInit {
             .addRawJPLang("jei.dmlreloaded.glitch_ingot", "TLDR: 不安定なグリッチの断片・ラピスラズリ・金インゴットを水に落とす。\\n\\nラピスラズリは不安定なグリッチの断片を安定させるのに適していることがわかりました。\\n不安定なグリッチの断片が安定した後、結合する素材を求めて必死探してます。\\n\\nこのプロセス全体は繊細で、水中で行わないと材料が適切に結合しない。")
             .register();
 
+    public static final ItemEntry<Item> NETHERITE_GLITCH_INGOT = REGISTRATE.item("netherite_glitch_infused_ingot", Item::new)
+            .properties(p -> p.fireResistant())
+            .recipe((ctx, prov) -> {
+                ShapelessRecipeBuilder.shapeless(ctx.get())
+                        .requires(Items.NETHERITE_SCRAP, 4)
+                        .requires(GLITCH_INGOT.get(), 4)
+                        .group("netherite_ingot")
+                        .unlockedBy("has_netherite_scrap", RegistrateRecipeProvider.has(Items.NETHERITE_SCRAP))
+                        .save(prov);
+            })
+            .lang("Netherite Glitch Infused Ingot")
+            .jpLang("ネザライトグリッチが染み込んだインゴット")
+            .register();
+
     public static final ItemEntry<Item> POLYMER_CLAY = REGISTRATE.item("polymer_clay", Item::new)
             .recipe((ctx, prov) -> {
                 ShapedRecipeBuilder.shaped(ctx.get(), 16)
@@ -131,7 +146,7 @@ public class ItemInit {
             .jpLang("ポリマー粘土")
             .register();
 
-    public static final ItemEntry<ItemGlitchSword> GLITCH_SWORD = REGISTRATE.item("glitch_infused_sword", ItemGlitchSword::new)
+    public static final ItemEntry<ItemGlitchSword> GLITCH_SWORD = REGISTRATE.item("glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.GLITCH, p))
             .recipe((ctx, prov) -> {
                 ShapedRecipeBuilder.shaped(ctx.get())
                         .define('#', GLITCH_INGOT.get())
@@ -161,6 +176,17 @@ public class ItemInit {
             .addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_4", "データが得られたとき、ごくわずかな確率で")
             .addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_5", "剣の耐久値が増加します.")
             .addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_6", "現在の耐久値増加: %1$s (最大 %2$s)")
+            .register();
+
+    public static final ItemEntry<ItemGlitchSword> NETHERITE_GLITCH_SWORD = REGISTRATE.item("netherite_glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.NETHERITE_GLITCH, p))
+            .properties(p -> p.fireResistant())
+            .recipe((ctx, prov) -> {
+                UpgradeRecipeBuilder.smithing(Ingredient.of(GLITCH_SWORD.get()), Ingredient.of(NETHERITE_GLITCH_INGOT.get()), ctx.get())
+                        .unlocks("has_netherite_glitch_ingot", RegistrateRecipeProvider.has(NETHERITE_GLITCH_INGOT.get()))
+                        .save(prov, "netherite_glitch_infused_sword_smithing");
+            })
+            .lang("Netherite Glitch Infused Sword")
+            .jpLang("ネザライトグリッチが染み込んだ剣")
             .register();
 
     public static final ItemEntry<ItemGlitchArmor> GLITCH_HELMET = REGISTRATE.item("glitch_infused_helmet", p -> new ItemGlitchArmor(EquipmentSlot.HEAD, p))

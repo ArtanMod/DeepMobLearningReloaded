@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "dmlreloaded:glitch_infused_sword"
+  },
+  "addition": {
+    "item": "dmlreloaded:netherite_glitch_infused_ingot"
+  },
+  "result": {
+    "item": "dmlreloaded:netherite_glitch_infused_sword"
+  }
+}
