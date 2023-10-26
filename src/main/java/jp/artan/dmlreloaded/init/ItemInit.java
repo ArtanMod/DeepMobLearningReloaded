@@ -48,37 +48,6 @@ public class ItemInit {
             .jpLang("煤で覆われたプレート")
             .register();
 
-    public static final ItemEntry<ItemDeepLearner> DEEP_LEARNER = REGISTRATE.item("deep_learner", p -> new ItemDeepLearner(p, DeepMobLearningReloaded.DEEP_LEARNER_INTERNAL_SLOTS_SIZE))
-            .properties(p -> p.stacksTo(1))
-            .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get())
-                        .define('#', SOOT_COVERED_PLATE.get())
-                        .define('X', Items.REPEATER)
-                        .define('Y', Blocks.GLASS_PANE)
-                        .define('Z', SOOT_COVERED_REDSTONE.get())
-                        .pattern("#X#")
-                        .pattern("XYX")
-                        .pattern("#Z#")
-                        .unlockedBy("has_item", RegistrateRecipeProvider.has(SOOT_COVERED_PLATE.get()))
-                        .save(prov);
-            })
-            .lang("Deep Learner")
-            .jpLang("深層学習装置")
-            .tag(ItemTagInit.CURIOS_DEEP_LEARNER)
-            .register();
-
-    public static final ItemEntry<ItemDeepLearner> NETHERITE_DEEP_LEARNER = REGISTRATE.item("netherite_deep_learner", p -> new ItemDeepLearner(p, DeepMobLearningReloaded.NETHERITE_DEEP_LEARNER_INTERNAL_SLOTS_SIZE))
-            .properties(p -> p.stacksTo(1).fireResistant())
-            .recipe((ctx, prov) -> {
-                UpgradeRecipeBuilder.smithing(Ingredient.of(DEEP_LEARNER.get()), Ingredient.of(Items.NETHERITE_INGOT), ctx.get())
-                        .unlocks("has_netherite_ingot", RegistrateRecipeProvider.has(Items.NETHERITE_INGOT))
-                        .save(prov, "netherite_deep_learner_smithing");
-            })
-            .lang("Netherite Deep Learner")
-            .jpLang("ネザライト深層学習装置")
-            .tag(ItemTagInit.CURIOS_DEEP_LEARNER)
-            .register();
-
     public static final ItemEntry<ItemGlitchFragment> GLITCH_FRAGMENT = REGISTRATE.item("glitch_fragment", ItemGlitchFragment::new)
             .lang("Unstable Glitch Fragment")
             .jpLang("不安定なグリッチの断片")
@@ -127,6 +96,37 @@ public class ItemInit {
             })
             .lang("Netherite Glitch Infused Ingot")
             .jpLang("ネザライトグリッチが染み込んだインゴット")
+            .register();
+
+    public static final ItemEntry<ItemDeepLearner> DEEP_LEARNER = REGISTRATE.item("deep_learner", p -> new ItemDeepLearner(p, DeepMobLearningReloaded.DEEP_LEARNER_INTERNAL_SLOTS_SIZE))
+            .properties(p -> p.stacksTo(1))
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(ctx.get())
+                        .define('#', SOOT_COVERED_PLATE.get())
+                        .define('X', Items.REPEATER)
+                        .define('Y', Blocks.GLASS_PANE)
+                        .define('Z', SOOT_COVERED_REDSTONE.get())
+                        .pattern("#X#")
+                        .pattern("XYX")
+                        .pattern("#Z#")
+                        .unlockedBy("has_item", RegistrateRecipeProvider.has(SOOT_COVERED_PLATE.get()))
+                        .save(prov);
+            })
+            .lang("Deep Learner")
+            .jpLang("深層学習装置")
+            .tag(ItemTagInit.CURIOS_DEEP_LEARNER)
+            .register();
+
+    public static final ItemEntry<ItemDeepLearner> NETHERITE_DEEP_LEARNER = REGISTRATE.item("netherite_deep_learner", p -> new ItemDeepLearner(p, DeepMobLearningReloaded.NETHERITE_DEEP_LEARNER_INTERNAL_SLOTS_SIZE))
+            .properties(p -> p.stacksTo(1).fireResistant())
+            .recipe((ctx, prov) -> {
+                UpgradeRecipeBuilder.smithing(Ingredient.of(DEEP_LEARNER.get()), Ingredient.of(NETHERITE_GLITCH_INGOT.get()), ctx.get())
+                        .unlocks("has_netherite_glitch_ingot", RegistrateRecipeProvider.has(NETHERITE_GLITCH_INGOT.get()))
+                        .save(prov, "netherite_deep_learner_smithing");
+            })
+            .lang("Netherite Deep Learner")
+            .jpLang("ネザライト深層学習装置")
+            .tag(ItemTagInit.CURIOS_DEEP_LEARNER)
             .register();
 
     public static final ItemEntry<Item> POLYMER_CLAY = REGISTRATE.item("polymer_clay", Item::new)
