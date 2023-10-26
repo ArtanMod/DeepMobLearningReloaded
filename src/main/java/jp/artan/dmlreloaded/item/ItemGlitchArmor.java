@@ -4,7 +4,6 @@ import io.netty.util.internal.ThreadLocalRandom;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.config.BalanceConfigs;
 import jp.artan.dmlreloaded.init.ItemInit;
-import jp.artan.dmlreloaded.item.material.GlitchArmorMaterial;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -13,6 +12,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -26,8 +26,8 @@ public class ItemGlitchArmor extends ArmorItem{
     private static final int HEART_SET_CHANCE = 1;
     private static final int PRISTINE_SET_NUMBER_OF_DROPS = 2;
 
-    public ItemGlitchArmor(EquipmentSlot p_40387_, Properties p_40388_) {
-        super(new GlitchArmorMaterial(), p_40387_, p_40388_);
+    public ItemGlitchArmor(ArmorMaterial pMaterial, EquipmentSlot pSlot, Properties pProperties) {
+        super(pMaterial, pSlot, pProperties);
     }
 
 

@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:netherite_deep_learner_smithing"
+        "recipe": "minecraft:netherite_glitch_infused_leggings_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:netherite_deep_learner_smithing"
+      "minecraft:netherite_glitch_infused_leggings_smithing"
     ]
   }
 }
