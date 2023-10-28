@@ -177,10 +177,6 @@
   "patchouli.category.1.introduction.entry.3.page.12.title": "ホグリン / マグマキューブ",
   "patchouli.category.1.introduction.entry.3.page.13.title": "ファントム / ピグリン",
   "patchouli.category.1.introduction.entry.3.page.14.title": "ラヴェジャー",
-  "patchouli.category.1.introduction.entry.3.page.15.title": "ラヴェジャー / ナーガ",
-  "patchouli.category.1.introduction.entry.3.page.16.title": "リッチ / ミノッシュルーム",
-  "patchouli.category.1.introduction.entry.3.page.17.title": "ヒドラ / ナイトファントム",
-  "patchouli.category.1.introduction.entry.3.page.18.title": "ウルガスト / アルファイエティ",
   "patchouli.category.1.introduction.entry.3.page.2.text": "全ての$(item)データモデル$()は「$(8)不完全$()」という階層から始まり、$(item)データモデル$()が多くの$(item)データ$()を学習するとこの等級は上がります。$(br2)$(item)等級$()が上がると、倒したモブからより多くの$(item)データ$()を獲得できます。$(br2)$(item)データモデル$()は、$(l:1_machines/0_simulation_chamber)シミュレーション室$()に入れてもよいです。",
   "patchouli.category.1.introduction.entry.3.page.3.text": "$(item)データモデル$()は、$(item)生息地$()によって$(item)タイプ$()が分かれます。$(item)生息地$()の種類は、$(a)オーバーワールド$()、$(c)ネザー$()、$(d)エンド$()の3つです。 $(br2)データモデル$()のタイプによって、$(l:1_machines/0_simulation_chamber)シミュレーション室$()がどのような$(l:1_machines/1_matter#living)Living Matter$()や$(l:1_machines/1_matter#pristine)綺麗なマター$()を生成するかが決まります。",
   "patchouli.category.1.introduction.entry.3.page.4.title": "ゾンビ / スケルトン",
@@ -212,5 +208,13 @@
   "patchouli.category.2.introduction.entry.4.page.2.title": "電源装置",
   "patchouli.category.2.introduction.entry.4.title": "エネルギー",
   "patchouli.category.2.introduction.text": "この章では、$(dml)の機械について説明します。$(br2)すべての$(item)機械$()は、ブロックの上部から$(item)Inputs$()を受け入れることができます。他の側面は、$(item)Outputs$()のパイプに使われます。",
-  "patchouli.category.2.introduction.title": "機械"
+  "patchouli.category.2.introduction.title": "機械",
+  "patchouli.category.3.description": "DeepMobLearningReloadedはいくつかのMODと連携をしています。MOD連携には段階があります。$(br2)Level1は既存のデータモデルに対して討伐対象モブとして追加や綺麗なマターで生産できるモンスタードロップ品の追加を行う連携。$(br2)Level2は対象のMODで追加されるモブのデータモデルや綺麗なマターを追加します。",
+  "patchouli.category.3.entry.1.page.1.text": "連携レベル2$(br2)黄昏の森では新たに7種類のボスモンスター用のデータモデルが追加されます。",
+  "patchouli.category.3.entry.1.page.2.title": "ナーガ / リッチ",
+  "patchouli.category.3.entry.1.page.3.title": "ミノッシュルーム / ヒドラ",
+  "patchouli.category.3.entry.1.page.4.title": "ナイトファントム / ウルガスト",
+  "patchouli.category.3.entry.1.page.5.title": "アルファイエティ",
+  "patchouli.category.3.entry.1.title": "Twilight Forest",
+  "patchouli.category.3.title": "モッド連携"
 }

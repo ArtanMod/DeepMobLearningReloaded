@@ -1,11 +1,11 @@
-// 1.19.2	2023-10-27T00:08:41.8441943	Registrate Provider for dmlreloaded [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Languages: ja_jp]
+// 1.19.2	2023-10-28T20:33:59.192397	Registrate Provider for dmlreloaded [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Languages: ja_jp]
 819921f79d5bc5a94cda4e0dc90357991620b552 assets/dmlreloaded/blockstates/extraction_chamber.json
 7a8b89ed39829d397ac598a7550cb633cd26410a assets/dmlreloaded/blockstates/infused_ingot_block.json
 5fad5624a4cb6b6d52251013da821f6764bcf790 assets/dmlreloaded/blockstates/machine_casing.json
 e130c6997edd2e5cf1cd8828052853849de6adf3 assets/dmlreloaded/blockstates/simulation_chamber.json
-342d288902f9fb2b807e728631d089e1d16cfad9 assets/dmlreloaded/lang/en_ud.json
-cf998e91bb880cbfd26cd3bc1211fa1093b7448e assets/dmlreloaded/lang/en_us.json
-22e632adbc5ad0051c41702493f9183839331937 assets/dmlreloaded/lang/ja_jp.json
+85ce24155688db65bbebf96521bb690d890bae7b assets/dmlreloaded/lang/en_ud.json
+2b97f89c13ba32bd95d5cd0e42ce081ead5f9227 assets/dmlreloaded/lang/en_us.json
+83e8cee236d84e26275a645ef591977cf34e6b5f assets/dmlreloaded/lang/ja_jp.json
 25e3af13647f0152e43c04d7886508e526392b61 assets/dmlreloaded/models/block/infused_ingot_block.json
 5dbf1ec55ec3833bd0d0689fb955ce175dbd678f assets/dmlreloaded/models/block/machine_casing.json
 d6a5f3e1430bf4e6a2aab8589b6bd6e96b99ec5c assets/dmlreloaded/models/item/data_model_blank.json
