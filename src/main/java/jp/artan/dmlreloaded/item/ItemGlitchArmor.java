@@ -11,10 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -32,10 +29,23 @@ public class ItemGlitchArmor extends ArmorItem{
 
 
     public static boolean isSetEquippedByPlayer(ServerPlayer player) {
-        return player.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof ItemGlitchArmor &&
-                player.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ItemGlitchArmor &&
-                player.getItemBySlot(EquipmentSlot.LEGS).getItem() instanceof ItemGlitchArmor &&
-                player.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof ItemGlitchArmor;
+        Item glitchHelmet = player.getItemBySlot(EquipmentSlot.HEAD).getItem();
+        Item glitchChestplate = player.getItemBySlot(EquipmentSlot.CHEST).getItem();
+        Item glitchLeggings = player.getItemBySlot(EquipmentSlot.LEGS).getItem();
+        Item glitchBoots = player.getItemBySlot(EquipmentSlot.FEET).getItem();
+
+        // すべての装備がGlitchArmorであるか
+        boolean isSetEquipped = glitchHelmet instanceof ItemGlitchArmor &&
+                glitchChestplate instanceof ItemGlitchArmor &&
+                glitchLeggings instanceof ItemGlitchArmor &&
+                glitchBoots instanceof ItemGlitchArmor;
+        if(isSetEquipped) {
+            // すべての装備のMaterialが同じであるか
+            return ((ItemGlitchArmor)glitchHelmet).getMaterial() == ((ItemGlitchArmor)glitchChestplate).getMaterial() &&
+                    ((ItemGlitchArmor)glitchHelmet).getMaterial() == ((ItemGlitchArmor)glitchLeggings).getMaterial() &&
+                    ((ItemGlitchArmor)glitchHelmet).getMaterial() == ((ItemGlitchArmor)glitchBoots).getMaterial();
+        }
+        return false;
     }
 
     public static boolean isFlyEnabledAndFullSet(ServerPlayer player) {
