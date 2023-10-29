@@ -1,4 +1,4 @@
-package jp.artan.dmlreloaded.plugin.DIvineRPG;
+package jp.artan.dmlreloaded.plugin.DivineRPG;
 
 import jp.artan.dmlreloaded.common.MobKey;
 import net.minecraftforge.eventbus.api.IEventBus;

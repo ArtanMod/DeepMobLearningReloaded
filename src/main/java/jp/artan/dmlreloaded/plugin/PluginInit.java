@@ -1,6 +1,6 @@
 package jp.artan.dmlreloaded.plugin;
 
-import jp.artan.dmlreloaded.plugin.DIvineRPG.DivineRPGPlugin;
+import jp.artan.dmlreloaded.plugin.DivineRPG.DivineRPGPlugin;
 import jp.artan.dmlreloaded.plugin.DeeperAndDarker.DeeperAndDarkerPlugin;
 import jp.artan.dmlreloaded.plugin.curios.CuriosPlugin;
 import jp.artan.dmlreloaded.plugin.mekanism.MekanismPlugin;
