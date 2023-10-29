@@ -14,10 +14,31 @@
 計21種類のデータモデル
 ![DataModels](./img/img1.png)
 
-データモデルの学習できるモブの一覧はデータモデルをマウスオーバーした状態で「Ctrl」を押すことで確認することができます。
+データモデルの学習できるモブの一覧はデータモデルをマウスオーバーした状態で「Ctrl」を押すことで確認することができます。また、MOD間連携で追加されたモブも同様に確認することができます。
 ![Ctrl key pressed](./img/img3.png)
 
-[参考MOD]
+## MOD間連携
+
+DeepMobLearningReloadedはいくつかのMODと連携をしています。MOD連携には段階があります。
+
+Level1：既存のデータモデルに対して討伐対象モブとして追加や綺麗なマターで生産できるモンスタードロップ品の追加を行う連携。  
+Level2：Level1に加えて対象のMODで追加されるモブのデータモデルや綺麗なマターを追加します。
+
+### Level1
+
+Level1の連携は以下のMODに対応しています。
+
+- [Reliquary Reincarnations](https://www.curseforge.com/minecraft/mc-mods/reliquary-reincarnations)
+- [DivineRPG (Official)](https://www.curseforge.com/minecraft/mc-mods/official-divinerpg)
+
+### Level2
+
+Level2の連携は以下のMODに対応しています。
+
+- [The Twilight Forest](https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest)
+- [Deeper and Darker](https://www.curseforge.com/minecraft/mc-mods/deeperdarker)
+
+## [参考MOD]
 
 - [Deep Mob Learning](https://www.curseforge.com/minecraft/mc-mods/deep-mob-learning), by [IterationFunk](https://legacy.curseforge.com/members/iterationfunk/projects)
 - [Deep Mob Learning: Reforged](https://www.curseforge.com/minecraft/mc-mods/deep-mob-learning-reforged), by [yollotwitch](https://legacy.curseforge.com/members/yollotwitch/projects)
