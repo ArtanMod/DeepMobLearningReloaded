@@ -250,13 +250,5 @@
   "patchouli.category.2.introduction.entry.4.page.2.title": "Power Units",
   "patchouli.category.2.introduction.entry.4.title": "Energy",
   "patchouli.category.2.introduction.text": "This chapter will teach you everything you need to know about the machines$(br)in $(dml)$(br2)All $(item)Machines$() accepts $(item)Inputs$() from the top of the block. The other sides are used to pipe $(item)Outputs$().",
-  "patchouli.category.2.introduction.title": "Machines",
-  "patchouli.category.3.description": "DeepMobLearningReloaded works with several mods. there are different levels of mod linkage. $(br2)Level1 is a linkage that adds mobs to the existing data model as mobs to be defeated or monster drops that can be produced with pristine matter. $(br2)Level2 is a linkage that adds data models and pristine matter for mobs that are added by the target mod.",
-  "patchouli.category.3.entry.1.page.1.text": "Collaboration Level2$(br2)In the Twilight Forest, data models for seven new boss monsters will be added.",
-  "patchouli.category.3.entry.1.page.2.title": "Naga / Lich",
-  "patchouli.category.3.entry.1.page.3.title": "Minoshroom / Hydra",
-  "patchouli.category.3.entry.1.page.4.title": "Knight Phantom / Ur Ghast",
-  "patchouli.category.3.entry.1.page.5.title": "Alpha Yeti",
-  "patchouli.category.3.entry.1.title": "Twilight Forest",
-  "patchouli.category.3.title": "Mod Collaboration"
+  "patchouli.category.2.introduction.title": "Machines"
 }
