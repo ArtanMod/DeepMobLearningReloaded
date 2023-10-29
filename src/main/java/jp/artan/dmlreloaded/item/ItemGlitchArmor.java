@@ -1,6 +1,5 @@
 package jp.artan.dmlreloaded.item;
 
-import io.netty.util.internal.ThreadLocalRandom;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.config.BalanceConfigs;
 import jp.artan.dmlreloaded.init.ItemInit;
@@ -15,6 +14,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ItemGlitchArmor extends ArmorItem{
 
