@@ -6,6 +6,7 @@ import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;
 import jp.artan.dmlreloaded.init.BlockInit;
 import jp.artan.dmlreloaded.init.ItemGroupInit;
 import jp.artan.dmlreloaded.init.ItemInit;
+import jp.artan.dmlreloaded.plugin.DeeperAndDarker.init.DeeperAndDarkerItemInit;
 import jp.artan.dmlreloaded.plugin.twilight.init.TwilightItemInit;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Items;
@@ -152,6 +153,16 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                     registrate.addRawJPLang("patchouli.category.3.entry.1.page.4.title", "ナイトファントム / ウルガスト");
                     registrate.addRawLang("patchouli.category.3.entry.1.page.5.title", "Alpha Yeti");
                     registrate.addRawJPLang("patchouli.category.3.entry.1.page.5.title", "アルファイエティ");
+                }
+                {
+                    registrate.addRawLang("patchouli.category.3.entry.2.title", "DeeperAndDarker");
+                    registrate.addRawJPLang("patchouli.category.3.entry.2.title", "DeeperAndDarker");
+                    registrate.addRawLang("patchouli.category.3.entry.2.page.1.text", "Collaboration Level2$(br2)In the DeeperAndDarker, data models for 3 new boss monsters will be added.");
+                    registrate.addRawJPLang("patchouli.category.3.entry.2.page.1.text", "連携レベル2$(br2)DeeperAndDarkerでは新たに3種類のボスモンスター用のデータモデルが追加されます。");
+                    registrate.addRawLang("patchouli.category.3.entry.2.page.2.title", "Shattered / Sculk Centipede");
+                    registrate.addRawJPLang("patchouli.category.3.entry.2.page.2.title", "Shattered / Sculk Centipede");
+                    registrate.addRawLang("patchouli.category.3.entry.2.page.3.title", "Stalker");
+                    registrate.addRawJPLang("patchouli.category.3.entry.2.page.3.title", "Stalker");
                 }
             }
         }
@@ -361,6 +372,21 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                     p.addCraftingRecipePage(TwilightItemInit.DataModel.ALPHA_YETI)
                             .setFlag("mod:twilightforest")
                             .setTitle("patchouli.category.3.entry.1.page.5.title")
+                            .build();
+                    return p;
+                }).build()
+                .addEntry("DeeperAndDarker", "patchouli.category.3.entry.2.title", DeeperAndDarkerItemInit.DataModel.STALKER).properties(p -> {
+                    p.setFlag("mod:deeperdarker");
+                    p.addTextPage("patchouli.category.3.entry.2.page.1.text")
+                            .build();
+                    p.addCraftingRecipePage(DeeperAndDarkerItemInit.DataModel.SHATTERED)
+                            .setRecipe2(DeeperAndDarkerItemInit.DataModel.SCULK_CENTIPEDE)
+                            .setFlag("mod:twilightforest")
+                            .setTitle("patchouli.category.3.entry.2.page.2.title")
+                            .build();
+                    p.addCraftingRecipePage(DeeperAndDarkerItemInit.DataModel.STALKER)
+                            .setFlag("mod:twilightforest")
+                            .setTitle("patchouli.category.3.entry.2.page.3.title")
                             .build();
                     return p;
                 }).build()
