@@ -30,6 +30,7 @@ Level1の連携は以下のMODに対応しています。
 
 - [Reliquary Reincarnations](https://www.curseforge.com/minecraft/mc-mods/reliquary-reincarnations)
 - [DivineRPG (Official)](https://www.curseforge.com/minecraft/mc-mods/official-divinerpg)
+- [Mekanism Additions](https://www.curseforge.com/minecraft/mc-mods/mekanism-additions)
 
 ### Level2
 
@@ -37,6 +38,11 @@ Level2の連携は以下のMODに対応しています。
 
 - [The Twilight Forest](https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest)
 - [Deeper and Darker](https://www.curseforge.com/minecraft/mc-mods/deeperdarker)
+
+### その他
+
+- レシピ表示：[Just Enough Items (JEI)](https://www.curseforge.com/minecraft/mc-mods/jei)
+- 学習装置用の専用スロット追加：[Curios API (Forge)](https://www.curseforge.com/minecraft/mc-mods/curios)
 
 ## [参考MOD]
 
