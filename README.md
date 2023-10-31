@@ -36,7 +36,6 @@ Level1の連携は以下のMODに対応しています。
 
 Level2の連携は以下のMODに対応しています。
 
-- [The Twilight Forest](https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest)
 - [Deeper and Darker](https://www.curseforge.com/minecraft/mc-mods/deeperdarker)
 
 ### その他

@@ -18,9 +18,9 @@ public class PluginInit {
     public static final boolean DEEP_AND_DARKER_ACTIVE = ModList.get().isLoaded(DeeperAndDarkerPlugin.NAME);
 
     public static void init(IEventBus modEventBus){
-        if (TWILIGHT_ACTIVE) {
-            TwilightPlugin.init(modEventBus);
-        }
+//        if (TWILIGHT_ACTIVE) {
+//            TwilightPlugin.init(modEventBus);
+//        }
         if (RELIQUARY_ACTIVE) {
             ReliquaryPlugin.init(modEventBus);
         }
