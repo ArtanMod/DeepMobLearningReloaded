@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.plugin.DeeperAndDarker.common.mobmetas;
 
-import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.registry.entities.DDEntities;
+import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDEntities;
 import jp.artan.dmlreloaded.plugin.DeeperAndDarker.common.DeeperAndDarkerMobKey;
 import jp.artan.dmlreloaded.plugin.DeeperAndDarker.init.DeeperAndDarkerItemInit;
 import net.minecraft.resources.ResourceLocation;
@@ -15,7 +15,7 @@ public class SculkCentipedeMeta extends DeeperAndDarkerMobMetaData {
                 "entity.deeperdarker.sculk_centipede",
                 1024, 13,
                 DeeperAndDarkerItemInit.PristineMatter.SCULK_CENTIPEDE.get(),
-                new ResourceLocation(DeeperAndDarker.MOD_ID, "sculk_centipede")
+                new ResourceLocation(DeeperDarker.MOD_ID, "sculk_centipede")
         );
     }
 

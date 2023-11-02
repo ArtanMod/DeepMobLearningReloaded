@@ -1,6 +1,6 @@
 package jp.artan.dmlreloaded.plugin.DeeperAndDarker.init;
 
-import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.content.DDItems;
 import jp.artan.artansprojectcoremod.plugin.registrate.builder.ModItemBuilder;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.data.DeepMobLearningReloadedRegistrate;

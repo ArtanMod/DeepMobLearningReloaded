@@ -1,6 +1,6 @@
 package jp.artan.dmlreloaded.plugin.DeeperAndDarker;
 
-import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.content.DDItems;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.plugin.DeeperAndDarker.init.DeeperAndDarkerItemInit;
 import net.minecraft.world.item.ItemStack;

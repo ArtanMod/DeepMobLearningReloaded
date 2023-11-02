@@ -1,6 +1,6 @@
 package jp.artan.dmlreloaded.plugin.DeeperAndDarker.common;
 
-import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.content.DDItems;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
