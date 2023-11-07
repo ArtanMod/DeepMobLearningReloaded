@@ -75,7 +75,7 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
     }
 
     private DeepEnergyStorage createEnergyStorage() {
-        return new DeepEnergyStorage(this, 2000000, 25600, 0, DeepMobLearningReloaded.DEBUG_MODE ? 2000000 : 0);
+        return new DeepEnergyStorage(this, 2000000, 25600, 0, 0);
     }
 
     public boolean isCrafting() {
@@ -118,10 +118,6 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
                 int rfTickCost = mobMetaData.getSimulationTickCost();
                 //energyStorage.voidEnergy(rfTickCost);
                 this.energyStorage.setEnergy(this.energyStorage.getEnergyStored() - rfTickCost);
-
-                if(DeepMobLearningReloaded.DEBUG_MODE) {
-                    this.energyStorage = this.createEnergyStorage();
-                }
 
                 // It takes 15 seconds to complete one cycle
                 if (ticks % ((DeepMobLearningReloaded.TICKS_TO_SECOND * 15) / 100) == 0) {
