@@ -50,8 +50,8 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
         int top = getGuiTop();
         int x = pMouseX - getGuiLeft();
         int y = pMouseY - getGuiTop();
-        selectedIndex = this.menu.data.get(3);
-        tileSelectData = this.menu.data.get(4)==1 ? true: false;
+        selectedIndex = this.menu.data.get(1);
+        tileSelectData = this.menu.data.get(2) == 1;
 
         // Render base
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
@@ -71,14 +71,21 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
         }
         blit(pose, left + 76, top + 12 + k, 178 + (this.isScrollBarActive() ? 0 : 12)+o, 0, 6, 19);
 
+        final int progress = this.menu.data.get(0);
+        final int energyStored1 = this.menu.data.get(3) & 0x0000FFFF;
+        final int energyStored2 = ((this.menu.data.get(4) & 0x0000FFFF) << 16) & 0xFFFF0000;
+        final int energyStored = energyStored1 | energyStored2;
+        final int maxEnergy1 = this.menu.data.get(5) & 0x0000FFFF;
+        final int maxEnergy2 = ((this.menu.data.get(6) & 0x0000FFFF) << 16) & 0xFFFF0000;
+        final int maxEnergy = maxEnergy1 | maxEnergy2;
 
         // Render current energy
-        int energyBarHeight = MathHelper.ensureRange((int) ((float) this.menu.data.get(1) / (this.menu.data.get(2) - EnergyCostConfig.FECOSTEXTRACTIONCHAMBER.get()) * 53), 0, 53);
+        int energyBarHeight = MathHelper.ensureRange((int) ((float) energyStored / (maxEnergy - EnergyCostConfig.FECOSTEXTRACTIONCHAMBER.get()) * 53), 0, 53);
         int energyBarOffset = 53 - energyBarHeight;
         blit(pose, left + 6,  top + 10 + energyBarOffset, 0, 83, 7, energyBarHeight);
 
         // Render crafting progress
-        int craftingBarHeight = (int) (((float) this.menu.data.get(0) / 50 * 36));
+        int craftingBarHeight = (int) (((float) progress / 50 * 36));
         int craftingBarOffset = 36 - craftingBarHeight;
         blit(pose, left + 86,  top + 22 + craftingBarOffset, 7, 83, 6, craftingBarHeight);
 
@@ -87,11 +94,6 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
         blit(pose, left + 0, top + 111, 0, 0, 176, 90);
 
         NumberFormat f = NumberFormat.getNumberInstance(Locale.ENGLISH);
-
-        final int progress = this.menu.data.get(0);
-        final int energyStored = this.menu.data.get(1);
-        final int maxEnergy = this.menu.data.get(2);
-
 
         if(10 <= y && y < 63) {
             if(6 <= x && x < 13) {

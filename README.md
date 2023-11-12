@@ -44,10 +44,6 @@ Level2の連携は以下のMODに対応しています。
 - レシピ表示：[Just Enough Items (JEI)](https://www.curseforge.com/minecraft/mc-mods/jei)
 - 学習装置用の専用スロット追加：[Curios API (Forge)](https://www.curseforge.com/minecraft/mc-mods/curios)
 
-## 既知のバグ
-
-- シミュレーション室と抽出室のエネルギー表示がおかしくなるバグ（サーバーのみで発生）
-
 ## [参考MOD]
 
 - [Deep Mob Learning](https://www.curseforge.com/minecraft/mc-mods/deep-mob-learning), by [IterationFunk](https://legacy.curseforge.com/members/iterationfunk/projects)
