@@ -28,7 +28,7 @@ public class SimulationChamberContainer extends AbstractContainerMenu {
 
     // Client
     public SimulationChamberContainer(MenuType<?> menuType, int id, Inventory playerInv, FriendlyByteBuf buf) {
-        this(menuType, id, playerInv, new ItemStackHandler(4), BlockPos.ZERO, new SimpleContainerData(4));
+        this(menuType, id, playerInv, new ItemStackHandler(4), BlockPos.ZERO, new SimpleContainerData(6));
     }
 
     // Server
@@ -97,7 +97,7 @@ public class SimulationChamberContainer extends AbstractContainerMenu {
 
     public static MenuConstructor getServerContainer(BlockEntitySimulationChamber be, BlockPos pos) {
         return (id, playerInv, player) -> new SimulationChamberContainer(ContainerInit.SIMULATION_CHAMBER.get(), id, playerInv, be.inventory, pos,
-                new SimulationChamberContainerData(be, 4));
+                new SimulationChamberContainerData(be, 6));
     }
 
     public ItemStack getDataModel() {

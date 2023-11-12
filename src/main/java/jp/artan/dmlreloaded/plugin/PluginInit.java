@@ -1,6 +1,6 @@
 package jp.artan.dmlreloaded.plugin;
 
-import jp.artan.dmlreloaded.plugin.DIvineRPG.DivineRPGPlugin;
+import jp.artan.dmlreloaded.plugin.DivineRPG.DivineRPGPlugin;
 import jp.artan.dmlreloaded.plugin.DeeperAndDarker.DeeperAndDarkerPlugin;
 import jp.artan.dmlreloaded.plugin.curios.CuriosPlugin;
 import jp.artan.dmlreloaded.plugin.mekanism.MekanismPlugin;
@@ -18,9 +18,9 @@ public class PluginInit {
     public static final boolean DEEP_AND_DARKER_ACTIVE = ModList.get().isLoaded(DeeperAndDarkerPlugin.NAME);
 
     public static void init(IEventBus modEventBus){
-        if (TWILIGHT_ACTIVE) {
-            TwilightPlugin.init(modEventBus);
-        }
+//        if (TWILIGHT_ACTIVE) {
+//            TwilightPlugin.init(modEventBus);
+//        }
         if (RELIQUARY_ACTIVE) {
             ReliquaryPlugin.init(modEventBus);
         }

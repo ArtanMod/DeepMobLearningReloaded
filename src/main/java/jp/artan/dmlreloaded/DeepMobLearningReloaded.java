@@ -39,9 +39,6 @@ public class DeepMobLearningReloaded {
     // Data model max tier
     public static final int DATA_MODEL_MAXIMUM_TIER = 4;
 
-    // Debug Mode
-    public static final boolean DEBUG_MODE = true;
-
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 

@@ -37,7 +37,7 @@ public class BlockEntityExtractionChamber extends InventoryBlockEntity{
     }
 
     private DeepEnergyStorage createEnergyStorage() {
-        return new DeepEnergyStorage(this, 1000000, 25600 , 0, DeepMobLearningReloaded.DEBUG_MODE ? 1000000 : 0);
+        return new DeepEnergyStorage(this, 1000000, 25600 , 0, 0);
     }
 
     public ItemStack getPristine() {
@@ -105,10 +105,6 @@ public class BlockEntityExtractionChamber extends InventoryBlockEntity{
                 if(hasEnergyForNextTick()) {
                     this.energyStorage.setEnergy(this.energyStorage.getEnergyStored() - energyCost);
                     percentDone++;
-
-                    if(DeepMobLearningReloaded.DEBUG_MODE) {
-                        this.energyStorage = this.createEnergyStorage();
-                    }
                 }
 
                 // Notify while crafting every 5sec, this is done more frequently when the container is open

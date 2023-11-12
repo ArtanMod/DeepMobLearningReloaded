@@ -4,10 +4,10 @@
     "item": "dmlreloaded:netherite_glitch_infused_ingot"
   },
   "base": {
-    "item": "dmlreloaded:deep_learner"
+    "item": "dmlreloaded:glitch_infused_helmet"
   },
   "result": {
-    "item": "dmlreloaded:netherite_deep_learner"
+    "item": "dmlreloaded:netherite_glitch_infused_helmet"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

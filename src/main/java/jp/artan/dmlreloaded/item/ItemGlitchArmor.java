@@ -1,10 +1,8 @@
 package jp.artan.dmlreloaded.item;
 
-import io.netty.util.internal.ThreadLocalRandom;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.config.BalanceConfigs;
 import jp.artan.dmlreloaded.init.ItemInit;
-import jp.artan.dmlreloaded.item.material.GlitchArmorMaterial;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -12,12 +10,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ItemGlitchArmor extends ArmorItem{
 
@@ -26,16 +23,29 @@ public class ItemGlitchArmor extends ArmorItem{
     private static final int HEART_SET_CHANCE = 1;
     private static final int PRISTINE_SET_NUMBER_OF_DROPS = 2;
 
-    public ItemGlitchArmor(ArmorItem.Type p_40387_, Properties p_40388_) {
-        super(new GlitchArmorMaterial(), p_40387_, p_40388_);
+    public ItemGlitchArmor(ArmorMaterial pMaterial, ArmorItem.Type pArmorItemType, Properties pProperties) {
+        super(pMaterial, pArmorItemType, pProperties);
     }
 
 
     public static boolean isSetEquippedByPlayer(ServerPlayer player) {
-        return player.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof ItemGlitchArmor &&
-                player.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ItemGlitchArmor &&
-                player.getItemBySlot(EquipmentSlot.LEGS).getItem() instanceof ItemGlitchArmor &&
-                player.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof ItemGlitchArmor;
+        Item glitchHelmet = player.getItemBySlot(EquipmentSlot.HEAD).getItem();
+        Item glitchChestplate = player.getItemBySlot(EquipmentSlot.CHEST).getItem();
+        Item glitchLeggings = player.getItemBySlot(EquipmentSlot.LEGS).getItem();
+        Item glitchBoots = player.getItemBySlot(EquipmentSlot.FEET).getItem();
+
+        // すべての装備がGlitchArmorであるか
+        boolean isSetEquipped = glitchHelmet instanceof ItemGlitchArmor &&
+                glitchChestplate instanceof ItemGlitchArmor &&
+                glitchLeggings instanceof ItemGlitchArmor &&
+                glitchBoots instanceof ItemGlitchArmor;
+        if(isSetEquipped) {
+            // すべての装備のMaterialが同じであるか
+            return ((ItemGlitchArmor)glitchHelmet).getMaterial() == ((ItemGlitchArmor)glitchChestplate).getMaterial() &&
+                    ((ItemGlitchArmor)glitchHelmet).getMaterial() == ((ItemGlitchArmor)glitchLeggings).getMaterial() &&
+                    ((ItemGlitchArmor)glitchHelmet).getMaterial() == ((ItemGlitchArmor)glitchBoots).getMaterial();
+        }
+        return false;
     }
 
     public static boolean isFlyEnabledAndFullSet(ServerPlayer player) {

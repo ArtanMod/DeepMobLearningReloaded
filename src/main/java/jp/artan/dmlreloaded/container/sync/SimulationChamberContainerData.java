@@ -15,9 +15,11 @@ public class SimulationChamberContainerData extends SimpleContainerData {
     public int get(int key) {
         return switch (key) {
             case 0 -> this.blockEntity.getProgress();
-            case 1 -> this.blockEntity.getEnergy();
-            case 2 -> this.blockEntity.energyStorage.getMaxEnergyStored();
-            case 3 -> this.blockEntity.getByproductSuccess()? 1 : 0;
+            case 1 -> this.blockEntity.getByproductSuccess() ? 1 : 0;
+            case 2 -> this.blockEntity.energyStorage.getEnergyStored() & 0x0000FFFF;
+            case 3 -> (this.blockEntity.energyStorage.getEnergyStored() & 0xFFFF0000) >> 16;
+            case 4 -> this.blockEntity.energyStorage.getMaxEnergyStored() & 0x0000FFFF;
+            case 5 -> (this.blockEntity.energyStorage.getMaxEnergyStored() & 0xFFFF0000) >> 16;
             default -> throw new UnsupportedOperationException("Unable to get key: '" + key + "' for block entity: '"
                     + this.blockEntity + "' at pos: '" + this.blockEntity.getBlockPos() + "'");
         };

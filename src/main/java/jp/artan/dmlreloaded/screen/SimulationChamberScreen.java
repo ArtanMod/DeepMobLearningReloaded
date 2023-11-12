@@ -60,8 +60,15 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
         // Render data model slot
         pGuiGraphics.blit(base, left - 41, top - 36, 0, 141, 18, 18);
 
+        final int energyStored1 = this.menu.data.get(2) & 0x0000FFFF;
+        final int energyStored2 = ((this.menu.data.get(3) & 0x0000FFFF) << 16) & 0xFFFF0000;
+        final int energyStored = energyStored1 | energyStored2;
+        final int maxEnergy1 = this.menu.data.get(4) & 0x0000FFFF;
+        final int maxEnergy2 = ((this.menu.data.get(5) & 0x0000FFFF) << 16) & 0xFFFF0000;
+        final int maxEnergy = maxEnergy1 | maxEnergy2;
+
         // Render current energy
-        int energyBarHeight = MathHelper.ensureRange((int) ((float) this.menu.data.get(1) / (this.menu.data.get(2) - data.getSimulationTickCost()) * 87), 0, 87);
+        int energyBarHeight = MathHelper.ensureRange((int) ((float) energyStored / (maxEnergy - data.getSimulationTickCost()) * 87), 0, 87);
         int energyBarOffset = 87 - energyBarHeight;
         pGuiGraphics.blit(base, left + 183,  top + 12 + energyBarOffset, 25, 141, 7, energyBarHeight);
 
@@ -87,8 +94,6 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
 
         NumberFormat f = NumberFormat.getNumberInstance(Locale.ENGLISH);
         List<Component> tooltip = new ArrayList<>();
-        final int energyStored = this.menu.data.get(1);
-        final int maxEnergy = this.menu.data.get(2);
 
         int x = pMouseX - getGuiLeft();
         int y = pMouseY - getGuiTop();
@@ -198,7 +203,7 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
             animateString(pGuiGraphics, lines[1], a2, a1, 1, false, leftStart, topStart + spacing, 0xFFFFFF);
             animateString(pGuiGraphics, lines[2], a3, a2, 16, true, leftStart, topStart + (spacing * 2), 0xFFFFFF);
         } else if(this.menu.data.get(0) > 0) {
-            updateSimulationText(getMenu().getDataModel(), this.menu.data.get(3));
+            updateSimulationText(getMenu().getDataModel(), this.menu.data.get(1));
 
             pGuiGraphics.drawString(font, getMenu().data.get(0) + "%", leftStart+158, 134, 0x55FFFF);
 

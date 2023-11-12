@@ -2,7 +2,6 @@ package jp.artan.dmlreloaded.item;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import jp.artan.dmlreloaded.item.material.GlitchToolMaterial;
 import jp.artan.dmlreloaded.util.NBTHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -11,9 +10,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -24,10 +21,9 @@ public class ItemGlitchSword extends SwordItem {
     private static final int DAMAGE_BONUS_MAX = 32;
     private static final int DAMAGE_INCREASE_CHANCE = 4;
 
-    public ItemGlitchSword(Properties p_43272_) {
-        super(new GlitchToolMaterial(), 10, 5f, p_43272_);
+    public ItemGlitchSword(Tier pTier, Item.Properties pProperties) {
+        super(pTier, 10, 5f, pProperties);
     }
-
 
     public static boolean canIncreaseDamage(ItemStack sword) {
         return getPermanentWeaponDamage(sword) < DAMAGE_BONUS_MAX;

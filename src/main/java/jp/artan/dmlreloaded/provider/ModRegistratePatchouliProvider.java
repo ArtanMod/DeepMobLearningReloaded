@@ -80,16 +80,6 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                     registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.13.title", "ファントム / ピグリン");
                     registrate.addRawLang("patchouli.category.1.introduction.entry.3.page.14.title", "Ravager");
                     registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.14.title", "ラヴェジャー");
-                    registrate.addRawLang("patchouli.category.1.introduction.entry.3.page.15.title", "Ravager / Naga");
-                    registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.15.title", "ラヴェジャー / ナーガ");
-                    registrate.addRawLang("patchouli.category.1.introduction.entry.3.page.16.title", "Lich / Minoshroom");
-                    registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.16.title", "リッチ / ミノッシュルーム");
-                    registrate.addRawLang("patchouli.category.1.introduction.entry.3.page.17.title", "Hydra / Knight Phantom");
-                    registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.17.title", "ヒドラ / ナイトファントム");
-                    registrate.addRawLang("patchouli.category.1.introduction.entry.3.page.18.title", "Ur Ghast / Alpha Yeti");
-                    registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.18.title", "ウルガスト / アルファイエティ");
-//                    registrate.addRawLang("patchouli.category.1.introduction.entry.3.page.19.title", "Snow Queen");
-//                    registrate.addRawJPLang("patchouli.category.1.introduction.entry.3.page.19.title", "雪の女王");
                 }
             }
             {
@@ -145,6 +135,36 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                     registrate.addRawJPLang("patchouli.category.2.introduction.entry.4.page.2.text", "$(item)FE$()と$(item)RF$()の両方が動作します。$(br2)以下は、$(item)機械$()を動かすために動作することができるいくつかのMOD例です。$(br2)$(l:https://www.curseforge.com/minecraft/mc-mods/simple-generators)Simple Generators$() (Misc)$(br)$(l:https://www.curseforge.com/minecraft/mc-mods/mekanism-generators)Mekanism Generators$() (Reactors)$(br)$(l:https://minecraft.curseforge.com/projects/advanced-generators)Advanced Generators$()");
                 }
             }
+//            {
+//                registrate.addRawLang("patchouli.category.3.title", "Mod Collaboration");
+//                registrate.addRawJPLang("patchouli.category.3.title", "モッド連携");
+//                registrate.addRawLang("patchouli.category.3.description", "DeepMobLearningReloaded works with several mods. there are different levels of mod linkage. $(br2)Level1 is a linkage that adds mobs to the existing data model as mobs to be defeated or monster drops that can be produced with pristine matter. $(br2)Level2 is a linkage that adds data models and pristine matter for mobs that are added by the target mod.");
+//                registrate.addRawJPLang("patchouli.category.3.description", "DeepMobLearningReloadedはいくつかのMODと連携をしています。MOD連携には段階があります。$(br2)Level1は既存のデータモデルに対して討伐対象モブとして追加や綺麗なマターで生産できるモンスタードロップ品の追加を行う連携。$(br2)Level2は対象のMODで追加されるモブのデータモデルや綺麗なマターを追加します。");
+//                {
+//                    registrate.addRawLang("patchouli.category.3.entry.1.title", "Twilight Forest");
+//                    registrate.addRawJPLang("patchouli.category.3.entry.1.title", "Twilight Forest");
+//                    registrate.addRawLang("patchouli.category.3.entry.1.page.1.text", "Collaboration Level2$(br2)In the Twilight Forest, data models for seven new boss monsters will be added.");
+//                    registrate.addRawJPLang("patchouli.category.3.entry.1.page.1.text", "連携レベル2$(br2)黄昏の森では新たに7種類のボスモンスター用のデータモデルが追加されます。");
+//                    registrate.addRawLang("patchouli.category.3.entry.1.page.2.title", "Naga / Lich");
+//                    registrate.addRawJPLang("patchouli.category.3.entry.1.page.2.title", "ナーガ / リッチ");
+//                    registrate.addRawLang("patchouli.category.3.entry.1.page.3.title", "Minoshroom / Hydra");
+//                    registrate.addRawJPLang("patchouli.category.3.entry.1.page.3.title", "ミノッシュルーム / ヒドラ");
+//                    registrate.addRawLang("patchouli.category.3.entry.1.page.4.title", "Knight Phantom / Ur Ghast");
+//                    registrate.addRawJPLang("patchouli.category.3.entry.1.page.4.title", "ナイトファントム / ウルガスト");
+//                    registrate.addRawLang("patchouli.category.3.entry.1.page.5.title", "Alpha Yeti");
+//                    registrate.addRawJPLang("patchouli.category.3.entry.1.page.5.title", "アルファイエティ");
+//                }
+//                {
+//                    registrate.addRawLang("patchouli.category.3.entry.2.title", "DeeperAndDarker");
+//                    registrate.addRawJPLang("patchouli.category.3.entry.2.title", "DeeperAndDarker");
+//                    registrate.addRawLang("patchouli.category.3.entry.2.page.1.text", "Collaboration Level2$(br2)In the DeeperAndDarker, data models for 3 new boss monsters will be added.");
+//                    registrate.addRawJPLang("patchouli.category.3.entry.2.page.1.text", "連携レベル2$(br2)DeeperAndDarkerでは新たに3種類のボスモンスター用のデータモデルが追加されます。");
+//                    registrate.addRawLang("patchouli.category.3.entry.2.page.2.title", "Shattered / Sculk Centipede");
+//                    registrate.addRawJPLang("patchouli.category.3.entry.2.page.2.title", "Shattered / Sculk Centipede");
+//                    registrate.addRawLang("patchouli.category.3.entry.2.page.3.title", "Stalker");
+//                    registrate.addRawJPLang("patchouli.category.3.entry.2.page.3.title", "Stalker");
+//                }
+//            }
         }
     }
 
@@ -256,33 +276,8 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                             .setTitle("patchouli.category.1.introduction.entry.3.page.13.title")
                             .build();
                     p.addCraftingRecipePage(ItemInit.DataModel.RAVAGER)
-//                            .setFlag("!mod:twilightforest")
                             .setTitle("patchouli.category.1.introduction.entry.3.page.14.title")
                             .build();
-//                    p.addCraftingRecipePage(ItemInit.DataModel.RAVAGER)
-//                            .setRecipe2(TwilightItemInit.DataModel.NAGA)
-//                            .setFlag("mod:twilightforest")
-//                            .setTitle("patchouli.category.1.introduction.entry.3.page.15.title")
-//                            .build();
-//                    p.addCraftingRecipePage(TwilightItemInit.DataModel.LICH)
-//                            .setRecipe2(TwilightItemInit.DataModel.MINOSHROOM)
-//                            .setFlag("mod:twilightforest")
-//                            .setTitle("patchouli.category.1.introduction.entry.3.page.16.title")
-//                            .build();
-//                    p.addCraftingRecipePage(TwilightItemInit.DataModel.HYDRA)
-//                            .setRecipe2(TwilightItemInit.DataModel.KNIGHT_PHANTOM)
-//                            .setFlag("mod:twilightforest")
-//                            .setTitle("patchouli.category.1.introduction.entry.3.page.17.title")
-//                            .build();
-//                    p.addCraftingRecipePage(TwilightItemInit.DataModel.UR_GHAST)
-//                            .setRecipe2(TwilightItemInit.DataModel.ALPHA_YETI)
-//                            .setFlag("mod:twilightforest")
-//                            .setTitle("patchouli.category.1.introduction.entry.3.page.18.title")
-//                            .build();
-//                    p.addCraftingRecipePage(TwilightItemInit.DataModel.SNOW_QUEEN)
-//                            .setFlag("mod:twilightforest")
-//                            .setTitle("patchouli.category.1.introduction.entry.3.page.19.title")
-//                            .build();
                     return p;
                 }).build()
                 .build()
@@ -347,6 +342,55 @@ public class ModRegistratePatchouliProvider extends RegistratePatchouliProvider 
                 }).build()
                 .build()
                 .build()
+//                .addCategory(
+//                        "Collaboration",
+//                        "patchouli.category.3.title",
+//                        "patchouli.category.3.description",
+//                        ItemInit.GLITCH_HEART
+//                )
+//                .properties(p -> p.setFlag("mod:twilightforest"))
+//                .entries()
+//                .addEntry("Twilight Forest", "patchouli.category.3.entry.1.title", TwilightItemInit.DataModel.NAGA).properties(p -> {
+//                    p.addTextPage("patchouli.category.3.entry.1.page.1.text")
+//                            .build();
+//                    p.addCraftingRecipePage(TwilightItemInit.DataModel.NAGA)
+//                            .setRecipe2(TwilightItemInit.DataModel.LICH)
+//                            .setFlag("mod:twilightforest")
+//                            .setTitle("patchouli.category.3.entry.1.page.2.title")
+//                            .build();
+//                    p.addCraftingRecipePage(TwilightItemInit.DataModel.MINOSHROOM)
+//                            .setRecipe2(TwilightItemInit.DataModel.HYDRA)
+//                            .setFlag("mod:twilightforest")
+//                            .setTitle("patchouli.category.3.entry.1.page.3.title")
+//                            .build();
+//                    p.addCraftingRecipePage(TwilightItemInit.DataModel.KNIGHT_PHANTOM)
+//                            .setRecipe2(TwilightItemInit.DataModel.UR_GHAST)
+//                            .setFlag("mod:twilightforest")
+//                            .setTitle("patchouli.category.3.entry.1.page.4.title")
+//                            .build();
+//                    p.addCraftingRecipePage(TwilightItemInit.DataModel.ALPHA_YETI)
+//                            .setFlag("mod:twilightforest")
+//                            .setTitle("patchouli.category.3.entry.1.page.5.title")
+//                            .build();
+//                    return p;
+//                }).build()
+//                .addEntry("DeeperAndDarker", "patchouli.category.3.entry.2.title", DeeperAndDarkerItemInit.DataModel.STALKER).properties(p -> {
+//                    p.setFlag("mod:deeperdarker");
+//                    p.addTextPage("patchouli.category.3.entry.2.page.1.text")
+//                            .build();
+//                    p.addCraftingRecipePage(DeeperAndDarkerItemInit.DataModel.SHATTERED)
+//                            .setRecipe2(DeeperAndDarkerItemInit.DataModel.SCULK_CENTIPEDE)
+//                            .setFlag("mod:twilightforest")
+//                            .setTitle("patchouli.category.3.entry.2.page.2.title")
+//                            .build();
+//                    p.addCraftingRecipePage(DeeperAndDarkerItemInit.DataModel.STALKER)
+//                            .setFlag("mod:twilightforest")
+//                            .setTitle("patchouli.category.3.entry.2.page.3.title")
+//                            .build();
+//                    return p;
+//                }).build()
+//                .build()
+//                .build()
                 .build()
                 .getTemplates()
 //                .addTemplate("fluid_infusion").properties(p -> {

@@ -24,7 +24,7 @@ public class ExtractionChamberContainer extends AbstractContainerMenu{
 
     // Client
     public ExtractionChamberContainer(MenuType<?> menuType, int id, Inventory playerInv, FriendlyByteBuf buf) {
-        this(menuType, id, playerInv, new BaseStackHandler(17), buf.readBlockPos(), new SimpleContainerData(5));
+        this(menuType, id, playerInv, new BaseStackHandler(17), buf.readBlockPos(), new SimpleContainerData(7));
     }
 
     // Server
@@ -106,6 +106,6 @@ public class ExtractionChamberContainer extends AbstractContainerMenu{
 
     public static MenuConstructor getServerContainer(BlockEntityExtractionChamber be, BlockPos pos) {
         return (id, playerInv, player) -> new ExtractionChamberContainer(ContainerInit.EXTRACTION_CHAMBER.get(), id, playerInv, be.inventory, pos,
-                new ExtractionChamberContainerData(be, 5));
+                new ExtractionChamberContainerData(be, 7));
     }
 }
