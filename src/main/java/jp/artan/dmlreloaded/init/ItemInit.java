@@ -2,6 +2,7 @@ package jp.artan.dmlreloaded.init;
 
 import jp.artan.artansprojectcoremod.common.ArmorItems;
 import jp.artan.artansprojectcoremod.plugin.registrate.builder.ModItemBuilder;
+import jp.artan.artansprojectcoremod.utils.RecipeGenUtils;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.common.LivingMatterType;
 import jp.artan.dmlreloaded.common.MobKey;
@@ -150,6 +151,7 @@ public class ItemInit {
             .register();
 
     public static final ItemEntry<ItemGlitchSword> GLITCH_SWORD = REGISTRATE.item("glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.GLITCH, p))
+            .model((ctx, prov) -> prov.handheld(ctx))
             .recipe((ctx, prov) -> {
                 ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
                         .define('#', GLITCH_INGOT.get())
@@ -180,12 +182,22 @@ public class ItemInit {
             .addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_5", "剣の耐久値が増加します.")
             .addRawJPLang("dmlreloaded.hover_text.glitch_infused_sword_6", "現在の耐久値増加: %1$s (最大 %2$s)")
             .register();
-
+    public static final ItemEntry<ItemGlitchSword> NETHERITE_GLITCH_SWORD = REGISTRATE.item("netherite_glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.NETHERITE_GLITCH, p))
+            .model((ctx, prov) -> prov.handheld(ctx))
+            .properties(p -> p.fireResistant())
+            .recipe((ctx, prov) -> {
+                RecipeGenUtils.Smithing.smithingUpgrade(RecipeCategory.COMBAT, GLITCH_SWORD::get, Ingredient.of(NETHERITE_GLITCH_INGOT.get()), ctx::get)
+                        .save(prov, "netherite_glitch_infused_sword_smithing");
+            })
+            .lang("Netherite Glitch Infused Sword")
+            .jpLang("ネザライトグリッチが染み込んだ剣")
+            .register();
+            
     public static final ArmorItems<ArmorItem> GLITCH_ARMOR = REGISTRATE.armorItems("glitch_infused", GlitchArmorMaterials.GLITCH)
             .lang("Glitch Infused")
             .jpLang("グリッチが染み込んだ")
             .register();
-    public static final ArmorItems<ArmorItem> NETHERITE_GLITCH_ARMOR = REGISTRATE.armorItems("netherite_glitch_infused", GlitchArmorMaterials.NETHERITE_GLITCH, GLITCH_ARMOR)
+    public static final ArmorItems<ItemGlitchArmor> NETHERITE_GLITCH_ARMOR = REGISTRATE.armorItems("netherite_glitch_infused", GlitchArmorMaterials.NETHERITE_GLITCH, ItemGlitchArmor::new, GLITCH_ARMOR)
             .lang("Netherite Glitch Infused")
             .jpLang("ネザライトグリッチが染み込んだ")
             .register();
