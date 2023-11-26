@@ -1,7 +1,7 @@
 {
   "category": "dmlreloaded:0_introduction",
   "icon": "dmlreloaded:deep_learner",
-  "name": "Data",
+  "name": "patchouli.category.1.introduction.entry.2.title",
   "pages": [
     {
       "type": "patchouli:text",

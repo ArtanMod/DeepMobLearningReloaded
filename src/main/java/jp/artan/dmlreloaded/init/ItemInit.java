@@ -1,5 +1,6 @@
 package jp.artan.dmlreloaded.init;
 
+import jp.artan.artansprojectcoremod.common.ArmorItems;
 import jp.artan.artansprojectcoremod.plugin.registrate.builder.ModItemBuilder;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.common.LivingMatterType;
@@ -16,6 +17,7 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.UpgradeRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -190,99 +192,13 @@ public class ItemInit {
             .jpLang("ネザライトグリッチが染み込んだ剣")
             .register();
 
-    public static final ItemEntry<ItemGlitchArmor> GLITCH_HELMET = REGISTRATE.item("glitch_infused_helmet", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.HEAD, p))
-            .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get())
-                        .define('#', GLITCH_INGOT.get())
-                        .pattern("###")
-                        .pattern("# #")
-                        .unlockedBy("has_item", RegistrateRecipeProvider.has(GLITCH_INGOT.get()))
-                        .save(prov);
-            })
-            .lang("Glitch Infused Helmet")
-            .jpLang("グリッチが染み込んだヘルメット")
+    public static final ArmorItems<ArmorItem> GLITCH_ARMOR = REGISTRATE.armorItems("glitch_infused", GlitchArmorMaterials.GLITCH)
+            .lang("Glitch Infused")
+            .jpLang("グリッチが染み込んだ")
             .register();
-
-    public static final ItemEntry<ItemGlitchArmor> NETHERITE_GLITCH_HELMET = REGISTRATE.item("netherite_glitch_infused_helmet", p -> new ItemGlitchArmor(GlitchArmorMaterials.NETHERITE_GLITCH, EquipmentSlot.HEAD, p))
-            .recipe((ctx, prov) -> {
-                UpgradeRecipeBuilder.smithing(Ingredient.of(GLITCH_HELMET.get()), Ingredient.of(NETHERITE_GLITCH_INGOT.get()), ctx.get())
-                        .unlocks("has_netherite_glitch_ingot", RegistrateRecipeProvider.has(NETHERITE_GLITCH_INGOT.get()))
-                        .save(prov, "netherite_glitch_infused_helmet_smithing");
-            })
-            .lang("Netherite Glitch Infused Helmet")
-            .jpLang("ネザライトグリッチが染み込んだヘルメット")
-            .register();
-
-    public static final ItemEntry<ItemGlitchArmor> GLITCH_CHEST = REGISTRATE.item("glitch_infused_chestplate", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.CHEST, p))
-            .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get())
-                        .define('#', GLITCH_INGOT.get())
-                        .pattern("# #")
-                        .pattern("###")
-                        .pattern("###")
-                        .unlockedBy("has_item", RegistrateRecipeProvider.has(GLITCH_INGOT.get()))
-                        .save(prov);
-            })
-            .lang("Glitch Infused Chestplate")
-            .jpLang("グリッチが染み込んだチェストプレート")
-            .register();
-
-    public static final ItemEntry<ItemGlitchArmor> NETHERITE_GLITCH_CHEST = REGISTRATE.item("netherite_glitch_infused_chestplate", p -> new ItemGlitchArmor(GlitchArmorMaterials.NETHERITE_GLITCH, EquipmentSlot.CHEST, p))
-            .recipe((ctx, prov) -> {
-                UpgradeRecipeBuilder.smithing(Ingredient.of(GLITCH_CHEST.get()), Ingredient.of(NETHERITE_GLITCH_INGOT.get()), ctx.get())
-                        .unlocks("has_netherite_glitch_ingot", RegistrateRecipeProvider.has(NETHERITE_GLITCH_INGOT.get()))
-                        .save(prov, "netherite_glitch_infused_chestplate_smithing");
-            })
-            .lang("Netherite Glitch Infused Chestplate")
-            .jpLang("ネザライトグリッチが染み込んだチェストプレート")
-            .register();
-
-
-    public static final ItemEntry<ItemGlitchArmor> GLITCH_LEGGINGS = REGISTRATE.item("glitch_infused_leggings", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.LEGS, p))
-            .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get())
-                        .define('#', GLITCH_INGOT.get())
-                        .pattern("###")
-                        .pattern("# #")
-                        .pattern("# #")
-                        .unlockedBy("has_item", RegistrateRecipeProvider.has(GLITCH_INGOT.get()))
-                        .save(prov);
-            })
-            .lang("Glitch Infused Leggings")
-            .jpLang("グリッチが染み込んだレギンス")
-            .register();
-
-    public static final ItemEntry<ItemGlitchArmor> NETHERITE_GLITCH_LEGGINGS = REGISTRATE.item("netherite_glitch_infused_leggings", p -> new ItemGlitchArmor(GlitchArmorMaterials.NETHERITE_GLITCH, EquipmentSlot.LEGS, p))
-            .recipe((ctx, prov) -> {
-                UpgradeRecipeBuilder.smithing(Ingredient.of(GLITCH_LEGGINGS.get()), Ingredient.of(NETHERITE_GLITCH_INGOT.get()), ctx.get())
-                        .unlocks("has_netherite_glitch_ingot", RegistrateRecipeProvider.has(NETHERITE_GLITCH_INGOT.get()))
-                        .save(prov, "netherite_glitch_infused_leggings_smithing");
-            })
-            .lang("Netherite Glitch Infused Leggings")
-            .jpLang("ネザライトグリッチが染み込んだレギンス")
-            .register();
-
-    public static final ItemEntry<ItemGlitchArmor> GLITCH_BOOTS = REGISTRATE.item("glitch_infused_boots", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.FEET, p))
-            .recipe((ctx, prov) -> {
-                ShapedRecipeBuilder.shaped(ctx.get())
-                        .define('#', GLITCH_INGOT.get())
-                        .pattern("# #")
-                        .pattern("# #")
-                        .unlockedBy("has_item", RegistrateRecipeProvider.has(GLITCH_INGOT.get()))
-                        .save(prov);
-            })
-            .lang("Glitch Infused Boots")
-            .jpLang("グリッチが染み込んだブーツ")
-            .register();
-
-    public static final ItemEntry<ItemGlitchArmor> NETHERITE_GLITCH_BOOTS = REGISTRATE.item("netherite_glitch_infused_boots", p -> new ItemGlitchArmor(GlitchArmorMaterials.NETHERITE_GLITCH, EquipmentSlot.FEET, p))
-            .recipe((ctx, prov) -> {
-                UpgradeRecipeBuilder.smithing(Ingredient.of(GLITCH_BOOTS.get()), Ingredient.of(NETHERITE_GLITCH_INGOT.get()), ctx.get())
-                        .unlocks("has_netherite_glitch_ingot", RegistrateRecipeProvider.has(NETHERITE_GLITCH_INGOT.get()))
-                        .save(prov, "netherite_glitch_infused_boots_smithing");
-            })
-            .lang("Netherite Glitch Infused Boots")
-            .jpLang("ネザライトグリッチが染み込んだブーツ")
+    public static final ArmorItems<ArmorItem> NETHERITE_GLITCH_ARMOR = REGISTRATE.armorItems("netherite_glitch_infused", GlitchArmorMaterials.NETHERITE_GLITCH, GLITCH_ARMOR)
+            .lang("Netherite Glitch Infused")
+            .jpLang("ネザライトグリッチが染み込んだ")
             .register();
 
     public static void register() {

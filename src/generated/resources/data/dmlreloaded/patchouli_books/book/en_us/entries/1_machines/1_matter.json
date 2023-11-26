@@ -1,7 +1,7 @@
 {
   "category": "dmlreloaded:1_machines",
   "icon": "dmlreloaded:living_matter_hellish",
-  "name": "Matter",
+  "name": "patchouli.category.2.introduction.entry.2.title",
   "pages": [
     {
       "type": "patchouli:text",

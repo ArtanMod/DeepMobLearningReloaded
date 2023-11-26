@@ -1,7 +1,7 @@
 {
   "category": "dmlreloaded:1_machines",
   "icon": "minecraft:redstone",
-  "name": "Energy",
+  "name": "patchouli.category.2.introduction.entry.4.title",
   "pages": [
     {
       "type": "patchouli:spotlight",

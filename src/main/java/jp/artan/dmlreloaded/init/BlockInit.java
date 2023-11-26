@@ -1,6 +1,6 @@
 package jp.artan.dmlreloaded.init;
 
-import jp.artan.artansprojectcoremod.gen.BlockStateGen;
+import jp.artan.artansprojectcoremod.utils.BlockStateGenUtils;
 import jp.artan.dmlreloaded.DeepMobLearningReloaded;
 import jp.artan.dmlreloaded.block.BlockExtractionChamber;
 import jp.artan.dmlreloaded.block.BlockSimulationChamber;
@@ -22,7 +22,7 @@ public class BlockInit {
 
     public static final BlockEntry<Block> MACHINE_CASING = REGISTRATE.block("machine_casing", Block::new)
             .initialProperties(Material.STONE)
-            .blockstate((c, p) -> BlockStateGen.cubeAll(c, p, "", "machine_base_up"))
+            .blockstate((c, p) -> BlockStateGenUtils.cubeAll(c, p, "", "machine_base_up"))
             .simpleItem()
             .recipe((ctx, prov) -> {
                 ShapedRecipeBuilder.shaped(ctx.get(), 8)
@@ -110,7 +110,7 @@ public class BlockInit {
     public static final BlockEntry<Block> INFUSED_INGOT_BLOCK = REGISTRATE.block("infused_ingot_block", Block::new)
             .initialProperties(Material.METAL)
             .properties(p -> p.strength(4f, 10.0f))
-            .blockstate((c, p) -> BlockStateGen.cubeAll(c, p, "", "infused_ingot_blockface"))
+            .blockstate((c, p) -> BlockStateGenUtils.cubeAll(c, p, "", "infused_ingot_blockface"))
             .simpleItem()
             .recipe((ctx, prov) -> {
                 ShapelessRecipeBuilder.shapeless(ctx.get()).requires(ItemInit.GLITCH_INGOT.get(), 9)

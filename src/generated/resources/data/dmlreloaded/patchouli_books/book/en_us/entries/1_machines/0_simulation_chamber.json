@@ -1,7 +1,7 @@
 {
   "category": "dmlreloaded:1_machines",
   "icon": "dmlreloaded:simulation_chamber",
-  "name": "Simulation Chamber",
+  "name": "patchouli.category.2.introduction.entry.1.title",
   "pages": [
     {
       "type": "patchouli:text",

@@ -1,7 +1,7 @@
 {
   "category": "dmlreloaded:0_introduction",
   "icon": "dmlreloaded:soot_covered_redstone",
-  "name": "Introduction",
+  "name": "patchouli.category.1.introduction.entry.1.title",
   "pages": [
     {
       "type": "patchouli:text",
