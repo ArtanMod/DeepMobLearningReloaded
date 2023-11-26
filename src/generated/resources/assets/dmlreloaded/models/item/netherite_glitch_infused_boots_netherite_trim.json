@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/iron_boots_netherite_trim",
+  "textures": {
+    "layer0": "dmlreloaded:item/netherite_glitch_infused_boots"
+  }
+}

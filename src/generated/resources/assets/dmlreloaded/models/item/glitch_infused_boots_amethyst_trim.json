@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/iron_boots_amethyst_trim",
+  "textures": {
+    "layer0": "dmlreloaded:item/glitch_infused_boots"
+  }
+}

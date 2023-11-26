@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/iron_chestplate_redstone_trim",
+  "textures": {
+    "layer0": "dmlreloaded:item/glitch_infused_chestplate"
+  }
+}

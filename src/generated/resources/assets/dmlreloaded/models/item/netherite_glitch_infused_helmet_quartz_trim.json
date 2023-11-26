@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/iron_helmet_quartz_trim",
+  "textures": {
+    "layer0": "dmlreloaded:item/netherite_glitch_infused_helmet"
+  }
+}

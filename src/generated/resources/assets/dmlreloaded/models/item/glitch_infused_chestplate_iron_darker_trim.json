@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/iron_chestplate_iron_darker_trim",
+  "textures": {
+    "layer0": "dmlreloaded:item/glitch_infused_chestplate"
+  }
+}

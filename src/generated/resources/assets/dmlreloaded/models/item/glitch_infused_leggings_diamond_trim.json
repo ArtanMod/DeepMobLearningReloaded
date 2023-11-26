@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/iron_leggings_diamond_trim",
+  "textures": {
+    "layer0": "dmlreloaded:item/glitch_infused_leggings"
+  }
+}

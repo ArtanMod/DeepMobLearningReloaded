@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/iron_helmet_emerald_trim",
+  "textures": {
+    "layer0": "dmlreloaded:item/glitch_infused_helmet"
+  }
+}
