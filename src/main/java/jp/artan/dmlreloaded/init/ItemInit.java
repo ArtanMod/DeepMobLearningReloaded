@@ -192,11 +192,11 @@ public class ItemInit {
             .jpLang("ネザライトグリッチが染み込んだ剣")
             .register();
 
-    public static final ArmorItems<ArmorItem> GLITCH_ARMOR = REGISTRATE.armorItems("glitch_infused", GlitchArmorMaterials.GLITCH)
+    public static final ArmorItems<ItemGlitchArmor> GLITCH_ARMOR = REGISTRATE.armorItems("glitch_infused", GlitchArmorMaterials.GLITCH, ItemGlitchArmor::new)
             .lang("Glitch Infused")
             .jpLang("グリッチが染み込んだ")
             .register();
-    public static final ArmorItems<ArmorItem> NETHERITE_GLITCH_ARMOR = REGISTRATE.armorItems("netherite_glitch_infused", GlitchArmorMaterials.NETHERITE_GLITCH, GLITCH_ARMOR)
+    public static final ArmorItems<ItemGlitchArmor> NETHERITE_GLITCH_ARMOR = REGISTRATE.armorItems("netherite_glitch_infused", GlitchArmorMaterials.NETHERITE_GLITCH, ItemGlitchArmor::new, GLITCH_ARMOR)
             .lang("Netherite Glitch Infused")
             .jpLang("ネザライトグリッチが染み込んだ")
             .register();
