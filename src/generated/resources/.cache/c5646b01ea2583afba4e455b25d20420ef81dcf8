@@ -1,4 +1,4 @@
-// 1.19.2	2023-11-26T13:36:53.5439692	Registrate Provider for dmlreloaded [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Languages: ja_jp]
+// 1.19.2	2023-11-26T15:17:20.920188	Registrate Provider for dmlreloaded [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Languages: ja_jp]
 819921f79d5bc5a94cda4e0dc90357991620b552 assets/dmlreloaded/blockstates/extraction_chamber.json
 7a8b89ed39829d397ac598a7550cb633cd26410a assets/dmlreloaded/blockstates/infused_ingot_block.json
 5fad5624a4cb6b6d52251013da821f6764bcf790 assets/dmlreloaded/blockstates/machine_casing.json
@@ -43,7 +43,7 @@ fbc0af1658454e8c7a0a804f56b19ebec04ade92 assets/dmlreloaded/models/item/data_mod
 5a2b58ecac1b8c07201c8304a017f41a89452116 assets/dmlreloaded/models/item/glitch_infused_helmet.json
 d4939f7df4b89b6c2e075455c21f044902be7404 assets/dmlreloaded/models/item/glitch_infused_ingot.json
 86945464cbe6a3c5f02d6fe795d7f79caa17acc8 assets/dmlreloaded/models/item/glitch_infused_leggings.json
-526d5440247df25a7bc37f48b65dcbff6fab9b3f assets/dmlreloaded/models/item/glitch_infused_sword.json
+5896938976e1da9c16b8f8f27be391480b474be5 assets/dmlreloaded/models/item/glitch_infused_sword.json
 b747267ba3c0791861c548506b59323c6bc3835e assets/dmlreloaded/models/item/infused_ingot_block.json
 12652f3d127d442fe31576f0418a4f58cba18793 assets/dmlreloaded/models/item/living_matter_deeper_darker.json
 74e4f146af714050a0c51e8f66d7571de7791552 assets/dmlreloaded/models/item/living_matter_extraterrestrial.json
@@ -56,7 +56,7 @@ e7aaeb63dbfe47392a2da834c2911be0e2327e99 assets/dmlreloaded/models/item/netherit
 37202ca7bfb7abdee060404327e76cf8844be572 assets/dmlreloaded/models/item/netherite_glitch_infused_helmet.json
 c89fb08ca918855e5f717f7c20bc30fe4cd1545c assets/dmlreloaded/models/item/netherite_glitch_infused_ingot.json
 fbab71ca19e5de2057c27dd4bef60feed1918d73 assets/dmlreloaded/models/item/netherite_glitch_infused_leggings.json
-a1f149062d7fd34c40f0b00ba263b599098c1901 assets/dmlreloaded/models/item/netherite_glitch_infused_sword.json
+fbf8a1748a015da0aa56ebbdb84d004b4ebd4426 assets/dmlreloaded/models/item/netherite_glitch_infused_sword.json
 7f82541e4c3b08fa29094213926ea5f7f8bfc888 assets/dmlreloaded/models/item/polymer_clay.json
 567de56cc5ec5600624093b670048591963ddda9 assets/dmlreloaded/models/item/pristine_matter_blaze.json
 cd4fa247baa6256b3bb4e80aaa7fda5b3321260c assets/dmlreloaded/models/item/pristine_matter_creeper.json

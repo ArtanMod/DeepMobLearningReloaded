@@ -150,6 +150,7 @@ public class ItemInit {
             .register();
 
     public static final ItemEntry<ItemGlitchSword> GLITCH_SWORD = REGISTRATE.item("glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.GLITCH, p))
+            .model((ctx, prov) -> prov.handheld(ctx))
             .recipe((ctx, prov) -> {
                 ShapedRecipeBuilder.shaped(ctx.get())
                         .define('#', GLITCH_INGOT.get())
@@ -182,6 +183,7 @@ public class ItemInit {
             .register();
 
     public static final ItemEntry<ItemGlitchSword> NETHERITE_GLITCH_SWORD = REGISTRATE.item("netherite_glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.NETHERITE_GLITCH, p))
+            .model((ctx, prov) -> prov.handheld(ctx))
             .properties(p -> p.fireResistant())
             .recipe((ctx, prov) -> {
                 UpgradeRecipeBuilder.smithing(Ingredient.of(GLITCH_SWORD.get()), Ingredient.of(NETHERITE_GLITCH_INGOT.get()), ctx.get())
