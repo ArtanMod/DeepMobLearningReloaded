@@ -12,6 +12,7 @@ import jp.artan.repack.registrate.util.entry.ItemEntry;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -39,6 +40,7 @@ public class BlockInit {
             })
             .lang("Machine Casing")
             .jpLang("機械の枠")
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .register();
 
     public static final BlockEntry<BlockSimulationChamber> SIMULATION_CHAMBER = REGISTRATE.block("simulation_chamber", BlockSimulationChamber::new)
@@ -73,6 +75,7 @@ public class BlockInit {
             .simpleItem()
             .lang("Simulation Chamber")
             .jpLang("シミュレーション室")
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .register();
 
     public static final BlockEntry<BlockExtractionChamber> EXTRACTION_CHAMBER = REGISTRATE.block("extraction_chamber", BlockExtractionChamber::new)
@@ -107,6 +110,7 @@ public class BlockInit {
             .simpleItem()
             .lang("Extraction Chamber")
             .jpLang("抽出室")
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .register();
 
     public static final BlockEntry<Block> INFUSED_INGOT_BLOCK = REGISTRATE.block("infused_ingot_block", Block::new)
@@ -121,6 +125,7 @@ public class BlockInit {
             })
             .lang("Glitch Infused Block")
             .jpLang("グリッチが染み込んだブロック")
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .register();
 
     public static void register() {
