@@ -1,0 +1,8 @@
+{
+  "values": [
+    "dmlreloaded:machine_casing",
+    "dmlreloaded:simulation_chamber",
+    "dmlreloaded:extraction_chamber",
+    "dmlreloaded:infused_ingot_block"
+  ]
+}

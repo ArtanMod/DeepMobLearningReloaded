@@ -1,4 +1,4 @@
-// 1.19.2	2023-11-26T15:17:20.920188	Registrate Provider for dmlreloaded [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Languages: ja_jp]
+// 1.19.2	2024-01-14T22:16:46.0567177	Registrate Provider for dmlreloaded [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Languages: ja_jp]
 819921f79d5bc5a94cda4e0dc90357991620b552 assets/dmlreloaded/blockstates/extraction_chamber.json
 7a8b89ed39829d397ac598a7550cb633cd26410a assets/dmlreloaded/blockstates/infused_ingot_block.json
 5fad5624a4cb6b6d52251013da821f6764bcf790 assets/dmlreloaded/blockstates/machine_casing.json
@@ -229,3 +229,4 @@ f882856642cd0141481991ef646a76862a48f9be data/minecraft/recipes/nether_wart_from
 f9e14f802e47b0dc5752acf8c3a98e59b6b0da3c data/minecraft/recipes/prismarine_shard_from_living_matter_overworldian.json
 1776a4f3d8eea554fa8b1d07608bfbc0d408036e data/minecraft/recipes/rotten_flesh_from_living_matter_overworldian.json
 93b7c002c3c6dc05fce542c3e19a7f63d3d25238 data/minecraft/recipes/spider_eye_from_living_matter_overworldian.json
+2fe457892502e058489bcdcb4d8bba9a63fdb0b8 data/minecraft/tags/blocks/mineable/pickaxe.json
