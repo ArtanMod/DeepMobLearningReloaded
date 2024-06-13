@@ -1,0 +1,105 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+architectury {
+    platformSetupLoomIde()
+    forge()
+}
+archivesBaseName = archives_base_name + "-forge-mc" + minecraft_version
+
+sourceSets {
+    main {
+        resources.srcDir project(":common").file("src/main/generated")
+    }
+}
+loom {
+    runs {
+        named("client") {
+            setConfigName("${archives_base_name}-forge-Client")
+        }
+        named("server") {
+            setConfigName("${archives_base_name}-forge-Server")
+        }
+        data {
+            data()
+            programArgs "--all", "--mod", "dmlreloaded"
+            programArgs "--output", project(":common").file("src/main/generated").absolutePath
+            setConfigName("${archives_base_name}-forge-Data")
+            programArgs "--existing", project(":common").file("src/main/resources").absolutePath
+        }
+    }
+}
+
+configurations {
+    common
+    shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentForge.extendsFrom common
+}
+
+dependencies {
+    forge "net.minecraftforge:forge:${rootProject.forge_version}"
+    // Remove the next line if you don't want to depend on the API
+    modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
+
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+    if(Boolean.parseBoolean(is_local_artan_core)) {
+        modImplementation files(file(findProject(':common').getProjectDir().toPath().resolve("../../ArtanCoreMod/forge/build/libs")
+                .resolve("Artan'sProjectCoreMOD-forge-mc${minecraft_version}-${artan_core_local_version}-dev-shadow.jar")))
+    } else {
+        modImplementation "curse.maven:artancore-585454:" + artan_core_forge_version
+    }
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("META-INF/mods.toml") {
+        expand "version": project.version
+    }
+}
+
+shadowJar {
+    exclude "fabric.mod.json"
+
+    configurations = [project.configurations.shadowCommon]
+    archiveClassifier.set("dev-shadow")
+}
+
+remapJar {
+    inputFile.set shadowJar.archiveFile
+    dependsOn shadowJar
+    archiveClassifier.set(null)
+}
+
+jar {
+    archiveClassifier.set("dev")
+}
+
+sourcesJar {
+    def commonSources = project(":common").sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
+}
+
+components.java {
+    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+        skip()
+    }
+}
+
+publishing {
+    publications {
+        mavenForge(MavenPublication) {
+            artifactId = mod_id + "-" + project.name
+            from components.java
+        }
+    }
+
+    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+    repositories {
+        // Add repositories to publish to here.
+    }
+}

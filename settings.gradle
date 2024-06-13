@@ -1,0 +1,17 @@
+pluginManagement {
+    repositories {
+        maven { url "https://maven.fabricmc.net/" }
+        maven { url "https://maven.architectury.dev/" }
+        maven { url "https://maven.minecraftforge.net/" }
+        gradlePluginPortal()
+    }
+    plugins {
+        id "architectury-plugin" version "3.4-SNAPSHOT"
+        id "dev.architectury.loom" version "1.1-SNAPSHOT" apply false
+    }
+}
+
+rootProject.name = 'DeepMobLearningReloadedMod'
+include("common")
+include("fabric")
+include("forge")
