@@ -51,6 +51,10 @@ dependencies {
     } else {
         modImplementation "curse.maven:artancore-585454:" + artan_core_forge_version
     }
+
+    // JEI
+    modCompileOnly "mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"
+    modRuntimeOnly "mezz.jei:jei-${minecraft_version}-forge:${jei_version}"
 }
 
 processResources {
