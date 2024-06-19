@@ -11,7 +11,7 @@ import jp.artan.dmlreloaded.item.material.GlitchToolMaterials;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.Item;
 
-public class DBLItems {
+public class DMLItems {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registry.ITEM_REGISTRY);
 
     public static void register() {

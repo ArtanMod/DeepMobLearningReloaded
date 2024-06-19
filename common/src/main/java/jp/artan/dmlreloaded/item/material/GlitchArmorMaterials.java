@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.item.material;
 
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
-import jp.artan.dmlreloaded.init.DBLItems;
+import jp.artan.dmlreloaded.init.DMLItems;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.LazyLoadedValue;
@@ -13,10 +13,10 @@ import java.util.function.Supplier;
 
 public enum GlitchArmorMaterials implements ArmorMaterial {
     GLITCH("glitch_infused", 25, new int[]{3, 3, 6, 8}, 15, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0f, 0.0F, () -> {
-        return Ingredient.of(DBLItems.GLITCH_INGOT.get());
+        return Ingredient.of(DMLItems.GLITCH_INGOT.get());
     }),
     NETHERITE_GLITCH("netherite_glitch_infused", 40, new int[]{3, 3, 6, 8}, 20, SoundEvents.ARMOR_EQUIP_NETHERITE, 4.0F, 0.2F, () -> {
-        return Ingredient.of(DBLItems.NETHERITE_GLITCH_INGOT.get());
+        return Ingredient.of(DMLItems.NETHERITE_GLITCH_INGOT.get());
     });
 
     private static final int[] HEALTH_PER_SLOT = new int[]{16, 16, 16, 16};

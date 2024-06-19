@@ -1,14 +1,14 @@
 package jp.artan.dmlreloaded.common;
 
 import jp.artan.artansprojectcoremod.utils.inject.NonNullSupplier;
-import jp.artan.dmlreloaded.init.DBLItems;
+import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import net.minecraft.ChatFormatting;
 
 public enum LivingMatterType implements ILivingMatterType {
-    OVERWORLDIAN("overworldian", 10, () -> DBLItems.LIVING_MATTER_OVERWORLDIAN::get, ChatFormatting.GREEN),
-    HELLISH("hellish", 14, () -> DBLItems.LIVING_MATTER_HELLISH::get, ChatFormatting.DARK_RED),
-    EXTRATERRESTRIAL("extraterrestrial", 20, () -> DBLItems.LIVING_MATTER_EXTRATERRESTRIAL::get, ChatFormatting.LIGHT_PURPLE);
+    OVERWORLDIAN("overworldian", 10, () -> DMLItems.LIVING_MATTER_OVERWORLDIAN::get, ChatFormatting.GREEN),
+    HELLISH("hellish", 14, () -> DMLItems.LIVING_MATTER_HELLISH::get, ChatFormatting.DARK_RED),
+    EXTRATERRESTRIAL("extraterrestrial", 20, () -> DMLItems.LIVING_MATTER_EXTRATERRESTRIAL::get, ChatFormatting.LIGHT_PURPLE);
 
     private final String id;
     private final int exp;

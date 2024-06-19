@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.common.mobmetas;
 
 import jp.artan.dmlreloaded.common.MobKey;
-import jp.artan.dmlreloaded.init.DBLItems;
+import jp.artan.dmlreloaded.init.DMLItems;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -12,7 +12,7 @@ public class ZombieMeta extends MobMetaData {
                 MobKey.ZOMBIE,
                 "entity.minecraft.zombie",
                 80, 10,
-                DBLItems.PRISTINE_MATTER_ZOMBIE.get(),
+                DMLItems.PRISTINE_MATTER_ZOMBIE.get(),
                 Items.ZOMBIE_SPAWN_EGG,
                 3);
     }

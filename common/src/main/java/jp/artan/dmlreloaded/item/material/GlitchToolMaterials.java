@@ -1,6 +1,6 @@
 package jp.artan.dmlreloaded.item.material;
 
-import jp.artan.dmlreloaded.init.DBLItems;
+import jp.artan.dmlreloaded.init.DMLItems;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -9,10 +9,10 @@ import java.util.function.Supplier;
 
 public enum GlitchToolMaterials implements Tier {
     GLITCH(3, 2200, 3.0f, 9.0F, 15, () -> {
-        return Ingredient.of(DBLItems.GLITCH_INGOT.get());
+        return Ingredient.of(DMLItems.GLITCH_INGOT.get());
     }),
     NETHERITE_GLITCH(4, 3000, 9.0F, 12.0F, 20, () -> {
-        return Ingredient.of(DBLItems.NETHERITE_GLITCH_INGOT.get());
+        return Ingredient.of(DMLItems.NETHERITE_GLITCH_INGOT.get());
     });
 
     private final int level;
