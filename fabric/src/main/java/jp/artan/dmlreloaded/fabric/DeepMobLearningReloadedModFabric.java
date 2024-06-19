@@ -7,6 +7,7 @@ public class DeepMobLearningReloadedModFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         DeepMobLearningReloadedMod.init();
+        DeepMobLearningReloadedMod.commonSetup();
         DeepMobLearningReloadedMod.initClient();
     }
 }

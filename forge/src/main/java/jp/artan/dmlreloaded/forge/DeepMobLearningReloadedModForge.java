@@ -25,6 +25,7 @@ public class DeepMobLearningReloadedModForge {
     }
 
     public void commonSetup(final FMLCommonSetupEvent event) {
+        DeepMobLearningReloadedMod.commonSetup();
     }
 
     public void onClientSetup(FMLClientSetupEvent event) {

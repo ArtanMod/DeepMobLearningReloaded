@@ -18,6 +18,9 @@ public class DeepMobLearningReloadedMod {
         DMLBlockEntities.register();
     }
 
+    public static void commonSetup() {
+    }
+
     public static void initClient() {
         DMLBlockEntities.initClient();
     }
