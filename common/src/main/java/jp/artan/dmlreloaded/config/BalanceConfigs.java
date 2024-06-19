@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.config;
 
-import jp.artan.artansprojectcoremod.config.ModConfigs;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
+import jp.artan.artansprojectcoremod.config.ModConfigs;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 
 public class BalanceConfigs extends ModConfigs {
@@ -11,7 +11,7 @@ public class BalanceConfigs extends ModConfigs {
     public static ConfigEntry<Boolean> isGlitchArmorExtraDropsEnabled;
 
     protected BalanceConfigs() {
-        super("/" + DeepMobLearningReloadedMod.MOD_ID + "/balance.toml");
+        super(DeepMobLearningReloadedMod.MOD_ID + "/balance.toml");
     }
 
     @Override

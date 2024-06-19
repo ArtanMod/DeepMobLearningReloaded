@@ -20,7 +20,7 @@ public class DataModelConfig extends ModConfigs {
     public static ConfigEntry<Integer> tier4; //42;
 
     protected DataModelConfig() {
-        super("/" + DeepMobLearningReloadedMod.MOD_ID + "/data_model.toml");
+        super(DeepMobLearningReloadedMod.MOD_ID + "/data_model.toml");
     }
 
     @Override

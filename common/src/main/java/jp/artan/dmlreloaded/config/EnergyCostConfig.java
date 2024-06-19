@@ -10,7 +10,7 @@ public class EnergyCostConfig extends ModConfigs {
     public static ConfigEntry<Integer> efCostExtractionChamber;
 
     protected EnergyCostConfig() {
-        super("/" + DeepMobLearningReloadedMod.MOD_ID + "/energy_cost.toml");
+        super(DeepMobLearningReloadedMod.MOD_ID + "/energy_cost.toml");
     }
 
     @Override

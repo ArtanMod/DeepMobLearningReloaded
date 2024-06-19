@@ -12,7 +12,7 @@ public class ClientConfig extends ModConfigs {
     public static ConfigEntry<Integer> guiOverlayVerticalSpacing;
 
     protected ClientConfig() {
-        super("/" + DeepMobLearningReloadedMod.MOD_ID + "/client.toml");
+        super(DeepMobLearningReloadedMod.MOD_ID + "/client.toml");
     }
 
     @Override
