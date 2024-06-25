@@ -40,27 +40,27 @@ public class DMLItems {
     // #############################################################################################################################################################################################
 
     public static final RegistrySupplier<Item> DATA_MODEL_BLANK = register("data_model_blank", Item::new);
-//    public static final RegistrySupplier<Item> DATA_MODEL_BLAZE = registerDataModel("data_model_blaze");
-//    public static final RegistrySupplier<Item> DATA_MODEL_CREEPER = registerDataModel("data_model_creeper");
-//    public static final RegistrySupplier<Item> DATA_MODEL_ENDER_DRAGON = registerDataModel("data_model_ender_dragon");
-//    public static final RegistrySupplier<Item> DATA_MODEL_ELDER_GUARDIAN = registerDataModel("data_model_elder_guardian");
-//    public static final RegistrySupplier<Item> DATA_MODEL_ENDERMAN = registerDataModel("data_model_enderman");
-//    public static final RegistrySupplier<Item> DATA_MODEL_EVOKER = registerDataModel("data_model_evoker");
-//    public static final RegistrySupplier<Item> DATA_MODEL_GHAST = registerDataModel("data_model_ghast");
-//    public static final RegistrySupplier<Item> DATA_MODEL_GUARDIAN = registerDataModel("data_model_guardian");
-//    public static final RegistrySupplier<Item> DATA_MODEL_HOGLIN = registerDataModel("data_model_hoglin");
-//    public static final RegistrySupplier<Item> DATA_MODEL_MAGMA_CUBE = registerDataModel("data_model_magma_cube");
-//    public static final RegistrySupplier<Item> DATA_MODEL_PHANTOM = registerDataModel("data_model_phantom");
-//    public static final RegistrySupplier<Item> DATA_MODEL_PIGLIN = registerDataModel("data_model_piglin");
-//    public static final RegistrySupplier<Item> DATA_MODEL_RAVAGER = registerDataModel("data_model_ravager");
-//    public static final RegistrySupplier<Item> DATA_MODEL_SHULKER = registerDataModel("data_model_shulker");
-//    public static final RegistrySupplier<Item> DATA_MODEL_SKELETON = registerDataModel("data_model_skeleton");
-//    public static final RegistrySupplier<Item> DATA_MODEL_SLIME = registerDataModel("data_model_slime");
-//    public static final RegistrySupplier<Item> DATA_MODEL_SPIDER = registerDataModel("data_model_spider");
-//    public static final RegistrySupplier<Item> DATA_MODEL_WARDEN = registerDataModel("data_model_warden");
-//    public static final RegistrySupplier<Item> DATA_MODEL_WITCH = registerDataModel("data_model_witch");
-//    public static final RegistrySupplier<Item> DATA_MODEL_WITHER_SKELETON = registerDataModel("data_model_wither_skeleton");
-//    public static final RegistrySupplier<Item> DATA_MODEL_WITHER = registerDataModel("data_model_wither");
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_BLAZE = registerDataModel("data_model_blaze", MobKey.BLAZE);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_CREEPER = registerDataModel("data_model_creeper", MobKey.CREEPER);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_ENDER_DRAGON = registerDataModel("data_model_ender_dragon", MobKey.ENDER_DRAGON);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_ELDER_GUARDIAN = registerDataModel("data_model_elder_guardian", MobKey.ELDER_GUARDIAN);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_ENDERMAN = registerDataModel("data_model_enderman", MobKey.ENDERMAN);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_EVOKER = registerDataModel("data_model_evoker", MobKey.EVOKER);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_GHAST = registerDataModel("data_model_ghast", MobKey.GHAST);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_GUARDIAN = registerDataModel("data_model_guardian", MobKey.GUARDIAN);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_HOGLIN = registerDataModel("data_model_hoglin", MobKey.HOGLIN);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_MAGMA_CUBE = registerDataModel("data_model_magma_cube", MobKey.MAGMA_CUBE);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_PHANTOM = registerDataModel("data_model_phantom", MobKey.PHANTOM);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_PIGLIN = registerDataModel("data_model_piglin", MobKey.PIGLIN);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_RAVAGER = registerDataModel("data_model_ravager", MobKey.RAVAGER);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_SHULKER = registerDataModel("data_model_shulker", MobKey.SHULKER);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_SKELETON = registerDataModel("data_model_skeleton", MobKey.SKELETON);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_SLIME = registerDataModel("data_model_slime", MobKey.SLIME);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_SPIDER = registerDataModel("data_model_spider", MobKey.SPIDER);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_WARDEN = registerDataModel("data_model_warden", MobKey.WARDEN);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_WITCH = registerDataModel("data_model_witch", MobKey.WITCH);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_WITHER_SKELETON = registerDataModel("data_model_wither_skeleton", MobKey.WITHER_SKELETON);
+    public static final RegistrySupplier<ItemDataModel> DATA_MODEL_WITHER = registerDataModel("data_model_wither", MobKey.WITHER);
     public static final RegistrySupplier<ItemDataModel> DATA_MODEL_ZOMBIE = registerDataModel("data_model_zombie", MobKey.ZOMBIE);
 
     private static RegistrySupplier<ItemDataModel> registerDataModel(String name, MobKey mobKey) {
@@ -71,27 +71,27 @@ public class DMLItems {
     // ## マター
     // #############################################################################################################################################################################################
 
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_BLAZE = registerPristineMatter("pristine_matter_blaze");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_CREEPER = registerPristineMatter("pristine_matter_creeper");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_ENDER_DRAGON = registerPristineMatter("pristine_matter_ender_dragon");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_ELDER_GUARDIAN = registerPristineMatter("pristine_matter_elder_guardian");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_ENDERMAN = registerPristineMatter("pristine_matter_enderman");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_EVOKER = registerPristineMatter("pristine_matter_evoker");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_GHAST = registerPristineMatter("pristine_matter_ghast");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_GUARDIAN = registerPristineMatter("pristine_matter_guardian");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_HOGLIN = registerPristineMatter("pristine_matter_hoglin");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_MAGMA_CUBE = registerPristineMatter("pristine_matter_magma_cube");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_PHANTOM = registerPristineMatter("pristine_matter_phantom");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_PIGLIN = registerPristineMatter("pristine_matter_piglin");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_RAVAGER = registerPristineMatter("pristine_matter_ravager");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_SHULKER = registerPristineMatter("pristine_matter_shulker");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_SKELETON = registerPristineMatter("pristine_matter_skeleton");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_SLIME = registerPristineMatter("pristine_matter_slime");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_SPIDER = registerPristineMatter("pristine_matter_spider");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_WARDEN = registerPristineMatter("pristine_matter_warden");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_WITCH = registerPristineMatter("pristine_matter_witch");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_WITHER_SKELETON = registerPristineMatter("pristine_matter_wither_skeleton");
-//    public static final RegistrySupplier<Item> PRISTINE_MATTER_WITHER = registerPristineMatter("pristine_matter_wither");
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_BLAZE = registerPristineMatter("pristine_matter_blaze", MobKey.BLAZE);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_CREEPER = registerPristineMatter("pristine_matter_creeper", MobKey.CREEPER);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_ENDER_DRAGON = registerPristineMatter("pristine_matter_ender_dragon", MobKey.ENDER_DRAGON);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_ELDER_GUARDIAN = registerPristineMatter("pristine_matter_elder_guardian", MobKey.ELDER_GUARDIAN);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_ENDERMAN = registerPristineMatter("pristine_matter_enderman", MobKey.ENDERMAN);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_EVOKER = registerPristineMatter("pristine_matter_evoker", MobKey.EVOKER);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_GHAST = registerPristineMatter("pristine_matter_ghast", MobKey.GHAST);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_GUARDIAN = registerPristineMatter("pristine_matter_guardian", MobKey.GUARDIAN);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_HOGLIN = registerPristineMatter("pristine_matter_hoglin", MobKey.HOGLIN);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_MAGMA_CUBE = registerPristineMatter("pristine_matter_magma_cube", MobKey.MAGMA_CUBE);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_PHANTOM = registerPristineMatter("pristine_matter_phantom", MobKey.PHANTOM);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_PIGLIN = registerPristineMatter("pristine_matter_piglin", MobKey.PIGLIN);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_RAVAGER = registerPristineMatter("pristine_matter_ravager", MobKey.RAVAGER);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_SHULKER = registerPristineMatter("pristine_matter_shulker", MobKey.SHULKER);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_SKELETON = registerPristineMatter("pristine_matter_skeleton", MobKey.SKELETON);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_SLIME = registerPristineMatter("pristine_matter_slime", MobKey.SLIME);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_SPIDER = registerPristineMatter("pristine_matter_spider", MobKey.SPIDER);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_WARDEN = registerPristineMatter("pristine_matter_warden", MobKey.WARDEN);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_WITCH = registerPristineMatter("pristine_matter_witch", MobKey.WITCH);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_WITHER_SKELETON = registerPristineMatter("pristine_matter_wither_skeleton", MobKey.WITHER_SKELETON);
+    public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_WITHER = registerPristineMatter("pristine_matter_wither", MobKey.WITHER);
     public static final RegistrySupplier<ItemPristineMatter> PRISTINE_MATTER_ZOMBIE = registerPristineMatter("pristine_matter_zombie", MobKey.ZOMBIE);
 
     private static RegistrySupplier<ItemPristineMatter> registerPristineMatter(String name, MobKey mobKey) {

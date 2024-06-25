@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "dmlreloaded:item/data_model_creeper"
+  }
+}
