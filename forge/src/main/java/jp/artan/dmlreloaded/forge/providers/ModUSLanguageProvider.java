@@ -14,6 +14,7 @@ public class ModUSLanguageProvider extends AbstractUSLanguageProvider {
     protected void addTranslations() {
         super.addTranslations();
         addTranslationsToolTip();
+        addTranslationsScreen();
 
         // ItemGroup
         add(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED, "Deep Mob Learning: Reloaded");
@@ -141,6 +142,13 @@ public class ModUSLanguageProvider extends AbstractUSLanguageProvider {
         this.add(this.createToolTip("tiers.tier_4"), "Superior");
         this.add(this.createToolTip("tiers.tier_5"), "Self Aware");
         this.add(this.createToolTip("tiers.tier_next"), "Defeat %1$s more to reach %2$s");
+    }
+
+    /**
+     * Screen
+     */
+    private void addTranslationsScreen() {
+
     }
 
     private String createToolTip(String key) {

@@ -2,6 +2,8 @@ package jp.artan.dmlreloaded.forge.providers;
 
 import jp.artan.artansprojectcoremod.forge.providers.AbstractJPLanguageProvider;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
+import jp.artan.dmlreloaded.forge.init.DMLBlocksForge;
+import jp.artan.dmlreloaded.forge.init.DMLItemsForge;
 import jp.artan.dmlreloaded.init.DMLCreativeTab;
 import jp.artan.dmlreloaded.init.DMLItems;
 import net.minecraft.data.DataGenerator;
@@ -14,6 +16,9 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
     @Override
     protected void addTranslations() {
         addTranslationsToolTip();
+        addTranslationsScreen();
+
+        addTranslationsStandardBlock();
         addTranslationsStandardItem();
         addTranslationsDataModel();
         addTranslationsPristineMatter();
@@ -99,8 +104,22 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(this.createToolTip("tiers.tier_next"), "%2$sまであと%1$s体倒すと達成");
     }
 
+    /**
+     * Screen
+     */
+    private void addTranslationsScreen() {
+
+    }
+
     private String createToolTip(String key) {
         return DeepMobLearningReloadedMod.MOD_ID + "." + key;
+    }
+
+    private void addTranslationsStandardBlock() {
+        this.add(DMLBlocksForge.MACHINE_CASING.get(), "機械の枠");
+        this.add(DMLBlocksForge.SIMULATION_CHAMBER.get(), "シミュレーション室");
+        this.add(DMLBlocksForge.EXTRACTION_CHAMBER.get(), "抽出室");
+        this.add(DMLBlocksForge.INFUSED_INGOT_BLOCK.get(), "グリッチが染み込んだブロック");
     }
 
 
@@ -114,8 +133,8 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(DMLItems.GLITCH_HEART.get(), "破損したグリッチの心臓");
         this.add(DMLItems.GLITCH_INGOT.get(), "グリッチが染み込んだインゴット");
         this.add(DMLItems.NETHERITE_GLITCH_INGOT.get(), "ネザライトグリッチが染み込んだインゴット");
-//        this.add(DMLItems.DEEP_LEARNER.get(), "深層学習装置");
-//        this.add(DMLItems.NETHERITE_DEEP_LEARNER.get(), "ネザライト深層学習装置");
+        this.add(DMLItemsForge.DEEP_LEARNER.get(), "深層学習装置");
+        this.add(DMLItemsForge.NETHERITE_DEEP_LEARNER.get(), "ネザライト深層学習装置");
         this.add(DMLItems.POLYMER_CLAY.get(), "ポリマー粘土");
 //        this.add(DMLItems.GLITCH_SWORD.get(), "グリッチが染み込んだ剣");
 //        this.add(DMLItems.NETHERITE_GLITCH_SWORD.get(), "ネザライトグリッチが染み込んだ剣");

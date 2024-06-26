@@ -1,0 +1,18 @@
+package jp.artan.dmlreloaded.forge.providers;
+
+import jp.artan.dmlreloaded.forge.loot.GlitchFragmentModifier;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraftforge.common.data.GlobalLootModifierProvider;
+
+public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
+    public ModGlobalLootModifierProvider(DataGenerator gen, String modid) {
+        super(gen, modid);
+    }
+
+    @Override
+    protected void start() {
+        add("glitch_fragment_all_entities", new GlitchFragmentModifier(new LootItemCondition[] {}));
+    }
+}
+

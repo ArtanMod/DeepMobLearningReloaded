@@ -15,6 +15,7 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
     protected void addTranslations() {
         super.addTranslations();
         addTranslationsToolTip();
+        addTranslationsScreen();
 
         // ItemGroup
         add(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED, LangUtils.toUpsideDownEnglish("Deep Mob Learning: Reloaded"));
@@ -142,6 +143,13 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
         this.add(this.createToolTip("tiers.tier_4"), LangUtils.toUpsideDownEnglish("Superior"));
         this.add(this.createToolTip("tiers.tier_5"), LangUtils.toUpsideDownEnglish("Self Aware"));
         this.add(this.createToolTip("tiers.tier_next"), LangUtils.toUpsideDownEnglish("Defeat %1$s more to reach %2$s"));
+    }
+
+    /**
+     * Screen
+     */
+    private void addTranslationsScreen() {
+
     }
 
     private String createToolTip(String key) {

@@ -1,6 +1,8 @@
 package jp.artan.dmlreloaded.forge.providers;
 
 import jp.artan.artansprojectcoremod.forge.providers.AbstractItemTagsProvider;
+import jp.artan.dmlreloaded.forge.init.DMLItemsForge;
+import jp.artan.dmlreloaded.init.DMLItemTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -13,5 +15,6 @@ public class ModItemTagsProvider extends AbstractItemTagsProvider {
 
     @Override
     protected void addTags() {
+        this.tag(DMLItemTags.CURIOS_DEEP_LEARNER).add(DMLItemsForge.DEEP_LEARNER.get(), DMLItemsForge.NETHERITE_DEEP_LEARNER.get());
     }
 }

@@ -28,8 +28,6 @@ public class DMLItems {
     public static final RegistrySupplier<ItemGlitchHeart> GLITCH_HEART = register("glitch_heart", ItemGlitchHeart::new);
     public static final RegistrySupplier<ItemGlitchIngot> GLITCH_INGOT = register("glitch_infused_ingot", ItemGlitchIngot::new);
     public static final RegistrySupplier<Item> NETHERITE_GLITCH_INGOT = register("netherite_glitch_infused_ingot", Item::new);
-//    public static final RegistrySupplier<ItemDeepLearner> DEEP_LEARNER = register("deep_learner", ItemDeepLearner::new);
-//    public static final RegistrySupplier<ItemDeepLearner> NETHERITE_DEEP_LEARNER = register("netherite_deep_learner", ItemDeepLearner::new);
     public static final RegistrySupplier<Item> POLYMER_CLAY = register("polymer_clay", Item::new);
     public static final RegistrySupplier<ItemGlitchSword> GLITCH_SWORD = register("glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.GLITCH, p));
     public static final RegistrySupplier<ItemGlitchSword> NETHERITE_GLITCH_SWORD = register("glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.NETHERITE_GLITCH, p));
@@ -110,7 +108,7 @@ public class DMLItems {
         return register(name, p -> new ItemLivingMatter(p, livingMatterType));
     }
 
-    public static <T extends Item> RegistrySupplier<T> register(String name, NonNullFunction<Item.Properties, T> item) {
+    private static <T extends Item> RegistrySupplier<T> register(String name, NonNullFunction<Item.Properties, T> item) {
         return ITEMS.register(name, () -> item.apply(new Item.Properties().tab(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED)));
     }
 }

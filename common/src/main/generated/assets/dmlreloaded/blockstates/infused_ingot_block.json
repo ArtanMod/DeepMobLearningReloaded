@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "dmlreloaded:block/infused_ingot_block"
+    }
+  }
+}

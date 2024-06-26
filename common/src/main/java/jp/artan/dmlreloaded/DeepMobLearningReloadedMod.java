@@ -2,8 +2,6 @@ package jp.artan.dmlreloaded;
 
 import jp.artan.dmlreloaded.config.Config;
 import jp.artan.dmlreloaded.init.DMLItems;
-import jp.artan.dmlreloaded.init.DMLBlockEntities;
-import jp.artan.dmlreloaded.init.DMLBlocks;
 import jp.artan.dmlreloaded.init.DMLCreativeTab;
 import net.minecraft.resources.ResourceLocation;
 
@@ -24,15 +22,12 @@ public class DeepMobLearningReloadedMod {
         Config.init();
         DMLCreativeTab.register();
         DMLItems.register();
-        DMLBlocks.register();
-        DMLBlockEntities.register();
     }
 
     public static void commonSetup() {
     }
 
     public static void initClient() {
-        DMLBlockEntities.initClient();
     }
 
     public static ResourceLocation getResource(String name) {

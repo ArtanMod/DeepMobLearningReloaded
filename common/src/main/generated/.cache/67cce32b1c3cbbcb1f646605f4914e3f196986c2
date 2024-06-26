@@ -1,1 +1,5 @@
-// 1.19.2	2024-06-18T23:48:48.0381324	LootTables
+// 1.19.2	2024-06-26T10:33:08.4110897	LootTables
+8ed856677977511fa892ab7401db3de094dece6d data/dmlreloaded/loot_tables/blocks/extraction_chamber.json
+4198870c9e49bf62610e8158984a700c03df6ce8 data/dmlreloaded/loot_tables/blocks/infused_ingot_block.json
+aef9718a22e48109918b61ec0bee28f9759b0ba7 data/dmlreloaded/loot_tables/blocks/machine_casing.json
+cad7a3ee747f894dadcc964e977df583953f7e18 data/dmlreloaded/loot_tables/blocks/simulation_chamber.json

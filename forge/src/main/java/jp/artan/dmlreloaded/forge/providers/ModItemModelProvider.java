@@ -1,6 +1,7 @@
 package jp.artan.dmlreloaded.forge.providers;
 
 import jp.artan.artansprojectcoremod.forge.providers.AbstractItemModelProvider;
+import jp.artan.dmlreloaded.forge.init.DMLItemsForge;
 import jp.artan.dmlreloaded.init.DMLItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -31,6 +32,8 @@ public class ModItemModelProvider extends AbstractItemModelProvider {
         this.basicItem(DMLItems.POLYMER_CLAY.get());
 //        this.basicItem(DMLItems.GLITCH_SWORD.get());
 //        this.basicItem(DMLItems.NETHERITE_GLITCH_SWORD.get());
+        this.basicItem(DMLItemsForge.DEEP_LEARNER.get());
+        this.basicItem(DMLItemsForge.NETHERITE_DEEP_LEARNER.get());
     }
 
     /**
