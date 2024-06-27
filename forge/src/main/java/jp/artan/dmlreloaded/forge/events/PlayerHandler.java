@@ -50,6 +50,7 @@ public class PlayerHandler {
         }
     }
 
+    // FIXME: dev.architectury.event.events.common.PlayerEventのPlayerJoinに変更
     @SubscribeEvent
     public static void playerLogIn(PlayerEvent.PlayerLoggedInEvent event) {
         Player player = event.getEntity();
@@ -96,6 +97,7 @@ public class PlayerHandler {
         }
     }
 
+    // FIXME: dev.architectury.event.events.common.InteractionEventのRightClickBlockに変更
     @SubscribeEvent
     public static void playerRightClickedBlock(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getEntity();
@@ -119,6 +121,7 @@ public class PlayerHandler {
         }
     }
 
+    // FIXME: dev.architectury.event.events.common.InteractionEventのLeftClickBlockに変更
     @SubscribeEvent
     public static void playerLeftClickedBlock(PlayerInteractEvent.LeftClickBlock event) {
         Player player = event.getEntity();

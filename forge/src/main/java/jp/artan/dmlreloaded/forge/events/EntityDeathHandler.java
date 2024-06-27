@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = DeepMobLearningReloadedMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EntityDeathHandler {
 
+    // FIXME: dev.architectury.event.events.common.EntityEventのLivingDeathに変更
     @SubscribeEvent
     public static void handlePlayerKilledEntity(LivingDeathEvent event) {
         if(event.getSource().getEntity() instanceof ServerPlayer player) {
