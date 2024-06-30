@@ -1,4 +1,4 @@
-package jp.artan.dmlreloaded.recipe;
+package jp.artan.dmlreloaded.recipe.SpawnEggShapelessRecipe;
 
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.init.DMLRecipeSerializer;

@@ -1,4 +1,4 @@
-package jp.artan.dmlreloaded.recipe.builders;
+package jp.artan.dmlreloaded.recipe.SpawnEggShapelessRecipe;
 
 import com.google.gson.JsonObject;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;

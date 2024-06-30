@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.forge.providers;
 
 import jp.artan.artansprojectcoremod.forge.providers.AbstractRecipeProvider;
-import jp.artan.dmlreloaded.recipe.builders.SpawnEggShapelessRecipeBuilders;
+import jp.artan.dmlreloaded.recipe.SpawnEggShapelessRecipe.SpawnEggShapelessRecipeBuilders;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 

@@ -3,7 +3,7 @@ package jp.artan.dmlreloaded.init;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
-import jp.artan.dmlreloaded.recipe.SpawnEggShapelessRecipe;
+import jp.artan.dmlreloaded.recipe.SpawnEggShapelessRecipe.SpawnEggShapelessRecipe;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SimpleRecipeSerializer;
