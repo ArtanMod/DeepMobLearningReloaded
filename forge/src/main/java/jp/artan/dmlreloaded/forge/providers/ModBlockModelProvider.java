@@ -18,6 +18,7 @@ public class ModBlockModelProvider extends AbstractBlockModelProvider {
     protected void registerStatesAndModels() {
         ModelFile machineCasing = this.models().cubeAll("machine_casing", this.modLoc("block/machine_base_up"));
         this.simpleBlock(DMLBlocksForge.MACHINE_CASING.get(), machineCasing);
+        this.simpleBlockItem(DMLBlocksForge.MACHINE_CASING.get(), machineCasing);
 
         ModelFile simulationChamber = this.models().getExistingFile(this.modLoc("block/simulation_chamber"));
         this.getVariantBuilder(DMLBlocksForge.SIMULATION_CHAMBER.get())
@@ -41,5 +42,6 @@ public class ModBlockModelProvider extends AbstractBlockModelProvider {
 
         ModelFile infusedIngotBlock = this.models().cubeAll("infused_ingot_block", this.modLoc("block/infused_ingot_blockface"));
         this.simpleBlock(DMLBlocksForge.INFUSED_INGOT_BLOCK.get(), infusedIngotBlock);
+        this.simpleBlockItem(DMLBlocksForge.INFUSED_INGOT_BLOCK.get(), infusedIngotBlock);
     }
 }
