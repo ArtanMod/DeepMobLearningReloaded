@@ -30,7 +30,7 @@ public class DMLItems {
     public static final RegistrySupplier<Item> NETHERITE_GLITCH_INGOT = register("netherite_glitch_infused_ingot", Item::new);
     public static final RegistrySupplier<Item> POLYMER_CLAY = register("polymer_clay", Item::new);
     public static final RegistrySupplier<ItemGlitchSword> GLITCH_SWORD = register("glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.GLITCH, p));
-    public static final RegistrySupplier<ItemGlitchSword> NETHERITE_GLITCH_SWORD = register("glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.NETHERITE_GLITCH, p));
+    public static final RegistrySupplier<ItemGlitchSword> NETHERITE_GLITCH_SWORD = register("netherite_glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.NETHERITE_GLITCH, p));
     // TODO: 装備2式追加
 
     // #############################################################################################################################################################################################

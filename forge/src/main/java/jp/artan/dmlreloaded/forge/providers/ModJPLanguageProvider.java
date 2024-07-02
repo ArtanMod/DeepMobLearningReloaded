@@ -137,8 +137,8 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(DMLItemsForge.DEEP_LEARNER.get(), "深層学習装置");
         this.add(DMLItemsForge.NETHERITE_DEEP_LEARNER.get(), "ネザライト深層学習装置");
         this.add(DMLItems.POLYMER_CLAY.get(), "ポリマー粘土");
-//        this.add(DMLItems.GLITCH_SWORD.get(), "グリッチが染み込んだ剣");
-//        this.add(DMLItems.NETHERITE_GLITCH_SWORD.get(), "ネザライトグリッチが染み込んだ剣");
+        this.add(DMLItems.GLITCH_SWORD.get(), "グリッチが染み込んだ剣");
+        this.add(DMLItems.NETHERITE_GLITCH_SWORD.get(), "ネザライトグリッチが染み込んだ剣");
     }
 
     /**

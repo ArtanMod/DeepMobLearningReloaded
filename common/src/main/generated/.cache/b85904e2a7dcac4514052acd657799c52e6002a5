@@ -1,4 +1,4 @@
-// 1.19.2	2024-06-26T10:48:51.8929654	Item Models: dmlreloaded
+// 1.19.2	2024-07-02T22:44:41.6010669	Item Models: dmlreloaded
 d6a5f3e1430bf4e6a2aab8589b6bd6e96b99ec5c assets/dmlreloaded/models/item/data_model_blank.json
 60384863ead464f1387d7784f9f1666c9d9410fd assets/dmlreloaded/models/item/data_model_blaze.json
 2401521c0e9152052d13d5e779373d6c240316c2 assets/dmlreloaded/models/item/data_model_creeper.json
@@ -26,11 +26,13 @@ fbc0af1658454e8c7a0a804f56b19ebec04ade92 assets/dmlreloaded/models/item/data_mod
 2357e1b1434ae185adae301c4d73f8571f5460d2 assets/dmlreloaded/models/item/glitch_fragment.json
 893dc723c003ff0f16d8ac41a850913825d33f01 assets/dmlreloaded/models/item/glitch_heart.json
 d4939f7df4b89b6c2e075455c21f044902be7404 assets/dmlreloaded/models/item/glitch_infused_ingot.json
+526d5440247df25a7bc37f48b65dcbff6fab9b3f assets/dmlreloaded/models/item/glitch_infused_sword.json
 74e4f146af714050a0c51e8f66d7571de7791552 assets/dmlreloaded/models/item/living_matter_extraterrestrial.json
 acd7d1ca176f418cbe50d9607b5bccab53275454 assets/dmlreloaded/models/item/living_matter_hellish.json
 64a268f5a297fced5612fded7a274c8415e29721 assets/dmlreloaded/models/item/living_matter_overworldian.json
 318f941366f3dd5f8970fa67bbaa1fcbcca3fcc4 assets/dmlreloaded/models/item/netherite_deep_learner.json
 c89fb08ca918855e5f717f7c20bc30fe4cd1545c assets/dmlreloaded/models/item/netherite_glitch_infused_ingot.json
+a1f149062d7fd34c40f0b00ba263b599098c1901 assets/dmlreloaded/models/item/netherite_glitch_infused_sword.json
 7f82541e4c3b08fa29094213926ea5f7f8bfc888 assets/dmlreloaded/models/item/polymer_clay.json
 567de56cc5ec5600624093b670048591963ddda9 assets/dmlreloaded/models/item/pristine_matter_blaze.json
 cd4fa247baa6256b3bb4e80aaa7fda5b3321260c assets/dmlreloaded/models/item/pristine_matter_creeper.json
