@@ -14,6 +14,7 @@ public class ModItemModelProvider extends AbstractItemModelProvider {
     @Override
     protected void registerModels() {
         registerStandardItem();
+        registerDataModelUpgrade();
         registerDataModel();
         registerPristineMatter();
         registerLivingMatter();
@@ -34,6 +35,16 @@ public class ModItemModelProvider extends AbstractItemModelProvider {
 //        this.basicItem(DMLItems.NETHERITE_GLITCH_SWORD.get());
         this.basicItem(DMLItemsForge.DEEP_LEARNER.get());
         this.basicItem(DMLItemsForge.NETHERITE_DEEP_LEARNER.get());
+    }
+
+    /**
+     * アップグレードデータモデル
+     */
+    private void registerDataModelUpgrade() {
+//        this.basicItem(DMLItems.DATA_MODEL_UPGRADE_TIER1.get());
+//        this.basicItem(DMLItems.DATA_MODEL_UPGRADE_TIER2.get());
+//        this.basicItem(DMLItems.DATA_MODEL_UPGRADE_TIER3.get());
+//        this.basicItem(DMLItems.DATA_MODEL_UPGRADE_TIER4.get());
     }
 
     /**

@@ -3,6 +3,7 @@ package jp.artan.dmlreloaded;
 import jp.artan.dmlreloaded.config.Config;
 import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.init.DMLCreativeTab;
+import jp.artan.dmlreloaded.init.DMLRecipeSerializer;
 import net.minecraft.resources.ResourceLocation;
 
 public class DeepMobLearningReloadedMod {
@@ -22,6 +23,7 @@ public class DeepMobLearningReloadedMod {
         Config.init();
         DMLCreativeTab.register();
         DMLItems.register();
+        DMLRecipeSerializer.register();
     }
 
     public static void commonSetup() {

@@ -34,6 +34,15 @@ public class DMLItems {
     // TODO: 装備2式追加
 
     // #############################################################################################################################################################################################
+    // ## アップグレードデータモデル
+    // #############################################################################################################################################################################################
+
+    public static final RegistrySupplier<ItemDataModelUpgrade> DATA_MODEL_UPGRADE_TIER1 = register("data_model_upgrade_tier1", p -> new ItemDataModelUpgrade(p, 1));
+    public static final RegistrySupplier<ItemDataModelUpgrade> DATA_MODEL_UPGRADE_TIER2 = register("data_model_upgrade_tier2", p -> new ItemDataModelUpgrade(p, 2));
+    public static final RegistrySupplier<ItemDataModelUpgrade> DATA_MODEL_UPGRADE_TIER3 = register("data_model_upgrade_tier3", p -> new ItemDataModelUpgrade(p, 3));
+    public static final RegistrySupplier<ItemDataModelUpgrade> DATA_MODEL_UPGRADE_TIER4 = register("data_model_upgrade_tier4", p -> new ItemDataModelUpgrade(p, 4));
+
+    // #############################################################################################################################################################################################
     // ## データモデル
     // #############################################################################################################################################################################################
 

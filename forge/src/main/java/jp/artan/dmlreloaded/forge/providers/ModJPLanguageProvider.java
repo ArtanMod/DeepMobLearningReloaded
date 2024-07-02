@@ -17,6 +17,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
     protected void addTranslations() {
         addTranslationsToolTip();
         addTranslationsScreen();
+        registerDataModelUpgrade();
 
         addTranslationsStandardBlock();
         addTranslationsStandardItem();
@@ -138,6 +139,16 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(DMLItems.POLYMER_CLAY.get(), "ポリマー粘土");
 //        this.add(DMLItems.GLITCH_SWORD.get(), "グリッチが染み込んだ剣");
 //        this.add(DMLItems.NETHERITE_GLITCH_SWORD.get(), "ネザライトグリッチが染み込んだ剣");
+    }
+
+    /**
+     * アップグレードデータモデル
+     */
+    private void registerDataModelUpgrade() {
+        this.add(DMLItems.DATA_MODEL_UPGRADE_TIER1.get(), "データモデルアップグレード: Tier1");
+        this.add(DMLItems.DATA_MODEL_UPGRADE_TIER2.get(), "データモデルアップグレード: Tier2");
+        this.add(DMLItems.DATA_MODEL_UPGRADE_TIER3.get(), "データモデルアップグレード: Tier3");
+        this.add(DMLItems.DATA_MODEL_UPGRADE_TIER4.get(), "データモデルアップグレード: Tier4");
     }
 
     /**

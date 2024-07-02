@@ -49,7 +49,6 @@ public class DataModelHelper {
         return NBTHelper.getInt(stack, "tier", 0);
     }
 
-
     public static void setTier(ItemStack stack, int tier) {
         NBTHelper.setInt(stack, "tier", tier);
     }
