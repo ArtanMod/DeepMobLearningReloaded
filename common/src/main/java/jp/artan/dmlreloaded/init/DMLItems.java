@@ -2,14 +2,19 @@ package jp.artan.dmlreloaded.init;
 
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
+import jp.artan.artansprojectcoremod.sets.ArmorItems;
 import jp.artan.artansprojectcoremod.utils.inject.NonNullFunction;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.common.LivingMatterType;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.item.*;
+import jp.artan.dmlreloaded.item.material.GlitchArmorMaterials;
 import jp.artan.dmlreloaded.item.material.GlitchToolMaterials;
 import net.minecraft.core.Registry;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
+import org.jetbrains.annotations.Nullable;
 
 public class DMLItems {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registry.ITEM_REGISTRY);
@@ -31,7 +36,16 @@ public class DMLItems {
     public static final RegistrySupplier<Item> POLYMER_CLAY = register("polymer_clay", Item::new);
     public static final RegistrySupplier<ItemGlitchSword> GLITCH_SWORD = register("glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.GLITCH, p));
     public static final RegistrySupplier<ItemGlitchSword> NETHERITE_GLITCH_SWORD = register("netherite_glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.NETHERITE_GLITCH, p));
-    // TODO: 装備2式追加
+    public static final ArmorItems<ItemGlitchArmor> GLITCH_ARMOR = registerGlitchArmor("glitch_infused", null);
+    public static final ArmorItems<ItemGlitchArmor> NETHERITE_GLITCH_ARMOR = registerGlitchArmor("netherite_glitch_infused", GLITCH_ARMOR);
+
+    private static ArmorItems<ItemGlitchArmor> registerGlitchArmor(String name, @Nullable ArmorItems<?> upgradeBaseArmorItems) {
+        RegistrySupplier<ItemGlitchArmor> helmet = register(name + "_helmet", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.HEAD, p));
+        RegistrySupplier<ItemGlitchArmor> chestplate = register(name + "_chestplate", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.CHEST, p));
+        RegistrySupplier<ItemGlitchArmor> leggings = register(name + "_leggings", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.LEGS, p));
+        RegistrySupplier<ItemGlitchArmor> boots = register(name + "_boots", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.FEET, p));
+        return new ArmorItems<>(helmet, chestplate, leggings, boots, upgradeBaseArmorItems);
+    }
 
     // #############################################################################################################################################################################################
     // ## アップグレードデータモデル
