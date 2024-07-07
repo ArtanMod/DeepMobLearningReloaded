@@ -2,6 +2,7 @@ package jp.artan.dmlreloaded;
 
 import jp.artan.dmlreloaded.config.Config;
 import jp.artan.dmlreloaded.events.EntityDeathHandler;
+import jp.artan.dmlreloaded.events.PlayerHandler;
 import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.init.DMLCreativeTab;
 import jp.artan.dmlreloaded.init.DMLRecipeSerializer;
@@ -32,6 +33,7 @@ public class DeepMobLearningReloadedMod {
 
     public static void initClient() {
         EntityDeathHandler.register();
+        PlayerHandler.register();
     }
 
     public static ResourceLocation getResource(String name) {
