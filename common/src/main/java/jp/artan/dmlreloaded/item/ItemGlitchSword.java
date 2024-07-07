@@ -63,6 +63,9 @@ public class ItemGlitchSword extends SwordItem {
         if (slot == EquipmentSlot.MAINHAND) {
             // TODO: 正しく動くか要確認
             Player player = Minecraft.getInstance().player;
+            if(player == null) {
+                return HashMultimap.create();
+            }
             ItemStack hand = player.getMainHandItem();
             ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
             builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", getTier().getAttackDamageBonus() + getPermanentWeaponDamage(hand), AttributeModifier.Operation.ADDITION));
