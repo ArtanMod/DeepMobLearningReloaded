@@ -36,14 +36,14 @@ public class DMLItems {
     public static final RegistrySupplier<Item> POLYMER_CLAY = register("polymer_clay", Item::new);
     public static final RegistrySupplier<ItemGlitchSword> GLITCH_SWORD = register("glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.GLITCH, p));
     public static final RegistrySupplier<ItemGlitchSword> NETHERITE_GLITCH_SWORD = register("netherite_glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.NETHERITE_GLITCH, p));
-    public static final ArmorItems<ItemGlitchArmor> GLITCH_ARMOR = registerGlitchArmor("glitch_infused", null);
-    public static final ArmorItems<ItemGlitchArmor> NETHERITE_GLITCH_ARMOR = registerGlitchArmor("netherite_glitch_infused", GLITCH_ARMOR);
+    public static final ArmorItems<ItemGlitchArmor> GLITCH_ARMOR = registerGlitchArmor("glitch_infused", GlitchArmorMaterials.GLITCH, null);
+    public static final ArmorItems<ItemGlitchArmor> NETHERITE_GLITCH_ARMOR = registerGlitchArmor("netherite_glitch_infused", GlitchArmorMaterials.NETHERITE_GLITCH, GLITCH_ARMOR);
 
-    private static ArmorItems<ItemGlitchArmor> registerGlitchArmor(String name, @Nullable ArmorItems<?> upgradeBaseArmorItems) {
-        RegistrySupplier<ItemGlitchArmor> helmet = register(name + "_helmet", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.HEAD, p));
-        RegistrySupplier<ItemGlitchArmor> chestplate = register(name + "_chestplate", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.CHEST, p));
-        RegistrySupplier<ItemGlitchArmor> leggings = register(name + "_leggings", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.LEGS, p));
-        RegistrySupplier<ItemGlitchArmor> boots = register(name + "_boots", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.FEET, p));
+    private static ArmorItems<ItemGlitchArmor> registerGlitchArmor(String name, ArmorMaterial pMaterial, @Nullable ArmorItems<?> upgradeBaseArmorItems) {
+        RegistrySupplier<ItemGlitchArmor> helmet = register(name + "_helmet", p -> new ItemGlitchArmor(pMaterial, EquipmentSlot.HEAD, p));
+        RegistrySupplier<ItemGlitchArmor> chestplate = register(name + "_chestplate", p -> new ItemGlitchArmor(pMaterial, EquipmentSlot.CHEST, p));
+        RegistrySupplier<ItemGlitchArmor> leggings = register(name + "_leggings", p -> new ItemGlitchArmor(pMaterial, EquipmentSlot.LEGS, p));
+        RegistrySupplier<ItemGlitchArmor> boots = register(name + "_boots", p -> new ItemGlitchArmor(pMaterial, EquipmentSlot.FEET, p));
         return new ArmorItems<>(helmet, chestplate, leggings, boots, upgradeBaseArmorItems);
     }
 

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dmlreloaded:living_matter_hellish"
+    },
+    {
+      "item": "dmlreloaded:living_matter_hellish"
+    },
+    {
+      "item": "minecraft:bone"
+    }
+  ],
+  "result": {
+    "item": "minecraft:blaze_rod"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "netherite_ingot",
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_scrap"
+    },
+    {
+      "item": "minecraft:netherite_scrap"
+    },
+    {
+      "item": "minecraft:netherite_scrap"
+    },
+    {
+      "item": "minecraft:netherite_scrap"
+    },
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    }
+  ],
+  "result": {
+    "item": "dmlreloaded:netherite_glitch_infused_ingot"
+  }
+}

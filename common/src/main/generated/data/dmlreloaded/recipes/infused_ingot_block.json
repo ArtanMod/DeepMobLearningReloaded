@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    }
+  ],
+  "result": {
+    "item": "dmlreloaded:infused_ingot_block"
+  }
+}
