@@ -55,6 +55,10 @@ dependencies {
     // JEI
     modCompileOnly "mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"
     modRuntimeOnly "mezz.jei:jei-${minecraft_version}-forge:${jei_version}"
+
+    // Patchouli
+    modCompileOnly "vazkii.patchouli:Patchouli:${patchouli_version}:api"
+    modRuntimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}"
 }
 
 processResources {
