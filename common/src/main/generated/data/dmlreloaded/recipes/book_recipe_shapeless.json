@@ -1,0 +1,12 @@
+{
+  "type": "patchouli:shapeless_book_recipe",
+  "book": "dmlreloaded:book",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "dmlreloaded:soot_covered_redstone"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "category": "dmlreloaded:0_introduction",
+  "icon": "dmlreloaded:deep_learner",
+  "name": "patchouli.category.1.introduction.entry.2.title",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "patchouli.category.1.introduction.entry.2.page.1.text"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "dmlreloaded:deep_learner",
+      "text": "patchouli.category.1.introduction.entry.2.page.2.text"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "dmlreloaded:deep_learner",
+      "text": "patchouli.category.1.introduction.entry.2.page.3.text"
+    }
+  ],
+  "sortnum": 1
+}

@@ -1,6 +1,7 @@
 package jp.artan.dmlreloaded.forge;
 
 import dev.architectury.platform.forge.EventBuses;
+import jp.artan.artansprojectcoremod.forge.providers.RegistratePatchouliProvider;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.forge.init.*;
 import jp.artan.dmlreloaded.forge.providers.*;
@@ -76,5 +77,8 @@ public class DeepMobLearningReloadedModForge {
 
         // Global Loot Modifier
         generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(generator, DeepMobLearningReloadedMod.MOD_ID));
+
+        // Patchouli
+        generator.addProvider(event.includeClient(), new ModPatchouliProvider(event.includeClient(), DeepMobLearningReloadedMod.MOD_ID, generator, existingFileHelper));
     }
 }
