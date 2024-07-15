@@ -15,7 +15,7 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
     protected void addTranslations() {
         super.addTranslations();
         addTranslationsToolTip();
-        addTranslationsScreen();
+        addTranslationsCurios();
         addPatchouliLang();
 
         // ItemGroup
@@ -236,10 +236,10 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
     }
 
     /**
-     * Screen
+     * Curios
      */
-    private void addTranslationsScreen() {
-
+    private void addTranslationsCurios() {
+        this.add("curios.identifier.deep_learner", LangUtils.toUpsideDownEnglish("Deep Learner"));
     }
 
     private String createToolTip(String key) {

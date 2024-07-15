@@ -1,8 +1,11 @@
 package jp.artan.dmlreloaded.forge.providers;
 
+import com.kyanite.deeperdarker.content.DDItems;
 import jp.artan.artansprojectcoremod.forge.providers.AbstractRecipeProvider;
 import jp.artan.dmlreloaded.forge.init.DMLBlocksForge;
 import jp.artan.dmlreloaded.forge.init.DMLItemsForge;
+import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.init.DeeperAndDarkerItemInit;
+import jp.artan.dmlreloaded.forge.plugin.PluginInit;
 import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.recipe.DataModelUpgradeRecipe.DataModelUpgradeRecipeBuilder;
@@ -37,6 +40,28 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
         // 通常のレシピを登録
         blockRecipes(consumer);
         itemRecipes(consumer);
+
+        if(PluginInit.DEEP_AND_DARKER_ACTIVE) {
+            pluginDeeperAndDarkerRecipe(consumer);
+        }
+    }
+
+    private void pluginDeeperAndDarkerRecipe(Consumer<FinishedRecipe> consumer) {
+        ShapelessRecipeBuilder.shapeless(DeeperAndDarkerItemInit.SHATTERED.get())
+                .requires(DMLItems.DATA_MODEL_BLANK.get())
+                .requires(DDItems.SOUL_DUST.get())
+                .unlockedBy("has_item", has(DMLItems.DATA_MODEL_BLANK.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(DeeperAndDarkerItemInit.SCULK_CENTIPEDE.get())
+                .requires(DMLItems.DATA_MODEL_BLANK.get())
+                .requires(DDItems.SCULK_BONE.get())
+                .unlockedBy("has_item", has(DMLItems.DATA_MODEL_BLANK.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(DeeperAndDarkerItemInit.STALKER.get())
+                .requires(DMLItems.DATA_MODEL_BLANK.get())
+                .requires(DDItems.SOUL_CRYSTAL.get())
+                .unlockedBy("has_item", has(DMLItems.DATA_MODEL_BLANK.get()))
+                .save(consumer);
     }
 
     private static void blockRecipes(Consumer<FinishedRecipe> consumer) {

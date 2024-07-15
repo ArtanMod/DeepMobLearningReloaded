@@ -16,7 +16,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
     @Override
     protected void addTranslations() {
         addTranslationsToolTip();
-        addTranslationsScreen();
+        addTranslationsCurios();
         registerDataModelUpgrade();
         addPatchouliLang();
 
@@ -107,10 +107,10 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
     }
 
     /**
-     * Screen
+     * Curios
      */
-    private void addTranslationsScreen() {
-
+    private void addTranslationsCurios() {
+        this.add("curios.identifier.deep_learner", "深層学習装置");
     }
 
 

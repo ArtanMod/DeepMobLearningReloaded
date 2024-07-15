@@ -4,6 +4,7 @@ import dev.architectury.platform.forge.EventBuses;
 import jp.artan.artansprojectcoremod.forge.providers.RegistratePatchouliProvider;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.forge.init.*;
+import jp.artan.dmlreloaded.forge.plugin.PluginInit;
 import jp.artan.dmlreloaded.forge.providers.*;
 import jp.artan.dmlreloaded.forge.screen.DataOverlay;
 import net.minecraft.data.DataGenerator;
@@ -37,6 +38,8 @@ public class DeepMobLearningReloadedModForge {
         eventBus.addListener(DeepMobLearningReloadedModForge::registerProviders);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::onClientSetup);
+
+        PluginInit.init(eventBus);
     }
 
     public void commonSetup(final FMLCommonSetupEvent event) {

@@ -3,6 +3,7 @@
   "block.dmlreloaded.infused_ingot_block": "グリッチが染み込んだブロック",
   "block.dmlreloaded.machine_casing": "機械の枠",
   "block.dmlreloaded.simulation_chamber": "シミュレーション室",
+  "curios.identifier.deep_learner": "深層学習装置",
   "dmlreloaded.data_model.data.collected": "データ収集: %1$s/%2$s",
   "dmlreloaded.data_model.data.killmultiplier": "キル数ごとの学習量: %1$s",
   "dmlreloaded.data_model.rfcost": "シミュレーションコスト: %1$s RF/t",

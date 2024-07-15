@@ -7,6 +7,8 @@ import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.config.BalanceConfigs;
 import jp.artan.dmlreloaded.forge.init.DropModifier;
 import jp.artan.dmlreloaded.forge.item.ItemDeepLearner;
+import jp.artan.dmlreloaded.forge.plugin.PluginInit;
+import jp.artan.dmlreloaded.forge.plugin.curios.CuriosUtil;
 import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.item.ItemGlitchArmor;
@@ -96,9 +98,9 @@ public class GlitchFragmentModifier extends LootModifier {
         inventory.addAll(player.getInventory().items);
         inventory.addAll(player.getInventory().offhand);
 
-//        if(PluginInit.CURIOS_ACTIVE) {
-//            inventory.add(CuriosUtil.getDeepLearnerCurioItemStack(player));
-//        }
+        if(PluginInit.CURIOS_ACTIVE) {
+            inventory.add(CuriosUtil.getDeepLearnerCurioItemStack(player));
+        }
 
         // Grab the deep learners and combat trial items from a players inventory
         NonNullList<ItemStack> deepLearners = getDeepLearners(inventory);

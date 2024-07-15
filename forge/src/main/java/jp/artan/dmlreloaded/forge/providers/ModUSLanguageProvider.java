@@ -2,6 +2,7 @@ package jp.artan.dmlreloaded.forge.providers;
 
 import jp.artan.artansprojectcoremod.forge.providers.AbstractUSLanguageProvider;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
+import jp.artan.dmlreloaded.forge.plugin.PluginInit;
 import jp.artan.dmlreloaded.init.DMLCreativeTab;
 import net.minecraft.data.DataGenerator;
 
@@ -14,7 +15,7 @@ public class ModUSLanguageProvider extends AbstractUSLanguageProvider {
     protected void addTranslations() {
         super.addTranslations();
         addTranslationsToolTip();
-        addTranslationsScreen();
+        addTranslationsCurios();
         addPatchouliLang();
 
         // ItemGroup
@@ -146,10 +147,10 @@ public class ModUSLanguageProvider extends AbstractUSLanguageProvider {
     }
 
     /**
-     * Screen
+     * Curios
      */
-    private void addTranslationsScreen() {
-
+    private void addTranslationsCurios() {
+        this.add("curios.identifier.deep_learner", "Deep Learner");
     }
 
     private void addPatchouliLang() {

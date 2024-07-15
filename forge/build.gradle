@@ -74,11 +74,11 @@ dependencies {
     modImplementation "curse.maven:official-divinerpg-363543:${divinerpg}"
 
     // Mekanism Additions
-    // modCompileOnly "mekanism:Mekanism:${mekanism_version}:api"
-    // modRuntimeOnly "mekanism:Mekanism:${mekanism_version}"               // core
-    // modRuntimeOnly "mekanism:Mekanism:${mekanism_version}:additions"     // Mekanism: Additions
-    // modRuntimeOnly "mekanism:Mekanism:${mekanism_version}:generators"    // Mekanism: Generators
-    // modRuntimeOnly "mekanism:Mekanism:${mekanism_version}:tools"         // Mekanism: Tools
+//     modCompileOnly "mekanism:Mekanism:${mekanism_version}:api"
+//     modRuntimeOnly "mekanism:Mekanism:${mekanism_version}"               // core
+//     modRuntimeOnly "mekanism:Mekanism:${mekanism_version}:additions"     // Mekanism: Additions
+//     modRuntimeOnly "mekanism:Mekanism:${mekanism_version}:generators"    // Mekanism: Generators
+//     modRuntimeOnly "mekanism:Mekanism:${mekanism_version}:tools"         // Mekanism: Tools
 
     // Deeper and Darker
     modImplementation "curse.maven:deeperdarker-659011:${deeper_and_darker}"
