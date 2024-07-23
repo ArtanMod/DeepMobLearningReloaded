@@ -1,4 +1,4 @@
-// 1.19.2	2024-07-14T18:05:15.4301836	Item Models: dmlreloaded
+// 1.19.2	2024-07-23T22:16:58.557986	Item Models: dmlreloaded
 d6a5f3e1430bf4e6a2aab8589b6bd6e96b99ec5c assets/dmlreloaded/models/item/data_model_blank.json
 60384863ead464f1387d7784f9f1666c9d9410fd assets/dmlreloaded/models/item/data_model_blaze.json
 2401521c0e9152052d13d5e779373d6c240316c2 assets/dmlreloaded/models/item/data_model_creeper.json
@@ -20,6 +20,10 @@ c8a9b8c2ddd72aef29d2fe3956d299e29f138fcf assets/dmlreloaded/models/item/data_mod
 33c9bdb53fd2a85a33135fe5c11f549f3b219f3d assets/dmlreloaded/models/item/data_model_skeleton.json
 c2b19be8d3466ebc59ac210e90d213c38f893ff7 assets/dmlreloaded/models/item/data_model_slime.json
 235eb96c78f947695b6a2228b538025312eec98a assets/dmlreloaded/models/item/data_model_spider.json
+03e1aeafea2803f523aaca4a11403ef251981949 assets/dmlreloaded/models/item/data_model_upgrade_tier1.json
+bf9af343d1012ef8479c080e4b166ba246fe5bd0 assets/dmlreloaded/models/item/data_model_upgrade_tier2.json
+6cf215c10ba1306406cac11b949452089ae737de assets/dmlreloaded/models/item/data_model_upgrade_tier3.json
+c1faf3d08a5ebfba9a031719eaccb429639c7237 assets/dmlreloaded/models/item/data_model_upgrade_tier4.json
 fbc0af1658454e8c7a0a804f56b19ebec04ade92 assets/dmlreloaded/models/item/data_model_warden.json
 73fd8571f69278c63bf02dd7fe924451ff35a56a assets/dmlreloaded/models/item/data_model_witch.json
 4493af84bb2dcf8e8f0423271cbd3964c565fd0d assets/dmlreloaded/models/item/data_model_wither.json

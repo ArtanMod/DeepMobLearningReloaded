@@ -59,10 +59,10 @@ public class ModItemModelProvider extends AbstractItemModelProvider {
      * アップグレードデータモデル
      */
     private void registerDataModelUpgrade() {
-//        this.basicItem(DMLItems.DATA_MODEL_UPGRADE_TIER1.get());
-//        this.basicItem(DMLItems.DATA_MODEL_UPGRADE_TIER2.get());
-//        this.basicItem(DMLItems.DATA_MODEL_UPGRADE_TIER3.get());
-//        this.basicItem(DMLItems.DATA_MODEL_UPGRADE_TIER4.get());
+        this.basicItem(DMLItems.DATA_MODEL_UPGRADE_TIER1.get());
+        this.basicItem(DMLItems.DATA_MODEL_UPGRADE_TIER2.get());
+        this.basicItem(DMLItems.DATA_MODEL_UPGRADE_TIER3.get());
+        this.basicItem(DMLItems.DATA_MODEL_UPGRADE_TIER4.get());
     }
 
     /**
