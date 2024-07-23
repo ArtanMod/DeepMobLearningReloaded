@@ -10,6 +10,7 @@ public class ClientConfig extends ModConfigs {
     public static ConfigEntry<Integer> guiOverlayHorizontalSpacing;
     public static ConfigEntry<Integer> guiOverlaySide;
     public static ConfigEntry<Integer> guiOverlayVerticalSpacing;
+    public static ConfigEntry<Boolean> curiosIntegrationDefaultOverlay;
 
     protected ClientConfig() {
         super(DeepMobLearningReloadedMod.MOD_ID + "/client.toml");
@@ -23,6 +24,8 @@ public class ClientConfig extends ModConfigs {
                 .comment("The horizontal spacing between the overlay and the screen edge.");
         guiOverlayVerticalSpacing = ModConfigs.defineEntry("guiOverlayVerticalSpacing", commentedFileConfig, 0, 0, 3)
                 .comment("The horizontal spacing between the overlay and the screen edge.");
+        curiosIntegrationDefaultOverlay = ModConfigs.defineEntry("curiosIntegrationDefaultOverlay", commentedFileConfig, true)
+                .comment("Whether the overlay should be shown by default when using the Curios integration. Specify false if you want to hide the UI by default, such as when the UI overlaps. If hidden, it can be made visible by pressing Ctrl.");
     }
 
     public static void init() {

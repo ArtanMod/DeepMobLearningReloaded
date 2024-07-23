@@ -1,8 +1,10 @@
 package jp.artan.dmlreloaded.forge.util;
 
+import jp.artan.dmlreloaded.config.ClientConfig;
 import jp.artan.dmlreloaded.forge.item.ItemDeepLearner;
 import jp.artan.dmlreloaded.forge.plugin.PluginInit;
 import jp.artan.dmlreloaded.forge.plugin.curios.CuriosUtil;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
@@ -29,8 +31,10 @@ public class PlayerHelper {
                 this.isHoldingDeepLearner = false;
                 stack = ItemStack.EMPTY;
             } else {
-                this.stack = curiosSlotItem;
-                this.isHoldingDeepLearner = true;
+                if(ClientConfig.curiosIntegrationDefaultOverlay.get() || Screen.hasControlDown()) {
+                    this.stack = curiosSlotItem;
+                    this.isHoldingDeepLearner = true;
+                }
             }
         } else {
             this.isHoldingDeepLearner = false;
