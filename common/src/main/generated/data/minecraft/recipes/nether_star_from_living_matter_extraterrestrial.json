@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "#": {
       "item": "dmlreloaded:living_matter_extraterrestrial"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "minecraft:nether_star"
-  }
+  },
+  "show_notification": true
 }

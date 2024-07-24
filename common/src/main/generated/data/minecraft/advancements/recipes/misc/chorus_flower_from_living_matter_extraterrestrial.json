@@ -30,5 +30,6 @@
     "recipes": [
       "minecraft:chorus_flower_from_living_matter_extraterrestrial"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

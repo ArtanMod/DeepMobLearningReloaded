@@ -12,6 +12,7 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
@@ -24,7 +25,7 @@ import net.minecraftforge.fml.DistExecutor;
 import javax.annotation.Nullable;
 
 public class DMLContainersForge {
-    private static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registry.MENU_REGISTRY);
+    private static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registries.MENU);
 
     public static void register() {
         MENUS.register();

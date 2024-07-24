@@ -7,10 +7,11 @@ import jp.artan.dmlreloaded.forge.init.DMLItemsForge;
 import jp.artan.dmlreloaded.init.DMLCreativeTab;
 import jp.artan.dmlreloaded.init.DMLItems;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 
 public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
-    public ModJPLanguageProvider(DataGenerator gen, String modid) {
-        super(gen, modid);
+    public ModJPLanguageProvider(PackOutput output, String modid) {
+        super(output, modid);
     }
 
     @Override

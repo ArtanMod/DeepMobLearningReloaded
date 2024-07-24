@@ -54,15 +54,15 @@ public class PlayerHandler {
             ThreadLocalRandom rand = ThreadLocalRandom.current();
             ItemStack itemStack = player.getItemInHand(hand);
             if(itemStack.getItem() instanceof ItemGlitchHeart && rand.nextInt(0, 10) <= 3) {
-                if(player.getLevel().getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN) {
-                    ItemEntity drop = new ItemEntity(player.getLevel(), blockPos.getX(), blockPos.getY(),
+                if(player.level().getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN) {
+                    ItemEntity drop = new ItemEntity(player.level(), blockPos.getX(), blockPos.getY(),
                             blockPos.getZ(), new ItemStack(DMLItems.GLITCH_FRAGMENT.get(), 3));
                     drop.setDefaultPickUpDelay();
-                    player.getLevel().addFreshEntity(drop);
+                    player.level().addFreshEntity(drop);
                     itemStack.shrink(1);
-                    player.getLevel().playSound(null, blockPos, SoundEvents.ANCIENT_DEBRIS_BREAK,
+                    player.level().playSound(null, blockPos, SoundEvents.ANCIENT_DEBRIS_BREAK,
                             SoundSource.NEUTRAL, 1f, 1.1f);
-                    player.getLevel().addParticle(ParticleTypes.POOF, (double) blockPos.getX() + 0.5d,
+                    player.level().addParticle(ParticleTypes.POOF, (double) blockPos.getX() + 0.5d,
                             (double) blockPos.getY() + 1, (double) blockPos.getZ() + 0.5d, 0d, 0.03d, 0d);
                     return EventResult.interruptTrue();
                 }
@@ -76,15 +76,15 @@ public class PlayerHandler {
             ThreadLocalRandom rand = ThreadLocalRandom.current();
             ItemStack itemStack = player.getItemInHand(hand);
             if (itemStack.getItem() == Items.REDSTONE && rand.nextInt(0, 10) <= 3) {
-                if (player.getLevel().getBlockState(blockPos).getBlock() == Blocks.COAL_BLOCK) {
-                    ItemEntity drop = new ItemEntity(player.getLevel(), blockPos.getX(), blockPos.getY(),
+                if (player.level().getBlockState(blockPos).getBlock() == Blocks.COAL_BLOCK) {
+                    ItemEntity drop = new ItemEntity(player.level(), blockPos.getX(), blockPos.getY(),
                             blockPos.getZ(), new ItemStack(DMLItems.SOOT_COVERED_REDSTONE.get(), 1));
                     drop.setDefaultPickUpDelay();
-                    player.getLevel().addFreshEntity(drop);
+                    player.level().addFreshEntity(drop);
                     itemStack.shrink(1);
-                    player.getLevel().playSound(null, blockPos, SoundEvents.AMETHYST_CLUSTER_BREAK,
+                    player.level().playSound(null, blockPos, SoundEvents.AMETHYST_CLUSTER_BREAK,
                             SoundSource.NEUTRAL, 1f, 0.1f);
-                    player.getLevel().addParticle(ParticleTypes.FLAME,
+                    player.level().addParticle(ParticleTypes.FLAME,
                             (double) blockPos.getX() + rand.nextDouble(0, 1), (double) blockPos.getY() + 1,
                             (double) blockPos.getZ() + rand.nextDouble(0, 1), 0d, 0.03d, 0d);
                     return EventResult.interruptTrue();

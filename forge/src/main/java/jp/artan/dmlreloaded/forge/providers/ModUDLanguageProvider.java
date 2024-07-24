@@ -5,10 +5,11 @@ import jp.artan.artansprojectcoremod.utils.lang.LangUtils;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.init.DMLCreativeTab;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 
 public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
-    public ModUDLanguageProvider(DataGenerator gen, String modid) {
-        super(gen, modid);
+    public ModUDLanguageProvider(PackOutput output, String modid) {
+        super(output, modid);
     }
 
     @Override
@@ -19,7 +20,7 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
         addPatchouliLang();
 
         // ItemGroup
-        add(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED, LangUtils.toUpsideDownEnglish("Deep Mob Learning: Reloaded"));
+        addCreativeModeTab(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED, LangUtils.toUpsideDownEnglish("Deep Mob Learning: Reloaded"));
     }
 
     /**

@@ -36,7 +36,7 @@ public class SimulationChamberContainer extends AbstractContainerMenu {
                                       ContainerData data) {
         super(menuType, pContainerId);
         this.handler = handler;
-        this.containerAccess = ContainerLevelAccess.create(pInventory.player.level, pPos);
+        this.containerAccess = ContainerLevelAccess.create(pInventory.player.level(), pPos);
         this.data = data;
         addInventorySlots(pInventory);
         addSlotsToHandler(handler);

@@ -8,6 +8,7 @@ import jp.artan.dmlreloaded.forge.container.DeepLearnerContainer;
 import jp.artan.dmlreloaded.forge.item.ItemDeepLearner;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import jp.artan.dmlreloaded.util.RenderHelper;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -45,7 +46,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
 
     public DeepLearnerScreen(DeepLearnerContainer container, Inventory playerInv, Component component) {
         super(container, playerInv, component);
-        this.world = playerInv.player.level;
+        this.world = playerInv.player.level();
         hand = playerInv.player.getMainHandItem().getItem() instanceof ItemDeepLearner ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
         this.deepLearner = playerInv.player.getItemInHand(hand);
     }
@@ -59,7 +60,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
     }
 
     @Override
-    protected void renderBg(PoseStack pose, float partialTicks, int mouseX, int mouseY) {
+    protected void renderBg(GuiGraphics pGuiGraphics, float partialTicks, int mouseX, int mouseY) {
         int left = getGuiLeft();
         int top = getGuiTop();
         this.pose = pose;
@@ -68,13 +69,13 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, getBaseTexture());
-        blit(pose, left - 41, top-36 , 0, 0, 256, 140);
+        pGuiGraphics.blit(getBaseTexture(), left - 41, top-36 , 0, 0, 256, 140);
 
         //Render playerInv
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, defaultGui);
-        blit(pose, left + 0, top + 111, 0, 0, 176, 90);
+        pGuiGraphics.blit(defaultGui, left + 0, top + 111, 0, 0, 176, 90);
 
         // Get the meta for the first ItemDataModel in this deeplearner
         NonNullList<ItemStack> list = ItemDeepLearner.getContainedItems(deepLearner);
@@ -95,69 +96,72 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         if(validDataModels.size() >= 1 && currentItem <= validDataModels.size()) {
             int fixPos = (validDataModels.size()-1 - currentItem) < 0 ? validDataModels.size()-1 : validDataModels.size()-1 - currentItem;
             this.meta = DataModelHelper.getMobMetaData(validDataModels.get(validDataModels.size() >= 1 ? fixPos : currentItem));
-            renderMetaDataText(meta, left, top, validDataModels.get(fixPos), pose);
-            renderMobDisplayBox(pose, left, top);
-            renderEntityInInventory(getGuiLeft() - 85, getGuiTop() + 52, meta, mouseX, mouseY, world);
+            renderMetaDataText(meta, left, top, validDataModels.get(fixPos), pGuiGraphics);
+            renderMobDisplayBox(pGuiGraphics, left, top);
+            renderEntityInInventory(pGuiGraphics, getGuiLeft() - 85, getGuiTop() + 52, meta, mouseX, mouseY, world);
+            /*if(meta instanceof ZombieMeta || meta instanceof SpiderMeta) {
+                renderEntityInInventory(getGuiLeft() + 51, getGuiTop() + 75, 30, (float)(getGuiLeft() + 51) - this.xMouse, (float)(getGuiTop() + 75 - 50) - this.yMouse,(LivingEntity) meta.getExtraEntity(world));
+            }*/
         } else {
-            renderDefaultScreen(pose);
+            renderDefaultScreen(pGuiGraphics);
         }
     }
 
     @Override
-    public void render(PoseStack p_97795_, int p_97796_, int p_97797_, float p_97798_) {
-        this.renderBackground(p_97795_);
-        super.render(p_97795_, p_97796_, p_97797_, p_97798_);
-        this.renderTooltip(p_97795_, p_97796_, p_97797_);
+    public void render(GuiGraphics pGuiGraphics, int p_97796_, int p_97797_, float p_97798_) {
+        this.renderBackground(pGuiGraphics);
+        super.render(pGuiGraphics, p_97796_, p_97797_, p_97798_);
+        this.renderTooltip(pGuiGraphics, p_97796_, p_97797_);
     }
 
-    private void renderDefaultScreen(PoseStack pose) {
+    private void renderDefaultScreen(GuiGraphics pGuiGraphics) {
         int leftStart = getGuiLeft() - 32;
         int top = getGuiTop() - 32;
         int spacing = 12;
-        drawString(pose, font, Component.translatable("dmlreloaded.gui.deep_learner.not_found"), leftStart, top + spacing, 0x55FFFF);
-        drawString(pose, font, Component.translatable("dmlreloaded.gui.deep_learner.insert"), leftStart, top + (spacing*2), 0xFFFFFF);
-        drawString(pose, font, Component.translatable("dmlreloaded.gui.deep_learner.collect_data"), leftStart, top + (spacing*3), 0xFFFFFF);
-        drawString(pose, font, Component.translatable("dmlreloaded.gui.deep_learner.when_placed"), leftStart, top + (spacing*4), 0xFFFFFF);
-        drawString(pose, font, Component.translatable("dmlreloaded.gui.deep_learner.in_order"), leftStart, top + (spacing*6), 0xFFFFFF);
-        drawString(pose, font, Component.translatable("dmlreloaded.gui.deep_learner.killing_blow"), leftStart, top + (spacing*7), 0xFFFFFF);
+        pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.deep_learner.not_found"), leftStart, top + spacing, 0x55FFFF);
+        pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.deep_learner.insert"), leftStart, top + (spacing*2), 0xFFFFFF);
+        pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.deep_learner.collect_data"), leftStart, top + (spacing*3), 0xFFFFFF);
+        pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.deep_learner.when_placed"), leftStart, top + (spacing*4), 0xFFFFFF);
+        pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.deep_learner.in_order"), leftStart, top + (spacing*6), 0xFFFFFF);
+        pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.deep_learner.killing_blow"), leftStart, top + (spacing*7), 0xFFFFFF);
     }
 
-    private void renderMetaDataText(MobMetaData meta, int left, int top, ItemStack stack, PoseStack pose) {
+    private void renderMetaDataText(MobMetaData meta, int left, int top, ItemStack stack, GuiGraphics pGuiGraphics) {
         DecimalFormat f = new DecimalFormat("0.#");
         int leftStart = getGuiLeft() - 32;
         int topStart = top - 40;
         int spacing = 12;
 
-        drawString(pose, font, Component.translatable("dmlreloaded.gui.name"), leftStart, topStart + spacing, 0x55FFFF);
-        drawString(pose, font, Component.translatable("dmlreloaded.gui.mob_name", Component.translatable(meta.getEntityId())), leftStart, topStart + (spacing *  2), 0xFFFFFF);
-        drawString(pose, font, Component.translatable("dmlreloaded.gui.information"), leftStart, topStart + (spacing *  3), 0xFFFFFF);
+        pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.name"), leftStart, topStart + spacing, 0x55FFFF);
+        pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.mob_name", Component.translatable(meta.getEntityId())), leftStart, topStart + (spacing *  2), 0xFFFFFF);
+        pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.information"), leftStart, topStart + (spacing *  3), 0xFFFFFF);
         int mobTriviaLine = meta.getMobTriviaLine();
         for (int i = 0; i < mobTriviaLine; i++) {
-            drawString(pose, font, meta.getMobTrivia(i), leftStart, topStart + (spacing * 3) + ((i + 1) * 12), 0xFFFFFF);
+            pGuiGraphics.drawString(font, meta.getMobTrivia(i), leftStart, topStart + (spacing * 3) + ((i + 1) * 12), 0xFFFFFF);
         }
         MutableComponent dataModelTier = DataModelHelper.getTierName(stack, false);
         MutableComponent nextTier = DataModelHelper.getTierName(stack, true);
         int totalKills = DataModelHelper.getTotalKillCount(stack);
         double killsToNextTier = DataModelHelper.getKillsToNextTier(stack);
-        drawString(pose, font, Component.translatable("dmlreloaded.tiers.tier", dataModelTier), leftStart, topStart + (spacing * 8), 0xFFFFFF);
-        drawString(pose, font, Component.translatable("dmlreloaded.gui.defeated", Component.translatable(meta.getEntityId()), totalKills), leftStart, topStart + (spacing * 9), 0xFFFFFF);
+        pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.tiers.tier", dataModelTier), leftStart, topStart + (spacing * 8), 0xFFFFFF);
+        pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.defeated", Component.translatable(meta.getEntityId()), totalKills), leftStart, topStart + (spacing * 9), 0xFFFFFF);
         if(DataModelHelper.getTier(stack) != DeepMobLearningReloadedMod.DATA_MODEL_MAXIMUM_TIER) {
-            drawString(pose, font, Component.translatable("dmlreloaded.tiers.tier_next", f.format(killsToNextTier), nextTier), leftStart, topStart + (spacing * 10), 0xFFFFFF);
+            pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.tiers.tier_next", f.format(killsToNextTier), nextTier), leftStart, topStart + (spacing * 10), 0xFFFFFF);
         } else {
-            drawString(pose, font, Component.translatable("dmlreloaded.gui.deep_learner.max"), leftStart, topStart + (spacing * 10), 0xFFFFFF);
+            pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.deep_learner.max"), leftStart, topStart + (spacing * 10), 0xFFFFFF);
         }
         // Draw heart
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, getBaseTexture());
-        blit(pose, left + 154, topStart + (spacing * 2) - 2, 0, 140, 9, 9);
-        drawString(pose, font, Component.translatable("dmlreloaded.gui.deep_learner.hp"), left + 154, topStart + spacing, 0x55FFFF);
+        pGuiGraphics.blit(getBaseTexture(), left + 154, topStart + (spacing * 2) - 2, 0, 140, 9, 9);
+        pGuiGraphics.drawString(font, Component.translatable("dmlreloaded.gui.deep_learner.hp"), left + 154, topStart + spacing, 0x55FFFF);
         int numOfHearts = meta.getNumberOfHearts();
         if(numOfHearts == 0) {
             // Obfuscate if hearts is 0, use for models with multiple mobmetas
-            drawString(pose, font, "�k10�r", left + 164, topStart + (spacing * 2) - 1, 0xFFFFFF);
+            pGuiGraphics.drawString(font, "�k10�r", left + 164, topStart + (spacing * 2) - 1, 0xFFFFFF);
         } else {
-            drawString(pose, font, "" + meta.getNumberOfHearts(), left + 164, topStart + (spacing * 2) - 1, 0xFFFFFF);
+            pGuiGraphics.drawString(font, "" + meta.getNumberOfHearts(), left + 164, topStart + (spacing * 2) - 1, 0xFFFFFF);
         }
     }
 
@@ -180,17 +184,16 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         addRenderableWidget(imgBtnPrev);
     }
 
-    private void renderMobDisplayBox(PoseStack pose, int left, int top) {
+    private void renderMobDisplayBox(GuiGraphics pGuiGraphics, int left, int top) {
         // Draw the mob display box
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, extras);
-        blit(pose, left -123, top-36, 0, 0, 75, 101);
+        pGuiGraphics.blit(extras, left -123, top-36, 0, 0, 75, 101);
     }
 
-
     @Override
-    protected void renderLabels(PoseStack p_97808_, int p_97809_, int p_97810_) {
+    protected void renderLabels(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
     }
 
     public NonNullList<ItemStack> getItemStacks() {
@@ -212,7 +215,8 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         this.validDataModels = DataModelHelper.getValidFromList(ItemDeepLearner.getContainedItems(deepLearner));
         if(validDataModels.size() >= 1 && currentItem < validDataModels.size()) {
             this.meta = DataModelHelper.getMobMetaData(validDataModels.get(currentItem));
-            renderMetaDataText(meta, getGuiLeft(), getGuiTop(), validDataModels.get(currentItem), pose);
+//            GuiGraphics guigraphics = new GuiGraphics(this.minecraft, this.);
+//            renderMetaDataText(meta, getGuiLeft(), getGuiTop(), validDataModels.get(currentItem));
             if(slot!= null && slot.getItem().isEmpty()) {
                 nextItemIndex();
             }
@@ -222,17 +226,16 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
     }
 
     @SuppressWarnings("deprecation")
-    public static void renderEntityInInventory(int xPos, int yPos, MobMetaData meta, double mouseX, double mouseY, Level world) {
+    public static void renderEntityInInventory(GuiGraphics pGuiGraphics, int xPos, int yPos, MobMetaData meta, double mouseX, double mouseY, Level world) {
         LivingEntity entity = meta.getEntity(world);
         if(entity != null) {
-            PoseStack poseStack = RenderSystem.getModelViewStack();
             float scale = getScale(entity);
             int offsetY = meta.getOffsetY(entity);
             RenderHelper.renderEntity(
-                    poseStack,
+                    pGuiGraphics,
                     xPos, yPos - offsetY, scale,
-                    210 - mouseX,
-                    120 - offsetY - mouseY,
+                    38 - mouseX,
+                    70 - offsetY - mouseY,
                     entity,
                     meta
             );

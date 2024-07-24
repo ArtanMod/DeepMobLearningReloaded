@@ -1,5 +1,6 @@
 package jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.init;
 
+import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import jp.artan.artansprojectcoremod.utils.inject.NonNullFunction;
@@ -12,11 +13,11 @@ import jp.artan.dmlreloaded.init.DMLCreativeTab;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 
 public class DeeperAndDarkerItemInit {
-    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registry.ITEM_REGISTRY);
+    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registries.ITEM);
 
     public static void register() {
         ITEMS.register();
@@ -45,6 +46,11 @@ public class DeeperAndDarkerItemInit {
     }
 
     private static <T extends Item> RegistrySupplier<T> register(String name, NonNullFunction<Item.Properties, T> item) {
-        return ITEMS.register(name, () -> item.apply(new Item.Properties().tab(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED)));
+        RegistrySupplier<T> itemRegister = ITEMS.register(name, () -> {
+            T itemInstance = item.apply(new Item.Properties());
+            CreativeTabRegistry.append(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED, itemInstance);
+            return itemInstance;
+        });
+        return itemRegister;
     }
 }

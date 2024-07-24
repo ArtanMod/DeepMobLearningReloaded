@@ -3,6 +3,7 @@ package jp.artan.dmlreloaded.forge.providers;
 import jp.artan.artansprojectcoremod.forge.providers.AbstractBlockModelProvider;
 import jp.artan.dmlreloaded.forge.init.DMLBlocksForge;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -10,8 +11,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ModBlockModelProvider extends AbstractBlockModelProvider {
 
-    public ModBlockModelProvider(DataGenerator gen, String modid, ExistingFileHelper exFileHelper) {
-        super(gen, modid, exFileHelper);
+    public ModBlockModelProvider(PackOutput output, String modid, ExistingFileHelper exFileHelper) {
+        super(output, modid, exFileHelper);
     }
 
     @Override

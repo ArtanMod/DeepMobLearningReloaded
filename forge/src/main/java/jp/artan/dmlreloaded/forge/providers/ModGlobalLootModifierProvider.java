@@ -1,13 +1,13 @@
 package jp.artan.dmlreloaded.forge.providers;
 
 import jp.artan.dmlreloaded.forge.loot.GlitchFragmentModifier;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 
 public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
-    public ModGlobalLootModifierProvider(DataGenerator gen, String modid) {
-        super(gen, modid);
+    public ModGlobalLootModifierProvider(PackOutput output, String modid) {
+        super(output, modid);
     }
 
     @Override

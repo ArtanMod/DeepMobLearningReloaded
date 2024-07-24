@@ -11,6 +11,7 @@ import jp.artan.dmlreloaded.forge.network.ServerboundResultingItemPacket;
 import jp.artan.dmlreloaded.forge.screen.buttons.SelectButton;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
 import jp.artan.dmlreloaded.util.MathHelper;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -45,7 +46,7 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
     }
 
     @Override
-    protected void renderBg(PoseStack pose, float pPartialTick, int pMouseX, int pMouseY) {
+    protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         int left = getGuiLeft();
         int top = getGuiTop();
         int x = pMouseX - getGuiLeft();
@@ -57,7 +58,7 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, base);
-        blit(pose, left , top , 0, 0, 178, 83);
+        pGuiGraphics.blit(base, left , top , 0, 0, 178, 83);
 
         // Render scrollbar
         int k = (int)(41.0F * this.scrollOffs);
@@ -69,7 +70,7 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
                 }
             }
         }
-        blit(pose, left + 76, top + 12 + k, 178 + (this.isScrollBarActive() ? 0 : 12)+o, 0, 6, 19);
+        pGuiGraphics.blit(base, left + 76, top + 12 + k, 178 + (this.isScrollBarActive() ? 0 : 12)+o, 0, 6, 19);
 
         final int progress = this.menu.data.get(0);
         final int energyStored1 = this.menu.data.get(3) & 0x0000FFFF;
@@ -82,16 +83,16 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
         // Render current energy
         int energyBarHeight = MathHelper.ensureRange((int) ((float) energyStored / (maxEnergy - EnergyCostConfig.efCostExtractionChamber.get()) * 53), 0, 53);
         int energyBarOffset = 53 - energyBarHeight;
-        blit(pose, left + 6,  top + 10 + energyBarOffset, 0, 83, 7, energyBarHeight);
+        pGuiGraphics.blit(base, left + 6,  top + 10 + energyBarOffset, 0, 83, 7, energyBarHeight);
 
         // Render crafting progress
         int craftingBarHeight = (int) (((float) progress / 50 * 36));
         int craftingBarOffset = 36 - craftingBarHeight;
-        blit(pose, left + 86,  top + 22 + craftingBarOffset, 7, 83, 6, craftingBarHeight);
+        pGuiGraphics.blit(base, left + 86,  top + 22 + craftingBarOffset, 7, 83, 6, craftingBarHeight);
 
         // Render playerInv
         RenderSystem.setShaderTexture(0, defaultGui);
-        blit(pose, left + 0, top + 111, 0, 0, 176, 90);
+        pGuiGraphics.blit(defaultGui, left + 0, top + 111, 0, 0, 176, 90);
 
         NumberFormat f = NumberFormat.getNumberInstance(Locale.ENGLISH);
 
@@ -101,18 +102,18 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
                 List<Component> tooltip = new ArrayList<>();
                 tooltip.add(Component.translatable("dmlreloaded.gui.energy.energystored", f.format(energyStored), f.format(maxEnergy)));
                 tooltip.add(Component.translatable("dmlreloaded.gui.extraction_chamber.opcost", f.format(EnergyCostConfig.efCostExtractionChamber.get())));
-                renderComponentTooltip(pose, tooltip, pMouseX + 1, pMouseY - 11);
+                pGuiGraphics.renderComponentTooltip(this.font, tooltip, pMouseX + 1, pMouseY - 11);
             }
         }
         if (23 <= y && y < 58) {
             if(84 <= x && x < 90) {
                 List<Component> tooltip = new ArrayList<>();
                 tooltip.add(Component.literal(progress + "/" + 100));
-                renderComponentTooltip(pose, tooltip, pMouseX - 1, pMouseY - 11);
+                pGuiGraphics.renderComponentTooltip(this.font, tooltip, pMouseX - 1, pMouseY - 11);
             }
         }
         if(!getPristine().isEmpty()) {
-            renderLootList();
+            renderLootList(pGuiGraphics);
             if(!elementsAdded) {
                 renderButtons();
                 this.elementsAdded = true;
@@ -126,7 +127,6 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
             }
         }
     }
-
     private ItemStack getPristine() {
         return this.menu.getPristine();
     }
@@ -184,13 +184,13 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
     }
 
 
-    private void renderLootList() {
+    private void renderLootList(GuiGraphics pGuiGraphics) {
         for(int i = this.startIndex ;i < this.startIndex + 9 && i < getLootFromPristine().size(); i++) {
             int j = i - this.startIndex;
             int l = j / 3 * 19;
             int k = j % 3 * 19;
             ItemStack itemStack = getItemFromList(i);
-            renderItemStackWithCount(itemStack, 17 + getGuiLeft() + k, 8 + getGuiTop() + l, itemStack.getCount());
+            renderItemStackWithCount(pGuiGraphics, itemStack, 17 + getGuiLeft() + k, 8 + getGuiTop() + l, itemStack.getCount());
         }
     }
 
@@ -217,9 +217,9 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
         }
     }
 
-    private void renderItemStackWithCount(ItemStack stack, int x, int y, int count) {
-        getMinecraft().getItemRenderer().renderAndDecorateItem(stack, x, y);
-        getMinecraft().getItemRenderer().renderGuiItemDecorations(font, stack, x - 1, y - 1, count != 1 ? count + ""  : "");
+    private void renderItemStackWithCount(GuiGraphics pGuiGraphics, ItemStack stack, int x, int y, int count) {
+        pGuiGraphics.renderItem(stack, x, y);
+        pGuiGraphics.renderItemDecorations(font, stack, x - 1, y - 1, count != 1 ? count + ""  : "");
     }
 
     /**
@@ -279,14 +279,14 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
     }
 
     @Override
-    protected void renderLabels(PoseStack pPoseStack, int pMouseX, int pMouseY) {
+    protected void renderLabels(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
     }
 
     @Override
-    public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {
-        this.renderBackground(pPoseStack);
-        super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
-        this.renderTooltip(pPoseStack, pMouseX, pMouseY);
+    public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
+        this.renderBackground(pGuiGraphics);
+        super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
+        this.renderTooltip(pGuiGraphics, pMouseX, pMouseY);
     }
 
 }

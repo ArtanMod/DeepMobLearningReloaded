@@ -4,18 +4,20 @@ import jp.artan.dmlreloaded.init.DMLRecipeSerializer;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.item.ItemDataModelUpgrade;
 import jp.artan.dmlreloaded.util.DataModelHelper;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.SimpleRecipeSerializer;
+import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 public class DataModelUpgradeRecipe extends CustomRecipe {
-    public DataModelUpgradeRecipe(ResourceLocation resourceLocation) {
-        super(resourceLocation);
+    public DataModelUpgradeRecipe(ResourceLocation pId, CraftingBookCategory pCategory) {
+        super(pId, pCategory);
     }
 
     @Override
@@ -32,7 +34,7 @@ public class DataModelUpgradeRecipe extends CustomRecipe {
     }
 
     @Override
-    public ItemStack assemble(CraftingContainer container) {
+    public ItemStack assemble(CraftingContainer container, RegistryAccess pRegistryAccess) {
         ItemStack metaDataItem = this.getMobMetaData(container).copy();
         ItemDataModelUpgrade dataModelUpgrade = this.getDataModelUpgrade(container);
         DataModelHelper.setTier(metaDataItem, dataModelUpgrade.getNextTier());
@@ -80,7 +82,7 @@ public class DataModelUpgradeRecipe extends CustomRecipe {
         return DMLRecipeSerializer.CRAFTING_SPECIAL_DATA_MODE_UPGRADE_RECIPE.get();
     }
 
-    public static class Serializer extends SimpleRecipeSerializer<DataModelUpgradeRecipe> {
+    public static class Serializer extends SimpleCraftingRecipeSerializer<DataModelUpgradeRecipe> {
         public Serializer() {
             super(DataModelUpgradeRecipe::new);
         }

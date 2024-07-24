@@ -17,7 +17,7 @@ public class PlayerHandler {
     public static void playerEuqipmentUpdate(LivingEquipmentChangeEvent event) {
         if (event.getEntity() instanceof Player player) {
             Abilities cap = player.getAbilities();
-            if (!player.level.isClientSide) {
+            if (!player.level().isClientSide) {
                 boolean isMayFly = cap.mayfly;
                 boolean isFlyEnabledAndFullSet = ItemGlitchArmor.isFlyEnabledAndFullSet((ServerPlayer) player);
                 boolean isSpectator = player.isSpectator();
@@ -41,7 +41,7 @@ public class PlayerHandler {
     public static void playerChangeGamemode(PlayerEvent.PlayerChangeGameModeEvent event) {
         Player player = event.getEntity();
         Abilities cap = player.getAbilities();
-        if (!player.level.isClientSide) {
+        if (!player.level().isClientSide) {
             boolean isMayFly = cap.mayfly;
             boolean isFlyEnabledAndFullSet = ItemGlitchArmor.isFlyEnabledAndFullSet((ServerPlayer) player);
             boolean isSpectator = player.isSpectator();

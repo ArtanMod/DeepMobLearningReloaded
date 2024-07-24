@@ -1,5 +1,6 @@
 package jp.artan.dmlreloaded.init;
 
+import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import jp.artan.artansprojectcoremod.sets.ArmorItems;
@@ -10,14 +11,17 @@ import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.item.*;
 import jp.artan.dmlreloaded.item.material.GlitchArmorMaterials;
 import jp.artan.dmlreloaded.item.material.GlitchToolMaterials;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
 
 public class DMLItems {
-    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registry.ITEM_REGISTRY);
+    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registries.ITEM);
 
     public static void register() {
         ITEMS.register();
@@ -40,11 +44,11 @@ public class DMLItems {
     public static final ArmorItems<ItemGlitchArmor> NETHERITE_GLITCH_ARMOR = registerGlitchArmor("netherite_glitch_infused", GlitchArmorMaterials.NETHERITE_GLITCH, GLITCH_ARMOR);
 
     private static ArmorItems<ItemGlitchArmor> registerGlitchArmor(String name, ArmorMaterial pMaterial, @Nullable ArmorItems<?> upgradeBaseArmorItems) {
-        RegistrySupplier<ItemGlitchArmor> helmet = register(name + "_helmet", p -> new ItemGlitchArmor(pMaterial, EquipmentSlot.HEAD, p));
-        RegistrySupplier<ItemGlitchArmor> chestplate = register(name + "_chestplate", p -> new ItemGlitchArmor(pMaterial, EquipmentSlot.CHEST, p));
-        RegistrySupplier<ItemGlitchArmor> leggings = register(name + "_leggings", p -> new ItemGlitchArmor(pMaterial, EquipmentSlot.LEGS, p));
-        RegistrySupplier<ItemGlitchArmor> boots = register(name + "_boots", p -> new ItemGlitchArmor(pMaterial, EquipmentSlot.FEET, p));
-        return new ArmorItems<>(helmet, chestplate, leggings, boots, upgradeBaseArmorItems);
+        RegistrySupplier<ItemGlitchArmor> helmet = register(name + "_helmet", p -> new ItemGlitchArmor(pMaterial, ArmorItem.Type.HELMET, p));
+        RegistrySupplier<ItemGlitchArmor> chestplate = register(name + "_chestplate", p -> new ItemGlitchArmor(pMaterial, ArmorItem.Type.CHESTPLATE, p));
+        RegistrySupplier<ItemGlitchArmor> leggings = register(name + "_leggings", p -> new ItemGlitchArmor(pMaterial, ArmorItem.Type.LEGGINGS, p));
+        RegistrySupplier<ItemGlitchArmor> boots = register(name + "_boots", p -> new ItemGlitchArmor(pMaterial, ArmorItem.Type.BOOTS, p));
+        return new ArmorItems<>(helmet, chestplate, leggings, boots, upgradeBaseArmorItems, Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE));
     }
 
     // #############################################################################################################################################################################################
@@ -132,6 +136,11 @@ public class DMLItems {
     }
 
     private static <T extends Item> RegistrySupplier<T> register(String name, NonNullFunction<Item.Properties, T> item) {
-        return ITEMS.register(name, () -> item.apply(new Item.Properties().tab(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED)));
+        RegistrySupplier<T> itemRegister = ITEMS.register(name, () -> {
+            T itemInstance = item.apply(new Item.Properties());
+            CreativeTabRegistry.append(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED, itemInstance);
+            return itemInstance;
+        });
+        return itemRegister;
     }
 }

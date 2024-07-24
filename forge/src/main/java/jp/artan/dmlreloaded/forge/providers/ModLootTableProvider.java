@@ -3,12 +3,13 @@ package jp.artan.dmlreloaded.forge.providers;
 import jp.artan.artansprojectcoremod.forge.providers.AbstractLootTableProvider;
 import jp.artan.dmlreloaded.forge.init.DMLBlocksForge;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 
 import java.util.function.Function;
 
 public class ModLootTableProvider extends AbstractLootTableProvider {
-    public ModLootTableProvider(DataGenerator arg, String modId) {
-        super(arg, modId);
+    public ModLootTableProvider(PackOutput arg, String modId) {
+        super(arg, modId, () -> new BlockLootTable(modId));
     }
 
     @Override
@@ -23,7 +24,7 @@ public class ModLootTableProvider extends AbstractLootTableProvider {
         }
 
         @Override
-        protected void addTables() {
+        protected void generate() {
             this.dropSelf(DMLBlocksForge.MACHINE_CASING.get());
             this.dropSelf(DMLBlocksForge.SIMULATION_CHAMBER.get());
             this.dropSelf(DMLBlocksForge.EXTRACTION_CHAMBER.get());

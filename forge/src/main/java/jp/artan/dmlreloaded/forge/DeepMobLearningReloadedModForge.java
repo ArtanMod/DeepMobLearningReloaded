@@ -7,7 +7,9 @@ import jp.artan.dmlreloaded.forge.init.*;
 import jp.artan.dmlreloaded.forge.plugin.PluginInit;
 import jp.artan.dmlreloaded.forge.providers.*;
 import jp.artan.dmlreloaded.forge.screen.DataOverlay;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.ComponentContents;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,6 +20,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import java.util.concurrent.CompletableFuture;
 
 @Mod(DeepMobLearningReloadedMod.MOD_ID)
 public class DeepMobLearningReloadedModForge {
@@ -57,29 +61,31 @@ public class DeepMobLearningReloadedModForge {
     private static void registerProviders(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        PackOutput output = generator.getPackOutput();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         // Model
-        generator.addProvider(event.includeClient(), new ModBlockModelProvider(generator, DeepMobLearningReloadedMod.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ModItemModelProvider(generator, DeepMobLearningReloadedMod.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ModBlockModelProvider(output, DeepMobLearningReloadedMod.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ModItemModelProvider(output, DeepMobLearningReloadedMod.MOD_ID, existingFileHelper));
 
         // LootTable
-        generator.addProvider(event.includeServer(), new ModLootTableProvider(generator, DeepMobLearningReloadedMod.MOD_ID));
+        generator.addProvider(event.includeServer(), new ModLootTableProvider(output, DeepMobLearningReloadedMod.MOD_ID));
 
         // Lang
-        generator.addProvider(event.includeClient(), new ModUDLanguageProvider(generator, DeepMobLearningReloadedMod.MOD_ID));
-        generator.addProvider(event.includeClient(), new ModUSLanguageProvider(generator, DeepMobLearningReloadedMod.MOD_ID));
-        generator.addProvider(event.includeClient(), new ModJPLanguageProvider(generator, DeepMobLearningReloadedMod.MOD_ID));
+        generator.addProvider(event.includeClient(), new ModUDLanguageProvider(output, DeepMobLearningReloadedMod.MOD_ID));
+        generator.addProvider(event.includeClient(), new ModUSLanguageProvider(output, DeepMobLearningReloadedMod.MOD_ID));
+        generator.addProvider(event.includeClient(), new ModJPLanguageProvider(output, DeepMobLearningReloadedMod.MOD_ID));
 
         // Recipe
-        generator.addProvider(event.includeClient(), new ModRecipeProvider(generator));
+        generator.addProvider(event.includeClient(), new ModRecipeProvider(output));
 
         // Tag
-        ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(generator, DeepMobLearningReloadedMod.MOD_ID, existingFileHelper);
+        ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(output, lookupProvider, DeepMobLearningReloadedMod.MOD_ID, existingFileHelper);
         generator.addProvider(event.includeClient(), blockTagsProvider);
-        generator.addProvider(event.includeClient(), new ModItemTagsProvider(generator, blockTagsProvider, DeepMobLearningReloadedMod.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ModItemTagsProvider(output, lookupProvider, blockTagsProvider.contentsGetter(), DeepMobLearningReloadedMod.MOD_ID, existingFileHelper));
 
         // Global Loot Modifier
-        generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(generator, DeepMobLearningReloadedMod.MOD_ID));
+        generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(output, DeepMobLearningReloadedMod.MOD_ID));
 
         // Patchouli
         generator.addProvider(event.includeClient(), new ModPatchouliProvider(event.includeClient(), DeepMobLearningReloadedMod.MOD_ID, generator, existingFileHelper));

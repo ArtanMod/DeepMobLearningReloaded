@@ -5,11 +5,11 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.forge.block.entity.BlockEntityExtractionChamber;
 import jp.artan.dmlreloaded.forge.block.entity.BlockEntitySimulationChamber;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 public class DMLBlockEntityForge {
-    private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registry.BLOCK_ENTITY_TYPE_REGISTRY);
+    private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registries.BLOCK_ENTITY_TYPE);
 
     public static void register() {
         BLOCK_ENTITIES.register();

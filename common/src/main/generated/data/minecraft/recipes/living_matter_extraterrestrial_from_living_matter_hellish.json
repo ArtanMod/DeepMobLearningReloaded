@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "#": {
       "item": "dmlreloaded:living_matter_hellish"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "dmlreloaded:living_matter_extraterrestrial"
-  }
+  },
+  "show_notification": true
 }

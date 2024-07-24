@@ -33,7 +33,7 @@ public class ModPatchouliProvider extends RegistratePatchouliProvider {
                                 .setLinkHoverColor(0x00FFC0)
                                 .setShowProgress(false)
                                 .setSubtitle("patchouli.book.sub_title")
-                                .setCreativeTab(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED)
+                                .setCreativeTab(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED.get())
                                 .addMacros("$(primary)", "$(#16EFF7)")
                                 .addMacros("$(item)", "$(#ff8c00)")
                                 .addMacros("$(dml)", "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning)Deep Mob Learning$()")

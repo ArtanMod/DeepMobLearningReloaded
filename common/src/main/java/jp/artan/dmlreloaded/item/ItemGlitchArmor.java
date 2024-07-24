@@ -16,14 +16,14 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class ItemGlitchArmor extends ArmorItem{
+public class ItemGlitchArmor extends ArmorItem {
 
     private static final int PRISTINE_SET_CHANCE = 16;
     private static final int FRAGMENT_SET_CHANCE = 6;
     private static final int HEART_SET_CHANCE = 1;
     private static final int PRISTINE_SET_NUMBER_OF_DROPS = 2;
 
-    public ItemGlitchArmor(ArmorMaterial pMaterial, EquipmentSlot pSlot, Properties pProperties) {
+    public ItemGlitchArmor(ArmorMaterial pMaterial, Type pSlot, Properties pProperties) {
         super(pMaterial, pSlot, pProperties);
     }
 

@@ -2,7 +2,7 @@ package jp.artan.dmlreloaded.common.mobmetas;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.util.RenderInfo;
@@ -36,10 +36,10 @@ public class EnderDragonMeta extends MobMetaData{
     @Override
     public RenderInfo transform(RenderInfo renderInfo, LivingEntity entity) {
         PoseStack modelViewStack = RenderSystem.getModelViewStack();
-        modelViewStack.mulPose(Vector3f.XP.rotationDegrees(20.0F));
-        modelViewStack.mulPose(Vector3f.YP.rotationDegrees(180.0F));
+        modelViewStack.mulPose(Axis.XP.rotationDegrees(20.0F));
+        modelViewStack.mulPose(Axis.YP.rotationDegrees(180.0F));
         renderInfo.pitch = -renderInfo.pitch - 80;
-        modelViewStack.mulPose(Vector3f.YN.rotationDegrees(((float)(renderInfo.yaw < 90 ? (renderInfo.yaw < -90 ? 90 : -renderInfo.yaw) : -90) / 2.0F)));
+        modelViewStack.mulPose(Axis.YN.rotationDegrees(((float)(renderInfo.yaw < 90 ? (renderInfo.yaw < -90 ? 90 : -renderInfo.yaw) : -90) / 2.0F)));
         return renderInfo;
     }
 }

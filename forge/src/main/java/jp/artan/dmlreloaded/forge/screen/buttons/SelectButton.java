@@ -22,24 +22,24 @@ public class SelectButton extends Button {
     private final int textureHeight;
     private boolean selected;
 
-    public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, ResourceLocation pResourceLocation, OnPress pOnPress) {
+    public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, ResourceLocation pResourceLocation, Button.OnPress pOnPress) {
         this(pX, pY, pWidth, pHeight, pXTexStart, pYTexStart, pYDiffTex, pXSelTex, false, pResourceLocation, pOnPress);
     }
 
-    public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, boolean selected,ResourceLocation pResourceLocation, OnPress pOnPress) {
+    public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, boolean selected,ResourceLocation pResourceLocation, Button.OnPress pOnPress) {
         this(pX, pY, pWidth, pHeight, pXTexStart, pYTexStart, pYDiffTex, pXSelTex, selected, pResourceLocation, 256, 256, pOnPress);
     }
 
-    public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, boolean selected, ResourceLocation pResourceLocation, int pTextureWidth, int pTextureHeight, OnPress pOnPress) {
+    public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, boolean selected, ResourceLocation pResourceLocation, int pTextureWidth, int pTextureHeight, Button.OnPress pOnPress) {
         this(pX, pY, pWidth, pHeight, pXTexStart, pYTexStart, pYDiffTex, pXSelTex, selected, pResourceLocation, pTextureWidth, pTextureHeight, pOnPress, MutableComponent.create(ComponentContents.EMPTY));
     }
 
-    public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, boolean selected, ResourceLocation pResourceLocation, int pTextureWidth, int pTextureHeight, OnPress pOnPress, Component pMessage) {
-        this(pX, pY, pWidth, pHeight, pXTexStart, pYTexStart, pYDiffTex, pXSelTex, selected, pResourceLocation, pTextureWidth, pTextureHeight, pOnPress, NO_TOOLTIP, pMessage);
+    public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, boolean selected, ResourceLocation pResourceLocation, int pTextureWidth, int pTextureHeight, Button.OnPress pOnPress, Component pMessage) {
+        this(pX, pY, pWidth, pHeight, pXTexStart, pYTexStart, pYDiffTex, pXSelTex, selected, pResourceLocation, pTextureWidth, pTextureHeight, pOnPress, DEFAULT_NARRATION, pMessage);
     }
 
-    public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, boolean selected,ResourceLocation pResourceLocation, int pTextureWidth, int pTextureHeight, OnPress pOnPress, OnTooltip pOnTooltip, Component pMessage) {
-        super(pX, pY, pWidth, pHeight, pMessage, pOnPress, pOnTooltip);
+    public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, boolean selected,ResourceLocation pResourceLocation, int pTextureWidth, int pTextureHeight, Button.OnPress pOnPress, Button.CreateNarration pCreateNarration, Component pMessage) {
+        super(pX, pY, pWidth, pHeight, pMessage, pOnPress, pCreateNarration);
         this.textureWidth = pTextureWidth;
         this.textureHeight = pTextureHeight;
         this.xTexStart = pXTexStart;
@@ -51,8 +51,8 @@ public class SelectButton extends Button {
     }
 
     public void setPosition(int pX, int pY) {
-        this.x = pX;
-        this.y = pY;
+        this.setX(pX);
+        this.setY(pY);
     }
 
     public boolean isSelected() {
@@ -69,25 +69,5 @@ public class SelectButton extends Button {
         }else {
             this.selected=true;
         }
-    }
-
-    public void renderButton(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderTexture(0, this.resourceLocation);
-        int i = this.yTexStart;
-        int o = this.xTexStart;
-        if (this.isHoveredOrFocused()&& !this.selected) {
-            i += this.yDiffTex;
-        }
-        else if(this.selected) {
-            o += this.xSelTex;
-        }
-
-        RenderSystem.enableDepthTest();
-        blit(pPoseStack, this.x, this.y, (float)o, (float)i, this.width, this.height, this.textureWidth, this.textureHeight);
-        if (this.isHovered) {
-            this.renderToolTip(pPoseStack, pMouseX, pMouseY);
-        }
-
     }
 }
