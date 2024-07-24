@@ -57,8 +57,8 @@ dependencies {
     modRuntimeOnly "mezz.jei:jei-${minecraft_version}-forge:${jei_version}"
 
     // Patchouli
-    modCompileOnly "vazkii.patchouli:Patchouli:${patchouli_version}:api"
-    modRuntimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}"
+    modCompileOnly "vazkii.patchouli:Patchouli:${patchouli_version}-FORGE:api"
+    modRuntimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}-FORGE"
 
     // Curios
     modRuntimeOnly "top.theillusivec4.curios:curios-forge:${curios_version}"
