@@ -9,6 +9,8 @@
   "dmlreloaded.data_model.rfcost": "シミュレーションコスト: %1$s RF/t",
   "dmlreloaded.data_model.tier": "等級: %1$s",
   "dmlreloaded.data_model.type_text": "タイプ: %1$s",
+  "dmlreloaded.data_model_upgrade.desc": "クリエイティブ専用",
+  "dmlreloaded.data_model_upgrade.tier": "データモデルの等級%1$sにアップグレードできる",
   "dmlreloaded.gui.deep_learner.collect_data": "データモデルは、深層学習装置に配置される",
   "dmlreloaded.gui.deep_learner.hp": "体力",
   "dmlreloaded.gui.deep_learner.in_order": "データを収集するためには",

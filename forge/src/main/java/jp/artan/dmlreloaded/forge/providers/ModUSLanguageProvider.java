@@ -31,6 +31,8 @@ public class ModUSLanguageProvider extends AbstractUSLanguageProvider {
         this.add(this.createToolTip("data_model.rfcost"), "Simulation cost: %1$s RF/t");
         this.add(this.createToolTip("data_model.tier"), "Tier: %1$s");
         this.add(this.createToolTip("data_model.type_text"), "Type: %1$s");
+        this.add(this.createToolTip("data_model_upgrade.desc"), "Creative only");
+        this.add(this.createToolTip("data_model_upgrade.tier"), "Can be upgraded to data model grade%1$s.");
         this.add(this.createToolTip("gui.deep_learner.collect_data"), "Your data models will collect data");
         this.add(this.createToolTip("gui.deep_learner.hp"), "Life points");
         this.add(this.createToolTip("gui.deep_learner.in_order"), "In order to collect data, you must");
