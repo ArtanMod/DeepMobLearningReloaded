@@ -81,6 +81,10 @@ dependencies {
 
     // Deeper and Darker
     modImplementation "curse.maven:deeperdarker-659011:${deeper_and_darker}"
+
+    // L_Ender 's Cataclysm
+    modImplementation "curse.maven:lionfish-1001614:${lionfish_api_version}"
+    modImplementation "curse.maven:lendercataclysm-551586:${lendercataclysm_version}"
 }
 
 processResources {
