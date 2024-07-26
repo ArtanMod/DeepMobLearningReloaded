@@ -1,13 +1,13 @@
 package jp.artan.dmlreloaded.forge.plugin;
 
 import dev.architectury.platform.Platform;
+import jp.artan.dmlreloaded.forge.plugin.Cataclysm.CataclysmPlugin;
 import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.DeeperAndDarkerPlugin;
 import jp.artan.dmlreloaded.forge.plugin.DivineRPG.DivineRPGPlugin;
 import jp.artan.dmlreloaded.forge.plugin.curios.CuriosPlugin;
 import jp.artan.dmlreloaded.forge.plugin.mekanism.MekanismPlugin;
 import jp.artan.dmlreloaded.forge.plugin.reliquary.ReliquaryPlugin;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModList;
 
 public class PluginInit {
     public static final boolean RELIQUARY_ACTIVE = Platform.isModLoaded(ReliquaryPlugin.NAME);
@@ -15,11 +15,9 @@ public class PluginInit {
     public static final boolean MEKANISM_ACTIVE = Platform.isModLoaded(MekanismPlugin.NAME);
     public static final boolean CURIOS_ACTIVE = Platform.isModLoaded(CuriosPlugin.NAME);
     public static final boolean DEEP_AND_DARKER_ACTIVE = Platform.isModLoaded(DeeperAndDarkerPlugin.NAME);
+    public static final boolean CATACLYSM_ACTIVE = Platform.isModLoaded(CataclysmPlugin.NAME);
 
-    public static void init(IEventBus modEventBus){
-//        if (TWILIGHT_ACTIVE) {
-//            TwilightPlugin.init();
-//        }
+    public static void init(IEventBus modEventBus) {
         if (RELIQUARY_ACTIVE) {
             ReliquaryPlugin.init();
         }
@@ -34,6 +32,9 @@ public class PluginInit {
         }
         if (DEEP_AND_DARKER_ACTIVE) {
             DeeperAndDarkerPlugin.init();
+        }
+        if (CATACLYSM_ACTIVE) {
+            CataclysmPlugin.init(modEventBus);
         }
     }
 }
