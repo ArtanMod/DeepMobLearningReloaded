@@ -2,10 +2,9 @@ package jp.artan.dmlreloaded.forge.providers;
 
 import jp.artan.artansprojectcoremod.forge.providers.AbstractItemModelProvider;
 import jp.artan.dmlreloaded.forge.init.DMLItemsForge;
-import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.init.DeeperAndDarkerItemInit;
+import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.init.DMLIntegrationDADItems;
 import jp.artan.dmlreloaded.forge.plugin.PluginInit;
 import jp.artan.dmlreloaded.init.DMLItems;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -28,13 +27,13 @@ public class ModItemModelProvider extends AbstractItemModelProvider {
     }
 
     private void registerPluginDeeperAndDarker() {
-        this.basicItem(DeeperAndDarkerItemInit.SHATTERED.get());
-        this.basicItem(DeeperAndDarkerItemInit.SCULK_CENTIPEDE.get());
-        this.basicItem(DeeperAndDarkerItemInit.STALKER.get());
-        this.basicItem(DeeperAndDarkerItemInit.PRISTINE_MATTER_SHATTERED.get());
-        this.basicItem(DeeperAndDarkerItemInit.PRISTINE_MATTER_SCULK_CENTIPEDE.get());
-        this.basicItem(DeeperAndDarkerItemInit.PRISTINE_MATTER_STALKER.get());
-        this.basicItem(DeeperAndDarkerItemInit.LIVING_MATTER_DEEPER_AND_DARKER.get());
+        this.basicItem(DMLIntegrationDADItems.SHATTERED.get());
+        this.basicItem(DMLIntegrationDADItems.SCULK_CENTIPEDE.get());
+        this.basicItem(DMLIntegrationDADItems.STALKER.get());
+        this.basicItem(DMLIntegrationDADItems.PRISTINE_MATTER_SHATTERED.get());
+        this.basicItem(DMLIntegrationDADItems.PRISTINE_MATTER_SCULK_CENTIPEDE.get());
+        this.basicItem(DMLIntegrationDADItems.PRISTINE_MATTER_STALKER.get());
+        this.basicItem(DMLIntegrationDADItems.LIVING_MATTER_DEEPER_AND_DARKER.get());
     }
 
     /**

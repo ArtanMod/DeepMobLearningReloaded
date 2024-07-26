@@ -3,7 +3,7 @@ package jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.common.mobmetas;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEntities;
 import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.common.DeeperAndDarkerMobKey;
-import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.init.DeeperAndDarkerItemInit;
+import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.init.DMLIntegrationDADItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -14,7 +14,7 @@ public class ShatteredMeta extends DeeperAndDarkerMobMetaData {
                 DeeperAndDarkerMobKey.SHATTERED,
                 "entity.deeperdarker.shattered",
                 1024, 25,
-                DeeperAndDarkerItemInit.PRISTINE_MATTER_SHATTERED.get(),
+                DMLIntegrationDADItems.PRISTINE_MATTER_SHATTERED.get(),
                 new ResourceLocation(DeeperDarker.MOD_ID, "shattered")
         );
     }

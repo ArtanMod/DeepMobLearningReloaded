@@ -2,12 +2,12 @@ package jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.common;
 
 import jp.artan.artansprojectcoremod.utils.inject.NonNullSupplier;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
-import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.init.DeeperAndDarkerItemInit;
+import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.init.DMLIntegrationDADItems;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import net.minecraft.ChatFormatting;
 
 public enum DeeperAndDarkerLivingMatterType implements ILivingMatterType {
-    DEEPER_AND_DARKER("deeperdarker", 56, () -> DeeperAndDarkerItemInit.LIVING_MATTER_DEEPER_AND_DARKER::get, ChatFormatting.AQUA);
+    DEEPER_AND_DARKER("deeperdarker", 56, () -> DMLIntegrationDADItems.LIVING_MATTER_DEEPER_AND_DARKER::get, ChatFormatting.AQUA);
 
     private final String id;
     private final int exp;

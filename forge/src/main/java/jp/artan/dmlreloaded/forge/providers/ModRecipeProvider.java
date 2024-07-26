@@ -5,7 +5,7 @@ import jp.artan.artansprojectcoremod.forge.providers.AbstractRecipeProvider;
 import jp.artan.artansprojectcoremod.utils.RecipeGenUtils;
 import jp.artan.dmlreloaded.forge.init.DMLBlocksForge;
 import jp.artan.dmlreloaded.forge.init.DMLItemsForge;
-import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.init.DeeperAndDarkerItemInit;
+import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.init.DMLIntegrationDADItems;
 import jp.artan.dmlreloaded.forge.plugin.PluginInit;
 import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.item.ItemDataModel;
@@ -47,17 +47,17 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
     }
 
     private void pluginDeeperAndDarkerRecipe(Consumer<FinishedRecipe> consumer) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DeeperAndDarkerItemInit.SHATTERED.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DMLIntegrationDADItems.SHATTERED.get())
                 .requires(DMLItems.DATA_MODEL_BLANK.get())
                 .requires(DDItems.SOUL_DUST.get())
                 .unlockedBy("has_item", has(DMLItems.DATA_MODEL_BLANK.get()))
                 .save(consumer);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DeeperAndDarkerItemInit.SCULK_CENTIPEDE.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DMLIntegrationDADItems.SCULK_CENTIPEDE.get())
                 .requires(DMLItems.DATA_MODEL_BLANK.get())
                 .requires(DDItems.SCULK_BONE.get())
                 .unlockedBy("has_item", has(DMLItems.DATA_MODEL_BLANK.get()))
                 .save(consumer);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DeeperAndDarkerItemInit.STALKER.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DMLIntegrationDADItems.STALKER.get())
                 .requires(DMLItems.DATA_MODEL_BLANK.get())
                 .requires(DDItems.SOUL_CRYSTAL.get())
                 .unlockedBy("has_item", has(DMLItems.DATA_MODEL_BLANK.get()))

@@ -16,7 +16,7 @@ import jp.artan.dmlreloaded.item.ItemPristineMatter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 
-public class DeeperAndDarkerItemInit {
+public class DMLIntegrationDADItems {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registries.ITEM);
 
     public static void register() {
