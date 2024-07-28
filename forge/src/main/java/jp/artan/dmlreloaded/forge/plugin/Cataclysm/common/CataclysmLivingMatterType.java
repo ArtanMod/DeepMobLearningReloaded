@@ -2,11 +2,12 @@ package jp.artan.dmlreloaded.forge.plugin.Cataclysm.common;
 
 import jp.artan.artansprojectcoremod.utils.inject.NonNullSupplier;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
+import jp.artan.dmlreloaded.forge.plugin.Cataclysm.init.DMLIntegrationLCItems;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import net.minecraft.ChatFormatting;
 
 public enum CataclysmLivingMatterType implements ILivingMatterType {
-    ;
+    CATACLYSM("cataclysm", 56, () -> DMLIntegrationLCItems.LIVING_MATTER_CATACLYSM::get, ChatFormatting.DARK_RED);
 
     private final String id;
     private final int exp;
