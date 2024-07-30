@@ -61,26 +61,28 @@ dependencies {
     modRuntimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}"
 
     // Curios
-    modRuntimeOnly "top.theillusivec4.curios:curios-forge:${curios_version}"
     modCompileOnly "top.theillusivec4.curios:curios-forge:${curios_version}:api"
-
-    // The Twilight Forest
-    modImplementation "teamtwilight:twilightforest:${twilight_forest_version}:universal"
+    modRuntimeOnly "top.theillusivec4.curios:curios-forge:${curios_version}"
 
     // Reliquary Reincarnations
     modImplementation "curse.maven:reliquary-241319:${reliquary_reincarnations}"
 
-    // DivineRPG
-    modImplementation "curse.maven:official-divinerpg-363543:${divinerpg}"
-
-    // Mekanism Additions
-    modImplementation "curse.maven:mekanism-268560:${mekanism_version}"             // core
-    modImplementation "curse.maven:mekanism-345425:${mekanism_additions_version}"   // Mekanism: Additions
-    modImplementation "curse.maven:mekanism-268566:${mekanism_generators_version}"  // Mekanism: Generators
-    modImplementation "curse.maven:mekanism-268567:${mekanism_tools_version}"       // Mekanism: Tools
-
     // Deeper and Darker
     modImplementation "curse.maven:deeperdarker-659011:${deeper_and_darker}"
+
+    // ビルド時に不要なパッケージ
+
+    // The Twilight Forest
+    modImplementation "teamtwilight:twilightforest:${twilight_forest_version}:universal"
+
+    // DivineRPG
+    modImplementation("curse.maven:official-divinerpg-363543:${divinerpg}") { transitive = false }
+
+    // Mekanism Additions
+    modCompileOnly "curse.maven:mekanism-268560:${mekanism_version}"             // core
+    modCompileOnly "curse.maven:mekanism-345425:${mekanism_additions_version}"   // Mekanism: Additions
+    modCompileOnly "curse.maven:mekanism-268566:${mekanism_generators_version}"  // Mekanism: Generators
+    modCompileOnly "curse.maven:mekanism-268567:${mekanism_tools_version}"       // Mekanism: Tools
 }
 
 processResources {
