@@ -13,5 +13,4 @@ pluginManagement {
 
 rootProject.name = 'DeepMobLearningReloadedMod'
 include("common")
-include("fabric")
 include("forge")
