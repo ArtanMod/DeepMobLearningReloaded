@@ -11,6 +11,8 @@
   "dmlreloaded.data_model.type_text": "Type: %1$s",
   "dmlreloaded.data_model_upgrade.desc": "Creative only",
   "dmlreloaded.data_model_upgrade.tier": "Can be upgraded to data model grade%1$s.",
+  "dmlreloaded.deep_learner.data_model_slots": "Data model stored in data model.",
+  "dmlreloaded.deep_learner.data_model_slots_empty": "Nothing stored.",
   "dmlreloaded.gui.deep_learner.collect_data": "Your data models will collect data",
   "dmlreloaded.gui.deep_learner.hp": "Life points",
   "dmlreloaded.gui.deep_learner.in_order": "In order to collect data, you must",

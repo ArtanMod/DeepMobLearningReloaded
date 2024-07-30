@@ -1,10 +1,16 @@
 package jp.artan.dmlreloaded.forge.item;
 
+import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
+import jp.artan.dmlreloaded.common.ILivingMatterType;
+import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.forge.container.DeepLearnerContainer;
 import jp.artan.dmlreloaded.forge.init.DMLContainersForge;
 import jp.artan.dmlreloaded.forge.util.InventoryItemStack;
+import jp.artan.dmlreloaded.util.DataModelHelper;
+import jp.artan.dmlreloaded.util.DataModelLevelupHelper;
 import jp.artan.dmlreloaded.util.ItemBackedInventory;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -20,11 +26,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 
 public class ItemDeepLearner extends Item {
     protected InventoryItemStack deepLearnerCont;
@@ -37,6 +46,26 @@ public class ItemDeepLearner extends Item {
         this.squareSlotSize = (int)Math.sqrt(internalSlotSize);
 
         this.deepLearnerCont = new InventoryItemStack(this.internalSlotSize);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> list, TooltipFlag flagIn) {
+        if(Screen.hasShiftDown()) {
+            list.add(Component.translatable("dmlreloaded.deep_learner.data_model_slots"));
+            NonNullList<ItemStack> dataModels = DataModelHelper.getValidFromList(ItemDeepLearner.getContainedItems(stack));
+            int count = 0;
+            for(ItemStack datamodel : dataModels) {
+                if(!datamodel.isEmpty()) {
+                    list.add(Component.translatable("%1$s. %2$s", count + 1, datamodel.getItem().getDescription()));
+                    count++;
+                }
+            }
+            if(count == 0) {
+                list.add(Component.translatable("dmlreloaded.deep_learner.data_model_slots_empty"));
+            }
+        } else {
+            list.add(Component.translatable("dmlreloaded.holdshift", Component.literal("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE).withItalic(true))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
+        }
     }
 
     @Override

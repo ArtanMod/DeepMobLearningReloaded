@@ -33,6 +33,8 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
         this.add(this.createToolTip("data_model.type_text"), LangUtils.toUpsideDownEnglish("Type: %1$s"));
         this.add(this.createToolTip("data_model_upgrade.desc"), LangUtils.toUpsideDownEnglish("Creative only"));
         this.add(this.createToolTip("data_model_upgrade.tier"), LangUtils.toUpsideDownEnglish("Can be upgraded to data model grade%1$s."));
+        this.add(this.createToolTip("deep_learner.data_model_slots"), LangUtils.toUpsideDownEnglish("Data model stored in data model."));
+        this.add(this.createToolTip("deep_learner.data_model_slots_empty"), LangUtils.toUpsideDownEnglish("Nothing stored."));
         this.add(this.createToolTip("gui.deep_learner.collect_data"), LangUtils.toUpsideDownEnglish("Your data models will collect data"));
         this.add(this.createToolTip("gui.deep_learner.hp"), LangUtils.toUpsideDownEnglish("Life points"));
         this.add(this.createToolTip("gui.deep_learner.in_order"), LangUtils.toUpsideDownEnglish("In order to collect data, you must"));
