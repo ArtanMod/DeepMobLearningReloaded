@@ -80,13 +80,13 @@ dependencies {
     modImplementation "teamtwilight:twilightforest:${twilight_forest_version}:universal"
 
     // DivineRPG
-    modImplementation("curse.maven:official-divinerpg-363543:${divinerpg}") { transitive = false }
+    modImplementation "curse.maven:official-divinerpg-363543:${divinerpg}"
 
     // Mekanism Additions
-    modCompileOnly "curse.maven:mekanism-268560:${mekanism_version}"             // core
-    modCompileOnly "curse.maven:mekanism-345425:${mekanism_additions_version}"   // Mekanism: Additions
-    modCompileOnly "curse.maven:mekanism-268566:${mekanism_generators_version}"  // Mekanism: Generators
-    modCompileOnly "curse.maven:mekanism-268567:${mekanism_tools_version}"       // Mekanism: Tools
+    modImplementation "curse.maven:mekanism-268560:${mekanism_version}"             // core
+    modImplementation "curse.maven:mekanism-345425:${mekanism_additions_version}"   // Mekanism: Additions
+    modImplementation "curse.maven:mekanism-268566:${mekanism_generators_version}"  // Mekanism: Generators
+    modImplementation "curse.maven:mekanism-268567:${mekanism_tools_version}"       // Mekanism: Tools
 }
 
 processResources {
