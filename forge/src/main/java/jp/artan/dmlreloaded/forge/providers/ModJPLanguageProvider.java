@@ -109,6 +109,11 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(this.createToolTip("tiers.tier_4"), "至上");
         this.add(this.createToolTip("tiers.tier_5"), "自己認識");
         this.add(this.createToolTip("tiers.tier_next"), "%2$sまであと%1$s体倒すと達成");
+        this.add(this.createToolTip("upgrade", "glitch_upgrade"), "グリッチ強化");
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.applies_to"), "グリッチの装備");
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.ingredients"), "ネザライトグリッチが染み込んだインゴット");
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.base_slot_description"), "グリッチの装備、武器、ツール");
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.additions_slot_description"), "ネザライトグリッチが染み込んだインゴットを追加");
     }
 
     /**
@@ -209,6 +214,9 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         }
     }
 
+    private String createToolTip(String parent, String key) {
+        return parent + "." + DeepMobLearningReloadedMod.MOD_ID + "." + key;
+    }
     private String createToolTip(String key) {
         return DeepMobLearningReloadedMod.MOD_ID + "." + key;
     }
@@ -231,6 +239,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(DMLItems.GLITCH_HEART.get(), "破損したグリッチの心臓");
         this.add(DMLItems.GLITCH_INGOT.get(), "グリッチが染み込んだインゴット");
         this.add(DMLItems.NETHERITE_GLITCH_INGOT.get(), "ネザライトグリッチが染み込んだインゴット");
+        this.add(DMLItems.GLITCH_UPGRADE_SMITHING_TEMPLATE.get(), "鍛冶型");
         this.add(DMLItemsForge.DEEP_LEARNER.get(), "深層学習装置");
         this.add(DMLItemsForge.NETHERITE_DEEP_LEARNER.get(), "ネザライト深層学習装置");
         this.add(DMLItems.POLYMER_CLAY.get(), "ポリマー粘土");

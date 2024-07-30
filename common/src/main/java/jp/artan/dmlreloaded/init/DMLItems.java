@@ -13,10 +13,7 @@ import jp.artan.dmlreloaded.item.material.GlitchArmorMaterials;
 import jp.artan.dmlreloaded.item.material.GlitchToolMaterials;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,6 +35,7 @@ public class DMLItems {
     public static final RegistrySupplier<ItemGlitchIngot> GLITCH_INGOT = register("glitch_infused_ingot", ItemGlitchIngot::new);
     public static final RegistrySupplier<Item> NETHERITE_GLITCH_INGOT = register("netherite_glitch_infused_ingot", Item::new);
     public static final RegistrySupplier<Item> POLYMER_CLAY = register("polymer_clay", Item::new);
+    public static final RegistrySupplier<DMLSmithingTemplateItem> GLITCH_UPGRADE_SMITHING_TEMPLATE = register("glitch_upgrade_smithing_template", p -> DMLSmithingTemplateItem.createGlitchUpgradeTemplate());
     public static final RegistrySupplier<ItemGlitchSword> GLITCH_SWORD = register("glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.GLITCH, p));
     public static final RegistrySupplier<ItemGlitchSword> NETHERITE_GLITCH_SWORD = register("netherite_glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.NETHERITE_GLITCH, p));
     public static final ArmorItems<ItemGlitchArmor> GLITCH_ARMOR = registerGlitchArmor("glitch_infused", GlitchArmorMaterials.GLITCH, null);

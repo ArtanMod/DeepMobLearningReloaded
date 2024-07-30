@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-24T22:40:20.6775314	Item Models: dmlreloaded
+// 1.20.1	2024-07-30T21:51:15.4347955	Item Models: dmlreloaded
 d6a5f3e1430bf4e6a2aab8589b6bd6e96b99ec5c assets/dmlreloaded/models/item/data_model_blank.json
 60384863ead464f1387d7784f9f1666c9d9410fd assets/dmlreloaded/models/item/data_model_blaze.json
 2401521c0e9152052d13d5e779373d6c240316c2 assets/dmlreloaded/models/item/data_model_creeper.json
@@ -38,6 +38,7 @@ fbc0af1658454e8c7a0a804f56b19ebec04ade92 assets/dmlreloaded/models/item/data_mod
 d4939f7df4b89b6c2e075455c21f044902be7404 assets/dmlreloaded/models/item/glitch_infused_ingot.json
 86945464cbe6a3c5f02d6fe795d7f79caa17acc8 assets/dmlreloaded/models/item/glitch_infused_leggings.json
 526d5440247df25a7bc37f48b65dcbff6fab9b3f assets/dmlreloaded/models/item/glitch_infused_sword.json
+a72fd4468401b5439f596a873af2d66a146bcbc8 assets/dmlreloaded/models/item/glitch_upgrade_smithing_template.json
 12652f3d127d442fe31576f0418a4f58cba18793 assets/dmlreloaded/models/item/living_matter_deeper_darker.json
 74e4f146af714050a0c51e8f66d7571de7791552 assets/dmlreloaded/models/item/living_matter_extraterrestrial.json
 acd7d1ca176f418cbe50d9607b5bccab53275454 assets/dmlreloaded/models/item/living_matter_hellish.json

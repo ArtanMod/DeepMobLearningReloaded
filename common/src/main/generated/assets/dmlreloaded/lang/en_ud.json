@@ -202,8 +202,13 @@
   "item.dmlreloaded.pristine_matter_wither": "ɹǝɥʇıM ɹǝʇʇɐW ǝuıʇsıɹԀ",
   "item.dmlreloaded.pristine_matter_wither_skeleton": "uoʇǝןǝʞS ɹǝɥʇıM ɹǝʇʇɐW ǝuıʇsıɹԀ",
   "item.dmlreloaded.pristine_matter_zombie": "ǝıqɯoZ ɹǝʇʇɐW ǝuıʇsıɹԀ",
+"item.dmlreloaded.smithing_template.glitch_upgrade.additions_slot_description": "ʇobuı pǝsnɟuı ɥɔʇıןb ppⱯ",
+  "item.dmlreloaded.smithing_template.glitch_upgrade.applies_to": "ʇuǝɯdınbǝ ɥɔʇıן⅁",
+  "item.dmlreloaded.smithing_template.glitch_upgrade.base_slot_description": "ןooʇ ɹo 'uodɐǝʍ 'ɹoɯɹɐ ɥɔʇıןb ppⱯ",
+  "item.dmlreloaded.smithing_template.glitch_upgrade.ingredients": "ʇobuı pǝsnɟuı ɥɔʇıןb ǝʇıɹǝɥʇǝN",
   "item.dmlreloaded.soot_covered_plate": "ǝʇɐןԀ pǝɹǝʌoƆ ʇooS",
   "item.dmlreloaded.soot_covered_redstone": "ǝuoʇspǝᴚ pǝɹǝʌoƆ ʇooS",
+  "item.minecraft.smithing_template": "ǝʇɐןdɯǝʇ buıɥʇıɯS",
   "itemGroup.dmlreloaded.deep_mob_learning_reloaded": "pǝpɐoןǝɹ :buıuɹɐǝן qoɯ dǝǝᗡ",
   "patchouli.book.landing_text": "˙)($ııʞzɐʌ)ııʞzɐʌ/ɯoɔ˙ɹǝʇʇıʍʇ//:sdʇʇɥ:ן($ ʎq poɯ )($ʇɐǝu)o($ ɐ ')($ıןnoɥɔʇɐd)ıןnoɥɔʇɐd/sʇɔǝظoɹd/ɯoɔ˙ǝbɹoɟǝsɹnɔ˙ʇɟɐɹɔǝuıɯ//:sdʇʇɥ:ן($ ɥʇıʍ uǝʇʇıɹʍ sɐʍ ǝpınb sıɥʇ)ᄅɹq($˙)($ʇooʍ)ʇooʍ/sʇɔǝظoɹd/ɯoɔ˙ǝbɹoɟǝsɹnɔ˙ʇɟɐɹɔǝuıɯ//:sdʇʇɥ:ן($ puɐ )($spɹɐɥs ןnos)uʍɐdsǝɹ-spɹɐɥs-ןnos/sʇɔǝظoɹd/ɯoɔ˙ǝbɹoɟǝsɹnɔ˙ʇɟɐɹɔǝuıɯ//:sdʇʇɥ:ן($ ʎq pǝɹıdsuı sı poɯ ǝɥʇ)ᄅɹq($˙ɯɹɐɟqoɯ ʎbbɐן bıq ɐ ɹoɟ pǝǝu ǝɥʇ ǝʌoɯǝɹ oʇ sı ʇuǝʇuı ǝɥʇ 'sqoɯ ɯoɹɟ sdoɹp ʎןןɐɯɹou ʇɐɥʇ ʇooן ǝɹınbɔɐ oʇ sʎɐʍ ʍǝu sppɐ )ןɯp($",
   "patchouli.book.sub_title": "ǝpınb ǝʌısuǝɥǝɹdɯoɔ os-ʇou Ɐ",
@@ -251,5 +256,6 @@
   "patchouli.category.2.introduction.entry.4.page.2.title": "sʇıun ɹǝʍoԀ",
   "patchouli.category.2.introduction.entry.4.title": "ʎbɹǝuƎ",
   "patchouli.category.2.introduction.text": "˙)($sʇndʇno)ɯǝʇı($ ǝdıd oʇ pǝsn ǝɹɐ sǝpıs ɹǝɥʇo ǝɥʇ ˙ʞɔoןq ǝɥʇ ɟo doʇ ǝɥʇ ɯoɹɟ )($sʇnduı)ɯǝʇı($ sʇdǝɔɔɐ )($sǝuıɥɔɐɯ)ɯǝʇı($ ןןɐ)ᄅɹq($)ןɯp($ uı)ɹq($sǝuıɥɔɐɯ ǝɥʇ ʇnoqɐ ʍouʞ oʇ pǝǝu noʎ buıɥʇʎɹǝʌǝ noʎ ɥɔɐǝʇ ןןıʍ ɹǝʇdɐɥɔ sıɥ⟘",
-  "patchouli.category.2.introduction.title": "sǝuıɥɔɐW"
+  "patchouli.category.2.introduction.title": "sǝuıɥɔɐW",
+  "upgrade.dmlreloaded.glitch_upgrade": "ǝpɐɹbdn ɥɔʇıן⅁"
 }

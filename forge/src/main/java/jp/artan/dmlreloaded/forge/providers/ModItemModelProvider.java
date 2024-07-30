@@ -48,6 +48,7 @@ public class ModItemModelProvider extends AbstractItemModelProvider {
         this.basicItem(DMLItems.NETHERITE_GLITCH_INGOT.get());
         this.basicItem(DMLItems.POLYMER_CLAY.get());
         this.basicItem(DMLItems.GLITCH_SWORD.get());
+        this.basicItem(DMLItems.GLITCH_UPGRADE_SMITHING_TEMPLATE.get());
         this.basicItem(DMLItems.NETHERITE_GLITCH_SWORD.get());
         this.basicArmorItems(DMLItems.GLITCH_ARMOR);
         this.basicArmorItems(DMLItems.NETHERITE_GLITCH_ARMOR);

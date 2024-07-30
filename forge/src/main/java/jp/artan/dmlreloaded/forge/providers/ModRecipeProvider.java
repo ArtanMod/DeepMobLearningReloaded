@@ -130,7 +130,16 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
                 .pattern("#Z#")
                 .unlockedBy("has_item", has(DMLItems.SOOT_COVERED_PLATE.get()))
                 .save(consumer);
-        RecipeGenUtils.Smithing.smithingUpgrade(RecipeCategory.TOOLS, Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), DMLItemsForge.NETHERITE_DEEP_LEARNER, DMLItemsForge.DEEP_LEARNER, Ingredient.of(DMLItems.NETHERITE_GLITCH_INGOT.get()))
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DMLItems.GLITCH_UPGRADE_SMITHING_TEMPLATE.get())
+                .define('A', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
+                .define('B', DMLItems.GLITCH_INGOT.get())
+                .define('C', DMLItems.GLITCH_FRAGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .unlockedBy("has_item", has(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
+                .save(consumer);
+        RecipeGenUtils.Smithing.smithingUpgrade(RecipeCategory.TOOLS, Ingredient.of(DMLItems.GLITCH_UPGRADE_SMITHING_TEMPLATE.get()), DMLItemsForge.NETHERITE_DEEP_LEARNER, DMLItemsForge.DEEP_LEARNER, Ingredient.of(DMLItems.NETHERITE_GLITCH_INGOT.get()))
                 .unlocks("has_netherite_glitch_ingot", has(DMLItems.NETHERITE_GLITCH_INGOT.get()))
                 .save(consumer, "netherite_deep_learner_smithing");
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DMLItems.POLYMER_CLAY.get(), 16)
@@ -152,7 +161,7 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
                 .pattern("YX ")
                 .unlockedBy("has_item", has(DMLItems.GLITCH_INGOT.get()))
                 .save(consumer);
-        RecipeGenUtils.Smithing.smithingUpgrade(RecipeCategory.COMBAT, Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), DMLItems.NETHERITE_GLITCH_SWORD, DMLItems.GLITCH_SWORD, Ingredient.of(DMLItems.NETHERITE_GLITCH_INGOT.get()))
+        RecipeGenUtils.Smithing.smithingUpgrade(RecipeCategory.COMBAT, Ingredient.of(DMLItems.GLITCH_UPGRADE_SMITHING_TEMPLATE.get()), DMLItems.NETHERITE_GLITCH_SWORD, DMLItems.GLITCH_SWORD, Ingredient.of(DMLItems.NETHERITE_GLITCH_INGOT.get()))
                 .unlocks("has_netherite_glitch_ingot", has(DMLItems.NETHERITE_GLITCH_INGOT.get()))
                 .save(consumer, "netherite_glitch_infused_sword_smithing");
         armorRecipes(DMLItems.GLITCH_ARMOR, consumer);

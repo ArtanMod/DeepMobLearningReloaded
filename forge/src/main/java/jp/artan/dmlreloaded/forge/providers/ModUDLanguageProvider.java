@@ -4,17 +4,48 @@ import jp.artan.artansprojectcoremod.forge.providers.AbstractUDLanguageProvider;
 import jp.artan.artansprojectcoremod.utils.lang.LangUtils;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.init.DMLCreativeTab;
+import jp.artan.dmlreloaded.init.DMLItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemNameBlockItem;
 
 public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
+    private final String modid;
+
     public ModUDLanguageProvider(PackOutput output, String modid) {
         super(output, modid);
+        this.modid = modid;
     }
 
     @Override
     protected void addTranslations() {
-        super.addTranslations();
+        BuiltInRegistries.BLOCK.stream().filter((block) -> {
+            return this.modid.equals(BuiltInRegistries.BLOCK.getKey(block).getNamespace());
+        }).forEach((block) -> {
+            String blockId = BuiltInRegistries.BLOCK.getKey(block).getPath();
+            this.add(block, LangUtils.toUpsideDownEnglish(blockId));
+        });
+        BuiltInRegistries.ITEM.stream().filter((item) -> {
+            return this.modid.equals(BuiltInRegistries.ITEM.getKey(item).getNamespace()) && (!(item instanceof BlockItem) || item instanceof ItemNameBlockItem);
+        }).forEach((item) -> {
+            if(item == DMLItems.GLITCH_UPGRADE_SMITHING_TEMPLATE.get()) {
+                this.add(item, LangUtils.toUpsideDownEnglish("Smithing Template"));
+            } else {
+                String itemId = BuiltInRegistries.ITEM.getKey(item).getPath();
+                this.add(item, LangUtils.toUpsideDownEnglish(itemId));
+            }
+        });
+        BuiltInRegistries.POTION.stream().filter((item) -> {
+            return this.modid.equals(BuiltInRegistries.POTION.getKey(item).getNamespace());
+        }).forEach((block) -> {
+            String potionId = BuiltInRegistries.POTION.getKey(block).getPath();
+            this.add("item.minecraft.lingering_potion.effect." + potionId, LangUtils.toUpsideDownEnglish("lingering_" + potionId + "_bottle"));
+            this.add("item.minecraft.potion.effect." + potionId, LangUtils.toUpsideDownEnglish(potionId + "_bottle"));
+            this.add("item.minecraft.splash_potion.effect." + potionId, LangUtils.toUpsideDownEnglish("splash_" + potionId + "_bottle"));
+        });
+
         addTranslationsToolTip();
         addTranslationsCurios();
         addPatchouliLang();
@@ -149,6 +180,11 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
         this.add(this.createToolTip("tiers.tier_4"), LangUtils.toUpsideDownEnglish("Superior"));
         this.add(this.createToolTip("tiers.tier_5"), LangUtils.toUpsideDownEnglish("Self Aware"));
         this.add(this.createToolTip("tiers.tier_next"), LangUtils.toUpsideDownEnglish("Defeat %1$s more to reach %2$s"));
+        this.add(this.createToolTip("upgrade", "glitch_upgrade"), LangUtils.toUpsideDownEnglish("Glitch Upgrade"));
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.applies_to"), LangUtils.toUpsideDownEnglish("Glitch Equipment"));
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.ingredients"), LangUtils.toUpsideDownEnglish("Netherite Glitch Infused Ingot"));
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.base_slot_description"), LangUtils.toUpsideDownEnglish("Add glitch armor, weapon, or tool"));
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.additions_slot_description"), LangUtils.toUpsideDownEnglish("Add Glitch Infused Ingot"));
     }
 
     private void addPatchouliLang() {
@@ -247,6 +283,9 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
         this.add("curios.identifier.deep_learner", LangUtils.toUpsideDownEnglish("Deep Learner"));
     }
 
+    private String createToolTip(String parent, String key) {
+        return parent + "." + DeepMobLearningReloadedMod.MOD_ID + "." + key;
+    }
     private String createToolTip(String key) {
         return DeepMobLearningReloadedMod.MOD_ID + "." + key;
     }

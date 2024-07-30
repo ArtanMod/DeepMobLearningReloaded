@@ -150,8 +150,13 @@
   "item.dmlreloaded.pristine_matter_wither": "綺麗なウィザーのマター",
   "item.dmlreloaded.pristine_matter_wither_skeleton": "綺麗なウィザースケルトンのマター",
   "item.dmlreloaded.pristine_matter_zombie": "綺麗なゾンビマター",
+  "item.dmlreloaded.smithing_template.glitch_upgrade.additions_slot_description": "ネザライトグリッチが染み込んだインゴットを追加",
+  "item.dmlreloaded.smithing_template.glitch_upgrade.applies_to": "グリッチの装備",
+  "item.dmlreloaded.smithing_template.glitch_upgrade.base_slot_description": "グリッチの装備、武器、ツール",
+  "item.dmlreloaded.smithing_template.glitch_upgrade.ingredients": "ネザライトグリッチが染み込んだインゴット",
   "item.dmlreloaded.soot_covered_plate": "煤で覆われたプレート",
   "item.dmlreloaded.soot_covered_redstone": "煤で覆われたレッドストーン",
+  "item.minecraft.smithing_template": "鍛冶型",
   "patchouli.book.landing_text": "$(dml)は$(l:https://minecraft.curseforge.com/projects/soul-shards-respawn)Soul shards$()と$(l:https://minecraft.curseforge.com/projects/woot)Woot$()に影響を受けています。$(br2)このガイドは$(l:https://minecraft.curseforge.com/projects/patchouli)Patchouli$()、$(l:https://twitter.com/Vazkii)Vazkii$()によって作成され、Artanによって追記されてます",
   "patchouli.book.sub_title": "総合的なガイドではない",
   "patchouli.category.1.introduction.entry.1.page.1.text": "この$(item)Mod$()の設計原理は、従来の方法でモブの資源を集める代わりに、シンプルで$(br)ラグがないことです。$(br2)このModの仕組みは、プレイヤーが探索や戦闘に参加し後々その恩恵を受けるようにします。 $(br2)これを始めるには、いくつかの特殊な$(item)クラフト部品$()が必要になるでしょう。",
@@ -198,5 +203,6 @@
   "patchouli.category.2.introduction.entry.4.page.2.title": "電源装置",
   "patchouli.category.2.introduction.entry.4.title": "エネルギー",
   "patchouli.category.2.introduction.text": "この章では、$(dml)の機械について説明します。$(br2)すべての$(item)機械$()は、ブロックの上部から$(item)Inputs$()を受け入れることができます。他の側面は、$(item)Outputs$()のパイプに使われます。",
-  "patchouli.category.2.introduction.title": "機械"
+  "patchouli.category.2.introduction.title": "機械",
+  "upgrade.dmlreloaded.glitch_upgrade": "グリッチ強化"
 }

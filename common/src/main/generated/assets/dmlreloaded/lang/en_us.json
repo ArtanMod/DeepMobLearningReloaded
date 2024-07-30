@@ -202,8 +202,13 @@
   "item.dmlreloaded.pristine_matter_wither": "Pristine Matter Wither",
   "item.dmlreloaded.pristine_matter_wither_skeleton": "Pristine Matter Wither Skeleton",
   "item.dmlreloaded.pristine_matter_zombie": "Pristine Matter Zombie",
+  "item.dmlreloaded.smithing_template.glitch_upgrade.additions_slot_description": "Add Glitch Infused Ingot",
+  "item.dmlreloaded.smithing_template.glitch_upgrade.applies_to": "Glitch Equipment",
+  "item.dmlreloaded.smithing_template.glitch_upgrade.base_slot_description": "Add glitch armor, weapon, or tool",
+  "item.dmlreloaded.smithing_template.glitch_upgrade.ingredients": "Netherite Glitch Infused Ingot",
   "item.dmlreloaded.soot_covered_plate": "Soot Covered Plate",
   "item.dmlreloaded.soot_covered_redstone": "Soot Covered Redstone",
+  "item.minecraft.smithing_template": "Smithing Template",
   "itemGroup.dmlreloaded.deep_mob_learning_reloaded": "Deep Mob Learning: Reloaded",
   "patchouli.book.landing_text": "$(dml) adds new ways to acquire loot that normally drops from mobs, the intent is to remove the need for a big laggy mobfarm.$(br2)The mod is inspired by $(l:https://minecraft.curseforge.com/projects/soul-shards-respawn)Soul shards$() and $(l:https://minecraft.curseforge.com/projects/woot)Woot$().$(br2)This guide was written with $(l:https://minecraft.curseforge.com/projects/patchouli)Patchouli$(), a $(o)neat$() mod by $(l:https://twitter.com/Vazkii)Vazkii$().",
   "patchouli.book.sub_title": "A not-so comprehensive Guide",
@@ -251,5 +256,6 @@
   "patchouli.category.2.introduction.entry.4.page.2.title": "Power Units",
   "patchouli.category.2.introduction.entry.4.title": "Energy",
   "patchouli.category.2.introduction.text": "This chapter will teach you everything you need to know about the machines$(br)in $(dml)$(br2)All $(item)Machines$() accepts $(item)Inputs$() from the top of the block. The other sides are used to pipe $(item)Outputs$().",
-  "patchouli.category.2.introduction.title": "Machines"
+  "patchouli.category.2.introduction.title": "Machines",
+  "upgrade.dmlreloaded.glitch_upgrade": "Glitch Upgrade"
 }

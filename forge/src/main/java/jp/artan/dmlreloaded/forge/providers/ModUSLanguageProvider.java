@@ -1,20 +1,51 @@
 package jp.artan.dmlreloaded.forge.providers;
 
 import jp.artan.artansprojectcoremod.forge.providers.AbstractUSLanguageProvider;
+import jp.artan.artansprojectcoremod.utils.lang.LangUtils;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.forge.plugin.PluginInit;
 import jp.artan.dmlreloaded.init.DMLCreativeTab;
+import jp.artan.dmlreloaded.init.DMLItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemNameBlockItem;
 
 public class ModUSLanguageProvider extends AbstractUSLanguageProvider {
+    private final String modid;
     public ModUSLanguageProvider(PackOutput output, String modid) {
         super(output, modid);
+        this.modid = modid;
     }
 
     @Override
     protected void addTranslations() {
-        super.addTranslations();
+        BuiltInRegistries.BLOCK.stream().filter((block) -> {
+            return this.modid.equals(BuiltInRegistries.BLOCK.getKey(block).getNamespace());
+        }).forEach((block) -> {
+            String blockId = BuiltInRegistries.BLOCK.getKey(block).getPath();
+            this.add(block, LangUtils.toEnglishName(blockId));
+        });
+        BuiltInRegistries.ITEM.stream().filter((item) -> {
+            return this.modid.equals(BuiltInRegistries.ITEM.getKey(item).getNamespace()) && (!(item instanceof BlockItem) || item instanceof ItemNameBlockItem);
+        }).forEach((item) -> {
+            if(item == DMLItems.GLITCH_UPGRADE_SMITHING_TEMPLATE.get()) {
+                this.add(item, "Smithing Template");
+            } else {
+                String itemId = BuiltInRegistries.ITEM.getKey(item).getPath();
+                this.add(item, LangUtils.toEnglishName(itemId));
+            }
+        });
+        BuiltInRegistries.POTION.stream().filter((item) -> {
+            return this.modid.equals(BuiltInRegistries.POTION.getKey(item).getNamespace());
+        }).forEach((block) -> {
+            String potionId = BuiltInRegistries.POTION.getKey(block).getPath();
+            this.add("item.minecraft.lingering_potion.effect." + potionId, LangUtils.toEnglishName("lingering_" + potionId + "_bottle"));
+            this.add("item.minecraft.potion.effect." + potionId, LangUtils.toEnglishName(potionId + "_bottle"));
+            this.add("item.minecraft.splash_potion.effect." + potionId, LangUtils.toEnglishName("splash_" + potionId + "_bottle"));
+        });
+
         addTranslationsToolTip();
         addTranslationsCurios();
         addPatchouliLang();
@@ -149,6 +180,11 @@ public class ModUSLanguageProvider extends AbstractUSLanguageProvider {
         this.add(this.createToolTip("tiers.tier_4"), "Superior");
         this.add(this.createToolTip("tiers.tier_5"), "Self Aware");
         this.add(this.createToolTip("tiers.tier_next"), "Defeat %1$s more to reach %2$s");
+        this.add(this.createToolTip("upgrade", "glitch_upgrade"), "Glitch Upgrade");
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.applies_to"), "Glitch Equipment");
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.ingredients"), "Netherite Glitch Infused Ingot");
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.base_slot_description"), "Add glitch armor, weapon, or tool");
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.additions_slot_description"), "Add Glitch Infused Ingot");
     }
 
     /**
@@ -247,6 +283,9 @@ public class ModUSLanguageProvider extends AbstractUSLanguageProvider {
         }
     }
 
+    private String createToolTip(String parent, String key) {
+        return parent + "." + DeepMobLearningReloadedMod.MOD_ID + "." + key;
+    }
     private String createToolTip(String key) {
         return DeepMobLearningReloadedMod.MOD_ID + "." + key;
     }
