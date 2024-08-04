@@ -19,6 +19,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         addTranslationsCurios();
         registerDataModelUpgrade();
         addPatchouliLang();
+        addTranslationJEI();
 
         addTranslationsStandardBlock();
         addTranslationsStandardItem();
@@ -37,7 +38,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(this.createToolTip("data_model.tier"), "等級: %1$s");
         this.add(this.createToolTip("data_model.type_text"), "タイプ: %1$s");
         this.add(this.createToolTip("data_model_upgrade.desc"), "クリエイティブ専用");
-        this.add(this.createToolTip("data_model_upgrade.tier"), "データモデルの等級%1$sにアップグレードできる");
+        this.add(this.createToolTip("data_model_upgrade.tier"), "データモデルを等級%1$sにアップグレードできる");
         this.add(this.createToolTip("deep_learner.data_model_slots"), "データモデルに格納されているデータモデル.");
         this.add(this.createToolTip("deep_learner.data_model_slots_empty"), "何も格納されてません.");
         this.add(this.createToolTip("gui.deep_learner.collect_data"), "データモデルは、深層学習装置に配置される");
@@ -117,6 +118,12 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add("curios.identifier.deep_learner", "深層学習装置");
     }
 
+    /**
+     * JEI
+     */
+    private void addTranslationJEI() {
+        this.add("jei.dmlreloaded.glitch_ingot", "TLDR: 不安定なグリッチの断片・ラピスラズリ・金インゴットを水に落とす。\\n\\nラピスラズリは不安定なグリッチの断片を安定させるのに適していることがわかりました。\\n不安定なグリッチの断片が安定した後、結合する素材を求めて必死探してます。\\n\\nこのプロセス全体は繊細で、水中で行わないと材料が適切に結合しない。");
+    }
 
     private void addPatchouliLang() {
         {

@@ -17,6 +17,7 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
         addTranslationsToolTip();
         addTranslationsCurios();
         addPatchouliLang();
+        addTranslationJEI();
 
         // ItemGroup
         add(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED, LangUtils.toUpsideDownEnglish("Deep Mob Learning: Reloaded"));
@@ -244,6 +245,13 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
      */
     private void addTranslationsCurios() {
         this.add("curios.identifier.deep_learner", LangUtils.toUpsideDownEnglish("Deep Learner"));
+    }
+
+    /**
+     * JEI
+     */
+    private void addTranslationJEI() {
+        this.add("jei.dmlreloaded.glitch_ingot", LangUtils.toUpsideDownEnglish("TLDR: Drop some fragments, lapis and gold ingots into a body of water and hope for the best\\n\\nYou've found that lapis is a good stabilization agent for Unstable glitch fragments.\\nAfter the fragments are stable, they desperately seek out a material to latch on to, you think that gold might be strong enough as a host.\\n\\nThe entire process is delicate, it needs to be performed in water or the materials wont bind properly."));
     }
 
     private String createToolTip(String key) {
