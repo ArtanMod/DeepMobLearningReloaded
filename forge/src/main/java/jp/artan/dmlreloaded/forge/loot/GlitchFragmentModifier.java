@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.config.BalanceConfigs;
+import jp.artan.dmlreloaded.forge.init.DMLItemsForge;
 import jp.artan.dmlreloaded.forge.init.DropModifier;
 import jp.artan.dmlreloaded.forge.item.ItemDeepLearner;
 import jp.artan.dmlreloaded.forge.plugin.PluginInit;
@@ -42,7 +43,7 @@ public class GlitchFragmentModifier extends LootModifier {
 
     public GlitchFragmentModifier(LootItemCondition[] conditionsIn, int chanceFragment, float chanceHeart, boolean enabled) {
         super(conditionsIn);
-        this.fragment = DMLItems.GLITCH_FRAGMENT.get();
+        this.fragment = DMLItemsForge.GLITCH_FRAGMENT.get();
         this.heart = DMLItems.GLITCH_HEART.get();
         this.chanceFragment = chanceFragment;
         this.chanceHeart = chanceHeart;

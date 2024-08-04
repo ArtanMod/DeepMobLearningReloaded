@@ -233,7 +233,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
     private void addTranslationsStandardItem() {
         this.add(DMLItems.SOOT_COVERED_REDSTONE.get(), "煤で覆われたレッドストーン");
         this.add(DMLItems.SOOT_COVERED_PLATE.get(), "煤で覆われたプレート");
-        this.add(DMLItems.GLITCH_FRAGMENT.get(), "不安定なグリッチの断片");
+        this.add(DMLItemsForge.GLITCH_FRAGMENT.get(), "不安定なグリッチの断片");
         this.add(DMLItems.GLITCH_HEART.get(), "破損したグリッチの心臓");
         this.add(DMLItems.GLITCH_INGOT.get(), "グリッチが染み込んだインゴット");
         this.add(DMLItems.NETHERITE_GLITCH_INGOT.get(), "ネザライトグリッチが染み込んだインゴット");
@@ -263,8 +263,8 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(DMLItems.DATA_MODEL_BLANK.get(), "空のデータモデル");
         this.add(DMLItems.DATA_MODEL_BLAZE.get(), "ブレイズのデータモデル");
         this.add(DMLItems.DATA_MODEL_CREEPER.get(), "クリーパーのデータモデル");
-        this.add(DMLItems.DATA_MODEL_ENDER_DRAGON.get(), "エルダーガーディアンのデータモデル");
-        this.add(DMLItems.DATA_MODEL_ELDER_GUARDIAN.get(), "エンダードラゴンのデータモデル");
+        this.add(DMLItems.DATA_MODEL_ENDER_DRAGON.get(), "エンダードラゴンのデータモデル");
+        this.add(DMLItems.DATA_MODEL_ELDER_GUARDIAN.get(), "エルダーガーディアンのデータモデル");
         this.add(DMLItems.DATA_MODEL_ENDERMAN.get(), "エンダーマンのデータモデル");
         this.add(DMLItems.DATA_MODEL_EVOKER.get(), "エヴォーカーのデータモデル");
         this.add(DMLItems.DATA_MODEL_GHAST.get(), "ガストのデータモデル");

@@ -1,11 +1,13 @@
 package jp.artan.dmlreloaded.item;
 
+import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.config.BalanceConfigs;
 import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -63,7 +65,8 @@ public class ItemGlitchArmor extends ArmorItem{
 
     public static void dropGlitchFragment(Level level, BlockPos blockPos) {
         if(ThreadLocalRandom.current().nextInt(1, 100) <= FRAGMENT_SET_CHANCE) {
-            ItemEntity drop = new ItemEntity(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), new ItemStack(DMLItems.GLITCH_FRAGMENT.get(),1));
+
+            ItemEntity drop = new ItemEntity(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), new ItemStack(Registry.ITEM.get(DeepMobLearningReloadedMod.getResource("glitch_fragment")),1));
             drop.setDefaultPickUpDelay();
             level.addFreshEntity(drop);
         }

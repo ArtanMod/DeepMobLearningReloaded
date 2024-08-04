@@ -5,6 +5,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import jp.artan.artansprojectcoremod.utils.inject.NonNullFunction;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.forge.item.ItemDeepLearner;
+import jp.artan.dmlreloaded.forge.item.ItemGlitchFragment;
 import jp.artan.dmlreloaded.init.DMLCreativeTab;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.Item;
@@ -16,6 +17,7 @@ public class DMLItemsForge {
         ITEMS.register();
     }
 
+    public static final RegistrySupplier<ItemGlitchFragment> GLITCH_FRAGMENT = register("glitch_fragment", ItemGlitchFragment::new);
     public static final RegistrySupplier<ItemDeepLearner> DEEP_LEARNER = register("deep_learner", p -> new ItemDeepLearner(p, DeepMobLearningReloadedMod.DEEP_LEARNER_INTERNAL_SLOTS_SIZE));
     public static final RegistrySupplier<ItemDeepLearner> NETHERITE_DEEP_LEARNER = register("netherite_deep_learner", p -> new ItemDeepLearner(p, DeepMobLearningReloadedMod.NETHERITE_DEEP_LEARNER_INTERNAL_SLOTS_SIZE));
 
