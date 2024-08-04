@@ -3,6 +3,7 @@ package jp.artan.dmlreloaded.forge.providers;
 import jp.artan.artansprojectcoremod.forge.providers.AbstractItemTagsProvider;
 import jp.artan.dmlreloaded.forge.init.DMLItemsForge;
 import jp.artan.dmlreloaded.init.DMLItemTags;
+import jp.artan.dmlreloaded.init.DMLItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
@@ -19,5 +20,7 @@ public class ModItemTagsProvider extends AbstractItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider arg) {
         this.tag(DMLItemTags.CURIOS_DEEP_LEARNER).add(DMLItemsForge.DEEP_LEARNER.get(), DMLItemsForge.NETHERITE_DEEP_LEARNER.get());
+        this.addArmor(DMLItems.GLITCH_ARMOR);
+        this.addArmor(DMLItems.NETHERITE_GLITCH_ARMOR);
     }
 }
