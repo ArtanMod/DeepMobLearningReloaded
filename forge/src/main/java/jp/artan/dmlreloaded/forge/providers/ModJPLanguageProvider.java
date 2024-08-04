@@ -40,7 +40,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(this.createToolTip("data_model_upgrade.desc"), "クリエイティブ専用");
         this.add(this.createToolTip("data_model_upgrade.tier"), "データモデルを等級%1$sにアップグレードできる");
         this.add(this.createToolTip("deep_learner.data_model_slots"), "データモデルに格納されているデータモデル.");
-        this.add(this.createToolTip("deep_learner.data_model_slots_empty"), "何も格納されてません.");
+        this.add(this.createToolTip("deep_learner.data_model_slots_empty"), "データモデルは格納されていません.");
         this.add(this.createToolTip("gui.deep_learner.collect_data"), "データモデルは、深層学習装置に配置される");
         this.add(this.createToolTip("gui.deep_learner.hp"), "体力");
         this.add(this.createToolTip("gui.deep_learner.in_order"), "データを収集するためには");

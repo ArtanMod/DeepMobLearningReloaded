@@ -51,17 +51,15 @@ public class ItemDeepLearner extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> list, TooltipFlag flagIn) {
         if(Screen.hasShiftDown()) {
-            list.add(Component.translatable("dmlreloaded.deep_learner.data_model_slots"));
             NonNullList<ItemStack> dataModels = DataModelHelper.getValidFromList(ItemDeepLearner.getContainedItems(stack));
-            int count = 0;
-            for(ItemStack datamodel : dataModels) {
-                if(!datamodel.isEmpty()) {
-                    list.add(Component.translatable("%1$s. %2$s", count + 1, datamodel.getItem().getDescription()));
-                    count++;
-                }
-            }
-            if(count == 0) {
+            if(dataModels.isEmpty()) {
                 list.add(Component.translatable("dmlreloaded.deep_learner.data_model_slots_empty"));
+            } else {
+                list.add(Component.translatable("dmlreloaded.deep_learner.data_model_slots"));
+                System.out.println("dataModels: " + dataModels.size());
+                for(int i = 0; i < dataModels.size(); i++) {
+                    list.add(Component.translatable("%1$s. %2$s", i + 1, dataModels.get(i).getItem().getDescription()));
+                }
             }
         } else {
             list.add(Component.translatable("dmlreloaded.holdshift", Component.literal("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE).withItalic(true))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));

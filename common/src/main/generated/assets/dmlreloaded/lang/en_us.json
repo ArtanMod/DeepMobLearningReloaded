@@ -19,7 +19,7 @@
   "dmlreloaded.gui.deep_learner.insert": "Please insert a Data Model!",
   "dmlreloaded.gui.deep_learner.killing_blow": "deliver the killing blow.",
   "dmlreloaded.gui.deep_learner.max": "Maximum tier achieved",
-  "dmlreloaded.gui.deep_learner.not_found": "No Data Model Found",
+  "dmlreloaded.gui.deep_learner.not_found": "No data model stored",
   "dmlreloaded.gui.deep_learner.overlay": "%1$s Model",
   "dmlreloaded.gui.deep_learner.when_placed": "when they are placed in the deep learner.",
   "dmlreloaded.gui.defeated": "%1$s defeated: %2$s",

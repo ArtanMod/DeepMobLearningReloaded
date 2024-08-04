@@ -42,7 +42,7 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
         this.add(this.createToolTip("gui.deep_learner.insert"), LangUtils.toUpsideDownEnglish("Please insert a Data Model!"));
         this.add(this.createToolTip("gui.deep_learner.killing_blow"), LangUtils.toUpsideDownEnglish("deliver the killing blow."));
         this.add(this.createToolTip("gui.deep_learner.max"), LangUtils.toUpsideDownEnglish("Maximum tier achieved"));
-        this.add(this.createToolTip("gui.deep_learner.not_found"), LangUtils.toUpsideDownEnglish("No Data Model Found"));
+        this.add(this.createToolTip("gui.deep_learner.not_found"), LangUtils.toUpsideDownEnglish("No data model stored"));
         this.add(this.createToolTip("gui.deep_learner.overlay"), LangUtils.toUpsideDownEnglish("%1$s Model"));
         this.add(this.createToolTip("gui.deep_learner.when_placed"), LangUtils.toUpsideDownEnglish("when they are placed in the deep learner."));
         this.add(this.createToolTip("gui.defeated"), LangUtils.toUpsideDownEnglish("%1$s defeated: %2$s"));

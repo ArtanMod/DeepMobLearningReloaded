@@ -42,7 +42,7 @@ public class ModUSLanguageProvider extends AbstractUSLanguageProvider {
         this.add(this.createToolTip("gui.deep_learner.insert"), "Please insert a Data Model!");
         this.add(this.createToolTip("gui.deep_learner.killing_blow"), "deliver the killing blow.");
         this.add(this.createToolTip("gui.deep_learner.max"), "Maximum tier achieved");
-        this.add(this.createToolTip("gui.deep_learner.not_found"), "No Data Model Found");
+        this.add(this.createToolTip("gui.deep_learner.not_found"), "No data model stored");
         this.add(this.createToolTip("gui.deep_learner.overlay"), "%1$s Model");
         this.add(this.createToolTip("gui.deep_learner.when_placed"), "when they are placed in the deep learner.");
         this.add(this.createToolTip("gui.defeated"), "%1$s defeated: %2$s");
