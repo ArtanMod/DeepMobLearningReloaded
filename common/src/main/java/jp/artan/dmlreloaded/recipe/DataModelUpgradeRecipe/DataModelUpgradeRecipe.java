@@ -34,6 +34,7 @@ public class DataModelUpgradeRecipe extends CustomRecipe {
     @Override
     public ItemStack assemble(CraftingContainer container) {
         ItemStack metaDataItem = this.getMobMetaData(container).copy();
+        metaDataItem.setCount(1);
         ItemDataModelUpgrade dataModelUpgrade = this.getDataModelUpgrade(container);
         DataModelHelper.setTier(metaDataItem, dataModelUpgrade.getNextTier());
         return metaDataItem;
