@@ -49,6 +49,7 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
         addTranslationsToolTip();
         addTranslationsCurios();
         addPatchouliLang();
+        addTranslationJEI();
 
         // ItemGroup
         addCreativeModeTab(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED, LangUtils.toUpsideDownEnglish("Deep Mob Learning: Reloaded"));
@@ -73,7 +74,7 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
         this.add(this.createToolTip("gui.deep_learner.insert"), LangUtils.toUpsideDownEnglish("Please insert a Data Model!"));
         this.add(this.createToolTip("gui.deep_learner.killing_blow"), LangUtils.toUpsideDownEnglish("deliver the killing blow."));
         this.add(this.createToolTip("gui.deep_learner.max"), LangUtils.toUpsideDownEnglish("Maximum tier achieved"));
-        this.add(this.createToolTip("gui.deep_learner.not_found"), LangUtils.toUpsideDownEnglish("No Data Model Found"));
+        this.add(this.createToolTip("gui.deep_learner.not_found"), LangUtils.toUpsideDownEnglish("No data model stored"));
         this.add(this.createToolTip("gui.deep_learner.overlay"), LangUtils.toUpsideDownEnglish("%1$s Model"));
         this.add(this.createToolTip("gui.deep_learner.when_placed"), LangUtils.toUpsideDownEnglish("when they are placed in the deep learner."));
         this.add(this.createToolTip("gui.defeated"), LangUtils.toUpsideDownEnglish("%1$s defeated: %2$s"));
@@ -282,10 +283,18 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
     private void addTranslationsCurios() {
         this.add("curios.identifier.deep_learner", LangUtils.toUpsideDownEnglish("Deep Learner"));
     }
+    
+    /**
+     * JEI
+     */
+    private void addTranslationJEI() {
+        this.add("jei.dmlreloaded.glitch_ingot", LangUtils.toUpsideDownEnglish("TLDR: Drop some fragments, lapis and gold ingots into a body of water and hope for the best\\n\\nYou've found that lapis is a good stabilization agent for Unstable glitch fragments.\\nAfter the fragments are stable, they desperately seek out a material to latch on to, you think that gold might be strong enough as a host.\\n\\nThe entire process is delicate, it needs to be performed in water or the materials wont bind properly."));
+    }
 
     private String createToolTip(String parent, String key) {
         return parent + "." + DeepMobLearningReloadedMod.MOD_ID + "." + key;
     }
+
     private String createToolTip(String key) {
         return DeepMobLearningReloadedMod.MOD_ID + "." + key;
     }

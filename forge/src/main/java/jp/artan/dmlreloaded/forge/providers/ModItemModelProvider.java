@@ -42,7 +42,7 @@ public class ModItemModelProvider extends AbstractItemModelProvider {
     private void registerStandardItem() {
         this.basicItem(DMLItems.SOOT_COVERED_REDSTONE.get());
         this.basicItem(DMLItems.SOOT_COVERED_PLATE.get());
-        this.basicItem(DMLItems.GLITCH_FRAGMENT.get());
+        this.basicItem(DMLItemsForge.GLITCH_FRAGMENT.get());
         this.basicItem(DMLItems.GLITCH_HEART.get());
         this.basicItem(DMLItems.GLITCH_INGOT.get());
         this.basicItem(DMLItems.NETHERITE_GLITCH_INGOT.get());

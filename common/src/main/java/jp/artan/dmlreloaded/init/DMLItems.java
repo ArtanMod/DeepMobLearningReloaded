@@ -30,7 +30,6 @@ public class DMLItems {
 
     public static final RegistrySupplier<ItemSootedRedstone> SOOT_COVERED_REDSTONE = register("soot_covered_redstone", ItemSootedRedstone::new);
     public static final RegistrySupplier<Item> SOOT_COVERED_PLATE = register("soot_covered_plate", Item::new);
-    public static final RegistrySupplier<ItemGlitchFragment> GLITCH_FRAGMENT = register("glitch_fragment", ItemGlitchFragment::new);
     public static final RegistrySupplier<ItemGlitchHeart> GLITCH_HEART = register("glitch_heart", ItemGlitchHeart::new);
     public static final RegistrySupplier<ItemGlitchIngot> GLITCH_INGOT = register("glitch_infused_ingot", ItemGlitchIngot::new);
     public static final RegistrySupplier<Item> NETHERITE_GLITCH_INGOT = register("netherite_glitch_infused_ingot", Item::new);

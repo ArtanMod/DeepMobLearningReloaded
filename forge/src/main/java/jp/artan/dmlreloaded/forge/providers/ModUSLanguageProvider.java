@@ -49,6 +49,7 @@ public class ModUSLanguageProvider extends AbstractUSLanguageProvider {
         addTranslationsToolTip();
         addTranslationsCurios();
         addPatchouliLang();
+        addTranslationJEI();
 
         // ItemGroup
         addCreativeModeTab(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED, "Deep Mob Learning: Reloaded");
@@ -73,7 +74,7 @@ public class ModUSLanguageProvider extends AbstractUSLanguageProvider {
         this.add(this.createToolTip("gui.deep_learner.insert"), "Please insert a Data Model!");
         this.add(this.createToolTip("gui.deep_learner.killing_blow"), "deliver the killing blow.");
         this.add(this.createToolTip("gui.deep_learner.max"), "Maximum tier achieved");
-        this.add(this.createToolTip("gui.deep_learner.not_found"), "No Data Model Found");
+        this.add(this.createToolTip("gui.deep_learner.not_found"), "No data model stored");
         this.add(this.createToolTip("gui.deep_learner.overlay"), "%1$s Model");
         this.add(this.createToolTip("gui.deep_learner.when_placed"), "when they are placed in the deep learner.");
         this.add(this.createToolTip("gui.defeated"), "%1$s defeated: %2$s");
@@ -192,6 +193,13 @@ public class ModUSLanguageProvider extends AbstractUSLanguageProvider {
      */
     private void addTranslationsCurios() {
         this.add("curios.identifier.deep_learner", "Deep Learner");
+    }
+
+    /**
+     * JEI
+     */
+    private void addTranslationJEI() {
+        this.add("jei.dmlreloaded.glitch_ingot", "TLDR: Drop some fragments, lapis and gold ingots into a body of water and hope for the best\\n\\nYou've found that lapis is a good stabilization agent for Unstable glitch fragments.\\nAfter the fragments are stable, they desperately seek out a material to latch on to, you think that gold might be strong enough as a host.\\n\\nThe entire process is delicate, it needs to be performed in water or the materials wont bind properly.");
     }
 
     private void addPatchouliLang() {

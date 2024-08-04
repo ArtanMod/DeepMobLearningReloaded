@@ -1,7 +1,9 @@
-package jp.artan.dmlreloaded.item;
+package jp.artan.dmlreloaded.forge.item;
 
+import jp.artan.dmlreloaded.forge.item.entity.ItemEntityGlitchFragment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -11,8 +13,6 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 
 public class ItemGlitchFragment extends Item {
-
-    // FIXME: GlitchFragmentからGlitchIngotを作成するレシピを追加する
 
     public ItemGlitchFragment(Properties properties) {
         super(properties);
@@ -29,5 +29,15 @@ public class ItemGlitchFragment extends Item {
     @Override
     public Component getName(ItemStack p_41458_) {
         return Component.translatable(super.getName(p_41458_).getString()).withStyle(t->t.withColor(ChatFormatting.AQUA));
+    }
+
+    @Override
+    public boolean hasCustomEntity(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public Entity createEntity(Level level, Entity location, ItemStack stack) {
+        return new ItemEntityGlitchFragment(level, location.position().x, location.position().y, location.position().z, new ItemStack(this, stack.getCount()), location.getDeltaMovement().x(), location.getDeltaMovement().y(), location.getDeltaMovement().z());
     }
 }

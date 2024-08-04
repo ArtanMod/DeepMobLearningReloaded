@@ -20,6 +20,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         addTranslationsCurios();
         registerDataModelUpgrade();
         addPatchouliLang();
+        addTranslationJEI();
 
         addTranslationsStandardBlock();
         addTranslationsStandardItem();
@@ -38,9 +39,9 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(this.createToolTip("data_model.tier"), "等級: %1$s");
         this.add(this.createToolTip("data_model.type_text"), "タイプ: %1$s");
         this.add(this.createToolTip("data_model_upgrade.desc"), "クリエイティブ専用");
-        this.add(this.createToolTip("data_model_upgrade.tier"), "データモデルの等級%1$sにアップグレードできる");
+        this.add(this.createToolTip("data_model_upgrade.tier"), "データモデルを等級%1$sにアップグレードできる");
         this.add(this.createToolTip("deep_learner.data_model_slots"), "データモデルに格納されているデータモデル.");
-        this.add(this.createToolTip("deep_learner.data_model_slots_empty"), "何も格納されてません.");
+        this.add(this.createToolTip("deep_learner.data_model_slots_empty"), "データモデルは格納されていません.");
         this.add(this.createToolTip("gui.deep_learner.collect_data"), "データモデルは、深層学習装置に配置される");
         this.add(this.createToolTip("gui.deep_learner.hp"), "体力");
         this.add(this.createToolTip("gui.deep_learner.in_order"), "データを収集するためには");
@@ -123,6 +124,12 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add("curios.identifier.deep_learner", "深層学習装置");
     }
 
+    /**
+     * JEI
+     */
+    private void addTranslationJEI() {
+        this.add("jei.dmlreloaded.glitch_ingot", "TLDR: 不安定なグリッチの断片・ラピスラズリ・金インゴットを水に落とす。\\n\\nラピスラズリは不安定なグリッチの断片を安定させるのに適していることがわかりました。\\n不安定なグリッチの断片が安定した後、結合する素材を求めて必死探してます。\\n\\nこのプロセス全体は繊細で、水中で行わないと材料が適切に結合しない。");
+    }
 
     private void addPatchouliLang() {
         {
@@ -235,7 +242,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
     private void addTranslationsStandardItem() {
         this.add(DMLItems.SOOT_COVERED_REDSTONE.get(), "煤で覆われたレッドストーン");
         this.add(DMLItems.SOOT_COVERED_PLATE.get(), "煤で覆われたプレート");
-        this.add(DMLItems.GLITCH_FRAGMENT.get(), "不安定なグリッチの断片");
+        this.add(DMLItemsForge.GLITCH_FRAGMENT.get(), "不安定なグリッチの断片");
         this.add(DMLItems.GLITCH_HEART.get(), "破損したグリッチの心臓");
         this.add(DMLItems.GLITCH_INGOT.get(), "グリッチが染み込んだインゴット");
         this.add(DMLItems.NETHERITE_GLITCH_INGOT.get(), "ネザライトグリッチが染み込んだインゴット");
@@ -266,8 +273,8 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(DMLItems.DATA_MODEL_BLANK.get(), "空のデータモデル");
         this.add(DMLItems.DATA_MODEL_BLAZE.get(), "ブレイズのデータモデル");
         this.add(DMLItems.DATA_MODEL_CREEPER.get(), "クリーパーのデータモデル");
-        this.add(DMLItems.DATA_MODEL_ENDER_DRAGON.get(), "エルダーガーディアンのデータモデル");
-        this.add(DMLItems.DATA_MODEL_ELDER_GUARDIAN.get(), "エンダードラゴンのデータモデル");
+        this.add(DMLItems.DATA_MODEL_ENDER_DRAGON.get(), "エンダードラゴンのデータモデル");
+        this.add(DMLItems.DATA_MODEL_ELDER_GUARDIAN.get(), "エルダーガーディアンのデータモデル");
         this.add(DMLItems.DATA_MODEL_ENDERMAN.get(), "エンダーマンのデータモデル");
         this.add(DMLItems.DATA_MODEL_EVOKER.get(), "エヴォーカーのデータモデル");
         this.add(DMLItems.DATA_MODEL_GHAST.get(), "ガストのデータモデル");

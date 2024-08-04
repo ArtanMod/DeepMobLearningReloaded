@@ -133,7 +133,7 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DMLItems.GLITCH_UPGRADE_SMITHING_TEMPLATE.get())
                 .define('A', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
                 .define('B', DMLItems.GLITCH_INGOT.get())
-                .define('C', DMLItems.GLITCH_FRAGMENT.get())
+                .define('C', DMLItemsForge.GLITCH_FRAGMENT.get())
                 .pattern("BCB")
                 .pattern("CAC")
                 .pattern("BCB")

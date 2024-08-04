@@ -3,12 +3,16 @@ package jp.artan.dmlreloaded.events;
 import dev.architectury.event.EventResult;
 import dev.architectury.event.events.common.InteractionEvent;
 import dev.architectury.event.events.common.PlayerEvent;
+import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.item.ItemGlitchArmor;
 import jp.artan.dmlreloaded.item.ItemGlitchHeart;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -56,7 +60,7 @@ public class PlayerHandler {
             if(itemStack.getItem() instanceof ItemGlitchHeart && rand.nextInt(0, 10) <= 3) {
                 if(player.level().getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN) {
                     ItemEntity drop = new ItemEntity(player.level(), blockPos.getX(), blockPos.getY(),
-                            blockPos.getZ(), new ItemStack(DMLItems.GLITCH_FRAGMENT.get(), 3));
+                            blockPos.getZ(), new ItemStack(BuiltInRegistries.ITEM.get(DeepMobLearningReloadedMod.getResource("glitch_fragment")), 3));
                     drop.setDefaultPickUpDelay();
                     player.level().addFreshEntity(drop);
                     itemStack.shrink(1);

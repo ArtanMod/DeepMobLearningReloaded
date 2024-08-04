@@ -1,10 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "dmlreloaded:glitch_infused_chestplate"
+    "item": "dmlreloaded:netherite_glitch_infused_ingot"
   },
   "base": {
-    "item": "dmlreloaded:netherite_glitch_infused_ingot"
+    "item": "dmlreloaded:glitch_infused_chestplate"
   },
   "result": {
     "item": "dmlreloaded:netherite_glitch_infused_chestplate"
