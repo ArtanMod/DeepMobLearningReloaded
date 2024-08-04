@@ -10,6 +10,6 @@
     "item": "dmlreloaded:netherite_glitch_infused_helmet"
   },
   "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
+    "item": "dmlreloaded:glitch_upgrade_smithing_template"
   }
 }

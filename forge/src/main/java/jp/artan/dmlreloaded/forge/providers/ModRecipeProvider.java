@@ -165,7 +165,7 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
                 .unlocks("has_netherite_glitch_ingot", has(DMLItems.NETHERITE_GLITCH_INGOT.get()))
                 .save(consumer, "netherite_glitch_infused_sword_smithing");
         armorRecipes(DMLItems.GLITCH_ARMOR, consumer);
-        armorRecipes(DMLItems.NETHERITE_GLITCH_ARMOR, consumer);
+        armorRecipes(DMLItems.NETHERITE_GLITCH_ARMOR, DMLItems.GLITCH_ARMOR, Ingredient.of(DMLItems.NETHERITE_GLITCH_INGOT.get()), Ingredient.of(DMLItems.GLITCH_UPGRADE_SMITHING_TEMPLATE.get()), consumer);
 
         // データモデル
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DMLItems.DATA_MODEL_BLANK.get())

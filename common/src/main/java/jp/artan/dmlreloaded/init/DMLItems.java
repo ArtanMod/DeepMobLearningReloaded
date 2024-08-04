@@ -12,10 +12,8 @@ import jp.artan.dmlreloaded.item.*;
 import jp.artan.dmlreloaded.item.material.GlitchArmorMaterials;
 import jp.artan.dmlreloaded.item.material.GlitchToolMaterials;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jetbrains.annotations.Nullable;
 
 public class DMLItems {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registries.ITEM);
@@ -32,20 +30,26 @@ public class DMLItems {
     public static final RegistrySupplier<Item> SOOT_COVERED_PLATE = register("soot_covered_plate", Item::new);
     public static final RegistrySupplier<ItemGlitchHeart> GLITCH_HEART = register("glitch_heart", ItemGlitchHeart::new);
     public static final RegistrySupplier<ItemGlitchIngot> GLITCH_INGOT = register("glitch_infused_ingot", ItemGlitchIngot::new);
-    public static final RegistrySupplier<Item> NETHERITE_GLITCH_INGOT = register("netherite_glitch_infused_ingot", Item::new);
+    public static final RegistrySupplier<Item> NETHERITE_GLITCH_INGOT = register("netherite_glitch_infused_ingot", p -> new Item(p.fireResistant()));
     public static final RegistrySupplier<Item> POLYMER_CLAY = register("polymer_clay", Item::new);
     public static final RegistrySupplier<DMLSmithingTemplateItem> GLITCH_UPGRADE_SMITHING_TEMPLATE = register("glitch_upgrade_smithing_template", p -> DMLSmithingTemplateItem.createGlitchUpgradeTemplate());
     public static final RegistrySupplier<ItemGlitchSword> GLITCH_SWORD = register("glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.GLITCH, p));
-    public static final RegistrySupplier<ItemGlitchSword> NETHERITE_GLITCH_SWORD = register("netherite_glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.NETHERITE_GLITCH, p));
-    public static final ArmorItems<ItemGlitchArmor> GLITCH_ARMOR = registerGlitchArmor("glitch_infused", GlitchArmorMaterials.GLITCH, null);
-    public static final ArmorItems<ItemGlitchArmor> NETHERITE_GLITCH_ARMOR = registerGlitchArmor("netherite_glitch_infused", GlitchArmorMaterials.NETHERITE_GLITCH, GLITCH_ARMOR);
-
-    private static ArmorItems<ItemGlitchArmor> registerGlitchArmor(String name, ArmorMaterial pMaterial, @Nullable ArmorItems<?> upgradeBaseArmorItems) {
-        RegistrySupplier<ItemGlitchArmor> helmet = register(name + "_helmet", p -> new ItemGlitchArmor(pMaterial, ArmorItem.Type.HELMET, p));
-        RegistrySupplier<ItemGlitchArmor> chestplate = register(name + "_chestplate", p -> new ItemGlitchArmor(pMaterial, ArmorItem.Type.CHESTPLATE, p));
-        RegistrySupplier<ItemGlitchArmor> leggings = register(name + "_leggings", p -> new ItemGlitchArmor(pMaterial, ArmorItem.Type.LEGGINGS, p));
-        RegistrySupplier<ItemGlitchArmor> boots = register(name + "_boots", p -> new ItemGlitchArmor(pMaterial, ArmorItem.Type.BOOTS, p));
-        return new ArmorItems<>(helmet, chestplate, leggings, boots, upgradeBaseArmorItems, Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE));
+    public static final RegistrySupplier<ItemGlitchSword> NETHERITE_GLITCH_SWORD = register("netherite_glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.NETHERITE_GLITCH, p.fireResistant()));
+    public static final ArmorItems<ItemGlitchArmor> GLITCH_ARMOR = registerGlitchArmor();
+    private static ArmorItems<ItemGlitchArmor> registerGlitchArmor() {
+        RegistrySupplier<ItemGlitchArmor> helmet = register("glitch_infused_helmet", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, ArmorItem.Type.HELMET, p));
+        RegistrySupplier<ItemGlitchArmor> chestplate = register("glitch_infused_chestplate", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, ArmorItem.Type.CHESTPLATE, p));
+        RegistrySupplier<ItemGlitchArmor> leggings = register("glitch_infused_leggings", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, ArmorItem.Type.LEGGINGS, p));
+        RegistrySupplier<ItemGlitchArmor> boots = register("glitch_infused_boots", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, ArmorItem.Type.BOOTS, p));
+        return new ArmorItems<>(helmet, chestplate, leggings, boots);
+    }
+    public static final ArmorItems<ItemGlitchArmor> NETHERITE_GLITCH_ARMOR = registerNetheriteGlitchArmor();
+    private static ArmorItems<ItemGlitchArmor> registerNetheriteGlitchArmor() {
+        RegistrySupplier<ItemGlitchArmor> helmet = register("netherite_glitch_infused_helmet", p -> new ItemGlitchArmor(GlitchArmorMaterials.NETHERITE_GLITCH, ArmorItem.Type.HELMET, p.fireResistant()));
+        RegistrySupplier<ItemGlitchArmor> chestplate = register("netherite_glitch_infused_chestplate", p -> new ItemGlitchArmor(GlitchArmorMaterials.NETHERITE_GLITCH, ArmorItem.Type.CHESTPLATE, p.fireResistant()));
+        RegistrySupplier<ItemGlitchArmor> leggings = register("netherite_glitch_infused_leggings", p -> new ItemGlitchArmor(GlitchArmorMaterials.NETHERITE_GLITCH, ArmorItem.Type.LEGGINGS, p.fireResistant()));
+        RegistrySupplier<ItemGlitchArmor> boots = register("netherite_glitch_infused_boots", p -> new ItemGlitchArmor(GlitchArmorMaterials.NETHERITE_GLITCH, ArmorItem.Type.BOOTS, p.fireResistant()));
+        return new ArmorItems<>(helmet, chestplate, leggings, boots);
     }
 
     // #############################################################################################################################################################################################
