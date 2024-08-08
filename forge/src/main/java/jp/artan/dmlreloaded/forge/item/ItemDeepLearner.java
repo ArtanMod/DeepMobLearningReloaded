@@ -56,7 +56,6 @@ public class ItemDeepLearner extends Item {
                 list.add(Component.translatable("dmlreloaded.deep_learner.data_model_slots_empty"));
             } else {
                 list.add(Component.translatable("dmlreloaded.deep_learner.data_model_slots"));
-                System.out.println("dataModels: " + dataModels.size());
                 for(int i = 0; i < dataModels.size(); i++) {
                     list.add(Component.translatable("%1$s. %2$s", i + 1, dataModels.get(i).getItem().getDescription()));
                 }
