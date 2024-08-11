@@ -2,6 +2,7 @@ package jp.artan.dmlreloaded.events;
 
 import dev.architectury.event.EventResult;
 import dev.architectury.event.events.common.EntityEvent;
+import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.item.ItemGlitchSword;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;

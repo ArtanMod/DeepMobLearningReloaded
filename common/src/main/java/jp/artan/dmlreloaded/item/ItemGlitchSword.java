@@ -1,18 +1,9 @@
 package jp.artan.dmlreloaded.item;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
 import jp.artan.dmlreloaded.util.NBTHelper;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
@@ -22,10 +13,10 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class ItemGlitchSword extends SwordItem {
-    private static final int DAMAGE_BONUS = 1;
-    private static final int DAMAGE_BONUS_MAX = 32;
-    private static final int DAMAGE_INCREASE_CHANCE = 4;
+public abstract class ItemGlitchSword extends SwordItem {
+    protected static final int DAMAGE_BONUS = 1;
+    protected static final int DAMAGE_BONUS_MAX = 32;
+    protected static final int DAMAGE_INCREASE_CHANCE = 4;
 
     public ItemGlitchSword(Tier pTier, Properties pProperties) {
         super(pTier, 10, 5f, pProperties);
@@ -56,23 +47,6 @@ public class ItemGlitchSword extends SwordItem {
 
     public static void setPermanentWeaponDamage(ItemStack stack, int damage) {
         NBTHelper.setInt(stack,"permDamage", damage);
-    }
-
-    @Override
-    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
-        if (slot == EquipmentSlot.MAINHAND) {
-            // TODO: 正しく動くか要確認
-            Player player = Minecraft.getInstance().player;
-            if(player == null) {
-                return HashMultimap.create();
-            }
-            ItemStack hand = player.getMainHandItem();
-            ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-            builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", getTier().getAttackDamageBonus() + getPermanentWeaponDamage(hand), AttributeModifier.Operation.ADDITION));
-            builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", -2.4000000953674316D, AttributeModifier.Operation.ADDITION));
-            return builder.build();
-        }
-        return super.getDefaultAttributeModifiers(slot);
     }
 
     @Override

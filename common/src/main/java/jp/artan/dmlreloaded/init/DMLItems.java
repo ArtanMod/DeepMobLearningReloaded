@@ -31,8 +31,6 @@ public class DMLItems {
     public static final RegistrySupplier<ItemGlitchIngot> GLITCH_INGOT = register("glitch_infused_ingot", ItemGlitchIngot::new);
     public static final RegistrySupplier<Item> NETHERITE_GLITCH_INGOT = register("netherite_glitch_infused_ingot", p -> new Item(p.fireResistant()));
     public static final RegistrySupplier<Item> POLYMER_CLAY = register("polymer_clay", Item::new);
-    public static final RegistrySupplier<ItemGlitchSword> GLITCH_SWORD = register("glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.GLITCH, p));
-    public static final RegistrySupplier<ItemGlitchSword> NETHERITE_GLITCH_SWORD = register("netherite_glitch_infused_sword", p -> new ItemGlitchSword(GlitchToolMaterials.NETHERITE_GLITCH, p.fireResistant()));
     public static final ArmorItems<ItemGlitchArmor> GLITCH_ARMOR = registerGlitchArmor();
     private static ArmorItems<ItemGlitchArmor> registerGlitchArmor() {
         RegistrySupplier<ItemGlitchArmor> helmet = register("glitch_infused_helmet", p -> new ItemGlitchArmor(GlitchArmorMaterials.GLITCH, EquipmentSlot.HEAD, p));
