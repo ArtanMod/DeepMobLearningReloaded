@@ -119,3 +119,6 @@ run/
 
 # User Specipic
 common/bin/main/assets
+sample
+!sample/rcon.bat
+!sample/forge/docker-compose.yml
