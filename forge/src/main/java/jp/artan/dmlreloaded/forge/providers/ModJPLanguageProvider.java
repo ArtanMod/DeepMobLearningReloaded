@@ -4,6 +4,7 @@ import jp.artan.artansprojectcoremod.forge.providers.AbstractJPLanguageProvider;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.forge.init.DMLBlocksForge;
 import jp.artan.dmlreloaded.forge.init.DMLItemsForge;
+import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.init.DeeperAndDarkerItemInit;
 import jp.artan.dmlreloaded.init.DMLCreativeTab;
 import jp.artan.dmlreloaded.init.DMLItems;
 import net.minecraft.data.DataGenerator;
@@ -320,6 +321,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(DMLItems.LIVING_MATTER_EXTRATERRESTRIAL.get(), "Extraterrestrialマター");
         this.add(DMLItems.LIVING_MATTER_HELLISH.get(), "Hellishマター");
         this.add(DMLItems.LIVING_MATTER_OVERWORLDIAN.get(), "Overworldianマター");
+        this.add(DeeperAndDarkerItemInit.LIVING_MATTER_DEEPER_AND_DARKER.get(), "Deeper and Darkerマター");
     }
 
 }
