@@ -291,8 +291,8 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
     private void addTranslationsPristineMatter() {
         this.add(DMLItems.PRISTINE_MATTER_BLAZE.get(), "綺麗なブレイズのマター");
         this.add(DMLItems.PRISTINE_MATTER_CREEPER.get(), "綺麗なクリーパーのマター");
-        this.add(DMLItems.PRISTINE_MATTER_ENDER_DRAGON.get(), "綺麗なエルダーガーディアンのマター");
-        this.add(DMLItems.PRISTINE_MATTER_ELDER_GUARDIAN.get(), "綺麗なエンダードラゴンのマター");
+        this.add(DMLItems.PRISTINE_MATTER_ENDER_DRAGON.get(), "綺麗なエンダードラゴンのマター");
+        this.add(DMLItems.PRISTINE_MATTER_ELDER_GUARDIAN.get(), "綺麗なエルダーガーディアンのマター");
         this.add(DMLItems.PRISTINE_MATTER_ENDERMAN.get(), "綺麗なエンダーマンのマター");
         this.add(DMLItems.PRISTINE_MATTER_EVOKER.get(), "綺麗なエヴォーカーのマター");
         this.add(DMLItems.PRISTINE_MATTER_GHAST.get(), "綺麗なガストのマター");
