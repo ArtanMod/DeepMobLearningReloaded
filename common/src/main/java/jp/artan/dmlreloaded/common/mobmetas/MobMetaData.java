@@ -11,6 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 public abstract class MobMetaData {
     protected String entityId;
@@ -18,6 +19,7 @@ public abstract class MobMetaData {
     protected int numberOfHearts;
     protected int simulationTickCost;
     protected ItemPristineMatter pristineMatter;
+    @Nullable
     protected Item spawnEggItem;
     protected int mobTriviaLine;
 
@@ -27,6 +29,7 @@ public abstract class MobMetaData {
             int simulationTickCost,
             int numberOfHearts,
             ItemPristineMatter pristineMatter,
+            @Nullable
             Item spawnEggItem
     ) {
         this(key, entityId, simulationTickCost, numberOfHearts, pristineMatter, spawnEggItem, 0);
@@ -38,6 +41,7 @@ public abstract class MobMetaData {
             int simulationTickCost,
             int numberOfHearts,
             ItemPristineMatter pristineMatter,
+            @Nullable
             Item spawnEggItem,
             int mobTriviaLine
     ) {
@@ -63,6 +67,9 @@ public abstract class MobMetaData {
     }
 
     public ItemStack getSpawnEgg() {
+        if(spawnEggItem == null) {
+            return ItemStack.EMPTY;
+        }
         return new ItemStack(spawnEggItem);
     }
 

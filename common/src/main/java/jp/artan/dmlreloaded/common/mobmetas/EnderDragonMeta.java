@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class EnderDragonMeta extends MobMetaData{
@@ -19,18 +20,13 @@ public class EnderDragonMeta extends MobMetaData{
                 "entity.minecraft.ender_dragon",
                 4096, 100,
                 DMLItems.PRISTINE_MATTER_ENDER_DRAGON.get(),
-                null,
+                Items.ENDER_DRAGON_SPAWN_EGG,
                 2
         );
     }
 
     public EnderDragon getEntity(Level world) {
         return new EnderDragon(EntityType.ENDER_DRAGON ,world);
-    }
-
-    @Override
-    public ItemStack getSpawnEgg() {
-        return ItemStack.EMPTY;
     }
 
     @Override
