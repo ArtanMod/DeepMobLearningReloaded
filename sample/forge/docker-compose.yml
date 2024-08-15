@@ -1,0 +1,24 @@
+version: '3.2'
+services:
+  mc:
+    image: itzg/minecraft-server:java17
+    ports:
+      - 25000:25000
+      - 25575:25575
+    environment:
+      TYPE: FORGE 
+      VERSION: 1.20.1
+      FORGE_VERSION: 47.2.20
+      EULA: "TRUE"
+      ONLINE_MODE: false
+      MAX_PLAYERS: 1
+      RCON_PORT: 25575
+      RCON_PASSWORD: 2b00d3c5164f1b104b511a3b
+      SERVER_PORT: 25000
+      MEMORY: 8G
+      JVM_DD_OPTS: fml.queryResult:confirm
+    tty: true
+    stdin_open: true
+    volumes:
+      # attach a directory relative to the directory containing this compose file
+      - .:/data

@@ -4,9 +4,8 @@ import jp.artan.artansprojectcoremod.forge.providers.AbstractJPLanguageProvider;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.forge.init.DMLBlocksForge;
 import jp.artan.dmlreloaded.forge.init.DMLItemsForge;
-import jp.artan.dmlreloaded.init.DMLCreativeTab;
+import jp.artan.dmlreloaded.forge.plugin.DeeperAndDarker.init.DMLIntegrationDADItems;
 import jp.artan.dmlreloaded.init.DMLItems;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 
 public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
@@ -86,8 +85,8 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(this.createToolTip("hover_text.glitch_infused_sword_2"), "(ボーナスは試練中は無効です)");
         this.add(this.createToolTip("hover_text.glitch_infused_sword_3"), "モブを倒した時に得られるデータが2倍になります");
         this.add(this.createToolTip("hover_text.glitch_infused_sword_4"), "データが得られたとき、ごくわずかな確率で");
-        this.add(this.createToolTip("hover_text.glitch_infused_sword_5"), "剣の耐久値が増加します.");
-        this.add(this.createToolTip("hover_text.glitch_infused_sword_6"), "現在の耐久値増加: %1$s (最大 %2$s)");
+        this.add(this.createToolTip("hover_text.glitch_infused_sword_5"), "剣の攻撃力が増加します.");
+        this.add(this.createToolTip("hover_text.glitch_infused_sword_6"), "現在の攻撃力増加: %1$s (最大 %2$s)");
         this.add(this.createToolTip("hover_text.glitchingot_1"), "%1$sを安定化させることで作成できます");
         this.add(this.createToolTip("hover_text.more_info"), "詳細はJEIかガイドブックを参照してください");
         this.add(this.createToolTip("hover_text.soot_covered_redstone_1"), "%1$sを押し潰して作成します");
@@ -250,8 +249,8 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(DMLItemsForge.DEEP_LEARNER.get(), "深層学習装置");
         this.add(DMLItemsForge.NETHERITE_DEEP_LEARNER.get(), "ネザライト深層学習装置");
         this.add(DMLItems.POLYMER_CLAY.get(), "ポリマー粘土");
-        this.add(DMLItems.GLITCH_SWORD.get(), "グリッチが染み込んだ剣");
-        this.add(DMLItems.NETHERITE_GLITCH_SWORD.get(), "ネザライトグリッチが染み込んだ剣");
+        this.add(DMLItemsForge.GLITCH_SWORD.get(), "グリッチが染み込んだ剣");
+        this.add(DMLItemsForge.NETHERITE_GLITCH_SWORD.get(), "ネザライトグリッチが染み込んだ剣");
         this.addArmorItems(DMLItems.GLITCH_ARMOR, "グリッチが染み込んだ");
         this.addArmorItems(DMLItems.NETHERITE_GLITCH_ARMOR, "ネザライトグリッチが染み込んだ");
     }
@@ -301,8 +300,8 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
     private void addTranslationsPristineMatter() {
         this.add(DMLItems.PRISTINE_MATTER_BLAZE.get(), "綺麗なブレイズのマター");
         this.add(DMLItems.PRISTINE_MATTER_CREEPER.get(), "綺麗なクリーパーのマター");
-        this.add(DMLItems.PRISTINE_MATTER_ENDER_DRAGON.get(), "綺麗なエルダーガーディアンのマター");
-        this.add(DMLItems.PRISTINE_MATTER_ELDER_GUARDIAN.get(), "綺麗なエンダードラゴンのマター");
+        this.add(DMLItems.PRISTINE_MATTER_ENDER_DRAGON.get(), "綺麗なエンダードラゴンのマター");
+        this.add(DMLItems.PRISTINE_MATTER_ELDER_GUARDIAN.get(), "綺麗なエルダーガーディアンのマター");
         this.add(DMLItems.PRISTINE_MATTER_ENDERMAN.get(), "綺麗なエンダーマンのマター");
         this.add(DMLItems.PRISTINE_MATTER_EVOKER.get(), "綺麗なエヴォーカーのマター");
         this.add(DMLItems.PRISTINE_MATTER_GHAST.get(), "綺麗なガストのマター");
@@ -330,6 +329,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(DMLItems.LIVING_MATTER_EXTRATERRESTRIAL.get(), "Extraterrestrialマター");
         this.add(DMLItems.LIVING_MATTER_HELLISH.get(), "Hellishマター");
         this.add(DMLItems.LIVING_MATTER_OVERWORLDIAN.get(), "Overworldianマター");
+        this.add(DMLIntegrationDADItems.LIVING_MATTER_DEEPER_AND_DARKER.get(), "Deeper and Darkerマター");
     }
 
 }

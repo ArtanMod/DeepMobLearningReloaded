@@ -152,7 +152,7 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
                 .pattern(" #X")
                 .unlockedBy("has_item", has(Items.CLAY_BALL))
                 .save(consumer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DMLItems.GLITCH_SWORD.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DMLItemsForge.GLITCH_SWORD.get())
                 .define('#', DMLItems.GLITCH_INGOT.get())
                 .define('X', Items.IRON_NUGGET)
                 .define('Y', Items.STICK)
@@ -161,7 +161,7 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
                 .pattern("YX ")
                 .unlockedBy("has_item", has(DMLItems.GLITCH_INGOT.get()))
                 .save(consumer);
-        RecipeGenUtils.Smithing.smithingUpgrade(RecipeCategory.COMBAT, Ingredient.of(DMLItems.GLITCH_UPGRADE_SMITHING_TEMPLATE.get()), DMLItems.NETHERITE_GLITCH_SWORD, DMLItems.GLITCH_SWORD, Ingredient.of(DMLItems.NETHERITE_GLITCH_INGOT.get()))
+        RecipeGenUtils.Smithing.smithingUpgrade(RecipeCategory.COMBAT, Ingredient.of(DMLItems.GLITCH_UPGRADE_SMITHING_TEMPLATE.get()), DMLItemsForge.NETHERITE_GLITCH_SWORD, DMLItemsForge.GLITCH_SWORD, Ingredient.of(DMLItems.NETHERITE_GLITCH_INGOT.get()))
                 .unlocks("has_netherite_glitch_ingot", has(DMLItems.NETHERITE_GLITCH_INGOT.get()))
                 .save(consumer, "netherite_glitch_infused_sword_smithing");
         armorRecipes(DMLItems.GLITCH_ARMOR, consumer);
