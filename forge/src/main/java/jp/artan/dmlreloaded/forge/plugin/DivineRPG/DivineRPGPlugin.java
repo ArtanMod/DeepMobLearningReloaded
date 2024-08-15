@@ -20,5 +20,7 @@ public class DivineRPGPlugin {
         MobKey.SPIDER.addMob("entity.divinerpg.ender_spider");
         MobKey.SPIDER.addMob("entity.divinerpg.pumpkin_spider");
         MobKey.SPIDER.addMob("entity.divinerpg.soul_spider");
+        
+        MobKey.ZOMBIE.addMob("entity.divinerpg.husk");
     }
 }
