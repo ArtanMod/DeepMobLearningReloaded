@@ -6,6 +6,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class WitherMeta extends MobMetaData {
@@ -15,18 +16,13 @@ public class WitherMeta extends MobMetaData {
                 "entity.minecraft.wither",
                 2048, 150,
                 DMLItems.PRISTINE_MATTER_WITHER.get(),
-                null,
+                Items.WITHER_SPAWN_EGG,
                 1
         );
     }
     public WitherBoss getEntity(Level world) {
         return new WitherBoss(EntityType.WITHER,world) {
         };
-    }
-
-    @Override
-    public ItemStack getSpawnEgg() {
-        return ItemStack.EMPTY;
     }
 
     @Override
