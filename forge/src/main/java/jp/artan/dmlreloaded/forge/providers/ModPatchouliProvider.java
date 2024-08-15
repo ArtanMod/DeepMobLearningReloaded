@@ -21,8 +21,7 @@ public class ModPatchouliProvider extends RegistratePatchouliProvider {
     protected void registerPatchouli(Consumer<RegistratePatchouliProvider.Result> consumer) {
         this.book("book")
                 .book().properties(
-                        p -> p.setName("Deep Mob Learning")
-                                .setLandingText("patchouli.book.landing_text")
+                        p -> p.setName("Deep Mob Learning", "patchouli.book.landing_text")
                                 .setBookTexture(DeepMobLearningReloadedMod.getResource("textures/gui/patchouli/book_gray.png"))
                                 .setCrafterTexture(DeepMobLearningReloadedMod.getResource("textures/gui/patchouli/crafting.png"))
                                 .setModel(DeepMobLearningReloadedMod.getResource("book"))
@@ -33,7 +32,7 @@ public class ModPatchouliProvider extends RegistratePatchouliProvider {
                                 .setLinkHoverColor(0x00FFC0)
                                 .setShowProgress(false)
                                 .setSubtitle("patchouli.book.sub_title")
-                                .setCreativeTab(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED.get())
+                                .setCreativeTab(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED)
                                 .addMacros("$(primary)", "$(#16EFF7)")
                                 .addMacros("$(item)", "$(#ff8c00)")
                                 .addMacros("$(dml)", "$(l:https://minecraft.curseforge.com/projects/deep-mob-learning)Deep Mob Learning$()")
