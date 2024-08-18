@@ -34,9 +34,9 @@ public abstract class ItemGlitchSword extends SwordItem {
 
             if(getPermanentWeaponDamage(sword) >= DAMAGE_BONUS_MAX) {
 
-                player.displayClientMessage(Component.translatable("dmlreloaded.messages.sword_levelup.max", Component.literal(sword.getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.AQUA))), true);
+                player.displayClientMessage(Component.translatable("dmlreloaded.messages.sword_levelup.max", Component.translatable(sword.getDescriptionId()).withStyle(t->t.withColor(ChatFormatting.AQUA))), true);
             } else {
-                player.displayClientMessage(Component.translatable("dmlreloaded.messages.sword_levelup", Component.literal(sword.getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.AQUA))), true);
+                player.displayClientMessage(Component.translatable("dmlreloaded.messages.sword_levelup", Component.translatable(sword.getDescriptionId()).withStyle(t->t.withColor(ChatFormatting.AQUA))), true);
             }
         }
     }

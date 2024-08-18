@@ -26,13 +26,13 @@ public class DeepMobLearningReloadedMod {
         DMLCreativeTab.register();
         DMLItems.register();
         DMLRecipeSerializer.register();
+        EntityDeathHandler.register();
     }
 
     public static void commonSetup() {
     }
 
     public static void initClient() {
-        EntityDeathHandler.register();
         PlayerHandler.register();
     }
 
