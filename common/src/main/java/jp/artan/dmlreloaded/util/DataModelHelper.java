@@ -141,7 +141,7 @@ public class DataModelHelper {
         setTotalKillCount(stack, getTotalKillCount(stack) + 1);
 
         if(DataModelLevelupHelper.shouldIncreaseTier(tier, i, getCurrentTierSimulationCount(stack))) {
-            player.displayClientMessage(Component.translatable("dmlreloaded.tiers.increase_tier", stack.getHoverName(), getTierName(stack, true)), true);
+            player.displayClientMessage(Component.translatable("dmlreloaded.tiers.increase_tier", Component.translatable(stack.getDescriptionId()), getTierName(stack, true)), true);
 
             setCurrentTierKillCount(stack, 0);
             setCurrentTierSimulationCount(stack, 0);
