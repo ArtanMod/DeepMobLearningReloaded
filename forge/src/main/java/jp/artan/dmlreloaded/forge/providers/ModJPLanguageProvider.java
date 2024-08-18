@@ -137,7 +137,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
                 {
                     this.add("patchouli.category.1.introduction.entry.1.title", "はじめに");
                     this.add("patchouli.category.1.introduction.entry.1.page.1.text", "この$(item)Mod$()の設計原理は、従来の方法でモブの資源を集める代わりに、シンプルで$(br)ラグがないことです。$(br2)このModの仕組みは、プレイヤーが探索や戦闘に参加し後々その恩恵を受けるようにします。 $(br2)これを始めるには、いくつかの特殊な$(item)クラフト部品$()が必要になるでしょう。");
-                    this.add("patchouli.category.1.introduction.entry.1.page.2.text", "煤に覆われたレッドストーン$()は、$(item)レッドストーンダスト$()を$(item)石炭のブロック$()に押し付けることで作ることができます。");
+                    this.add("patchouli.category.1.introduction.entry.1.page.2.text", "煤で覆われたレッドストーン$()は、$(item)レッドストーンダスト$()を$(item)石炭のブロック$()に押し付けることで作ることができます。");
                 }
                 {
                     this.add("patchouli.category.1.introduction.entry.2.title", "データ");
@@ -147,7 +147,7 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
                 }
                 {
                     this.add("patchouli.category.1.introduction.entry.3.title", "データモデル");
-                    this.add("patchouli.category.1.introduction.entry.3.page.1.text", "以前作った$(l:0_introduction/0_introduction#sooted_redstone)煤まみれのレッドストーン$()の一部で、$(item)空のデータモデル$()を作ることができます。");
+                    this.add("patchouli.category.1.introduction.entry.3.page.1.text", "以前作った$(l:0_introduction/0_introduction#sooted_redstone)煤で覆われたレッドストーン$()の一部で、$(item)空のデータモデル$()を作ることができます。");
                     this.add("patchouli.category.1.introduction.entry.3.page.2.text", "全ての$(item)データモデル$()は「$(8)不完全$()」という階層から始まり、$(item)データモデル$()が多くの$(item)データ$()を学習するとこの等級は上がります。$(br2)$(item)等級$()が上がると、倒したモブからより多くの$(item)データ$()を獲得できます。$(br2)$(item)データモデル$()は、$(l:1_machines/0_simulation_chamber)シミュレーション室$()に入れてもよいです。");
                     this.add("patchouli.category.1.introduction.entry.3.page.3.text", "$(item)データモデル$()は、$(item)生息地$()によって$(item)タイプ$()が分かれます。$(item)生息地$()の種類は、$(a)オーバーワールド$()、$(c)ネザー$()、$(d)エンド$()の3つです。 $(br2)データモデル$()のタイプによって、$(l:1_machines/0_simulation_chamber)シミュレーション室$()がどのような$(l:1_machines/1_matter#living)Living Matter$()や$(l:1_machines/1_matter#pristine)綺麗なマター$()を生成するかが決まります。");
                     this.add("patchouli.category.1.introduction.entry.3.page.4.title", "ゾンビ / スケルトン");
