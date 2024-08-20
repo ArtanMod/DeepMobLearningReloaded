@@ -33,8 +33,8 @@ public class PluginInit {
         if (DEEP_AND_DARKER_ACTIVE) {
             DeeperAndDarkerPlugin.init();
         }
-        if (CATACLYSM_ACTIVE) {
-            CataclysmPlugin.init(modEventBus);
-        }
+//        if (CATACLYSM_ACTIVE) {
+//            CataclysmPlugin.init(modEventBus);
+//        }
     }
 }
