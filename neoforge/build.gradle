@@ -3,9 +3,9 @@ plugins {
 }
 architectury {
     platformSetupLoomIde()
-    forge()
+    neoForge()
 }
-archivesBaseName = archives_base_name + "-forge-mc" + minecraft_version
+archivesBaseName = archives_base_name + "-neoforge-mc" + minecraft_version
 
 sourceSets {
     main {
@@ -15,16 +15,16 @@ sourceSets {
 loom {
     runs {
         named("client") {
-            setConfigName("${archives_base_name}-forge-Client")
+            setConfigName("${archives_base_name}-neoforge-Client")
         }
         named("server") {
-            setConfigName("${archives_base_name}-forge-Server")
+            setConfigName("${archives_base_name}-neoforge-Server")
         }
         data {
             data()
             programArgs "--all", "--mod", "dmlreloaded"
             programArgs "--output", project(":common").file("src/main/generated").absolutePath
-            setConfigName("${archives_base_name}-forge-Data")
+            setConfigName("${archives_base_name}-neoforge-Data")
             programArgs "--existing", project(":common").file("src/main/resources").absolutePath
         }
     }
@@ -35,34 +35,26 @@ configurations {
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentForge.extendsFrom common
+    developmentNeoForge.extendsFrom common
 }
 
 dependencies {
-    forge "net.minecraftforge:forge:${rootProject.forge_version}"
-    // Remove the next line if you don't want to depend on the API
-    modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
+    neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
 
-    common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
-    if(Boolean.parseBoolean(is_local_artan_core)) {
-        modImplementation files(file(findProject(':common').getProjectDir().toPath().resolve("../../ArtanCoreMod/forge/build/libs")
-                .resolve("Artan'sProjectCoreMOD-forge-mc${minecraft_version}-${artan_core_local_version}-dev-shadow.jar")))
-    } else {
-        modImplementation "curse.maven:artancore-585454:" + artan_core_forge_version
-    }
+    // Architectury API. This is optional, and you can comment it out if you don't need it.
+    modImplementation "dev.architectury:architectury-neoforge:$rootProject.architectury_version"
 
     // JEI
     modCompileOnly "mezz.jei:jei-${minecraft_version}-forge-api:${jei_api_version}"
     modImplementation "curse.maven:jei-238222:${jei_version}"
 
     // Patchouli
-    modCompileOnly "vazkii.patchouli:Patchouli:${patchouli_version}-FORGE:api"
-    modRuntimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}-FORGE"
+    modCompileOnly "vazkii.patchouli:Patchouli:${patchouli_version}-NEOFORGE:api"
+    modRuntimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}-NEOFORGE"
 
     // Curios
-    modCompileOnly "top.theillusivec4.curios:curios-forge:${curios_version}:api"
-    modRuntimeOnly "top.theillusivec4.curios:curios-forge:${curios_version}"
+    runtimeOnly "curse.maven:adorned-1036809:${adorned_version}"
+    compileOnly "curse.maven:adorned-1036809:${adorned_version}"
 
     // Reliquary Reincarnations
     modImplementation "curse.maven:reliquary-241319:${reliquary_reincarnations}"
@@ -71,8 +63,8 @@ dependencies {
     modImplementation "curse.maven:deeperdarker-659011:${deeper_and_darker}"
 
     // L_Ender 's Cataclysm
-    modImplementation "curse.maven:lionfish-1001614:${lionfish_api_version}"
-    modImplementation "curse.maven:lendercataclysm-551586:${lendercataclysm_version}"
+    // modImplementation "curse.maven:lionfish-1001614:${lionfish_api_version}"
+    // modImplementation "curse.maven:lendercataclysm-551586:${lendercataclysm_version}"
     
     // ビルド時に不要なパッケージ
 
@@ -128,7 +120,7 @@ components.java {
 
 publishing {
     publications {
-        mavenForge(MavenPublication) {
+        mavenNeoForge(MavenPublication) {
             artifactId = mod_id + "-" + project.name
             from components.java
         }

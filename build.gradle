@@ -21,6 +21,7 @@ subprojects {
         maven { url "https://modmaven.k-4u.nl" }
         maven { url "https://maven.terraformersmc.com/" }
         maven { url "https://maven.theillusivec4.top" }
+        maven { url "https://www.cursemaven.com" }
     }
 
     dependencies {
@@ -31,7 +32,7 @@ subprojects {
         // mappings "net.fabricmc:yarn:@YARN_MAPPINGS@:v2"
         mappings loom.layered() {
             officialMojangMappings()
-            parchment("org.parchmentmc.data:parchment-${rootProject.minecraft_version}:${rootProject.parchment_version}@zip")
+            parchment("org.parchmentmc.data:parchment-${rootProject.parchment_minecraft_version}:${rootProject.parchment_version}@zip")
         }
     }
 }
@@ -49,6 +50,7 @@ allprojects {
         maven { url "https://cursemaven.com" }
         maven { url 'https://maven.parchmentmc.org' }
         maven { url 'https://maven.blamejared.com' } // Patchouli
+        maven { url "https://maven.neoforged.net/releases"}
     }
 
     dependencies {
@@ -57,7 +59,7 @@ allprojects {
 
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
-        options.release.set(17)
+        options.release.set(21)
     }
 
     java {
