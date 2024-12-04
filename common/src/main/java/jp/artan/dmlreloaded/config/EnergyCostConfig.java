@@ -1,7 +1,6 @@
 package jp.artan.dmlreloaded.config;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
-import jp.artan.artansprojectcoremod.config.ModConfigs;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 
 public class EnergyCostConfig extends ModConfigs {

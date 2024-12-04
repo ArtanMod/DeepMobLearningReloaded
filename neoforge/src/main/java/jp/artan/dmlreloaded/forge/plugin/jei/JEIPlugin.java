@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.forge.plugin.jei;
 
 import com.google.common.collect.Lists;
-import jp.artan.artansprojectcoremod.utils.inject.NonNullSupplier;
+import jp.artan.dmlreloaded.util.inject.NonNullSupplier;
 import jp.artan.dmlreloaded.forge.init.DMLBlocksForge;
 import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.item.ItemDataModel;

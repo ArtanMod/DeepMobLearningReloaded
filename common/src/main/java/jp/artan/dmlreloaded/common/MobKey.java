@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.common;
 
 import jp.artan.dmlreloaded.common.mobmetas.*;
-import jp.artan.artansprojectcoremod.utils.inject.NonNullSupplier;
+import jp.artan.dmlreloaded.util.inject.NonNullSupplier;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;

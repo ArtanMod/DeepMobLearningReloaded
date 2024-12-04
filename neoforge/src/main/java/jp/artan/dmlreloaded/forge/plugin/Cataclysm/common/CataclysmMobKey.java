@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.forge.plugin.Cataclysm.common;
 
 import com.github.L_Ender.cataclysm.init.ModItems;
-import jp.artan.artansprojectcoremod.utils.inject.NonNullSupplier;
+import jp.artan.dmlreloaded.util.inject.NonNullSupplier;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;

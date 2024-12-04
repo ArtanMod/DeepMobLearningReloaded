@@ -1,6 +1,6 @@
 package jp.artan.dmlreloaded.forge.plugin.Cataclysm.common;
 
-import jp.artan.artansprojectcoremod.utils.inject.NonNullSupplier;
+import jp.artan.dmlreloaded.util.inject.NonNullSupplier;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.forge.plugin.Cataclysm.init.DMLIntegrationLCItems;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;

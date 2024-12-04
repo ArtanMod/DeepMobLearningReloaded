@@ -34,30 +34,30 @@ public class ItemDataModel extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> list, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         if(Screen.hasShiftDown()) {
-            list.add(Component.translatable("dmlreloaded.data_model.tier", DataModelHelper.getTierName(stack, false)));
+            tooltipComponents.add(Component.translatable("dmlreloaded.data_model.tier", DataModelHelper.getTierName(stack, false)));
             int tier = DataModelHelper.getTier(stack);
             if(tier != DeepMobLearningReloadedMod.DATA_MODEL_MAXIMUM_TIER) {
-                list.add(Component.translatable("dmlreloaded.data_model.data.collected",
+                tooltipComponents.add(Component.translatable("dmlreloaded.data_model.data.collected",
                         Component.literal(Integer.toString(DataModelHelper.getCurrentTierSimulationCountWithKills(stack))).withStyle(t -> t.withColor(ChatFormatting.GRAY)),
                         Component.literal(Integer.toString(DataModelHelper.getTierRoof(stack))).withStyle(t -> t.withColor(ChatFormatting.GRAY))));
-                list.add(Component.translatable("dmlreloaded.data_model.data.killmultiplier",
+                tooltipComponents.add(Component.translatable("dmlreloaded.data_model.data.killmultiplier",
                         Component.literal(Integer.toString(DataModelLevelupHelper.getKillMultiplier(DataModelHelper.getTier(stack)))).withStyle(t -> t.withColor(ChatFormatting.GRAY))));
             }
-            list.add(Component.translatable("dmlreloaded.data_model.rfcost", Component.literal(Integer.toString(DataModelHelper.getSimulationTickCost(stack))).withStyle(t -> t.withColor(ChatFormatting.GRAY))));
+            tooltipComponents.add(Component.translatable("dmlreloaded.data_model.rfcost", Component.literal(Integer.toString(DataModelHelper.getSimulationTickCost(stack))).withStyle(t -> t.withColor(ChatFormatting.GRAY))));
             ILivingMatterType livingMatterType = DataModelHelper.getMatterTypeName(stack);
-            list.add(Component.translatable("dmlreloaded.data_model.type_text", Component.translatable(livingMatterType.getLangId()).withStyle(t -> t.withColor(livingMatterType.getColor()))));
+            tooltipComponents.add(Component.translatable("dmlreloaded.data_model.type_text", Component.translatable(livingMatterType.getLangId()).withStyle(t -> t.withColor(livingMatterType.getColor()))));
         } else if(Screen.hasControlDown()) {
             List<IMobKey.Mob> mobs = this.getMobKey().getMobs();
-            list.add(Component.translatable("dmlreloaded.learning_target"));
+            tooltipComponents.add(Component.translatable("dmlreloaded.learning_target"));
             for(int i = 0; i < mobs.size(); i++) {
                 String mob = mobs.get(i).getLangId();
-                list.add(Component.translatable("%1$s. %2$s", i + 1, Component.translatable(mob)));
+                tooltipComponents.add(Component.translatable("%1$s. %2$s", i + 1, Component.translatable(mob)));
             }
         } else {
-            list.add(Component.translatable("dmlreloaded.holdshift", Component.literal("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE).withItalic(true))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
-            list.add(Component.translatable("dmlreloaded.holdctrl", Component.literal("CTRL").withStyle(t -> t.withColor(ChatFormatting.WHITE).withItalic(true))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
+            tooltipComponents.add(Component.translatable("dmlreloaded.holdshift", Component.literal("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE).withItalic(true))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
+            tooltipComponents.add(Component.translatable("dmlreloaded.holdctrl", Component.literal("CTRL").withStyle(t -> t.withColor(ChatFormatting.WHITE).withItalic(true))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
         }
     }
 }

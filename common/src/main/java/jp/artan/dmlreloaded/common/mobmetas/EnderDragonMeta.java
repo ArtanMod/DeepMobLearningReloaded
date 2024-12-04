@@ -12,6 +12,7 @@ import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import org.joml.Matrix4fStack;
 
 public class EnderDragonMeta extends MobMetaData{
     public EnderDragonMeta() {
@@ -31,7 +32,7 @@ public class EnderDragonMeta extends MobMetaData{
 
     @Override
     public RenderInfo transform(RenderInfo renderInfo, LivingEntity entity) {
-        PoseStack modelViewStack = RenderSystem.getModelViewStack();
+        Matrix4fStack modelViewStack = RenderSystem.getModelViewStack();
         modelViewStack.mulPose(Axis.XP.rotationDegrees(20.0F));
         modelViewStack.mulPose(Axis.YP.rotationDegrees(180.0F));
         renderInfo.pitch = -renderInfo.pitch - 80;

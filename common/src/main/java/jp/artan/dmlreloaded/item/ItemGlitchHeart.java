@@ -16,8 +16,8 @@ public class ItemGlitchHeart extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flagIn) {
-        list.add(Component.translatable("dmlreloaded.hover_text.glitch_heart").withStyle(t->t.withColor(ChatFormatting.GRAY)));
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.glitch_heart").withStyle(t->t.withColor(ChatFormatting.GRAY)));
     }
 
     @Override

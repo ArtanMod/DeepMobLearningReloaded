@@ -1,6 +1,6 @@
 package jp.artan.dmlreloaded.common;
 
-import jp.artan.artansprojectcoremod.utils.inject.NonNullSupplier;
+import jp.artan.dmlreloaded.util.inject.NonNullSupplier;
 import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import net.minecraft.ChatFormatting;

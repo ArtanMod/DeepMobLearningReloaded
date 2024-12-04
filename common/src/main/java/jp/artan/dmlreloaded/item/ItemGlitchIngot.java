@@ -17,9 +17,9 @@ public class ItemGlitchIngot extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flagIn) {
-        list.add(Component.translatable("dmlreloaded.hover_text.glitchingot_1", Component.translatable("item.dmlreloaded.glitch_heart").withStyle(t->t.withColor(ChatFormatting.AQUA))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
-        list.add(Component.translatable("dmlreloaded.hover_text.more_info").withStyle(t->t.withColor(ChatFormatting.GRAY)));
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.glitchingot_1", Component.translatable("item.dmlreloaded.glitch_heart").withStyle(t->t.withColor(ChatFormatting.AQUA))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
+        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.more_info").withStyle(t->t.withColor(ChatFormatting.GRAY)));
     }
 
     @Override

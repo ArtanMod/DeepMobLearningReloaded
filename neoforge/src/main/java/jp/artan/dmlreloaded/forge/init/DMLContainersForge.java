@@ -2,7 +2,7 @@ package jp.artan.dmlreloaded.forge.init;
 
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
-import jp.artan.artansprojectcoremod.utils.inject.NonNullSupplier;
+import jp.artan.dmlreloaded.util.inject.NonNullSupplier;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.forge.container.DeepLearnerContainer;
 import jp.artan.dmlreloaded.forge.container.ExtractionChamberContainer;

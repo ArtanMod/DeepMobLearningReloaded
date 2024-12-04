@@ -3,17 +3,15 @@ package jp.artan.dmlreloaded.init;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
-import jp.artan.artansprojectcoremod.sets.ArmorItems;
-import jp.artan.artansprojectcoremod.utils.inject.NonNullFunction;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.common.LivingMatterType;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.item.*;
 import jp.artan.dmlreloaded.item.material.GlitchArmorMaterials;
-import jp.artan.dmlreloaded.item.material.GlitchToolMaterials;
+import jp.artan.dmlreloaded.sets.ArmorItems;
+import jp.artan.dmlreloaded.util.inject.NonNullFunction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.Ingredient;
 
 public class DMLItems {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registries.ITEM);

@@ -2,7 +2,7 @@ package jp.artan.dmlreloaded.forge.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import jp.artan.artansprojectcoremod.utils.inject.NonNullSupplier;
+import jp.artan.dmlreloaded.util.inject.NonNullSupplier;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.config.EnergyCostConfig;
 import jp.artan.dmlreloaded.forge.container.ExtractionChamberContainer;

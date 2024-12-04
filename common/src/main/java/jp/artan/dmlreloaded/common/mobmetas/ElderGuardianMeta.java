@@ -10,6 +10,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.ElderGuardian;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import org.joml.Matrix4fStack;
 
 public class ElderGuardianMeta extends MobMetaData {
     public ElderGuardianMeta() {
@@ -28,7 +29,7 @@ public class ElderGuardianMeta extends MobMetaData {
 
     @Override
     public RenderInfo transform(RenderInfo renderInfo, LivingEntity entity) {
-        PoseStack modelViewStack = RenderSystem.getModelViewStack();
+        Matrix4fStack modelViewStack = RenderSystem.getModelViewStack();
         modelViewStack.scale(0.6F, 0.6F, 0.6F);
         return renderInfo;
     }

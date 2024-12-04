@@ -27,10 +27,10 @@ public class ItemLivingMatter extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flag) {
-        list.add(Component.translatable("dmlreloaded.living_matter.exp_consume", Component.literal("(Right-Click)").withStyle(t -> t.withColor(ChatFormatting.WHITE)).withStyle(t -> t.withColor(ChatFormatting.GRAY))));
-        list.add(Component.translatable("dmlreloaded.living_matter.exp_consume_stack", Component.literal("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
-        list.add(Component.translatable("dmlreloaded.living_matter.exp", Component.literal(Integer.toString(getType().getExp())).withStyle(t -> t.withColor(ChatFormatting.GREEN))));
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("dmlreloaded.living_matter.exp_consume", Component.literal("(Right-Click)").withStyle(t -> t.withColor(ChatFormatting.WHITE)).withStyle(t -> t.withColor(ChatFormatting.GRAY))));
+        tooltipComponents.add(Component.translatable("dmlreloaded.living_matter.exp_consume_stack", Component.literal("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
+        tooltipComponents.add(Component.translatable("dmlreloaded.living_matter.exp", Component.literal(Integer.toString(getType().getExp())).withStyle(t -> t.withColor(ChatFormatting.GREEN))));
     }
 
     @Override

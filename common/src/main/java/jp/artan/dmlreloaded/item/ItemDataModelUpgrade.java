@@ -25,8 +25,8 @@ public class ItemDataModelUpgrade extends Item {
 
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> list, TooltipFlag flagIn) {
-        list.add(Component.translatable("dmlreloaded.data_model_upgrade.tier", this.nextTier));
-        list.add(Component.translatable("dmlreloaded.data_model_upgrade.desc").withStyle(t -> t.withColor(ChatFormatting.DARK_PURPLE)));
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("dmlreloaded.data_model_upgrade.tier", this.nextTier));
+        tooltipComponents.add(Component.translatable("dmlreloaded.data_model_upgrade.desc").withStyle(t -> t.withColor(ChatFormatting.DARK_PURPLE)));
     }
 }

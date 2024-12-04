@@ -37,6 +37,6 @@ public class DeepMobLearningReloadedMod {
     }
 
     public static ResourceLocation getResource(String name) {
-        return new ResourceLocation(MOD_ID, name);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
     }
 }
