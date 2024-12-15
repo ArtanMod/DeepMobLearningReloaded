@@ -1,34 +1,39 @@
 package jp.artan.dmlreloaded.item.material;
 
+import com.google.common.base.Suppliers;
+import jp.artan.dmlreloaded.init.DMLBlockTags;
 import jp.artan.dmlreloaded.init.DMLItems;
-import net.minecraft.util.LazyLoadedValue;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 public enum GlitchToolMaterials implements Tier {
-    GLITCH(3, 2200, 3.0f, 9.0F, 15, () -> {
+    GLITCH(DMLBlockTags.INCORRECT_FOR_GLITCH_TOOL, 2200, 3.0f, 9.0F, 15, () -> {
         return Ingredient.of(DMLItems.GLITCH_INGOT.get());
     }),
-    NETHERITE_GLITCH(4, 3000, 9.0F, 12.0F, 20, () -> {
+    NETHERITE_GLITCH(DMLBlockTags.INCORRECT_FOR_NETHERITE_GLITCH_TOOL,3000, 9.0F, 12.0F, 20, () -> {
         return Ingredient.of(DMLItems.NETHERITE_GLITCH_INGOT.get());
     });
 
-    private final int level;
+    private final TagKey<Block> incorrectBlocksForDrops;
     private final int uses;
     private final float speed;
     private final float damage;
     private final int enchantmentValue;
-    private final LazyLoadedValue<Ingredient> repairIngredient;
+    private final Supplier<Ingredient> repairIngredient;
 
-    GlitchToolMaterials(int pLevel, int pUses, float pSpeed, float pDamage, int pEnchantmentValue, Supplier<Ingredient> pRepairIngredient) {
-        this.level = pLevel;
-        this.uses = pUses;
-        this.speed = pSpeed;
-        this.damage = pDamage;
-        this.enchantmentValue = pEnchantmentValue;
-        this.repairIngredient = new LazyLoadedValue<>(pRepairIngredient);
+    GlitchToolMaterials(final TagKey incorrectBlockForDrops, final int uses, final float speed, final float damage, final int enchantmentValue, final Supplier<Ingredient> repairIngredient) {
+        this.incorrectBlocksForDrops = incorrectBlockForDrops;
+        this.uses = uses;
+        this.speed = speed;
+        this.damage = damage;
+        this.enchantmentValue = enchantmentValue;
+        Objects.requireNonNull(repairIngredient);
+        this.repairIngredient = Suppliers.memoize(repairIngredient::get);
     }
 
     public int getUses() {
@@ -43,8 +48,8 @@ public enum GlitchToolMaterials implements Tier {
         return this.damage;
     }
 
-    public int getLevel() {
-        return this.level;
+    public TagKey<Block> getIncorrectBlocksForDrops() {
+        return this.incorrectBlocksForDrops;
     }
 
     public int getEnchantmentValue() {

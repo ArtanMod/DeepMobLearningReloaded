@@ -19,7 +19,7 @@ public abstract class ItemGlitchSword extends SwordItem {
     protected static final int DAMAGE_INCREASE_CHANCE = 4;
 
     public ItemGlitchSword(Tier pTier, Properties pProperties) {
-        super(pTier, 10, 5f, pProperties);
+        super(pTier, pProperties);
     }
 
     public static boolean canIncreaseDamage(ItemStack sword) {
@@ -50,14 +50,14 @@ public abstract class ItemGlitchSword extends SwordItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flag) {
-        list.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_1"));
-//        list.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_2"));
-        list.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_3").withStyle(t->t.withColor(ChatFormatting.GOLD)));
-        list.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_4").withStyle(t->t.withColor(ChatFormatting.GOLD)));
-        list.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_5").withStyle(t->t.withColor(ChatFormatting.GOLD)));
-        list.add(Component.literal(""));
-        list.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_6", Component.literal(Integer.toString(getPermanentWeaponDamage(stack))).withStyle(t->t.withColor(ChatFormatting.AQUA)), Component.literal(Integer.toString(DAMAGE_BONUS_MAX)).withStyle(t->t.withColor(ChatFormatting.WHITE))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_1"));
+//        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_2"));
+        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_3").withStyle(t->t.withColor(ChatFormatting.GOLD)));
+        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_4").withStyle(t->t.withColor(ChatFormatting.GOLD)));
+        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_5").withStyle(t->t.withColor(ChatFormatting.GOLD)));
+        tooltipComponents.add(Component.literal(""));
+        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.glitch_infused_sword_6", Component.literal(Integer.toString(getPermanentWeaponDamage(stack))).withStyle(t->t.withColor(ChatFormatting.AQUA)), Component.literal(Integer.toString(DAMAGE_BONUS_MAX)).withStyle(t->t.withColor(ChatFormatting.WHITE))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
     }
 
     @Override
