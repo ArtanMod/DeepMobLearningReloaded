@@ -10,13 +10,14 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.world.entity.LivingEntity;
+import org.joml.Matrix4fStack;
 
 public class RenderHelper {
     public static void renderEntity(GuiGraphics guiGraphics, int x, int y, double scale, double yaw, double pitch, LivingEntity livingEntity, MobMetaData mobMetaData) {
-        PoseStack modelViewStack = RenderSystem.getModelViewStack();
-        modelViewStack.pushPose();
-        modelViewStack.mulPoseMatrix(guiGraphics.pose().last().pose());
-        modelViewStack.translate(x, y, 1050.0);
+        Matrix4fStack modelViewStack = RenderSystem.getModelViewStack();
+        modelViewStack.pushMatrix();
+        modelViewStack.mul(guiGraphics.pose().last().pose());
+        modelViewStack.translate(x, y, 1050.0F);
         modelViewStack.scale((float) -scale, (float) scale, (float) scale);
         PoseStack mobPoseStack = new PoseStack();
         mobPoseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
@@ -42,7 +43,7 @@ public class RenderHelper {
         });
         bufferSource.endBatch();
         entityRenderDispatcher.setRenderShadow(true);
-        modelViewStack.popPose();
+        modelViewStack.popMatrix();
         RenderSystem.applyModelViewMatrix();
     }
 }
