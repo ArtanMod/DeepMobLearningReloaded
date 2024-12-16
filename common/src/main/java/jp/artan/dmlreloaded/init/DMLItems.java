@@ -7,6 +7,7 @@ import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.common.LivingMatterType;
 import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.item.*;
+import jp.artan.dmlreloaded.item.dct.DataModelInfo;
 import jp.artan.dmlreloaded.item.material.GlitchArmorMaterials;
 import jp.artan.dmlreloaded.sets.ArmorItems;
 import jp.artan.dmlreloaded.util.inject.NonNullFunction;
@@ -86,7 +87,7 @@ public class DMLItems {
     public static final RegistrySupplier<ItemDataModel> DATA_MODEL_ZOMBIE = registerDataModel("data_model_zombie", MobKey.ZOMBIE);
 
     private static RegistrySupplier<ItemDataModel> registerDataModel(String name, MobKey mobKey) {
-        return register(name, p -> new ItemDataModel(p, mobKey));
+        return register(name, p -> new ItemDataModel(p.component(DMLDataComponentType.DATA_MODEL_INFO.get(), new DataModelInfo()), mobKey));
     }
 
     // #############################################################################################################################################################################################

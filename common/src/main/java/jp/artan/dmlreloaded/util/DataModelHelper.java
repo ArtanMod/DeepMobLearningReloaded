@@ -7,6 +7,7 @@ import jp.artan.dmlreloaded.common.MobKey;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.item.ItemGlitchSword;
+import jp.artan.dmlreloaded.item.dct.DataModelInfo;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -15,6 +16,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class DataModelHelper {
+
     public static NonNullList<ItemStack> getValidFromList(NonNullList<ItemStack> list) {
         NonNullList<ItemStack> filteredList = NonNullList.create();
 
@@ -46,43 +48,43 @@ public class DataModelHelper {
     }
 
     public static int getTier(ItemStack stack) {
-        return NBTHelper.getInt(stack, "tier", 0);
+        return DataModelInfo.getTier(stack);
     }
 
     public static void setTier(ItemStack stack, int tier) {
-        NBTHelper.setInt(stack, "tier", tier);
+        DataModelInfo.setTier(stack, tier);
     }
 
     public static int getCurrentTierKillCount(ItemStack stack) {
-        return NBTHelper.getInt(stack, "killCount", 0);
+        return DataModelInfo.getKillCount(stack);
     }
 
     public static void setCurrentTierKillCount(ItemStack stack, int count) {
-        NBTHelper.setInt(stack, "killCount", count);
+        DataModelInfo.setKillCount(stack, count);
     }
 
     public static int getCurrentTierSimulationCount(ItemStack stack) {
-        return NBTHelper.getInt(stack, "simulationCount", 0);
+        return DataModelInfo.getSimulationCount(stack);
     }
 
     public static void setCurrentTierSimulationCount(ItemStack stack, int count) {
-        NBTHelper.setInt(stack, "simulationCount", count);
+        DataModelInfo.setSimulationCount(stack, count);
     }
 
     public static int getTotalKillCount(ItemStack stack) {
-        return NBTHelper.getInt(stack, "totalKillCount", 0);
+        return DataModelInfo.getTotalKillCount(stack);
     }
 
     public static void setTotalKillCount(ItemStack stack, int count) {
-        NBTHelper.setInt(stack, "totalKillCount", count);
+        DataModelInfo.setTotalKillCount(stack, count);
     }
 
     public static int getTotalSimulationCount(ItemStack stack) {
-        return NBTHelper.getInt(stack, "totalSimulationCount", 0);
+        return DataModelInfo.getTotalSimulationCount(stack);
     }
 
     public static void setTotalSimulationCount(ItemStack stack, int count) {
-        NBTHelper.setInt(stack, "totalSimulationCount", count);
+        DataModelInfo.setTotalSimulationCount(stack, count);
     }
 
     public static IMobKey getMobKey(ItemStack stack) {
