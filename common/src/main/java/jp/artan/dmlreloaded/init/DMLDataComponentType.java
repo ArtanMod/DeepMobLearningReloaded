@@ -6,6 +6,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import io.netty.buffer.ByteBuf;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.item.dct.DataModelInfo;
+import jp.artan.dmlreloaded.item.dct.GlitchSwordInfo;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -16,6 +17,7 @@ public class DMLDataComponentType {
     private static final DeferredRegister<DataComponentType<?>> DATA_COMPONENT_TYPE = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, Registries.DATA_COMPONENT_TYPE);
 
     public static final RegistrySupplier<DataComponentType<DataModelInfo>> DATA_MODEL_INFO = register("data_model_info", DataModelInfo.DATA_MODEL_INFO_CODEC, DataModelInfo.DATA_MODEL_INFO_STREAM_CODEC);
+    public static final RegistrySupplier<DataComponentType<GlitchSwordInfo>> GLITCH_SWORD_INFO = register("glitch_sword_info", GlitchSwordInfo.GLITCH_SWORD_INFO_CODEC, GlitchSwordInfo.GLITCH_SWORD_INFO_STREAM_CODEC);
 
     public static void register() {
         DATA_COMPONENT_TYPE.register();

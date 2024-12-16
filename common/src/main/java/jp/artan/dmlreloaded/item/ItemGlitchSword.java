@@ -1,6 +1,6 @@
 package jp.artan.dmlreloaded.item;
 
-import jp.artan.dmlreloaded.util.NBTHelper;
+import jp.artan.dmlreloaded.item.dct.GlitchSwordInfo;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -8,7 +8,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -42,11 +41,11 @@ public abstract class ItemGlitchSword extends SwordItem {
     }
 
     public static int getPermanentWeaponDamage(ItemStack stack) {
-        return NBTHelper.getInt(stack,"permDamage", 0);
+        return GlitchSwordInfo.getPermDamage(stack);
     }
 
     public static void setPermanentWeaponDamage(ItemStack stack, int damage) {
-        NBTHelper.setInt(stack,"permDamage", damage);
+        GlitchSwordInfo.setPermDamage(stack, damage);
     }
 
     @Override
