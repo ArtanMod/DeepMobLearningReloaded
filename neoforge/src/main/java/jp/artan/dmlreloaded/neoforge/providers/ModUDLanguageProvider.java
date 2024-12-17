@@ -1,0 +1,300 @@
+package jp.artan.dmlreloaded.neoforge.providers;
+
+import jp.artan.artansprojectcoremod.forge.providers.AbstractUDLanguageProvider;
+import jp.artan.artansprojectcoremod.utils.lang.LangUtils;
+import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
+import jp.artan.dmlreloaded.init.DMLCreativeTab;
+import jp.artan.dmlreloaded.init.DMLItems;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemNameBlockItem;
+
+public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
+    private final String modid;
+
+    public ModUDLanguageProvider(PackOutput output, String modid) {
+        super(output, modid);
+        this.modid = modid;
+    }
+
+    @Override
+    protected void addTranslations() {
+        BuiltInRegistries.BLOCK.stream().filter((block) -> {
+            return this.modid.equals(BuiltInRegistries.BLOCK.getKey(block).getNamespace());
+        }).forEach((block) -> {
+            String blockId = BuiltInRegistries.BLOCK.getKey(block).getPath();
+            this.add(block, LangUtils.toUpsideDownEnglish(blockId));
+        });
+        BuiltInRegistries.ITEM.stream().filter((item) -> {
+            return this.modid.equals(BuiltInRegistries.ITEM.getKey(item).getNamespace()) && (!(item instanceof BlockItem) || item instanceof ItemNameBlockItem);
+        }).forEach((item) -> {
+            if(item == DMLItems.GLITCH_UPGRADE_SMITHING_TEMPLATE.get()) {
+                this.add(item, LangUtils.toUpsideDownEnglish("Smithing Template"));
+            } else {
+                String itemId = BuiltInRegistries.ITEM.getKey(item).getPath();
+                this.add(item, LangUtils.toUpsideDownEnglish(itemId));
+            }
+        });
+        BuiltInRegistries.POTION.stream().filter((item) -> {
+            return this.modid.equals(BuiltInRegistries.POTION.getKey(item).getNamespace());
+        }).forEach((block) -> {
+            String potionId = BuiltInRegistries.POTION.getKey(block).getPath();
+            this.add("item.minecraft.lingering_potion.effect." + potionId, LangUtils.toUpsideDownEnglish("lingering_" + potionId + "_bottle"));
+            this.add("item.minecraft.potion.effect." + potionId, LangUtils.toUpsideDownEnglish(potionId + "_bottle"));
+            this.add("item.minecraft.splash_potion.effect." + potionId, LangUtils.toUpsideDownEnglish("splash_" + potionId + "_bottle"));
+        });
+
+        addTranslationsToolTip();
+        addTranslationsCurios();
+        addPatchouliLang();
+        addTranslationJEI();
+
+        // ItemGroup
+        addCreativeModeTab(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED, LangUtils.toUpsideDownEnglish("Deep Mob Learning: Reloaded"));
+    }
+
+    /**
+     * ToolTip
+     */
+    private void addTranslationsToolTip() {
+        this.add(this.createToolTip("data_model.data.collected"), LangUtils.toUpsideDownEnglish("Data collected: %1$s/%2$s"));
+        this.add(this.createToolTip("data_model.data.killmultiplier"), LangUtils.toUpsideDownEnglish("Data per kill: %1$s"));
+        this.add(this.createToolTip("data_model.rfcost"), LangUtils.toUpsideDownEnglish("Simulation cost: %1$s RF/t"));
+        this.add(this.createToolTip("data_model.tier"), LangUtils.toUpsideDownEnglish("Tier: %1$s"));
+        this.add(this.createToolTip("data_model.type_text"), LangUtils.toUpsideDownEnglish("Type: %1$s"));
+        this.add(this.createToolTip("data_model_upgrade.desc"), LangUtils.toUpsideDownEnglish("Creative only"));
+        this.add(this.createToolTip("data_model_upgrade.tier"), LangUtils.toUpsideDownEnglish("Can be upgraded to data model grade%1$s."));
+        this.add(this.createToolTip("deep_learner.data_model_slots"), LangUtils.toUpsideDownEnglish("Data model stored in data model."));
+        this.add(this.createToolTip("deep_learner.data_model_slots_empty"), LangUtils.toUpsideDownEnglish("Nothing stored."));
+        this.add(this.createToolTip("gui.deep_learner.collect_data"), LangUtils.toUpsideDownEnglish("Your data models will collect data"));
+        this.add(this.createToolTip("gui.deep_learner.hp"), LangUtils.toUpsideDownEnglish("Life points"));
+        this.add(this.createToolTip("gui.deep_learner.in_order"), LangUtils.toUpsideDownEnglish("In order to collect data, you must"));
+        this.add(this.createToolTip("gui.deep_learner.insert"), LangUtils.toUpsideDownEnglish("Please insert a Data Model!"));
+        this.add(this.createToolTip("gui.deep_learner.killing_blow"), LangUtils.toUpsideDownEnglish("deliver the killing blow."));
+        this.add(this.createToolTip("gui.deep_learner.max"), LangUtils.toUpsideDownEnglish("Maximum tier achieved"));
+        this.add(this.createToolTip("gui.deep_learner.not_found"), LangUtils.toUpsideDownEnglish("No data model stored"));
+        this.add(this.createToolTip("gui.deep_learner.overlay"), LangUtils.toUpsideDownEnglish("%1$s Model"));
+        this.add(this.createToolTip("gui.deep_learner.when_placed"), LangUtils.toUpsideDownEnglish("when they are placed in the deep learner."));
+        this.add(this.createToolTip("gui.defeated"), LangUtils.toUpsideDownEnglish("%1$s defeated: %2$s"));
+        this.add(this.createToolTip("gui.energy.energystored"), LangUtils.toUpsideDownEnglish("%1$s/%2$s RF"));
+        this.add(this.createToolTip("gui.extraction_chamber.opcost"), LangUtils.toUpsideDownEnglish("Operational cost: %1$s RF/t"));
+        this.add(this.createToolTip("gui.information"), LangUtils.toUpsideDownEnglish("Information"));
+        this.add(this.createToolTip("gui.mob.blaze.trivia.0"), LangUtils.toUpsideDownEnglish("Bring buckets, and watch in despair"));
+        this.add(this.createToolTip("gui.mob.blaze.trivia.1"), LangUtils.toUpsideDownEnglish("as it evaporates, and everything is on fire"));
+        this.add(this.createToolTip("gui.mob.blaze.trivia.2"), LangUtils.toUpsideDownEnglish("You are on fire"));
+        this.add(this.createToolTip("gui.mob.creeper.trivia.0"), LangUtils.toUpsideDownEnglish("Will blow up your base if"));
+        this.add(this.createToolTip("gui.mob.creeper.trivia.1"), LangUtils.toUpsideDownEnglish("left unattended."));
+        this.add(this.createToolTip("gui.mob.ender_dragon.trivia.0"), LangUtils.toUpsideDownEnglish("Resides in the end, does not harbor treasure"));
+        this.add(this.createToolTip("gui.mob.ender_dragon.trivia.1"), LangUtils.toUpsideDownEnglish("Destroy its crystals, break the cycle."));
+        this.add(this.createToolTip("gui.mob.enderman.trivia.0"), LangUtils.toUpsideDownEnglish("Friendly unless provoked, dislikes rain."));
+        this.add(this.createToolTip("gui.mob.enderman.trivia.1"), LangUtils.toUpsideDownEnglish("Teleports short distances"));
+        this.add(this.createToolTip("gui.mob.ghast.trivia.0"), LangUtils.toUpsideDownEnglish("If you hear something that sounds like"));
+        this.add(this.createToolTip("gui.mob.ghast.trivia.1"), LangUtils.toUpsideDownEnglish("a crying llama, you're probably hearing a ghast"));
+        this.add(this.createToolTip("gui.mob.guardian.trivia.0"), LangUtils.toUpsideDownEnglish("Lurking in the oceans."));
+        this.add(this.createToolTip("gui.mob.guardian.trivia.1"), LangUtils.toUpsideDownEnglish("Uses some sort of sonar beam as"));
+        this.add(this.createToolTip("gui.mob.guardian.trivia.2"), LangUtils.toUpsideDownEnglish("a means of attack"));
+        this.add(this.createToolTip("gui.mob.shulker.trivia.0"), LangUtils.toUpsideDownEnglish("Found in End cities"));
+        this.add(this.createToolTip("gui.mob.shulker.trivia.1"), LangUtils.toUpsideDownEnglish("Sneaky little buggers"));
+        this.add(this.createToolTip("gui.mob.skeleton.trivia.0"), LangUtils.toUpsideDownEnglish("A formidable archer, which seem to be running"));
+        this.add(this.createToolTip("gui.mob.skeleton.trivia.1"), LangUtils.toUpsideDownEnglish("some sort of cheat engine"));
+        this.add(this.createToolTip("gui.mob.skeleton.trivia.2"), LangUtils.toUpsideDownEnglish("A shield could prove useful"));
+        this.add(this.createToolTip("gui.mob.slime.trivia.0"), LangUtils.toUpsideDownEnglish("The bounce"));
+        this.add(this.createToolTip("gui.mob.slime.trivia.1"), LangUtils.toUpsideDownEnglish("bounce his bounce"));
+        this.add(this.createToolTip("gui.mob.slime.trivia.2"), LangUtils.toUpsideDownEnglish("squish - \"A slime haiku\""));
+        this.add(this.createToolTip("gui.mob.spider.trivia.0"), LangUtils.toUpsideDownEnglish("Nocturnal douchebags, beware"));
+        this.add(this.createToolTip("gui.mob.spider.trivia.1"), LangUtils.toUpsideDownEnglish("Drops strands of string for some reason.."));
+        this.add(this.createToolTip("gui.mob.witch.trivia.0"), LangUtils.toUpsideDownEnglish("Affinity with potions and concoctions"));
+        this.add(this.createToolTip("gui.mob.witch.trivia.1"), LangUtils.toUpsideDownEnglish("Beware!"));
+        this.add(this.createToolTip("gui.mob.wither.trivia.0"), LangUtils.toUpsideDownEnglish("Do not approach this enemy. Run!"));
+        this.add(this.createToolTip("gui.mob.wither.trivia.1"), LangUtils.toUpsideDownEnglish("I mean it has 3 heads, what could"));
+        this.add(this.createToolTip("gui.mob.wither.trivia.2"), LangUtils.toUpsideDownEnglish("possibly go wrong?"));
+        this.add(this.createToolTip("gui.mob.wither_skeleton.trivia.0"), LangUtils.toUpsideDownEnglish("Inflicts the wither effect"));
+        this.add(this.createToolTip("gui.mob.wither_skeleton.trivia.1"), LangUtils.toUpsideDownEnglish("Bring milk"));
+        this.add(this.createToolTip("gui.mob.zombie.trivia.0"), LangUtils.toUpsideDownEnglish("They go moan in the night."));
+        this.add(this.createToolTip("gui.mob.zombie.trivia.1"), LangUtils.toUpsideDownEnglish("Does not understand the need for"));
+        this.add(this.createToolTip("gui.mob.zombie.trivia.2"), LangUtils.toUpsideDownEnglish("personal space"));
+        this.add(this.createToolTip("gui.mob_name"), LangUtils.toUpsideDownEnglish("The %1$s"));
+        this.add(this.createToolTip("gui.name"), LangUtils.toUpsideDownEnglish("Name"));
+        this.add(this.createToolTip("gui.simulation_chamber.cannot_begin"), LangUtils.toUpsideDownEnglish("Cannot begin simulation"));
+        this.add(this.createToolTip("gui.simulation_chamber.collected"), LangUtils.toUpsideDownEnglish("%1$s / %2$s Data collected"));
+        this.add(this.createToolTip("gui.simulation_chamber.console.1"), LangUtils.toUpsideDownEnglish("> Launching runtime"));
+        this.add(this.createToolTip("gui.simulation_chamber.console.10"), LangUtils.toUpsideDownEnglish("..."));
+        this.add(this.createToolTip("gui.simulation_chamber.console.2"), LangUtils.toUpsideDownEnglish("v1.4.7"));
+        this.add(this.createToolTip("gui.simulation_chamber.console.3"), LangUtils.toUpsideDownEnglish("> Iteration # %1$s started"));
+        this.add(this.createToolTip("gui.simulation_chamber.console.4"), LangUtils.toUpsideDownEnglish("> Loading model from chip memory"));
+        this.add(this.createToolTip("gui.simulation_chamber.console.5"), LangUtils.toUpsideDownEnglish("> Assessing threat level"));
+        this.add(this.createToolTip("gui.simulation_chamber.console.6"), LangUtils.toUpsideDownEnglish("> Engaged enemy"));
+        this.add(this.createToolTip("gui.simulation_chamber.console.7"), LangUtils.toUpsideDownEnglish("> Pristine procurement"));
+        this.add(this.createToolTip("gui.simulation_chamber.console.8_failed"), LangUtils.toUpsideDownEnglish("failed"));
+        this.add(this.createToolTip("gui.simulation_chamber.console.8_succeeded"), LangUtils.toUpsideDownEnglish("succeeded"));
+        this.add(this.createToolTip("gui.simulation_chamber.console.9"), LangUtils.toUpsideDownEnglish("> Processing results"));
+        this.add(this.createToolTip("gui.simulation_chamber.drain"), LangUtils.toUpsideDownEnglish("Simulations with current data model drains %1$s RF/t"));
+        this.add(this.createToolTip("gui.simulation_chamber.insert"), LangUtils.toUpsideDownEnglish("Please insert a data model"));
+        this.add(this.createToolTip("gui.simulation_chamber.iterations"), LangUtils.toUpsideDownEnglish("Iterations: %1$s"));
+        this.add(this.createToolTip("gui.simulation_chamber.max_tier"), LangUtils.toUpsideDownEnglish("This data model has reached the max tier."));
+        this.add(this.createToolTip("gui.simulation_chamber.missing"), LangUtils.toUpsideDownEnglish("Machine is missing a data model"));
+        this.add(this.createToolTip("gui.simulation_chamber.missing_polymer"), LangUtils.toUpsideDownEnglish("Missing polymer medium"));
+        this.add(this.createToolTip("gui.simulation_chamber.pristine_chance"), LangUtils.toUpsideDownEnglish("Pristine chance: %1$s%%"));
+        this.add(this.createToolTip("gui.simulation_chamber.tier1.1"), LangUtils.toUpsideDownEnglish("Insufficient data in model"));
+        this.add(this.createToolTip("gui.simulation_chamber.tier1.2"), LangUtils.toUpsideDownEnglish("please insert a basic model"));
+        this.add(this.createToolTip("gui.simulation_chamber.tier1.3"), LangUtils.toUpsideDownEnglish("or better "));
+        this.add(this.createToolTip("gui.simulation_chamber.to_begin"), LangUtils.toUpsideDownEnglish("to begin the simulation"));
+        this.add(this.createToolTip("holdctrl"), LangUtils.toUpsideDownEnglish("- hold %1$s for more info"));
+        this.add(this.createToolTip("holdshift"), LangUtils.toUpsideDownEnglish("- hold %1$s for more info"));
+        this.add(this.createToolTip("hover_text.glitch_fragment_1"), LangUtils.toUpsideDownEnglish("Crafted by crushing a %1$s"));
+        this.add(this.createToolTip("hover_text.glitch_fragment_2"), LangUtils.toUpsideDownEnglish("against some %1$s (Right click)"));
+        this.add(this.createToolTip("hover_text.glitch_fragment_3"), LangUtils.toUpsideDownEnglish("Yields 3 fragments per crushed heart"));
+        this.add(this.createToolTip("hover_text.glitch_fragment_4"), LangUtils.toUpsideDownEnglish("Can rarly drop from hostile mobs."));
+        this.add(this.createToolTip("hover_text.glitch_heart"), LangUtils.toUpsideDownEnglish("Drops from System Glitches"));
+        this.add(this.createToolTip("hover_text.glitch_infused_armor_1"), LangUtils.toUpsideDownEnglish("Bonus while full set is equipped"));
+        this.add(this.createToolTip("hover_text.glitch_infused_armor_2"), LangUtils.toUpsideDownEnglish("(Bonuses are disabled during Trials)"));
+        this.add(this.createToolTip("hover_text.glitch_infused_armor_3"), LangUtils.toUpsideDownEnglish("  1. Certain probability of drop Pristine Matter"));
+        this.add(this.createToolTip("hover_text.glitch_infused_armor_4"), LangUtils.toUpsideDownEnglish("     when a Data Model gains Data."));
+        this.add(this.createToolTip("hover_text.glitch_infused_armor_5"), LangUtils.toUpsideDownEnglish("  2. Flight & Immunity against fall damage"));
+        this.add(this.createToolTip("hover_text.glitch_infused_sword_1"), LangUtils.toUpsideDownEnglish("Bonus: Quick learner"));
+        this.add(this.createToolTip("hover_text.glitch_infused_sword_2"), LangUtils.toUpsideDownEnglish("(Bonuses are disabled during Trials)"));
+        this.add(this.createToolTip("hover_text.glitch_infused_sword_3"), LangUtils.toUpsideDownEnglish("The Data gained from the demise of a mob is doubled,"));
+        this.add(this.createToolTip("hover_text.glitch_infused_sword_4"), LangUtils.toUpsideDownEnglish("when Data is gained there is also a small chance"));
+        this.add(this.createToolTip("hover_text.glitch_infused_sword_5"), LangUtils.toUpsideDownEnglish("that the sword will get a permanent damage increase."));
+        this.add(this.createToolTip("hover_text.glitch_infused_sword_6"), LangUtils.toUpsideDownEnglish("Current damage increase: %1$s (Max %2$s)"));
+        this.add(this.createToolTip("hover_text.glitchingot_1"), LangUtils.toUpsideDownEnglish("Made by stabilizing %1$s"));
+        this.add(this.createToolTip("hover_text.more_info"), LangUtils.toUpsideDownEnglish("more info found in JEI or the Guidebook"));
+        this.add(this.createToolTip("hover_text.soot_covered_redstone_1"), LangUtils.toUpsideDownEnglish("Crafted by crushing %1$s against"));
+        this.add(this.createToolTip("hover_text.soot_covered_redstone_2"), LangUtils.toUpsideDownEnglish("against some %1$s (Left click)"));
+        this.add(this.createToolTip("learning_target"), LangUtils.toUpsideDownEnglish("Learning Target Mobs"));
+        this.add(this.createToolTip("living_matter.deeperdarker"), LangUtils.toUpsideDownEnglish("Deeper Darker Matter"));
+        this.add(this.createToolTip("living_matter.exp"), LangUtils.toUpsideDownEnglish("Experience per item: %1$s"));
+        this.add(this.createToolTip("living_matter.exp_consume"), LangUtils.toUpsideDownEnglish("Can be consumed for expirience %1$s"));
+        this.add(this.createToolTip("living_matter.exp_consume_stack"), LangUtils.toUpsideDownEnglish("Hold %1$s to consume entire stack."));
+        this.add(this.createToolTip("living_matter.extraterrestrial"), LangUtils.toUpsideDownEnglish("Extraterrestrial"));
+        this.add(this.createToolTip("living_matter.hellish"), LangUtils.toUpsideDownEnglish("Hellish"));
+        this.add(this.createToolTip("living_matter.overworldian"), LangUtils.toUpsideDownEnglish("Overworldian"));
+        this.add(this.createToolTip("messages.sword_levelup"), LangUtils.toUpsideDownEnglish("Your %1$s grows in power!"));
+        this.add(this.createToolTip("messages.sword_levelup.max"), LangUtils.toUpsideDownEnglish("Your %1$s has now reached peak performance!"));
+        this.add(this.createToolTip("tiers.increase_tier"), LangUtils.toUpsideDownEnglish("%1$s reached the %2$s tier"));
+        this.add(this.createToolTip("tiers.tier"), LangUtils.toUpsideDownEnglish("Model Tier: %1$s"));
+        this.add(this.createToolTip("tiers.tier_1"), LangUtils.toUpsideDownEnglish("Faulty"));
+        this.add(this.createToolTip("tiers.tier_2"), LangUtils.toUpsideDownEnglish("Basic"));
+        this.add(this.createToolTip("tiers.tier_3"), LangUtils.toUpsideDownEnglish("Advanced"));
+        this.add(this.createToolTip("tiers.tier_4"), LangUtils.toUpsideDownEnglish("Superior"));
+        this.add(this.createToolTip("tiers.tier_5"), LangUtils.toUpsideDownEnglish("Self Aware"));
+        this.add(this.createToolTip("tiers.tier_next"), LangUtils.toUpsideDownEnglish("Defeat %1$s more to reach %2$s"));
+        this.add(this.createToolTip("upgrade", "glitch_upgrade"), LangUtils.toUpsideDownEnglish("Glitch Upgrade"));
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.applies_to"), LangUtils.toUpsideDownEnglish("Glitch Equipment"));
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.ingredients"), LangUtils.toUpsideDownEnglish("Netherite Glitch Infused Ingot"));
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.base_slot_description"), LangUtils.toUpsideDownEnglish("Add glitch armor, weapon, or tool"));
+        this.add(this.createToolTip("item", "smithing_template.glitch_upgrade.additions_slot_description"), LangUtils.toUpsideDownEnglish("Add Glitch Infused Ingot"));
+    }
+
+    private void addPatchouliLang() {
+        {
+            this.add("patchouli.book.landing_text", LangUtils.toUpsideDownEnglish("$(dml) adds new ways to acquire loot that normally drops from mobs, the intent is to remove the need for a big laggy mobfarm.$(br2)The mod is inspired by $(l:https://minecraft.curseforge.com/projects/soul-shards-respawn)Soul shards$() and $(l:https://minecraft.curseforge.com/projects/woot)Woot$().$(br2)This guide was written with $(l:https://minecraft.curseforge.com/projects/patchouli)Patchouli$(), a $(o)neat$() mod by $(l:https://twitter.com/Vazkii)Vazkii$()."));
+            this.add("patchouli.book.sub_title", LangUtils.toUpsideDownEnglish("A not-so comprehensive Guide"));
+            {
+                this.add("patchouli.category.1.introduction.title", LangUtils.toUpsideDownEnglish("Introduction"));
+                this.add("patchouli.category.1.introduction.text", LangUtils.toUpsideDownEnglish("This chapter will cover the basics of the $(item)Mod$() so you can start accumulating $(l:0_introduction/1_data)Data$() for your $(l:0_introduction/2_data_models#data_models)Data Models$()."));
+                {
+                    this.add("patchouli.category.1.introduction.entry.1.title", LangUtils.toUpsideDownEnglish("Introduction"));
+                    this.add("patchouli.category.1.introduction.entry.1.page.1.text", LangUtils.toUpsideDownEnglish("The design principle of this $(item)Mod$() is to be a simple and$(br)lag-free alternative to gathering mob resources by traditional means.$(br2)The mods mechanics encourage players to explore and engage in combat and benefit from it later on.$(br2)To get started you will need some specialized $(item)Crafting Components$()."));
+                    this.add("patchouli.category.1.introduction.entry.1.page.2.text", LangUtils.toUpsideDownEnglish("$(item)Soot-covered Redstone$() can be created by crushing some $(item)Redstone$() against a $(item)Block of Coal$().$(br2)This sooty marvel will be required to craft most things this $(item)Mod$() has to offer."));
+                }
+                {
+                    this.add("patchouli.category.1.introduction.entry.2.title", LangUtils.toUpsideDownEnglish("Data"));
+                    this.add("patchouli.category.1.introduction.entry.2.page.1.text", LangUtils.toUpsideDownEnglish("Before you can start reaping the rewards you will need to collect some $(item)Data$() about a mob, the handheld device that makes that possible is called the $(item)Deep Learner$().$(br2)The $(item)Deep Learner$() is a device that can detect whenever you deliver mortal harm to a mob."));
+                    this.add("patchouli.category.1.introduction.entry.2.page.2.text", LangUtils.toUpsideDownEnglish("It can turn your encounter with that mob into $(item)Data$() if you have a $(l:0_introduction/2_data_models)Data model$() attached to the $(item)Deep Learner$().$(br2)The $(item)Deep Learner$() Can have 4 attached $(l:0_introduction/2_data_models)Data Models$() at any given time."));
+                    this.add("patchouli.category.1.introduction.entry.2.page.3.text", LangUtils.toUpsideDownEnglish("If you hold the $(item)Deep Learner$() in your $(item)Mainhand$() or $(item)Offhand$() a HUD will be displayed showing you how much more $(item)Data$() you need before you reach the next $(l:0_introduction/2_data_models)Data Model$() $(item)Tier$()."));
+                }
+                {
+                    this.add("patchouli.category.1.introduction.entry.3.title", LangUtils.toUpsideDownEnglish("Data Models"));
+                    this.add("patchouli.category.1.introduction.entry.3.page.1.text", LangUtils.toUpsideDownEnglish("You can craft a $(item)Blank Data Model$() with some of that$(br)$(l:0_introduction/0_introduction#sooted_redstone)Soot-covered Redstone$() you made earlier."));
+                    this.add("patchouli.category.1.introduction.entry.3.page.2.text", LangUtils.toUpsideDownEnglish("All of the $(item)Data Models$() start at the \\\"$(8)Faulty$()\\\" tier, this tier goes up as the $(item)Data Models$() gather more $(item)Data$().$(br2)As you $(item)Tier$() up you will gain more $(item)Data$() from the mobs you defeat.$(br2)$(item)Data Models$() can be put inside a $(l:1_machines/0_simulation_chamber)Simulation chamber$()"));
+                    this.add("patchouli.category.1.introduction.entry.3.page.3.text", LangUtils.toUpsideDownEnglish("$(item)Data Models$() are split into $(item)Types$() depending on their $(item)Habitat$().$(br2)The basic $(item)Habitats$() are: $(a)Overworldian$(), $(c)Hellish$() and $(d)Extraterrestrial$().$(br2)The type of the $(item)Data Model$() will determine what kind of $(l:1_machines/1_matter#living)Living Matter$() and $(l:1_machines/1_matter#pristine)Pristine Matter$() the $(l:1_machines/0_simulation_chamber)Simulation Chamber$() will produce."));
+                    this.add("patchouli.category.1.introduction.entry.3.page.4.title", LangUtils.toUpsideDownEnglish("Zombie / Skeleton"));
+                    this.add("patchouli.category.1.introduction.entry.3.page.5.title", LangUtils.toUpsideDownEnglish("Creeper / Spider"));
+                    this.add("patchouli.category.1.introduction.entry.3.page.6.title", LangUtils.toUpsideDownEnglish("Slime / Witch"));
+                    this.add("patchouli.category.1.introduction.entry.3.page.7.title", LangUtils.toUpsideDownEnglish("Blaze / Ghast"));
+                    this.add("patchouli.category.1.introduction.entry.3.page.8.title", LangUtils.toUpsideDownEnglish("Wither Skeleton / Enderman"));
+                    this.add("patchouli.category.1.introduction.entry.3.page.9.title", LangUtils.toUpsideDownEnglish("Wither / Ender Dragon"));
+                    this.add("patchouli.category.1.introduction.entry.3.page.10.title", LangUtils.toUpsideDownEnglish("Shulker / Guardian"));
+                    this.add("patchouli.category.1.introduction.entry.3.page.11.title", LangUtils.toUpsideDownEnglish("Elder Guardian / Evoker"));
+                    this.add("patchouli.category.1.introduction.entry.3.page.12.title", LangUtils.toUpsideDownEnglish("Hoglin / Magma Cube"));
+                    this.add("patchouli.category.1.introduction.entry.3.page.13.title", LangUtils.toUpsideDownEnglish("Phantom / Piglin"));
+                    this.add("patchouli.category.1.introduction.entry.3.page.14.title", LangUtils.toUpsideDownEnglish("Ravager"));
+                }
+            }
+            {
+                this.add("patchouli.category.2.introduction.title", LangUtils.toUpsideDownEnglish("Machines"));
+                this.add("patchouli.category.2.introduction.text", LangUtils.toUpsideDownEnglish("This chapter will teach you everything you need to know about the machines$(br)in $(dml)$(br2)All $(item)Machines$() accepts $(item)Inputs$() from the top of the block. The other sides are used to pipe $(item)Outputs$()."));
+
+                {
+                    this.add("patchouli.category.2.introduction.entry.1.title", LangUtils.toUpsideDownEnglish("Simulation Chamber"));
+                    this.add("patchouli.category.2.introduction.entry.1.page.1.text", LangUtils.toUpsideDownEnglish("The $(item)Simulation Chamber$() is a machine that can read the information stored on your $(l:0_introduction/2_data_models)Data Models$() and from that $(l:0_introduction/1_data)Data$() create $(l:1_machines/1_matter)Matter$().$(br2)This process will add more $(l:0_introduction/1_data)Data$() to the $(l:0_introduction/2_data_models)Data Model$() currently being used.$(br2)This process also requires a $(a)Basic$() (or higher) tier$(br)$(l:0_introduction/2_data_models)Data Model$(), $(l:1_machines/3_energy)Energy$() and$(br)$(item)Polymer Clay$()."));
+                    this.add("patchouli.category.2.introduction.entry.1.page.2.text", LangUtils.toUpsideDownEnglish("The $(item)Simulation Chamber$() is crafted with a $(l:0_introduction/0_introduction#plates_and_casings)Sooted Machine Casing$().$(br2)The operational $(item)Energy$() cost depends on what $(l:0_introduction/2_data_models)Data Model$() is used."));
+                    this.add("patchouli.category.2.introduction.entry.1.page.3.text", LangUtils.toUpsideDownEnglish("$(item)Polymer Clay$() is a very soft and adept clay that can take on most shapes.$(br2)In the $(item)Simulation Chamber$() its used as a binding agent to create $(l:1_machines/1_matter)Matter$()"));
+                }
+                {
+                    this.add("patchouli.category.2.introduction.entry.2.title", LangUtils.toUpsideDownEnglish("Matter"));
+                    this.add("patchouli.category.2.introduction.entry.2.page.1.text", LangUtils.toUpsideDownEnglish("There are two kinds of $(item)Matter$(), $(item)Living$() and $(item)Pristine$().$(br2)You will always get one$(br2)$(item)Living Matter$() from running a $(l:1_machines/0_simulation_chamber)Simulation$().$(br2)There is also a chance to produce $(item)Pristine Matter$(), the chance depends on the $(item)Tier$() of the $(l:0_introduction/2_data_models#data_models)Data Model$() currently in the $(l:1_machines/0_simulation_chamber)Simulation Chamber$()."));
+                    this.add("patchouli.category.2.introduction.entry.2.page.2.title", LangUtils.toUpsideDownEnglish("Living Matter"));
+                    this.add("patchouli.category.2.introduction.entry.2.page.2.text", LangUtils.toUpsideDownEnglish("$(item)Living Matter$() is a versatile matter that can be used to $(item)Transmute$() ingredients local to that $(item)Habitat$(), check $(item)JEI$() to see what recipes are available.$(br2)You can also consume $(item)Living Matter$() to gain $(item)Experience$()."));
+                    this.add("patchouli.category.2.introduction.entry.2.page.3.title", LangUtils.toUpsideDownEnglish("Example Transmutes"));
+                    this.add("patchouli.category.2.introduction.entry.2.page.4.title", LangUtils.toUpsideDownEnglish("Pristine Matter"));
+                    this.add("patchouli.category.2.introduction.entry.2.page.4.text", LangUtils.toUpsideDownEnglish("Secondary output from the $(l:1_machines/0_simulation_chamber)Simulation Chamber$().$(br2)The type of $(item)Pristine Matter$() you will produce depends on the type of the $(l:0_introduction/2_data_models#data_models)Data Model$().$(br2)$(item)Pristine Matter$() will produce mob drops in the$(br)$(l:1_machines/2_loot_fabricator)Loot Fabricator$()."));
+                }
+                {
+                    this.add("patchouli.category.2.introduction.entry.3.title", LangUtils.toUpsideDownEnglish("Loot Fabricator"));
+                    this.add("patchouli.category.2.introduction.entry.3.page.1.text", LangUtils.toUpsideDownEnglish("The $(item)Loot Fabricator$() is a machine that can well.... $(item)Fabricate Loot$() from the various accessible $(item)Pristine Matters$().$(br2)This process requires $(l:1_machines/3_energy)Energy$() aswell as a selected $(item)Item$() to produce $(item)Loot$()."));
+                    this.add("patchouli.category.2.introduction.entry.3.page.2.text", LangUtils.toUpsideDownEnglish("The selected $(item)Item$() will be remembered for automation puposes, it will stay selected until its unselected."));
+                }
+                {
+                    this.add("patchouli.category.2.introduction.entry.4.title", LangUtils.toUpsideDownEnglish("Energy"));
+                    this.add("patchouli.category.2.introduction.entry.4.page.1.title", LangUtils.toUpsideDownEnglish("Energy"));
+                    this.add("patchouli.category.2.introduction.entry.4.page.1.text", LangUtils.toUpsideDownEnglish("This mod adds no way of producing $(item)Energy$(), so you will need some sort of $(item)Generator$() from another mod to power the $(item)Machines$()."));
+                    this.add("patchouli.category.2.introduction.entry.4.page.2.title", LangUtils.toUpsideDownEnglish("Power Units"));
+                    this.add("patchouli.category.2.introduction.entry.4.page.2.text", LangUtils.toUpsideDownEnglish("Both $(item)Forge Energy (FE)$() and $(item)Redstone Flux (RF)$() will work.$(br2)Below are some example mods that could work to power your $(item)Machines$().$(br2)$(l:https://www.curseforge.com/minecraft/mc-mods/simple-generators)Simple Generators$() (Misc)$(br)$(l:https://www.curseforge.com/minecraft/mc-mods/mekanism-generators)Mekanism Generators$() (Reactors)$(br)$(l:https://minecraft.curseforge.com/projects/advanced-generators)Advanced Generators$()"));
+                }
+            }
+//            {
+//                this.add("patchouli.category.3.title", LangUtils.toUpsideDownEnglish("Mod Collaboration"));
+//                this.add("patchouli.category.3.description", LangUtils.toUpsideDownEnglish("DeepMobLearningReloaded works with several mods. there are different levels of mod linkage. $(br2)Level1 is a linkage that adds mobs to the existing data model as mobs to be defeated or monster drops that can be produced with pristine matter. $(br2)Level2 is a linkage that adds data models and pristine matter for mobs that are added by the target mod."));
+//                {
+//                    this.add("patchouli.category.3.entry.1.title", LangUtils.toUpsideDownEnglish("Twilight Forest"));
+//                    this.add("patchouli.category.3.entry.1.page.1.text", LangUtils.toUpsideDownEnglish("Collaboration Level2$(br2)In the Twilight Forest, data models for seven new boss monsters will be added."));
+//                    this.add("patchouli.category.3.entry.1.page.2.title", LangUtils.toUpsideDownEnglish("Naga / Lich"));
+//                    this.add("patchouli.category.3.entry.1.page.3.title", LangUtils.toUpsideDownEnglish("Minoshroom / Hydra"));
+//                    this.add("patchouli.category.3.entry.1.page.4.title", LangUtils.toUpsideDownEnglish("Knight Phantom / Ur Ghast"));
+//                    this.add("patchouli.category.3.entry.1.page.5.title", LangUtils.toUpsideDownEnglish("Alpha Yeti"));
+//                }
+//                {
+//                    this.add("patchouli.category.3.entry.2.title", LangUtils.toUpsideDownEnglish("DeeperAndDarker"));
+//                    this.add("patchouli.category.3.entry.2.page.1.text", LangUtils.toUpsideDownEnglish("Collaboration Level2$(br2)In the DeeperAndDarker, data models for 3 new boss monsters will be added."));
+//                    this.add("patchouli.category.3.entry.2.page.2.title", LangUtils.toUpsideDownEnglish("Shattered / Sculk Centipede"));
+//                    this.add("patchouli.category.3.entry.2.page.3.title", LangUtils.toUpsideDownEnglish("Stalker"));
+//                }
+//            }
+        }
+    }
+
+    /**
+     * Curios
+     */
+    private void addTranslationsCurios() {
+        this.add("curios.identifier.deep_learner", LangUtils.toUpsideDownEnglish("Deep Learner"));
+    }
+    
+    /**
+     * JEI
+     */
+    private void addTranslationJEI() {
+        this.add("jei.dmlreloaded.glitch_ingot", LangUtils.toUpsideDownEnglish("TLDR: Drop some fragments, lapis and gold ingots into a body of water and hope for the best\\n\\nYou've found that lapis is a good stabilization agent for Unstable glitch fragments.\\nAfter the fragments are stable, they desperately seek out a material to latch on to, you think that gold might be strong enough as a host.\\n\\nThe entire process is delicate, it needs to be performed in water or the materials wont bind properly."));
+    }
+
+    private String createToolTip(String parent, String key) {
+        return parent + "." + DeepMobLearningReloadedMod.MOD_ID + "." + key;
+    }
+
+    private String createToolTip(String key) {
+        return DeepMobLearningReloadedMod.MOD_ID + "." + key;
+    }
+}
