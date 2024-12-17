@@ -45,7 +45,7 @@ dependencies {
     modImplementation "dev.architectury:architectury-neoforge:$rootProject.architectury_version"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge"))
+    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
 
     // JEI
     modCompileOnly "mezz.jei:jei-${minecraft_version}-forge-api:${jei_api_version}"

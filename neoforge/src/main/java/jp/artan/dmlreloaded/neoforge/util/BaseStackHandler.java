@@ -44,7 +44,7 @@ public class BaseStackHandler extends ItemStackHandler {
                 } else {
                     int newSize = stack.getCount() - available;
                     itemInSlot.grow(available);
-                    return ItemHandlerHelper..copyStackWithSize(stack, newSize);
+                    return ItemHandlerHelper.copyStackWithSize(stack, newSize);
                 }
             }
         }

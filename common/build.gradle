@@ -7,7 +7,7 @@ dependencies {
 }
 
 architectury {
-    common("forge")
+    common("neoforge")
 }
 
 dependencies {
