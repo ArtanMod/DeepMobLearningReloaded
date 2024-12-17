@@ -2,9 +2,8 @@ package jp.artan.dmlreloaded.forge.container;
 
 import jp.artan.dmlreloaded.forge.init.DMLItemsForge;
 import jp.artan.dmlreloaded.forge.item.ItemDeepLearner;
-import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.item.ItemDataModel;
-import jp.artan.dmlreloaded.util.ItemBackedInventory;
+import jp.artan.dmlreloaded.forge.util.ItemBackedInventory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;

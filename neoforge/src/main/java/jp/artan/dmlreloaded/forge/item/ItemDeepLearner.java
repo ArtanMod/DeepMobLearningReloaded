@@ -1,17 +1,14 @@
 package jp.artan.dmlreloaded.forge.item;
 
-import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
-import jp.artan.dmlreloaded.common.ILivingMatterType;
-import jp.artan.dmlreloaded.common.IMobKey;
 import jp.artan.dmlreloaded.forge.container.DeepLearnerContainer;
 import jp.artan.dmlreloaded.forge.init.DMLContainersForge;
 import jp.artan.dmlreloaded.forge.util.InventoryItemStack;
 import jp.artan.dmlreloaded.util.DataModelHelper;
-import jp.artan.dmlreloaded.util.DataModelLevelupHelper;
-import jp.artan.dmlreloaded.util.ItemBackedInventory;
+import jp.artan.dmlreloaded.forge.util.ItemBackedInventory;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
@@ -27,6 +24,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.network.NetworkHooks;
@@ -41,7 +39,7 @@ public class ItemDeepLearner extends Item {
     public final int squareSlotSize;
 
     public ItemDeepLearner(Properties properties, int internalSlotSize) {
-        super(properties);
+        super(properties.component(DataComponents.CONTAINER, ItemContainerContents.fromItems(NonNullList.withSize(internalSlotSize, ItemStack.EMPTY))));
         this.internalSlotSize = internalSlotSize;
         this.squareSlotSize = (int)Math.sqrt(internalSlotSize);
 
