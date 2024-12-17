@@ -24,8 +24,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import java.util.concurrent.CompletableFuture;
 
 @Mod(DeepMobLearningReloadedMod.MOD_ID)
-public class DeepMobLearningReloadedModForge {
-    public DeepMobLearningReloadedModForge() {
+public class DeepMobLearningReloadedModNeoForge {
+    public DeepMobLearningReloadedModNeoForge() {
         // Submit our event bus to let architectury register our content on the right time
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         EventBuses.registerModEventBus(DeepMobLearningReloadedMod.MOD_ID, eventBus);
