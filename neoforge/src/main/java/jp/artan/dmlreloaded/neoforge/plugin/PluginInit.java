@@ -7,7 +7,7 @@ import jp.artan.dmlreloaded.neoforge.plugin.DivineRPG.DivineRPGPlugin;
 import jp.artan.dmlreloaded.neoforge.plugin.curios.CuriosPlugin;
 import jp.artan.dmlreloaded.neoforge.plugin.mekanism.MekanismPlugin;
 import jp.artan.dmlreloaded.neoforge.plugin.reliquary.ReliquaryPlugin;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.neoforged.bus.api.IEventBus;
 
 public class PluginInit {
     public static final boolean RELIQUARY_ACTIVE = Platform.isModLoaded(ReliquaryPlugin.NAME);

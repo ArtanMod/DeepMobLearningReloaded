@@ -1,6 +1,6 @@
 package jp.artan.dmlreloaded.neoforge.plugin.curios;
 
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.neoforged.bus.api.IEventBus;
 
 public class CuriosPlugin {
     public static final String NAME = "curios";
