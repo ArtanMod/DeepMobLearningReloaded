@@ -15,7 +15,7 @@ public class StalkerMeta extends DeeperAndDarkerMobMetaData {
                 "entity.deeperdarker.stalker",
                 4096, 125,
                 DMLIntegrationDADItems.PRISTINE_MATTER_STALKER.get(),
-                new ResourceLocation(DeeperDarker.MOD_ID, "stalker")
+                ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "stalker")
         );
     }
 

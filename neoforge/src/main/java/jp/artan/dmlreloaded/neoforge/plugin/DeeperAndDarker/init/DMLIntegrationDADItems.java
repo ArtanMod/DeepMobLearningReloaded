@@ -3,7 +3,6 @@ package jp.artan.dmlreloaded.neoforge.plugin.DeeperAndDarker.init;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
-import jp.artan.artansprojectcoremod.utils.inject.NonNullFunction;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.common.ILivingMatterType;
 import jp.artan.dmlreloaded.common.IMobKey;
@@ -13,6 +12,7 @@ import jp.artan.dmlreloaded.init.DMLCreativeTab;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.item.ItemLivingMatter;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
+import jp.artan.dmlreloaded.util.inject.NonNullFunction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 

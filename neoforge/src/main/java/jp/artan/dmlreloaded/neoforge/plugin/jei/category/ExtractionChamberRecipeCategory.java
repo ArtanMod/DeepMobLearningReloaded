@@ -22,7 +22,7 @@ import net.minecraft.world.item.ItemStack;
 public class ExtractionChamberRecipeCategory implements IRecipeCategory<ExtractionChamberRecipeCategory.ExtractionChamberRecipes> {
 
     public static MutableComponent title = Component.translatable("block.dmlreloaded.extraction_chamber");
-    public static ResourceLocation id = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "extraction_chamber");
+    public static ResourceLocation id = ResourceLocation.fromNamespaceAndPath(DeepMobLearningReloadedMod.MOD_ID, "extraction_chamber");
     public static RecipeType<ExtractionChamberRecipes> type = RecipeType.create(DeepMobLearningReloadedMod.MOD_ID, "extraction_chamber", ExtractionChamberRecipes.class);
     private IDrawable icon;
     private IDrawable background;

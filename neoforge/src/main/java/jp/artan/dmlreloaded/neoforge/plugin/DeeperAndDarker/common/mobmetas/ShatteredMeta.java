@@ -15,7 +15,7 @@ public class ShatteredMeta extends DeeperAndDarkerMobMetaData {
                 "entity.deeperdarker.shattered",
                 1024, 25,
                 DMLIntegrationDADItems.PRISTINE_MATTER_SHATTERED.get(),
-                new ResourceLocation(DeeperDarker.MOD_ID, "shattered")
+                ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "shattered")
         );
     }
 
