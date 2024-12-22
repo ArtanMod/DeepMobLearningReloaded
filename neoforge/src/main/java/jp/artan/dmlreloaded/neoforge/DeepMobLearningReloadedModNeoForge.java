@@ -1,45 +1,38 @@
 package jp.artan.dmlreloaded.neoforge;
 
-import dev.architectury.platform.forge.EventBuses;
-import jp.artan.artansprojectcoremod.forge.providers.RegistratePatchouliProvider;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.neoforge.init.*;
 import jp.artan.dmlreloaded.neoforge.plugin.PluginInit;
 import jp.artan.dmlreloaded.neoforge.providers.*;
-import jp.artan.dmlreloaded.neoforge.screen.DataOverlay;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.concurrent.CompletableFuture;
 
 @Mod(DeepMobLearningReloadedMod.MOD_ID)
 public class DeepMobLearningReloadedModNeoForge {
+
     public DeepMobLearningReloadedModNeoForge() {
         // Submit our event bus to let architectury register our content on the right time
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        EventBuses.registerModEventBus(DeepMobLearningReloadedMod.MOD_ID, eventBus);
+        IEventBus eventBus = ModLoadingContext.get().getActiveContainer().getEventBus();
         DeepMobLearningReloadedMod.init();
 
-        DropModifier.GLM.register(eventBus);
-
+        DropModifier.register();
         DMLItemsForge.register();
         DMLBlocksForge.register();
         DMLBlockEntityForge.register();
         DMLContainersForge.register();
 
 
-        eventBus.addListener(DeepMobLearningReloadedModForge::registerProviders);
+        eventBus.addListener(DeepMobLearningReloadedModNeoForge::registerProviders);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::onClientSetup);
 
@@ -54,7 +47,7 @@ public class DeepMobLearningReloadedModNeoForge {
     public void onClientSetup(FMLClientSetupEvent event) {
         DeepMobLearningReloadedMod.initClient();
         event.enqueueWork(() -> {
-            MinecraftForge.EVENT_BUS.register(new DataOverlay(MutableComponent.create(ComponentContents.EMPTY)));
+//            MinecraftForge.EVENT_BUS.register(new DataOverlay(MutableComponent.create(ComponentContents.EMPTY)));
         });
     }
 
@@ -69,7 +62,7 @@ public class DeepMobLearningReloadedModNeoForge {
         generator.addProvider(event.includeClient(), new ModItemModelProvider(output, DeepMobLearningReloadedMod.MOD_ID, existingFileHelper));
 
         // LootTable
-        generator.addProvider(event.includeServer(), new ModLootTableProvider(output, DeepMobLearningReloadedMod.MOD_ID));
+        generator.addProvider(event.includeServer(), new ModLootTableProvider(output, lookupProvider));
 
         // Lang
         generator.addProvider(event.includeClient(), new ModUDLanguageProvider(output, DeepMobLearningReloadedMod.MOD_ID));
@@ -77,7 +70,7 @@ public class DeepMobLearningReloadedModNeoForge {
         generator.addProvider(event.includeClient(), new ModJPLanguageProvider(output, DeepMobLearningReloadedMod.MOD_ID));
 
         // Recipe
-        generator.addProvider(event.includeClient(), new ModRecipeProvider(output));
+        generator.addProvider(event.includeClient(), new ModRecipeProvider(output, lookupProvider));
 
         // Tag
         ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(output, lookupProvider, DeepMobLearningReloadedMod.MOD_ID, existingFileHelper);
@@ -85,9 +78,9 @@ public class DeepMobLearningReloadedModNeoForge {
         generator.addProvider(event.includeClient(), new ModItemTagsProvider(output, lookupProvider, blockTagsProvider.contentsGetter(), DeepMobLearningReloadedMod.MOD_ID, existingFileHelper));
 
         // Global Loot Modifier
-        generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(output, DeepMobLearningReloadedMod.MOD_ID));
+        generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(output, lookupProvider, DeepMobLearningReloadedMod.MOD_ID));
 
         // Patchouli
-        generator.addProvider(event.includeClient(), new ModPatchouliProvider(event.includeClient(), DeepMobLearningReloadedMod.MOD_ID, generator, existingFileHelper));
+//        generator.addProvider(event.includeClient(), new ModPatchouliProvider(event.includeClient(), DeepMobLearningReloadedMod.MOD_ID, generator, existingFileHelper));
     }
 }
