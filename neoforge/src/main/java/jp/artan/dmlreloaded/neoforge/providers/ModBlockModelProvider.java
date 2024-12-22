@@ -1,14 +1,14 @@
 package jp.artan.dmlreloaded.neoforge.providers;
 
-import jp.artan.artansprojectcoremod.forge.providers.AbstractBlockModelProvider;
 import jp.artan.dmlreloaded.neoforge.init.DMLBlocksForge;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public class ModBlockModelProvider extends AbstractBlockModelProvider {
+public class ModBlockModelProvider extends BlockStateProvider {
 
     public ModBlockModelProvider(PackOutput output, String modid, ExistingFileHelper exFileHelper) {
         super(output, modid, exFileHelper);

@@ -1,20 +1,22 @@
 package jp.artan.dmlreloaded.neoforge.providers;
 
-import jp.artan.artansprojectcoremod.forge.providers.AbstractUDLanguageProvider;
-import jp.artan.artansprojectcoremod.utils.lang.LangUtils;
+import dev.architectury.registry.registries.RegistrySupplier;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.init.DMLCreativeTab;
 import jp.artan.dmlreloaded.init.DMLItems;
+import jp.artan.dmlreloaded.util.lang.LangUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
+public class ModUDLanguageProvider extends LanguageProvider {
     private final String modid;
 
     public ModUDLanguageProvider(PackOutput output, String modid) {
-        super(output, modid);
+        super(output, modid, "en_ud");
         this.modid = modid;
     }
 
@@ -52,6 +54,11 @@ public class ModUDLanguageProvider extends AbstractUDLanguageProvider {
 
         // ItemGroup
         addCreativeModeTab(DMLCreativeTab.DEEP_MOB_LEARNING_RELOADED, LangUtils.toUpsideDownEnglish("Deep Mob Learning: Reloaded"));
+    }
+
+    protected void addCreativeModeTab(RegistrySupplier<CreativeModeTab> creativeModeTab, String name) {
+        String id = "itemGroup." + creativeModeTab.getId().getNamespace() + "." + creativeModeTab.getId().getPath();
+        this.add(id, name);
     }
 
     /**

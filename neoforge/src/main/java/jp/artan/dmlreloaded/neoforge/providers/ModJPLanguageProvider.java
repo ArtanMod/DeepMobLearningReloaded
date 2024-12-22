@@ -1,16 +1,17 @@
 package jp.artan.dmlreloaded.neoforge.providers;
 
-import jp.artan.artansprojectcoremod.forge.providers.AbstractJPLanguageProvider;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.neoforge.init.DMLBlocksForge;
 import jp.artan.dmlreloaded.neoforge.init.DMLItemsForge;
 import jp.artan.dmlreloaded.neoforge.plugin.DeeperAndDarker.init.DMLIntegrationDADItems;
 import jp.artan.dmlreloaded.init.DMLItems;
+import jp.artan.dmlreloaded.sets.ArmorItems;
 import net.minecraft.data.PackOutput;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
+public class ModJPLanguageProvider extends LanguageProvider {
     public ModJPLanguageProvider(PackOutput output, String modid) {
-        super(output, modid);
+        super(output, modid, "ja_jp");
     }
 
     @Override
@@ -330,6 +331,16 @@ public class ModJPLanguageProvider extends AbstractJPLanguageProvider {
         this.add(DMLItems.LIVING_MATTER_HELLISH.get(), "Hellishマター");
         this.add(DMLItems.LIVING_MATTER_OVERWORLDIAN.get(), "Overworldianマター");
         this.add(DMLIntegrationDADItems.LIVING_MATTER_DEEPER_AND_DARKER.get(), "Deeper and Darkerマター");
+    }
+
+    /**
+     * 装備アイテム
+     */
+    protected void addArmorItems(ArmorItems<?> armorItems, String name) {
+        this.add(armorItems.Helmet.get(), name + "のヘルメット");
+        this.add(armorItems.Chestplate.get(), name + "のチェストプレート");
+        this.add(armorItems.Leggings.get(), name + "のレギンス");
+        this.add(armorItems.Boots.get(), name + "のブーツ");
     }
 
 }
