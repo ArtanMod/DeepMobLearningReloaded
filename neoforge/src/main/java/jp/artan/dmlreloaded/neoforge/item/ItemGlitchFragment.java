@@ -19,11 +19,11 @@ public class ItemGlitchFragment extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Level world, List<Component> list, TooltipFlag flagIn) {
-        list.add(Component.translatable("dmlreloaded.hover_text.glitch_fragment_1", Component.translatable("item.dmlreloaded.glitch_heart").withStyle(t->t.withColor(ChatFormatting.AQUA))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
-        list.add(Component.translatable("dmlreloaded.hover_text.glitch_fragment_2", Component.literal(new ItemStack(Items.OBSIDIAN).getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.DARK_PURPLE))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
-        list.add(Component.translatable("dmlreloaded.hover_text.glitch_fragment_3").withStyle(t->t.withColor(ChatFormatting.GRAY)));
-        list.add(Component.translatable("dmlreloaded.hover_text.glitch_fragment_4").withStyle(t->t.withColor(ChatFormatting.GRAY)));
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.glitch_fragment_1", Component.translatable("item.dmlreloaded.glitch_heart").withStyle(t->t.withColor(ChatFormatting.AQUA))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
+        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.glitch_fragment_2", Component.literal(new ItemStack(Items.OBSIDIAN).getHoverName().getString()).withStyle(t->t.withColor(ChatFormatting.DARK_PURPLE))).withStyle(t->t.withColor(ChatFormatting.GRAY)));
+        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.glitch_fragment_3").withStyle(t->t.withColor(ChatFormatting.GRAY)));
+        tooltipComponents.add(Component.translatable("dmlreloaded.hover_text.glitch_fragment_4").withStyle(t->t.withColor(ChatFormatting.GRAY)));
     }
 
     @Override

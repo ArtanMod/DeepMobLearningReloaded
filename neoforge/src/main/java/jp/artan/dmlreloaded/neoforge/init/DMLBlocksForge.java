@@ -24,10 +24,10 @@ public class DMLBlocksForge {
         ITEMS.register();
     }
 
-    public static final RegistrySupplier<Block> MACHINE_CASING = register("machine_casing", () -> new Block(Block.Properties.copy(Blocks.STONE)));
-    public static final RegistrySupplier<BlockSimulationChamber> SIMULATION_CHAMBER = register("simulation_chamber", () -> new BlockSimulationChamber(Block.Properties.copy(Blocks.STONE).strength(4f, 3000.0f).lightLevel(blockstate -> 7)));
-    public static final RegistrySupplier<BlockExtractionChamber> EXTRACTION_CHAMBER = register("extraction_chamber", () -> new BlockExtractionChamber(Block.Properties.copy(Blocks.STONE).strength(4f, 10.0f).lightLevel(blockstate -> 15)));
-    public static final RegistrySupplier<Block> INFUSED_INGOT_BLOCK = register("infused_ingot_block", () -> new Block(Block.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistrySupplier<Block> MACHINE_CASING = register("machine_casing", () -> new Block(Block.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistrySupplier<BlockSimulationChamber> SIMULATION_CHAMBER = register("simulation_chamber", () -> new BlockSimulationChamber(Block.Properties.ofFullCopy(Blocks.STONE).strength(4f, 3000.0f).lightLevel(blockstate -> 7)));
+    public static final RegistrySupplier<BlockExtractionChamber> EXTRACTION_CHAMBER = register("extraction_chamber", () -> new BlockExtractionChamber(Block.Properties.ofFullCopy(Blocks.STONE).strength(4f, 10.0f).lightLevel(blockstate -> 15)));
+    public static final RegistrySupplier<Block> INFUSED_INGOT_BLOCK = register("infused_ingot_block", () -> new Block(Block.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
 
     // #############################################################################################################################################################################################
     // ## Register

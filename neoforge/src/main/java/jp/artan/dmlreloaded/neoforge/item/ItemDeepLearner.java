@@ -2,18 +2,13 @@ package jp.artan.dmlreloaded.neoforge.item;
 
 import jp.artan.dmlreloaded.neoforge.container.DeepLearnerContainer;
 import jp.artan.dmlreloaded.neoforge.init.DMLContainersForge;
-import jp.artan.dmlreloaded.neoforge.util.InventoryItemStack;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import jp.artan.dmlreloaded.neoforge.util.ItemBackedInventory;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.MenuProvider;
@@ -26,15 +21,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.network.NetworkHooks;
-import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 
 public class ItemDeepLearner extends Item {
-    protected InventoryItemStack deepLearnerCont;
     public final int internalSlotSize;
     public final int squareSlotSize;
 
@@ -43,23 +34,22 @@ public class ItemDeepLearner extends Item {
         this.internalSlotSize = internalSlotSize;
         this.squareSlotSize = (int)Math.sqrt(internalSlotSize);
 
-        this.deepLearnerCont = new InventoryItemStack(this.internalSlotSize);
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> list, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         if(Screen.hasShiftDown()) {
             NonNullList<ItemStack> dataModels = DataModelHelper.getValidFromList(ItemDeepLearner.getContainedItems(stack));
             if(dataModels.isEmpty()) {
-                list.add(Component.translatable("dmlreloaded.deep_learner.data_model_slots_empty"));
+                tooltipComponents.add(Component.translatable("dmlreloaded.deep_learner.data_model_slots_empty"));
             } else {
-                list.add(Component.translatable("dmlreloaded.deep_learner.data_model_slots"));
+                tooltipComponents.add(Component.translatable("dmlreloaded.deep_learner.data_model_slots"));
                 for(int i = 0; i < dataModels.size(); i++) {
-                    list.add(Component.translatable("%1$s. %2$s", i + 1, dataModels.get(i).getItem().getDescription()));
+                    tooltipComponents.add(Component.translatable("%1$s. %2$s", i + 1, dataModels.get(i).getItem().getDescription()));
                 }
             }
         } else {
-            list.add(Component.translatable("dmlreloaded.holdshift", Component.literal("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE).withItalic(true))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
+            tooltipComponents.add(Component.translatable("dmlreloaded.holdshift", Component.literal("SHIFT").withStyle(t -> t.withColor(ChatFormatting.WHITE).withItalic(true))).withStyle(t -> t.withColor(ChatFormatting.GRAY)));
         }
     }
 
@@ -71,7 +61,7 @@ public class ItemDeepLearner extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         if(!world.isClientSide) {
-            NetworkHooks.openScreen((ServerPlayer) player, new MenuProvider() {
+            player.openMenu(new MenuProvider() {
 
                 @Override
                 public AbstractContainerMenu createMenu(int windowId, Inventory inv, Player player) {
@@ -110,40 +100,21 @@ public class ItemDeepLearner extends Item {
     public static NonNullList<ItemStack> getContainedItems(ItemStack deepLearner) {
         ItemDeepLearner deepLearnerItem = (ItemDeepLearner) deepLearner.getItem();
         NonNullList<ItemStack> list = NonNullList.withSize(deepLearnerItem.internalSlotSize, ItemStack.EMPTY);
-        if(deepLearner.hasTag()) {
-            CompoundTag currentTag = deepLearner.getTag();
-            if(currentTag.contains("inventory")) {
-                ListTag inventory = deepLearner.getTag().getList("inventory", Tag.TAG_COMPOUND);
-
-                for(int i = 0; i < deepLearnerItem.internalSlotSize; i++) {
-                    CompoundTag tag = inventory.getCompound(i);
-                    list.set(i, ItemStack.of(tag));
-                }
+        ItemContainerContents contents = deepLearner.get(DataComponents.CONTAINER);
+        if(contents != null) {
+            for(int i = 0; i < deepLearnerItem.internalSlotSize; i++) {
+                list.set(i, contents.getStackInSlot(i));
             }
         }
         return list;
     }
 
     public static void setContainedItems(ItemStack deepLearner, NonNullList<ItemStack> list) {
-        ListTag inventory = new ListTag();
-
-        for (ItemStack stack : list) {
-            CompoundTag tag = new CompoundTag();
-            stack.save(tag);
-            inventory.add(tag);
-        }
-        CompoundTag tag = new CompoundTag();
-        tag.put("inventory", inventory);
-        deepLearner.setTag(tag);
+        deepLearner.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(list));
     }
 
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         return false;
-    }
-
-    @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        return deepLearnerCont;
     }
 }

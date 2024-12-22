@@ -2,14 +2,15 @@ package jp.artan.dmlreloaded.neoforge.init;
 
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import dev.architectury.registry.registries.DeferredRegister;
+import dev.architectury.registry.registries.RegistrySupplier;
 import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.neoforge.loot.GlitchFragmentModifier;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class DropModifier {
-    public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> GLM = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, DeepMobLearningReloadedMod.MOD_ID);
-    public static final RegistryObject<Codec<GlitchFragmentModifier>> GLITCH_FRAGMENT = GlitchFragmentModifier.create();
+    public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> GLM = DeferredRegister.create(DeepMobLearningReloadedMod.MOD_ID, NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS);
+    public static final RegistrySupplier<Codec<GlitchFragmentModifier>> GLITCH_FRAGMENT = GlitchFragmentModifier.create();
 }
