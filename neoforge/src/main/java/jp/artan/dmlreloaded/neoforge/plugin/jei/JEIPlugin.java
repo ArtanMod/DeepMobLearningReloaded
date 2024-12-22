@@ -17,10 +17,10 @@ import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashMap;
 import java.util.List;
@@ -56,8 +56,8 @@ public class JEIPlugin implements IModPlugin {
     private void addSimulationChamberRecipe(IRecipeRegistration registration) {
         List<SimulationChamberRecipeCategory.SimulationChamberRecipes> list = Lists.newArrayList();
 
-        ForgeRegistries.ITEMS.getEntries().forEach(hashMapItem -> {
-            if(hashMapItem.getValue() instanceof ItemDataModel dataModel) {
+        BuiltInRegistries.ITEM.stream().forEach(item -> {
+            if(item instanceof ItemDataModel dataModel) {
                 ItemStack dataStack = new ItemStack(dataModel);
                 DataModelHelper.setTier(dataStack, 1);
                 list.add(new SimulationChamberRecipeCategory.SimulationChamberRecipes(dataStack));
@@ -70,8 +70,8 @@ public class JEIPlugin implements IModPlugin {
         Map<ItemStack, List<NonNullSupplier<ItemStack>>> pristineTables = new HashMap<>();
         List<ExtractionChamberRecipeCategory.ExtractionChamberRecipes> list = Lists.newArrayList();
 
-        ForgeRegistries.ITEMS.getEntries().forEach(hashMapItem -> {
-            if(hashMapItem.getValue() instanceof ItemPristineMatter matter) {
+        BuiltInRegistries.ITEM.stream().forEach(item -> {
+            if(item instanceof ItemPristineMatter matter) {
                 pristineTables.put(new ItemStack(matter, 1),  matter.getMobKey().getLoot());
             }
         });

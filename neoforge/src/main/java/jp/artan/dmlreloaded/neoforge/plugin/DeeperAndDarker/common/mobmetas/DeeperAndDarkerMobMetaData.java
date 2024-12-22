@@ -12,7 +12,7 @@ public abstract class DeeperAndDarkerMobMetaData extends MobMetaData {
             int simulationTickCost, int numberOfHearts,
             ItemPristineMatter pristineMatter, ResourceLocation entityName
     ) {
-        super(key, entityId, simulationTickCost, numberOfHearts, pristineMatter, BuiltInRegistries.ITEM.get(new ResourceLocation(
+        super(key, entityId, simulationTickCost, numberOfHearts, pristineMatter, BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(
                 entityName.getNamespace(),
                 entityName.getPath() + "_spawn_egg")
         ));

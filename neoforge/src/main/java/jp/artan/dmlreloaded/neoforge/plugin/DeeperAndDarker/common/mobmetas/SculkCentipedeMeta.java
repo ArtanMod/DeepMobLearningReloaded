@@ -15,7 +15,7 @@ public class SculkCentipedeMeta extends DeeperAndDarkerMobMetaData {
                 "entity.deeperdarker.sculk_centipede",
                 1024, 13,
                 DMLIntegrationDADItems.PRISTINE_MATTER_SCULK_CENTIPEDE.get(),
-                new ResourceLocation(DeeperDarker.MOD_ID, "sculk_centipede")
+                ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "sculk_centipede")
         );
     }
 

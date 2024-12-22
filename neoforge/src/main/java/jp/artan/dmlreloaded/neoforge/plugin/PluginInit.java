@@ -1,7 +1,6 @@
 package jp.artan.dmlreloaded.neoforge.plugin;
 
 import dev.architectury.platform.Platform;
-import jp.artan.dmlreloaded.neoforge.plugin.Cataclysm.CataclysmPlugin;
 import jp.artan.dmlreloaded.neoforge.plugin.DeeperAndDarker.DeeperAndDarkerPlugin;
 import jp.artan.dmlreloaded.neoforge.plugin.DivineRPG.DivineRPGPlugin;
 import jp.artan.dmlreloaded.neoforge.plugin.curios.CuriosPlugin;
@@ -15,7 +14,6 @@ public class PluginInit {
     public static final boolean MEKANISM_ACTIVE = Platform.isModLoaded(MekanismPlugin.NAME);
     public static final boolean CURIOS_ACTIVE = Platform.isModLoaded(CuriosPlugin.NAME);
     public static final boolean DEEP_AND_DARKER_ACTIVE = Platform.isModLoaded(DeeperAndDarkerPlugin.NAME);
-    public static final boolean CATACLYSM_ACTIVE = Platform.isModLoaded(CataclysmPlugin.NAME);
 
     public static void init(IEventBus modEventBus) {
         if (RELIQUARY_ACTIVE) {
@@ -33,8 +31,5 @@ public class PluginInit {
         if (DEEP_AND_DARKER_ACTIVE) {
             DeeperAndDarkerPlugin.init();
         }
-//        if (CATACLYSM_ACTIVE) {
-//            CataclysmPlugin.init(modEventBus);
-//        }
     }
 }
