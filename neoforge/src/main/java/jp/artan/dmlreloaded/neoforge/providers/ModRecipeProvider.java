@@ -1,41 +1,39 @@
 package jp.artan.dmlreloaded.neoforge.providers;
 
 import com.kyanite.deeperdarker.content.DDItems;
-import jp.artan.artansprojectcoremod.forge.providers.AbstractRecipeProvider;
-import jp.artan.artansprojectcoremod.utils.RecipeGenUtils;
 import jp.artan.dmlreloaded.neoforge.init.DMLBlocksForge;
 import jp.artan.dmlreloaded.neoforge.init.DMLItemsForge;
 import jp.artan.dmlreloaded.neoforge.plugin.DeeperAndDarker.init.DMLIntegrationDADItems;
 import jp.artan.dmlreloaded.neoforge.plugin.PluginInit;
 import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.item.ItemDataModel;
-import jp.artan.dmlreloaded.recipe.DataModelUpgradeRecipe.DataModelUpgradeRecipeBuilder;
-import jp.artan.dmlreloaded.recipe.SpawnEggShapelessRecipe.SpawnEggShapelessRecipeBuilders;
+import jp.artan.dmlreloaded.recipe.DataModelUpgradeRecipe.DataModelUpgradeRecipe;
+import jp.artan.dmlreloaded.recipe.SpawnEggShapelessRecipe.SpawnEggShapelessRecipe;
+import jp.artan.dmlreloaded.sets.ArmorItems;
+import jp.artan.dmlreloaded.util.RecipeGenUtils;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
-public class ModRecipeProvider extends AbstractRecipeProvider {
-    public ModRecipeProvider(PackOutput output) {
-        super(output);
+public class ModRecipeProvider extends RecipeProvider {
+    public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries);
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(RecipeOutput consumer) {
 
         // SpecialRecipeを登録
-        SpawnEggShapelessRecipeBuilders.save(consumer);
-        DataModelUpgradeRecipeBuilder.save(consumer);
+        SpecialRecipeBuilder.special(SpawnEggShapelessRecipe::new).save(consumer, "crafting_special_spawn_egg");
+        SpecialRecipeBuilder.special(DataModelUpgradeRecipe::new).save(consumer, "crafting_special_data_model_upgrade");
 
         // 通常のレシピを登録
         blockRecipes(consumer);
@@ -46,7 +44,7 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
         }
     }
 
-    private void pluginDeeperAndDarkerRecipe(Consumer<FinishedRecipe> consumer) {
+    private void pluginDeeperAndDarkerRecipe(RecipeOutput consumer) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DMLIntegrationDADItems.SHATTERED.get())
                 .requires(DMLItems.DATA_MODEL_BLANK.get())
                 .requires(DDItems.SOUL_DUST.get())
@@ -64,7 +62,7 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
                 .save(consumer);
     }
 
-    private static void blockRecipes(Consumer<FinishedRecipe> consumer) {
+    private static void blockRecipes(RecipeOutput consumer) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DMLBlocksForge.MACHINE_CASING.get(), 8)
                 .define('#', DMLItems.SOOT_COVERED_PLATE.get())
                 .define('X', Items.IRON_INGOT)
@@ -101,7 +99,7 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
                 .save(consumer);
     }
 
-    private static void itemRecipes(Consumer<FinishedRecipe> consumer) {
+    private static void itemRecipes(RecipeOutput consumer) {
 
         // 通常アイテム
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DMLItems.SOOT_COVERED_PLATE.get(), 8)
@@ -286,7 +284,7 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
                 .save(consumer, "gold_ingot_from_living_matter_hellish");
 
         // 環境マター: LIVING_MATTER_OVERWORLDIAN
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Blocks.GRASS, 4)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Blocks.GRASS_BLOCK, 4)
                 .requires(DMLItems.LIVING_MATTER_OVERWORLDIAN.get())
                 .requires(Blocks.DIRT)
                 .requires(ItemTags.LEAVES)
@@ -354,6 +352,66 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
                 .requires(Items.SLIME_BALL)
                 .unlockedBy("has_item", has(DMLItems.LIVING_MATTER_OVERWORLDIAN.get()))
                 .save(consumer, "cobweb_from_living_matter_overworldian");
-
     }
+
+    protected static void armorRecipes(ArmorItems<?> armorItems, RecipeOutput consumer) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, armorItems.Helmet.get())
+                .define('#', armorItems.Helmet.get().getMaterial().value().repairIngredient().get())
+                .pattern("###")
+                .pattern("# #")
+                .unlockedBy("has_item", has(armorItems.Helmet.get().getMaterial().value().repairIngredient().get().getItems()[0].getItem()))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, armorItems.Chestplate.get())
+                .define('#', armorItems.Chestplate.get().getMaterial().value().repairIngredient().get())
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .unlockedBy("has_item", has(armorItems.Chestplate.get().getMaterial().value().repairIngredient().get().getItems()[0].getItem()))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, armorItems.Leggings.get())
+                .define('#', armorItems.Leggings.get().getMaterial().value().repairIngredient().get())
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .unlockedBy("has_item", has(armorItems.Leggings.get().getMaterial().value().repairIngredient().get().getItems()[0].getItem()))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, armorItems.Boots.get())
+                .define('#', armorItems.Boots.get().getMaterial().value().repairIngredient().get())
+                .pattern("# #")
+                .pattern("# #")
+                .unlockedBy("has_item", has(armorItems.Boots.get().getMaterial().value().repairIngredient().get().getItems()[0].getItem()))
+                .save(consumer);
+    }
+
+    protected static void armorRecipes(ArmorItems<?> armorItems, ArmorItems<?> baseArmorItems, Ingredient upgradeItems, Ingredient template, RecipeOutput consumer) {
+        RecipeGenUtils.Smithing.smithingUpgrade(
+                RecipeCategory.COMBAT,
+                template,
+                armorItems.Helmet,
+                baseArmorItems.Helmet,
+                upgradeItems
+        ).save(consumer, getItemName(armorItems.Helmet.get()) + "_smithing");
+        RecipeGenUtils.Smithing.smithingUpgrade(
+                RecipeCategory.COMBAT,
+                template,
+                armorItems.Chestplate,
+                baseArmorItems.Chestplate,
+                upgradeItems
+        ).save(consumer, getItemName(armorItems.Chestplate.get()) + "_smithing");
+        RecipeGenUtils.Smithing.smithingUpgrade(
+                RecipeCategory.COMBAT,
+                template,
+                armorItems.Leggings,
+                baseArmorItems.Leggings,
+                upgradeItems
+        ).save(consumer, getItemName(armorItems.Leggings.get()) + "_smithing");
+        RecipeGenUtils.Smithing.smithingUpgrade(
+                RecipeCategory.COMBAT,
+                template,
+                armorItems.Boots,
+                baseArmorItems.Boots,
+                upgradeItems
+        ).save(consumer, getItemName(armorItems.Boots.get()) + "_smithing");
+    }
+
 }

@@ -1,14 +1,15 @@
 package jp.artan.dmlreloaded.neoforge.providers;
 
-import jp.artan.artansprojectcoremod.forge.providers.AbstractItemModelProvider;
 import jp.artan.dmlreloaded.neoforge.init.DMLItemsForge;
 import jp.artan.dmlreloaded.neoforge.plugin.DeeperAndDarker.init.DMLIntegrationDADItems;
 import jp.artan.dmlreloaded.neoforge.plugin.PluginInit;
 import jp.artan.dmlreloaded.init.DMLItems;
+import jp.artan.dmlreloaded.sets.ArmorItems;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public class ModItemModelProvider extends AbstractItemModelProvider {
+public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, String modid, ExistingFileHelper existingFileHelper) {
         super(output, modid, existingFileHelper);
     }
@@ -130,5 +131,15 @@ public class ModItemModelProvider extends AbstractItemModelProvider {
         this.basicItem(DMLItems.LIVING_MATTER_EXTRATERRESTRIAL.get());
         this.basicItem(DMLItems.LIVING_MATTER_HELLISH.get());
         this.basicItem(DMLItems.LIVING_MATTER_OVERWORLDIAN.get());
+    }
+
+    /**
+     * 装備アイテム
+     */
+    protected void basicArmorItems(ArmorItems<?> armorItems) {
+        this.basicItem(armorItems.Helmet.get());
+        this.basicItem(armorItems.Chestplate.get());
+        this.basicItem(armorItems.Leggings.get());
+        this.basicItem(armorItems.Boots.get());
     }
 }
