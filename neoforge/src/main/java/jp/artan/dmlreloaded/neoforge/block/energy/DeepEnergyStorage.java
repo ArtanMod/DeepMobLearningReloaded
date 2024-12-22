@@ -1,7 +1,7 @@
 package jp.artan.dmlreloaded.neoforge.block.energy;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.energy.EnergyStorage;
+import net.neoforged.neoforge.energy.EnergyStorage;
 
 public class DeepEnergyStorage extends EnergyStorage {
     private final BlockEntity blockEntity;
