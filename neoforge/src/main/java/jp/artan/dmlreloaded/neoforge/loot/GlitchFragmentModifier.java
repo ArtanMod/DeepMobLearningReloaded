@@ -1,12 +1,11 @@
 package jp.artan.dmlreloaded.neoforge.loot;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import jp.artan.dmlreloaded.common.mobmetas.MobMetaData;
 import jp.artan.dmlreloaded.config.BalanceConfigs;
 import jp.artan.dmlreloaded.neoforge.init.DMLItemsForge;
-import jp.artan.dmlreloaded.neoforge.init.DropModifier;
 import jp.artan.dmlreloaded.neoforge.item.ItemDeepLearner;
 import jp.artan.dmlreloaded.neoforge.plugin.PluginInit;
 import jp.artan.dmlreloaded.neoforge.plugin.curios.CuriosUtil;
@@ -24,13 +23,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.LootModifier;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.loot.LootModifier;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GlitchFragmentModifier extends LootModifier {
+    public static final MapCodec<GlitchFragmentModifier> CODEC = RecordCodecBuilder.mapCodec(inst -> LootModifier.codecStart(inst).apply(inst, GlitchFragmentModifier::new));
+
     private final Item fragment;
     private final Item heart;
     private final int chanceFragment;
@@ -61,7 +61,7 @@ public class GlitchFragmentModifier extends LootModifier {
                 generatedLoot.add(new ItemStack(heart, 1));
             }
             //Bow works
-            if(ctx.getParamOrNull(LootContextParams.KILLER_ENTITY) instanceof ServerPlayer player) {
+            if(ctx.getParamOrNull(LootContextParams.LAST_DAMAGE_PLAYER) instanceof ServerPlayer player) {
                 NonNullList<ItemStack> updatedModels = updateDataModel(ctx, player);
 
                 // Return early if no models were affected
@@ -76,7 +76,7 @@ public class GlitchFragmentModifier extends LootModifier {
                     generatedLoot.add(meta.getPristineMatterStack(2));
                 }
             }
-        } else if(enabled && ctx.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof Animal && ctx.getParamOrNull(LootContextParams.KILLER_ENTITY) instanceof ServerPlayer player) {
+        } else if(enabled && ctx.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof Animal && ctx.getParamOrNull(LootContextParams.LAST_DAMAGE_PLAYER) instanceof ServerPlayer player) {
             NonNullList<ItemStack> updatedModels = updateDataModel(ctx, player);
 
             // Return early if no models were affected
@@ -146,11 +146,7 @@ public class GlitchFragmentModifier extends LootModifier {
     }
 
     @Override
-    public Codec<GlitchFragmentModifier> codec() {
-        return DropModifier.GLITCH_FRAGMENT.get();
-    }
-
-    public static RegistryObject<Codec<GlitchFragmentModifier>> create() {
-        return DropModifier.GLM.register("glitch_fragment_all_entities", () -> RecordCodecBuilder.create(inst -> LootModifier.codecStart(inst).apply(inst, GlitchFragmentModifier::new)));
+    public MapCodec<GlitchFragmentModifier> codec() {
+        return CODEC;
     }
 }
