@@ -1,24 +1,27 @@
 package jp.artan.dmlreloaded.item;
 
+import jp.artan.dmlreloaded.init.DMLDataComponentType;
 import jp.artan.dmlreloaded.item.dct.GlitchSwordInfo;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class ItemGlitchSword extends SwordItem {
+public class ItemGlitchSword extends SwordItem {
     protected static final int DAMAGE_BONUS = 1;
     protected static final int DAMAGE_BONUS_MAX = 32;
     protected static final int DAMAGE_INCREASE_CHANCE = 4;
 
     public ItemGlitchSword(Tier pTier, Properties pProperties) {
-        super(pTier, pProperties);
+        super(pTier, pProperties.component(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY).component(DMLDataComponentType.GLITCH_SWORD_INFO.get(), new GlitchSwordInfo()));
     }
 
     public static boolean canIncreaseDamage(ItemStack sword) {
