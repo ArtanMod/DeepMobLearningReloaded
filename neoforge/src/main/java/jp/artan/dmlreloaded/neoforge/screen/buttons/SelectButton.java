@@ -5,8 +5,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentContents;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class SelectButton extends Button {
@@ -28,7 +28,7 @@ public class SelectButton extends Button {
     }
 
     public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, boolean selected, ResourceLocation pResourceLocation, int pTextureWidth, int pTextureHeight, Button.OnPress pOnPress) {
-        this(pX, pY, pWidth, pHeight, pXTexStart, pYTexStart, pYDiffTex, pXSelTex, selected, pResourceLocation, pTextureWidth, pTextureHeight, pOnPress, MutableComponent.create(ComponentContents.EMPTY));
+        this(pX, pY, pWidth, pHeight, pXTexStart, pYTexStart, pYDiffTex, pXSelTex, selected, pResourceLocation, pTextureWidth, pTextureHeight, pOnPress, Component.empty());
     }
 
     public SelectButton(int pX, int pY, int pWidth, int pHeight, int pXTexStart, int pYTexStart, int pYDiffTex, int pXSelTex, boolean selected, ResourceLocation pResourceLocation, int pTextureWidth, int pTextureHeight, Button.OnPress pOnPress, Component pMessage) {

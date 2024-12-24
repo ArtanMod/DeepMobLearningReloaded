@@ -14,9 +14,9 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.event.RenderGuiOverlayEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.RenderGuiEvent;
 
 import java.text.DecimalFormat;
 
@@ -28,7 +28,7 @@ public class DataOverlay extends Screen {
     private PlayerHelper playerH;
     private int componentHeight = 26;
     private int barSpacing = 12;
-    private static final ResourceLocation experienceBar = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "textures/gui/experience_gui.png");
+    private static final ResourceLocation experienceBar = DeepMobLearningReloadedMod.getResource("textures/gui/experience_gui.png");
 
     public DataOverlay(Component pTitle) {
         super(pTitle);
@@ -36,7 +36,7 @@ public class DataOverlay extends Screen {
     }
 
     @SubscribeEvent(priority=EventPriority.NORMAL)
-    public void renderOverlay(RenderGuiOverlayEvent.Post event) {
+    public void renderOverlay(RenderGuiEvent.Post event) {
 //        if (event.getType() != RenderGuiOverlayEvent.ElementType.LAYER) {
 //            return;
 //        }

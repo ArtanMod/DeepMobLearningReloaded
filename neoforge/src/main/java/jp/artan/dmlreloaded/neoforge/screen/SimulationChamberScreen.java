@@ -30,10 +30,8 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
     private HashMap<String, String> simulationText = new HashMap<>();
     private Level level;
     private ItemStack currentDataModel = ItemStack.EMPTY;
-    private static final ResourceLocation base = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID,
-            "textures/gui/simulation_chamber_base.png");
-    private static final ResourceLocation defaultGui = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID,
-            "textures/gui/default_gui.png");
+    private static final ResourceLocation base = DeepMobLearningReloadedMod.getResource("textures/gui/simulation_chamber_base.png");
+    private static final ResourceLocation defaultGui = DeepMobLearningReloadedMod.getResource("textures/gui/default_gui.png");
 
     public SimulationChamberScreen(SimulationChamberContainer container, Inventory playerInv, Component component) {
         super(container, playerInv, component);
@@ -232,7 +230,7 @@ public class SimulationChamberScreen extends AbstractContainerScreen<SimulationC
 
     @Override
     public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-        this.renderBackground(pGuiGraphics);
+        this.renderBackground(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
         this.renderTooltip(pGuiGraphics, pMouseX, pMouseY);
     }
