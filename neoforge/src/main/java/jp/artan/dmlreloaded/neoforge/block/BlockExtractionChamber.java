@@ -5,6 +5,7 @@ import jp.artan.dmlreloaded.neoforge.block.entity.BlockEntityExtractionChamber;
 import jp.artan.dmlreloaded.neoforge.container.ExtractionChamberContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentContents;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
@@ -26,10 +27,16 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class BlockExtractionChamber extends HorizontalDirectionalBlock implements EntityBlock {
+    public static final MapCodec<BlockExtractionChamber> CODEC = simpleCodec(BlockExtractionChamber::new);
 
     public BlockExtractionChamber(Properties properties) {
         super(properties);
         registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH));
+    }
+
+    @Override
+    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -74,13 +81,15 @@ public class BlockExtractionChamber extends HorizontalDirectionalBlock implement
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand,
-                                 BlockHitResult pHit) {
-        if(!pLevel.isClientSide
-                && pLevel.getBlockEntity(pPos) instanceof final BlockEntityExtractionChamber generator) {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if(level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        }
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if(blockEntity instanceof BlockEntityExtractionChamber be) {
             final MenuProvider container = new SimpleMenuProvider(
-                    ExtractionChamberContainer.getServerContainer(generator, pPos), MutableComponent.create(ComponentContents.EMPTY));
-            NetworkHooks.openScreen((ServerPlayer) pPlayer, container, buf -> buf.writeBlockPos(pPos));
+                    ExtractionChamberContainer.getServerContainer(be, pos), Component.translatable("block.dmlreloaded.extraction_chamber"));
+            player.openMenu(container);
         }
         return InteractionResult.SUCCESS;
     }

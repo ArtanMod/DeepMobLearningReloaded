@@ -1,9 +1,13 @@
 package jp.artan.dmlreloaded.neoforge.block;
 
+import com.mojang.serialization.MapCodec;
+import jp.artan.dmlreloaded.neoforge.block.entity.BlockEntityExtractionChamber;
 import jp.artan.dmlreloaded.neoforge.block.entity.BlockEntitySimulationChamber;
+import jp.artan.dmlreloaded.neoforge.container.ExtractionChamberContainer;
 import jp.artan.dmlreloaded.neoforge.container.SimulationChamberContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentContents;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
@@ -24,13 +28,18 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.network.NetworkHooks;
 
 public class BlockSimulationChamber extends HorizontalDirectionalBlock implements EntityBlock {
+    public static final MapCodec<BlockExtractionChamber> CODEC = simpleCodec(BlockExtractionChamber::new);
 
     public BlockSimulationChamber(Properties properties) {
         super(properties);
         registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH));
+    }
+
+    @Override
+    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -56,18 +65,6 @@ public class BlockSimulationChamber extends HorizontalDirectionalBlock implement
                 : (level0, pos, state0, blockEntity) -> ((BlockEntitySimulationChamber) blockEntity).tick(level0, (BlockEntitySimulationChamber) blockEntity);
     }
 
-    @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand,
-                                 BlockHitResult pHit) {
-        if (!pLevel.isClientSide
-                && pLevel.getBlockEntity(pPos) instanceof final BlockEntitySimulationChamber generator) {
-            final MenuProvider container = new SimpleMenuProvider(
-                    SimulationChamberContainer.getServerContainer(generator, pPos), MutableComponent.create(ComponentContents.EMPTY));
-            NetworkHooks.openScreen((ServerPlayer) pPlayer, container);
-        }
-        return InteractionResult.SUCCESS;
-    }
-
     @SuppressWarnings("deprecation")
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
@@ -84,5 +81,19 @@ public class BlockSimulationChamber extends HorizontalDirectionalBlock implement
             }
         }
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if(level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        }
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if(blockEntity instanceof BlockEntitySimulationChamber be) {
+            final MenuProvider container = new SimpleMenuProvider(
+                    SimulationChamberContainer.getServerContainer(be, pos), Component.translatable("block.dmlreloaded.simulation_chamber"));
+            player.openMenu(container);
+        }
+        return InteractionResult.SUCCESS;
     }
 }
