@@ -1,6 +1,6 @@
 package jp.artan.dmlreloaded.neoforge.util;
 
-import jp.artan.dmlreloaded.ClientConfig;
+import jp.artan.dmlreloaded.config.ClientConfig;
 import jp.artan.dmlreloaded.neoforge.item.ItemDeepLearner;
 import jp.artan.dmlreloaded.neoforge.plugin.PluginInit;
 import jp.artan.dmlreloaded.neoforge.plugin.curios.CuriosUtil;
