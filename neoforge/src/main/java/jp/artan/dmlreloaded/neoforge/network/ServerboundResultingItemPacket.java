@@ -1,51 +1,40 @@
 package jp.artan.dmlreloaded.neoforge.network;
 
+import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.neoforge.block.entity.BlockEntityExtractionChamber;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-import java.util.function.Supplier;
+public record ServerboundResultingItemPacket(BlockPos pos, ItemStack stack, int index, boolean pSelected) implements CustomPacketPayload {
+    public static final CustomPacketPayload.Type<ServerboundResultingItemPacket> TYPE = new CustomPacketPayload.Type<>(DeepMobLearningReloadedMod.getResource("main"));
 
-public class ServerboundResultingItemPacket {
+    public static final StreamCodec<RegistryFriendlyByteBuf, ServerboundResultingItemPacket> STREAM_CODEC = StreamCodec.composite(
+            BlockPos.STREAM_CODEC, ServerboundResultingItemPacket::pos,
+            ItemStack.STREAM_CODEC, ServerboundResultingItemPacket::stack,
+            ByteBufCodecs.VAR_INT, ServerboundResultingItemPacket::index,
+            ByteBufCodecs.BOOL, ServerboundResultingItemPacket::pSelected,
+            ServerboundResultingItemPacket::new
+    );
 
-    public final ItemStack stack;
-    public final BlockPos bPos;
-    public final int index;
-    public final boolean selected;
-
-    public ServerboundResultingItemPacket(BlockPos pos, ItemStack stack, int index, boolean pSelected) {
-        this.bPos = pos;
-        this.stack = stack;
-        this.index = index;
-        this.selected = pSelected;
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public ServerboundResultingItemPacket(FriendlyByteBuf buffer) {
-        this(buffer.readBlockPos(), buffer.readItem(), buffer.readInt(), buffer.readBoolean());
-    }
-
-    public void encode(FriendlyByteBuf buffer) {
-        buffer.writeBlockPos(this.bPos);
-        buffer.writeItem(this.stack);
-        buffer.writeInt(this.index);
-        buffer.writeBoolean(this.selected);
-    }
-
-    public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            final BlockEntity blockEntity = ctx.get().getSender().level().getBlockEntity(this.bPos);
-            if (blockEntity instanceof final BlockEntityExtractionChamber eCham) {
-                eCham.setResultingItem(this.stack);
-                eCham.setResultingIndex(this.index);
-                eCham.setSelected(selected);
-                eCham.finishCraft(true);
-                eCham.update();
-            }
-        });
-
-        ctx.get().setPacketHandled(true);
+    public static void handleDataOnMain(final ServerboundResultingItemPacket packet, final IPayloadContext context) {
+        final BlockEntity blockEntity = context.player().level().getBlockEntity(packet.pos);
+        if (blockEntity instanceof final BlockEntityExtractionChamber eCham) {
+            eCham.setResultingItem(packet.stack);
+            eCham.setResultingIndex(packet.index);
+            eCham.setSelected(packet.pSelected);
+            eCham.finishCraft(true);
+            eCham.update();
+        }
     }
 }

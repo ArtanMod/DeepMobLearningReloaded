@@ -20,6 +20,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -28,9 +29,9 @@ import java.util.Locale;
 
 public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionChamberContainer> {
 
-    private static final ResourceLocation base = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "textures/gui/extraction_chamber_base.png");
-    private static final ResourceLocation extras = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "textures/gui/buttons/button_select.png");
-    private static final ResourceLocation defaultGui = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "textures/gui/default_gui.png");
+    private static final ResourceLocation base = DeepMobLearningReloadedMod.getResource("textures/gui/extraction_chamber_base.png");
+    private static final ResourceLocation extras = DeepMobLearningReloadedMod.getResource("textures/gui/buttons/button_select.png");
+    private static final ResourceLocation defaultGui = DeepMobLearningReloadedMod.getResource("textures/gui/default_gui.png");
     boolean elementsAdded = false;
     private int startIndex;
     private NonNullList<SelectButton> buttons = NonNullList.create();
@@ -141,14 +142,14 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
             if(selectedIndex == resultingIndex && tileSelectData) {
                 btn = new SelectButton(getGuiLeft()+ 16 + k, 8 + getGuiTop() + l, 18, 18, 0, 0, 18, 18, true, extras, button -> {
                     if(!((SelectButton) button).isSelected()) {
-                        DMLPacketHandler.INSTANCE.sendToServer(new ServerboundResultingItemPacket(this.menu.pos, getItemFromList(resultingIndex), resultingIndex, true));
+                        PacketDistributor.sendToServer(new ServerboundResultingItemPacket(this.menu.pos, getItemFromList(resultingIndex), resultingIndex, true));
                         buttons.forEach((SelectButton buuton) -> {
                             buuton.setSelected(false);
                         });
                         ((SelectButton) button).selection();
                         this.scrolling = false;
                     } else if(((SelectButton) button).isSelected()){
-                        DMLPacketHandler.INSTANCE.sendToServer(new ServerboundResultingItemPacket(this.menu.pos, ItemStack.EMPTY, resultingIndex, false));
+                        PacketDistributor.sendToServer(new ServerboundResultingItemPacket(this.menu.pos, ItemStack.EMPTY, resultingIndex, false));
                         ((SelectButton) button).selection();
                     }
 
@@ -156,14 +157,14 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
             } else {
                 btn = new SelectButton(getGuiLeft()+ 16 + i % 3 * 19, 8 + getGuiTop() + l, 18, 18, 0, 0, 18, 18, extras, button -> {
                     if(!((SelectButton) button).isSelected()) {
-                        DMLPacketHandler.INSTANCE.sendToServer(new ServerboundResultingItemPacket(this.menu.pos, getItemFromList(resultingIndex), resultingIndex, true));
+                        PacketDistributor.sendToServer(new ServerboundResultingItemPacket(this.menu.pos, getItemFromList(resultingIndex), resultingIndex, true));
                         buttons.forEach((SelectButton buuton) -> {
                             buuton.setSelected(false);
                         });
                         ((SelectButton) button).selection();
                         this.scrolling = false;
                     } else if(((SelectButton) button).isSelected()){
-                        DMLPacketHandler.INSTANCE.sendToServer(new ServerboundResultingItemPacket(this.menu.pos, ItemStack.EMPTY, resultingIndex, false));
+                        PacketDistributor.sendToServer(new ServerboundResultingItemPacket(this.menu.pos, ItemStack.EMPTY, resultingIndex, false));
                         ((SelectButton) button).selection();
                         this.scrolling = false;
                     }
@@ -263,10 +264,10 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
     }
 
     @Override
-    public boolean mouseScrolled(double pMouseX, double pMouseY, double pDelta) {
+    public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
         if (this.isScrollBarActive()) {
             int i = this.getOffscreenRows();
-            float f = (float)pDelta / (float)i;
+            float f = (float)scrollX / (float)i; // FIXME：scrollXでいいのか？
             this.scrollOffs = Mth.clamp(this.scrollOffs - f, 0.0F, 1.0F);
             this.startIndex = (int)((double)(this.scrollOffs * (float)i) + 0.5D) * 3;
             buttons.forEach((Button btn) -> {
@@ -283,7 +284,7 @@ public class ExtractionChamberScreen extends AbstractContainerScreen<ExtractionC
 
     @Override
     public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-        this.renderBackground(pGuiGraphics);
+        this.renderBackground(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
         this.renderTooltip(pGuiGraphics, pMouseX, pMouseY);
     }
