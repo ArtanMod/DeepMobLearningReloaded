@@ -30,10 +30,10 @@ public class DeepMobLearningReloadedMod {
     }
 
     public static void commonSetup() {
+        PlayerHandler.register();
     }
 
     public static void initClient() {
-        PlayerHandler.register();
     }
 
     public static ResourceLocation getResource(String name) {

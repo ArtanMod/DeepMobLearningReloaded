@@ -57,11 +57,19 @@ public class PlayerHandler {
             ItemStack itemStack = player.getItemInHand(hand);
             if(itemStack.getItem() instanceof ItemGlitchHeart && rand.nextInt(0, 10) <= 3) {
                 if(player.getLevel().getBlockState(blockPos).getBlock() == Blocks.OBSIDIAN) {
-                    ItemEntity drop = new ItemEntity(player.getLevel(), blockPos.getX(), blockPos.getY(),
-                            blockPos.getZ(), new ItemStack(Registry.ITEM.get(DeepMobLearningReloadedMod.getResource("glitch_fragment")), 3));
-                    drop.setDefaultPickUpDelay();
-                    player.getLevel().addFreshEntity(drop);
-                    itemStack.shrink(1);
+                    // ドロップ処理はサーバー側でのみ実施
+                    if(!player.getLevel().isClientSide) {
+                        // プレイヤー側にアイテムをドロップ
+                        double dropX = blockPos.getX() + 0.5 + face.getStepX();
+                        double dropY = blockPos.getY() + 0.5 + face.getStepY();
+                        double dropZ = blockPos.getZ() + 0.5 + face.getStepZ();
+                        ItemEntity drop = new ItemEntity(player.getLevel(), dropX, dropY, dropZ,
+                                new ItemStack(Registry.ITEM.get(DeepMobLearningReloadedMod.getResource("glitch_fragment")), 3),
+                                rand.nextDouble(-0.25, 0.25), rand.nextDouble(-0.25, 0.25), rand.nextDouble(-0.25, 0.25));
+                        drop.setDefaultPickUpDelay();
+                        player.getLevel().addFreshEntity(drop);
+                        itemStack.shrink(1);
+                    }
                     player.getLevel().playSound(null, blockPos, SoundEvents.ANCIENT_DEBRIS_BREAK,
                             SoundSource.NEUTRAL, 1f, 1.1f);
                     player.getLevel().addParticle(ParticleTypes.POOF, (double) blockPos.getX() + 0.5d,
@@ -79,11 +87,19 @@ public class PlayerHandler {
             ItemStack itemStack = player.getItemInHand(hand);
             if (itemStack.getItem() == Items.REDSTONE && rand.nextInt(0, 10) <= 3) {
                 if (player.getLevel().getBlockState(blockPos).getBlock() == Blocks.COAL_BLOCK) {
-                    ItemEntity drop = new ItemEntity(player.getLevel(), blockPos.getX(), blockPos.getY(),
-                            blockPos.getZ(), new ItemStack(DMLItems.SOOT_COVERED_REDSTONE.get(), 1));
-                    drop.setDefaultPickUpDelay();
-                    player.getLevel().addFreshEntity(drop);
-                    itemStack.shrink(1);
+                    // ドロップ処理はサーバー側でのみ実施
+                    if(!player.getLevel().isClientSide) {
+                        // プレイヤー側にアイテムをドロップ
+                        double dropX = blockPos.getX() + 0.5 + face.getStepX();
+                        double dropY = blockPos.getY() + 0.5 + face.getStepY();
+                        double dropZ = blockPos.getZ() + 0.5 + face.getStepZ();
+                        ItemEntity drop = new ItemEntity(player.getLevel(), dropX, dropY, dropZ,
+                                new ItemStack(DMLItems.SOOT_COVERED_REDSTONE.get(), 1),
+                                rand.nextDouble(-0.25, 0.25), rand.nextDouble(-0.25, 0.25), rand.nextDouble(-0.25, 0.25));
+                        drop.setDefaultPickUpDelay();
+                        player.getLevel().addFreshEntity(drop);
+                        itemStack.shrink(1);
+                    }
                     player.getLevel().playSound(null, blockPos, SoundEvents.AMETHYST_CLUSTER_BREAK,
                             SoundSource.NEUTRAL, 1f, 0.1f);
                     player.getLevel().addParticle(ParticleTypes.FLAME,
