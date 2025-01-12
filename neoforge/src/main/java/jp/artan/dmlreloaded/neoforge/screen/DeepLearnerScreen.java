@@ -39,10 +39,10 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
     private PoseStack pose;
     private ImageButton imgBtnPrev;
     private ImageButton imgBtnNext;
-    private static final ResourceLocation base = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "textures/gui/deeplearner_base.png");
-    private static final ResourceLocation netherite_base = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "textures/gui/netherite_deeplearner_base.png");
-    private static final ResourceLocation extras = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "textures/gui/deeplearner_extras.png");
-    private static final ResourceLocation defaultGui = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "textures/gui/default_gui.png");
+    private static final ResourceLocation base = DeepMobLearningReloadedMod.getResource("textures/gui/deeplearner_base.png");
+    private static final ResourceLocation netherite_base = DeepMobLearningReloadedMod.getResource("textures/gui/netherite_deeplearner_base.png");
+    private static final ResourceLocation extras = DeepMobLearningReloadedMod.getResource("textures/gui/deeplearner_extras.png");
+    private static final ResourceLocation defaultGui = DeepMobLearningReloadedMod.getResource("textures/gui/default_gui.png");
 
     public DeepLearnerScreen(DeepLearnerContainer container, Inventory playerInv, Component component) {
         super(container, playerInv, component);
@@ -109,7 +109,7 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
 
     @Override
     public void render(GuiGraphics pGuiGraphics, int p_97796_, int p_97797_, float p_97798_) {
-        this.renderBackground(pGuiGraphics);
+        this.renderBackground(pGuiGraphics, p_97796_, p_97797_, p_97798_);
         super.render(pGuiGraphics, p_97796_, p_97797_, p_97798_);
         this.renderTooltip(pGuiGraphics, p_97796_, p_97797_);
     }
@@ -170,16 +170,16 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, extras);
-        imgBtnPrev = new ImageButton(getGuiLeft() - 84, getGuiTop() + 70, 24, 24, 99, 0, 24, extras, 255, 255, btn -> {
-            if(validDataModels.size() > 1) {
-                this.currentItem = nextItemIndex();
-            }
-        });
-        imgBtnNext = new ImageButton(getGuiLeft() - 110, getGuiTop() + 70, 24, 24, 75, 0, 24, extras, 255, 255, btn -> {
-            if(validDataModels.size() > 1) {
-                this.currentItem = previousItemIndex();
-            }
-        });
+//        imgBtnPrev = new ImageButton(getGuiLeft() - 84, getGuiTop() + 70, 24, 24, 99, 0, 24, extras, 255, 255, btn -> {
+//            if(validDataModels.size() > 1) {
+//                this.currentItem = nextItemIndex();
+//            }
+//        });
+//        imgBtnNext = new ImageButton(getGuiLeft() - 110, getGuiTop() + 70, 24, 24, 75, 0, 24, extras, 255, 255, btn -> {
+//            if(validDataModels.size() > 1) {
+//                this.currentItem = previousItemIndex();
+//            }
+//        });
         addRenderableWidget(imgBtnNext);
         addRenderableWidget(imgBtnPrev);
     }
