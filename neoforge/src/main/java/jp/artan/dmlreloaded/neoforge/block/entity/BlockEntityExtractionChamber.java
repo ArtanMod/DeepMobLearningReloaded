@@ -6,14 +6,14 @@ import jp.artan.dmlreloaded.neoforge.block.energy.DeepEnergyStorage;
 import jp.artan.dmlreloaded.neoforge.init.DMLBlockEntityForge;
 import jp.artan.dmlreloaded.item.ItemPristineMatter;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.util.Lazy;
 
-public class BlockEntityExtractionChamber extends InventoryBlockEntity{
+public class BlockEntityExtractionChamber extends InventoryBlockEntity {
 
     public DeepEnergyStorage energyStorage;
 
@@ -164,16 +164,15 @@ public class BlockEntityExtractionChamber extends InventoryBlockEntity{
         update();
     }
 
-
     @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
+    public void invalidateCapabilities() {
+        super.invalidateCapabilities();
         this.energy.invalidate();
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
         tag.putInt("energy", energyStorage.getEnergyStored());
         tag.putInt("craftingProgress", percentDone);
         tag.putInt("index", resultingIndex);
@@ -185,20 +184,15 @@ public class BlockEntityExtractionChamber extends InventoryBlockEntity{
     }
 
     @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
-        energyStorage.setEnergy(pTag.getInt("energy"));
-        percentDone = pTag.getInt("craftingProgress");
-        resultingIndex = pTag.getInt("index");
-        isCrafting = pTag.getBoolean("isCrafting");
-        selected = pTag.getBoolean("selected");
-        //pageHandler.deserializeNBT(pTag.getCompound("pageHandler"));
-        resultingItem = ItemStack.of(pTag.getCompound("resultingItem"));
-        currentPristineMatter = pTag.contains("currentPristine") ? pTag.getString("currentPristine") : "";
-    }
-
-    @Override
-    public <T> Lazy<T> getCapability(Capability<T> cap, Direction side) {
-        return cap == ForgeCapabilities.ENERGY ? this.energy.cast() : super.getCapability(cap, side);
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
+        energyStorage.setEnergy(tag.getInt("energy"));
+        percentDone = tag.getInt("craftingProgress");
+        resultingIndex = tag.getInt("index");
+        isCrafting = tag.getBoolean("isCrafting");
+        selected = tag.getBoolean("selected");
+        //pageHandler.deserializeNBT(tag.getCompound("pageHandler"));
+        resultingItem = ItemStack.of(tag.getCompound("resultingItem"));
+        currentPristineMatter = tag.contains("currentPristine") ? tag.getString("currentPristine") : "";
     }
 }

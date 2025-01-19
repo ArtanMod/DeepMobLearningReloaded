@@ -1,8 +1,6 @@
 package jp.artan.dmlreloaded.neoforge.util;
 
-import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.ICapabilityProvider;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
@@ -33,11 +31,6 @@ public class InventoryItemStack extends ItemStackHandler implements ICapabilityP
                 return super.insertItem(slot, stack, simulate);
             }
         };
-    }
-
-    @Override
-    public <T> Lazy<T> getCapability(Capability<T> cap, Direction side) {
-        return cap == Capabilities.ITEM_HANDLER ? this.handler.cast() : LazyOptional.empty();
     }
 
     @Nullable

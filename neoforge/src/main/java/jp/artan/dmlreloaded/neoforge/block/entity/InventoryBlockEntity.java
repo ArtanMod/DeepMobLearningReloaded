@@ -3,7 +3,7 @@ package jp.artan.dmlreloaded.neoforge.block.entity;
 import jp.artan.dmlreloaded.neoforge.util.BaseStackHandler;
 import jp.artan.dmlreloaded.neoforge.util.OutputStackHandler;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
@@ -33,11 +33,6 @@ public class InventoryBlockEntity extends BlockEntity {
         this.handler = Lazy.of(() -> new OutputStackHandler(this.inventory, arr));
     }
 
-    @Override
-    public <T> Lazy<T> getCapability(Capability<T> cap, Direction side) {
-        return cap == ForgeCapabilities.ITEM_HANDLER ? this.handler.cast() : super.getCapability(cap, side);
-    }
-
 //    public LazyOptional<ItemStackHandler> getHandler() {
 //        return this.handler;
 //    }
@@ -52,34 +47,33 @@ public class InventoryBlockEntity extends BlockEntity {
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
-        return serializeNBT();
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return getPersistentData();
     }
 
     @Override
-    public void handleUpdateTag(CompoundTag tag) {
-        super.handleUpdateTag(tag);
-        load(tag);
+    public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider lookupProvider) {
+        super.handleUpdateTag(tag, lookupProvider);
+        this.saveAdditional(tag, lookupProvider);
     }
 
     @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
+    public void invalidateCapabilities() {
+        super.invalidateCapabilities();
         this.handler.invalidate();
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
-        this.inventory.deserializeNBT(tag.getCompound("Inventory"));
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
+        this.inventory.deserializeNBT(registries, tag.getCompound("Inventory"));
     }
 
     @Override
-    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
-        super.onDataPacket(net, pkt);
-        handleUpdateTag(pkt.getTag());
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt, HolderLookup.Provider lookupProvider) {
+        super.onDataPacket(net, pkt, lookupProvider);
+        handleUpdateTag(pkt.getTag(), lookupProvider);
     }
-
     public void update() {
         requestModelDataUpdate();
         setChanged();
@@ -89,9 +83,9 @@ public class InventoryBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
-        tag.put("Inventory", this.inventory.serializeNBT());
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
+        tag.put("Inventory", this.inventory.serializeNBT(registries));
     }
 
     private BaseStackHandler createInventory() {

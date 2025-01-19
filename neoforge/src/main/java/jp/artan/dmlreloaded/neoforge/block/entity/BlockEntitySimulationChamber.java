@@ -11,6 +11,7 @@ import jp.artan.dmlreloaded.util.DataModelHelper;
 import jp.artan.dmlreloaded.util.MathHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -44,14 +45,14 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
     }
 
     @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
+    public void invalidateCapabilities() {
+        super.invalidateCapabilities();
         this.energy.invalidate();
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
         tag.putInt("energy", this.energyStorage.getEnergyStored());
         tag.putInt("simulationProgress", percentDone);
         tag.putBoolean("isCrafting", isCrafting);
@@ -59,17 +60,12 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
     }
 
     @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
-        this.energyStorage.setEnergy(pTag.contains("energy") ? pTag.getInt("energy") : 300000);
-        percentDone = pTag.contains("simulationProgress") ? pTag.getInt("simulationProgress") : 0;
-        isCrafting = pTag.contains("isCrafting") ? pTag.getBoolean("isCrafting") : isCrafting;
-        byproductSuccess = pTag.contains("craftSuccess") ? pTag.getBoolean("craftSuccess") : (isCrafting);
-    }
-
-    @Override
-    public <T> Lazy<T> getCapability(Capability<T> cap, Direction side) {
-        return cap == ForgeCapabilities.ENERGY ? this.energy.cast() : super.getCapability(cap, side);
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
+        this.energyStorage.setEnergy(tag.contains("energy") ? tag.getInt("energy") : 300000);
+        percentDone = tag.contains("simulationProgress") ? tag.getInt("simulationProgress") : 0;
+        isCrafting = tag.contains("isCrafting") ? tag.getBoolean("isCrafting") : isCrafting;
+        byproductSuccess = tag.contains("craftSuccess") ? tag.getBoolean("craftSuccess") : (isCrafting);
     }
 
     private DeepEnergyStorage createEnergyStorage() {
