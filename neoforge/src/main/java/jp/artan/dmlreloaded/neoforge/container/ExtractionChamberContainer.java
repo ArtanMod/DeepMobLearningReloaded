@@ -4,7 +4,7 @@ import jp.artan.dmlreloaded.neoforge.block.entity.BlockEntityExtractionChamber;
 import jp.artan.dmlreloaded.neoforge.container.slots.SlotExtractionChamber;
 import jp.artan.dmlreloaded.neoforge.container.sync.ExtractionChamberContainerData;
 import jp.artan.dmlreloaded.neoforge.init.DMLBlocksForge;
-import jp.artan.dmlreloaded.neoforge.init.DMLContainersForge;
+import jp.artan.dmlreloaded.neoforge.init.DMLMenuType;
 import jp.artan.dmlreloaded.neoforge.util.BaseStackHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -23,13 +23,13 @@ public class ExtractionChamberContainer extends AbstractContainerMenu{
     public BlockPos pos;
 
     // Client
-    public ExtractionChamberContainer(MenuType<?> menuType, int id, Inventory playerInv, FriendlyByteBuf buf) {
-        this(menuType, id, playerInv, new BaseStackHandler(17), buf.readBlockPos(), new SimpleContainerData(7));
+    public ExtractionChamberContainer(int id, Inventory playerInv, FriendlyByteBuf buf) {
+        this(id, playerInv, new BaseStackHandler(17), buf.readBlockPos(), new SimpleContainerData(7));
     }
 
     // Server
-    public ExtractionChamberContainer(MenuType<?> menuType, int pContainerId, Inventory pInventory, BaseStackHandler handler, BlockPos pPos, ContainerData data) {
-        super(menuType, pContainerId);
+    public ExtractionChamberContainer(int pContainerId, Inventory pInventory, BaseStackHandler handler, BlockPos pPos, ContainerData data) {
+        super(DMLMenuType.EXTRACTION_CHAMBER_MENU_TYPE.get(), pContainerId);
         this.handler = handler;
         this.containerAccess = ContainerLevelAccess.create(pInventory.player.level(), pPos);
         this.data = data;
@@ -105,7 +105,7 @@ public class ExtractionChamberContainer extends AbstractContainerMenu{
     }
 
     public static MenuConstructor getServerContainer(BlockEntityExtractionChamber be, BlockPos pos) {
-        return (id, playerInv, player) -> new ExtractionChamberContainer(DMLContainersForge.EXTRACTION_CHAMBER.get(), id, playerInv, be.inventory, pos,
+        return (id, playerInv, player) -> new ExtractionChamberContainer(id, playerInv, be.inventory, pos,
                 new ExtractionChamberContainerData(be, 7));
     }
 }

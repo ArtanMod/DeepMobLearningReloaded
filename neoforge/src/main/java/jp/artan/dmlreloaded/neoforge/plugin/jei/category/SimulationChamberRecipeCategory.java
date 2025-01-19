@@ -51,11 +51,6 @@ public class SimulationChamberRecipeCategory implements IRecipeCategory<Simulati
     }
 
     @Override
-    public IDrawable getBackground() {
-        return background;
-    }
-
-    @Override
     public IDrawable getIcon() {
         return icon;
     }

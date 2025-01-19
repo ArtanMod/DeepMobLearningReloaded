@@ -4,6 +4,9 @@ import jp.artan.dmlreloaded.DeepMobLearningReloadedMod;
 import jp.artan.dmlreloaded.neoforge.init.*;
 import jp.artan.dmlreloaded.neoforge.plugin.PluginInit;
 import jp.artan.dmlreloaded.neoforge.providers.*;
+import jp.artan.dmlreloaded.neoforge.screen.DeepLearnerScreen;
+import jp.artan.dmlreloaded.neoforge.screen.ExtractionChamberScreen;
+import jp.artan.dmlreloaded.neoforge.screen.SimulationChamberScreen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -12,6 +15,7 @@ import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
@@ -29,12 +33,13 @@ public class DeepMobLearningReloadedModNeoForge {
         DMLItemsForge.register();
         DMLBlocksForge.register();
         DMLBlockEntityForge.register();
-        DMLContainersForge.register();
+        DMLMenuType.register();
 
 
         eventBus.addListener(DeepMobLearningReloadedModNeoForge::registerProviders);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::onClientSetup);
+        eventBus.addListener(this::registerScreens);
 
         PluginInit.init(eventBus);
     }
@@ -49,6 +54,12 @@ public class DeepMobLearningReloadedModNeoForge {
         event.enqueueWork(() -> {
 //            MinecraftForge.EVENT_BUS.register(new DataOverlay(MutableComponent.create(ComponentContents.EMPTY)));
         });
+    }
+
+    public void registerScreens(final RegisterMenuScreensEvent event) {
+        event.register(DMLMenuType.DEEP_LEARNER_MENU_TYPE.get(), DeepLearnerScreen::new);
+        event.register(DMLMenuType.EXTRACTION_CHAMBER_MENU_TYPE.get(), ExtractionChamberScreen::new);
+        event.register(DMLMenuType.SIMULATION_CHAMBER_MENU_TYPE.get(), SimulationChamberScreen::new);
     }
 
     private static void registerProviders(GatherDataEvent event) {

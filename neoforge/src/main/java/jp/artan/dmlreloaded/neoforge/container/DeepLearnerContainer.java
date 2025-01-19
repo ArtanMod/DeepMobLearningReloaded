@@ -1,6 +1,7 @@
 package jp.artan.dmlreloaded.neoforge.container;
 
 import jp.artan.dmlreloaded.neoforge.init.DMLItemsForge;
+import jp.artan.dmlreloaded.neoforge.init.DMLMenuType;
 import jp.artan.dmlreloaded.neoforge.item.ItemDeepLearner;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import jp.artan.dmlreloaded.neoforge.util.ItemBackedInventory;
@@ -23,14 +24,14 @@ public class DeepLearnerContainer extends AbstractContainerMenu {
     protected ItemStack deepLearner;
     public final Container deepLearnerInv;
 
-    public static DeepLearnerContainer fromNetwork(MenuType<?> menuType, int windowId, Inventory inv, FriendlyByteBuf buf) {
+    public static DeepLearnerContainer fromNetwork(int windowId, Inventory inv, FriendlyByteBuf buf) {
         InteractionHand hand = buf.readBoolean() ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
-        return new DeepLearnerContainer(menuType, windowId, inv, inv.player.getItemInHand(hand));
+        return new DeepLearnerContainer(windowId, inv, inv.player.getItemInHand(hand));
     }
 
     //Server
-    public DeepLearnerContainer(MenuType<?> menuType, int id, Inventory playerInv, ItemStack deepLearner) {
-        super(menuType, id);
+    public DeepLearnerContainer(int id, Inventory playerInv, ItemStack deepLearner) {
+        super(DMLMenuType.DEEP_LEARNER_MENU_TYPE.get(), id);
         ContainerLevelAccess.create(playerInv.player.level(), BlockPos.ZERO);
         this.player = playerInv.player;
         this.usedHand = player.getMainHandItem().getItem() instanceof ItemDeepLearner ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;

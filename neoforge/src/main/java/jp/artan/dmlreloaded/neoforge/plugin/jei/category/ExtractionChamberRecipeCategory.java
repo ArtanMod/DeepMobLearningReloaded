@@ -48,10 +48,6 @@ public class ExtractionChamberRecipeCategory implements IRecipeCategory<Extracti
         return title;
     }
 
-    @Override
-    public IDrawable getBackground() {
-        return background;
-    }
 
     @Override
     public IDrawable getIcon() {

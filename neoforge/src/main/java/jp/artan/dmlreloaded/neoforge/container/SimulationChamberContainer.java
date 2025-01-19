@@ -4,7 +4,7 @@ import jp.artan.dmlreloaded.neoforge.block.entity.BlockEntitySimulationChamber;
 import jp.artan.dmlreloaded.neoforge.container.slots.SlotSimulationChamber;
 import jp.artan.dmlreloaded.neoforge.container.sync.SimulationChamberContainerData;
 import jp.artan.dmlreloaded.neoforge.init.DMLBlocksForge;
-import jp.artan.dmlreloaded.neoforge.init.DMLContainersForge;
+import jp.artan.dmlreloaded.neoforge.init.DMLMenuType;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -27,14 +27,14 @@ public class SimulationChamberContainer extends AbstractContainerMenu {
     public IItemHandler handler;
 
     // Client
-    public SimulationChamberContainer(MenuType<?> menuType, int id, Inventory playerInv, FriendlyByteBuf buf) {
-        this(menuType, id, playerInv, new ItemStackHandler(4), BlockPos.ZERO, new SimpleContainerData(6));
+    public SimulationChamberContainer(int id, Inventory playerInv, FriendlyByteBuf buf) {
+        this(id, playerInv, new ItemStackHandler(4), BlockPos.ZERO, new SimpleContainerData(6));
     }
 
     // Server
-    public SimulationChamberContainer(MenuType<?> menuType, int pContainerId, Inventory pInventory, IItemHandler handler, BlockPos pPos,
+    public SimulationChamberContainer(int pContainerId, Inventory pInventory, IItemHandler handler, BlockPos pPos,
                                       ContainerData data) {
-        super(menuType, pContainerId);
+        super(DMLMenuType.SIMULATION_CHAMBER_MENU_TYPE.get(), pContainerId);
         this.handler = handler;
         this.containerAccess = ContainerLevelAccess.create(pInventory.player.level(), pPos);
         this.data = data;
@@ -96,7 +96,7 @@ public class SimulationChamberContainer extends AbstractContainerMenu {
     }
 
     public static MenuConstructor getServerContainer(BlockEntitySimulationChamber be, BlockPos pos) {
-        return (id, playerInv, player) -> new SimulationChamberContainer(DMLContainersForge.SIMULATION_CHAMBER.get(), id, playerInv, be.inventory, pos,
+        return (id, playerInv, player) -> new SimulationChamberContainer(id, playerInv, be.inventory, pos,
                 new SimulationChamberContainerData(be, 6));
     }
 

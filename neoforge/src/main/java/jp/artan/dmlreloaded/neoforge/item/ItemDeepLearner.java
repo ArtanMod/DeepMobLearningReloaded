@@ -1,7 +1,6 @@
 package jp.artan.dmlreloaded.neoforge.item;
 
 import jp.artan.dmlreloaded.neoforge.container.DeepLearnerContainer;
-import jp.artan.dmlreloaded.neoforge.init.DMLContainersForge;
 import jp.artan.dmlreloaded.util.DataModelHelper;
 import jp.artan.dmlreloaded.neoforge.util.ItemBackedInventory;
 import net.minecraft.ChatFormatting;
@@ -65,7 +64,7 @@ public class ItemDeepLearner extends Item {
 
                 @Override
                 public AbstractContainerMenu createMenu(int windowId, Inventory inv, Player player) {
-                    return new DeepLearnerContainer(DMLContainersForge.DEEP_LEARNER.get(), windowId, inv, player.getItemInHand(hand));
+                    return new DeepLearnerContainer(windowId, inv, player.getItemInHand(hand));
                 }
 
                 @Override
