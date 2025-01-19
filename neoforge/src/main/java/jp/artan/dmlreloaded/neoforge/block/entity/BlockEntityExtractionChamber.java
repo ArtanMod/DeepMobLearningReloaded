@@ -11,13 +11,16 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
 
 public class BlockEntityExtractionChamber extends InventoryBlockEntity{
 
     public DeepEnergyStorage energyStorage;
 
     public boolean isCrafting = false;
-//    private LazyOptional<DeepEnergyStorage> energy;
+    private LazyOptional<DeepEnergyStorage> energy;
     public int ticks = 0;
     public int percentDone = 0;
     private String currentPristineMatter = "";
@@ -30,7 +33,7 @@ public class BlockEntityExtractionChamber extends InventoryBlockEntity{
     public BlockEntityExtractionChamber(BlockPos pos, BlockState state) {
         super(DMLBlockEntityForge.ENTITY_EXTRACTION_CHAMBER.get(), pos, state, 17, bannSlot);
         this.energyStorage = createEnergyStorage();
-//        this.energy = LazyOptional.of(() -> this.energyStorage);
+        this.energy = LazyOptional.of(() -> this.energyStorage);
     }
 
     private DeepEnergyStorage createEnergyStorage() {
@@ -164,40 +167,40 @@ public class BlockEntityExtractionChamber extends InventoryBlockEntity{
     }
 
 
-//    @Override
-//    public void invalidateCaps() {
-//        super.invalidateCaps();
-//        this.energy.invalidate();
-//    }
-//
-//    @Override
-//    protected void saveAdditional(CompoundTag tag) {
-//        super.saveAdditional(tag);
-//        tag.putInt("energy", energyStorage.getEnergyStored());
-//        tag.putInt("craftingProgress", percentDone);
-//        tag.putInt("index", resultingIndex);
-//        //tag.put("pageHandler", pageHandler.serializeNBT());
-//        tag.put("resultingItem", resultingItem.serializeNBT());
-//        tag.putBoolean("isCrafting", isCrafting);
-//        tag.putBoolean("selected", selected);
-//        tag.putString("currentPristine", currentPristineMatter);
-//    }
-//
-//    @Override
-//    public void load(CompoundTag pTag) {
-//        super.load(pTag);
-//        energyStorage.setEnergy(pTag.getInt("energy"));
-//        percentDone = pTag.getInt("craftingProgress");
-//        resultingIndex = pTag.getInt("index");
-//        isCrafting = pTag.getBoolean("isCrafting");
-//        selected = pTag.getBoolean("selected");
-//        //pageHandler.deserializeNBT(pTag.getCompound("pageHandler"));
-//        resultingItem = ItemStack.of(pTag.getCompound("resultingItem"));
-//        currentPristineMatter = pTag.contains("currentPristine") ? pTag.getString("currentPristine") : "";
-//    }
-//
-//    @Override
-//    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-//        return cap == ForgeCapabilities.ENERGY ? this.energy.cast() : super.getCapability(cap, side);
-//    }
+    @Override
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        this.energy.invalidate();
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        tag.putInt("energy", energyStorage.getEnergyStored());
+        tag.putInt("craftingProgress", percentDone);
+        tag.putInt("index", resultingIndex);
+        //tag.put("pageHandler", pageHandler.serializeNBT());
+        tag.put("resultingItem", resultingItem.serializeNBT());
+        tag.putBoolean("isCrafting", isCrafting);
+        tag.putBoolean("selected", selected);
+        tag.putString("currentPristine", currentPristineMatter);
+    }
+
+    @Override
+    public void load(CompoundTag pTag) {
+        super.load(pTag);
+        energyStorage.setEnergy(pTag.getInt("energy"));
+        percentDone = pTag.getInt("craftingProgress");
+        resultingIndex = pTag.getInt("index");
+        isCrafting = pTag.getBoolean("isCrafting");
+        selected = pTag.getBoolean("selected");
+        //pageHandler.deserializeNBT(pTag.getCompound("pageHandler"));
+        resultingItem = ItemStack.of(pTag.getCompound("resultingItem"));
+        currentPristineMatter = pTag.contains("currentPristine") ? pTag.getString("currentPristine") : "";
+    }
+
+    @Override
+    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+        return cap == ForgeCapabilities.ENERGY ? this.energy.cast() : super.getCapability(cap, side);
+    }
 }

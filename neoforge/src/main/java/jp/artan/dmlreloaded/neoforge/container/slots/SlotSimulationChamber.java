@@ -5,10 +5,10 @@ import jp.artan.dmlreloaded.init.DMLItems;
 import jp.artan.dmlreloaded.item.ItemDataModel;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.SlotItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.SlotItemHandler;
 
-public class SlotSimulationChamber extends SlotItemHandler {
+public class SlotSimulationChamber extends SlotItemHandler{
 
     public SlotSimulationChamber(IItemHandler handler, int index, int xPosition, int yPosition) {
         super(handler, index, xPosition, yPosition);

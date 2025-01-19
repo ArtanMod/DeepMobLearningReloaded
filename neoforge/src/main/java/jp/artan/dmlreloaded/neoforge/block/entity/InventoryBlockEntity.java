@@ -12,14 +12,17 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.ItemStackHandler;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class InventoryBlockEntity extends BlockEntity {
     public final int size;
     protected int timer;
 
     public final BaseStackHandler inventory;
-//    protected LazyOptional<ItemStackHandler> handler;
+    protected LazyOptional<ItemStackHandler> handler;
 
     public InventoryBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, int size, Integer[] arr) {
         super(type, pos, state);
@@ -29,13 +32,13 @@ public class InventoryBlockEntity extends BlockEntity {
 
         this.size = size;
         this.inventory = createInventory();
-//        this.handler = LazyOptional.of(() -> new OutputStackHandler(this.inventory, arr));
+        this.handler = LazyOptional.of(() -> new OutputStackHandler(this.inventory, arr));
     }
 
-//    @Override
-//    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-//        return cap == ForgeCapabilities.ITEM_HANDLER ? this.handler.cast() : super.getCapability(cap, side);
-//    }
+    @Override
+    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+        return cap == ForgeCapabilities.ITEM_HANDLER ? this.handler.cast() : super.getCapability(cap, side);
+    }
 
 //    public LazyOptional<ItemStackHandler> getHandler() {
 //        return this.handler;
@@ -50,34 +53,34 @@ public class InventoryBlockEntity extends BlockEntity {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
-//    @Override
-//    public CompoundTag getUpdateTag() {
-//        return serializeNBT();
-//    }
-//
-//    @Override
-//    public void handleUpdateTag(CompoundTag tag) {
-//        super.handleUpdateTag(tag);
-//        load(tag);
-//    }
-//
-//    @Override
-//    public void invalidateCaps() {
-//        super.invalidateCaps();
-//        this.handler.invalidate();
-//    }
-//
-//    @Override
-//    public void load(CompoundTag tag) {
-//        super.load(tag);
-//        this.inventory.deserializeNBT(tag.getCompound("Inventory"));
-//    }
+    @Override
+    public CompoundTag getUpdateTag() {
+        return serializeNBT();
+    }
 
-//    @Override
-//    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
-//        super.onDataPacket(net, pkt);
-//        handleUpdateTag(pkt.getTag());
-//    }
+    @Override
+    public void handleUpdateTag(CompoundTag tag) {
+        super.handleUpdateTag(tag);
+        load(tag);
+    }
+
+    @Override
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        this.handler.invalidate();
+    }
+
+    @Override
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        this.inventory.deserializeNBT(tag.getCompound("Inventory"));
+    }
+
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        super.onDataPacket(net, pkt);
+        handleUpdateTag(pkt.getTag());
+    }
 
     public void update() {
         requestModelDataUpdate();
@@ -87,11 +90,11 @@ public class InventoryBlockEntity extends BlockEntity {
         }
     }
 
-//    @Override
-//    protected void saveAdditional(CompoundTag tag) {
-//        super.saveAdditional(tag);
-//        tag.put("Inventory", this.inventory.serializeNBT());
-//    }
+    @Override
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        tag.put("Inventory", this.inventory.serializeNBT());
+    }
 
     private BaseStackHandler createInventory() {
         return new BaseStackHandler(this.size) {

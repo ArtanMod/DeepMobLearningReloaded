@@ -16,6 +16,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
 
 import java.util.Random;
 
@@ -31,7 +34,7 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
     public int ticks = 0;
     private boolean isCrafting;
     private boolean byproductSuccess = false;
-//    private LazyOptional<DeepEnergyStorage> energy;
+    private LazyOptional<DeepEnergyStorage> energy;
     private IMobKey currentDataModelType;
     private MobMetaData mobMetaData;
     private static Integer[]bannSlot = {0,1};
@@ -39,37 +42,37 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
     public BlockEntitySimulationChamber(BlockPos pWorldPosition, BlockState pBlockState) {
         super(DMLBlockEntityForge.ENTITY_SIMULATION_CHAMBER.get(), pWorldPosition, pBlockState, 4, bannSlot);
         this.energyStorage = createEnergyStorage();
-//        this.energy = LazyOptional.of(() -> this.energyStorage);
+        this.energy = LazyOptional.of(() -> this.energyStorage);
     }
 
-//    @Override
-//    public void invalidateCaps() {
-//        super.invalidateCaps();
-//        this.energy.invalidate();
-//    }
-//
-//    @Override
-//    protected void saveAdditional(CompoundTag tag) {
-//        super.saveAdditional(tag);
-//        tag.putInt("energy", this.energyStorage.getEnergyStored());
-//        tag.putInt("simulationProgress", percentDone);
-//        tag.putBoolean("isCrafting", isCrafting);
-//        tag.putBoolean("craftSuccess", byproductSuccess);
-//    }
-//
-//    @Override
-//    public void load(CompoundTag pTag) {
-//        super.load(pTag);
-//        this.energyStorage.setEnergy(pTag.contains("energy") ? pTag.getInt("energy") : 300000);
-//        percentDone = pTag.contains("simulationProgress") ? pTag.getInt("simulationProgress") : 0;
-//        isCrafting = pTag.contains("isCrafting") ? pTag.getBoolean("isCrafting") : isCrafting;
-//        byproductSuccess = pTag.contains("craftSuccess") ? pTag.getBoolean("craftSuccess") : (isCrafting);
-//    }
-//
-//    @Override
-//    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-//        return cap == ForgeCapabilities.ENERGY ? this.energy.cast() : super.getCapability(cap, side);
-//    }
+    @Override
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        this.energy.invalidate();
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        tag.putInt("energy", this.energyStorage.getEnergyStored());
+        tag.putInt("simulationProgress", percentDone);
+        tag.putBoolean("isCrafting", isCrafting);
+        tag.putBoolean("craftSuccess", byproductSuccess);
+    }
+
+    @Override
+    public void load(CompoundTag pTag) {
+        super.load(pTag);
+        this.energyStorage.setEnergy(pTag.contains("energy") ? pTag.getInt("energy") : 300000);
+        percentDone = pTag.contains("simulationProgress") ? pTag.getInt("simulationProgress") : 0;
+        isCrafting = pTag.contains("isCrafting") ? pTag.getBoolean("isCrafting") : isCrafting;
+        byproductSuccess = pTag.contains("craftSuccess") ? pTag.getBoolean("craftSuccess") : (isCrafting);
+    }
+
+    @Override
+    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+        return cap == ForgeCapabilities.ENERGY ? this.energy.cast() : super.getCapability(cap, side);
+    }
 
     private DeepEnergyStorage createEnergyStorage() {
         return new DeepEnergyStorage(this, 2000000, 25600, 0, 0);
