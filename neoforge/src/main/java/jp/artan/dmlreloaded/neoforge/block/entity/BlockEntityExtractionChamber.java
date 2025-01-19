@@ -11,16 +11,14 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
+import net.neoforged.neoforge.common.util.Lazy;
 
 public class BlockEntityExtractionChamber extends InventoryBlockEntity{
 
     public DeepEnergyStorage energyStorage;
 
     public boolean isCrafting = false;
-    private LazyOptional<DeepEnergyStorage> energy;
+    private Lazy<DeepEnergyStorage> energy;
     public int ticks = 0;
     public int percentDone = 0;
     private String currentPristineMatter = "";
@@ -33,7 +31,7 @@ public class BlockEntityExtractionChamber extends InventoryBlockEntity{
     public BlockEntityExtractionChamber(BlockPos pos, BlockState state) {
         super(DMLBlockEntityForge.ENTITY_EXTRACTION_CHAMBER.get(), pos, state, 17, bannSlot);
         this.energyStorage = createEnergyStorage();
-        this.energy = LazyOptional.of(() -> this.energyStorage);
+        this.energy = Lazy.of(() -> this.energyStorage);
     }
 
     private DeepEnergyStorage createEnergyStorage() {
@@ -200,7 +198,7 @@ public class BlockEntityExtractionChamber extends InventoryBlockEntity{
     }
 
     @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+    public <T> Lazy<T> getCapability(Capability<T> cap, Direction side) {
         return cap == ForgeCapabilities.ENERGY ? this.energy.cast() : super.getCapability(cap, side);
     }
 }

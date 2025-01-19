@@ -16,9 +16,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
+import net.neoforged.neoforge.common.util.Lazy;
 
 import java.util.Random;
 
@@ -34,7 +32,7 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
     public int ticks = 0;
     private boolean isCrafting;
     private boolean byproductSuccess = false;
-    private LazyOptional<DeepEnergyStorage> energy;
+    private Lazy<DeepEnergyStorage> energy;
     private IMobKey currentDataModelType;
     private MobMetaData mobMetaData;
     private static Integer[]bannSlot = {0,1};
@@ -42,7 +40,7 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
     public BlockEntitySimulationChamber(BlockPos pWorldPosition, BlockState pBlockState) {
         super(DMLBlockEntityForge.ENTITY_SIMULATION_CHAMBER.get(), pWorldPosition, pBlockState, 4, bannSlot);
         this.energyStorage = createEnergyStorage();
-        this.energy = LazyOptional.of(() -> this.energyStorage);
+        this.energy = Lazy.of(() -> this.energyStorage);
     }
 
     @Override
@@ -70,7 +68,7 @@ public class BlockEntitySimulationChamber extends InventoryBlockEntity {
     }
 
     @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+    public <T> Lazy<T> getCapability(Capability<T> cap, Direction side) {
         return cap == ForgeCapabilities.ENERGY ? this.energy.cast() : super.getCapability(cap, side);
     }
 

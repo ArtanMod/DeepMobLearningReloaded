@@ -12,17 +12,15 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.ItemStackHandler;
+import net.neoforged.neoforge.common.util.Lazy;
+import net.neoforged.neoforge.items.ItemStackHandler;
 
 public class InventoryBlockEntity extends BlockEntity {
     public final int size;
     protected int timer;
 
     public final BaseStackHandler inventory;
-    protected LazyOptional<ItemStackHandler> handler;
+    protected Lazy<ItemStackHandler> handler;
 
     public InventoryBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, int size, Integer[] arr) {
         super(type, pos, state);
@@ -32,11 +30,11 @@ public class InventoryBlockEntity extends BlockEntity {
 
         this.size = size;
         this.inventory = createInventory();
-        this.handler = LazyOptional.of(() -> new OutputStackHandler(this.inventory, arr));
+        this.handler = Lazy.of(() -> new OutputStackHandler(this.inventory, arr));
     }
 
     @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+    public <T> Lazy<T> getCapability(Capability<T> cap, Direction side) {
         return cap == ForgeCapabilities.ITEM_HANDLER ? this.handler.cast() : super.getCapability(cap, side);
     }
 

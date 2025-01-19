@@ -3,12 +3,12 @@ package jp.artan.dmlreloaded.neoforge.util;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.ItemStackHandler;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class OutputStackHandler extends ItemStackHandler{
+public class OutputStackHandler extends ItemStackHandler {
 
     private final BaseStackHandler internal;
     private List<Integer> blockedSlots;

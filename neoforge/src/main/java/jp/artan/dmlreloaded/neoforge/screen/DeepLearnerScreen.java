@@ -39,10 +39,10 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
     private PoseStack pose;
     private ImageButton imgBtnPrev;
     private ImageButton imgBtnNext;
-    private static final ResourceLocation base = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "textures/gui/deeplearner_base.png");
-    private static final ResourceLocation netherite_base = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "textures/gui/netherite_deeplearner_base.png");
-    private static final ResourceLocation extras = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "textures/gui/deeplearner_extras.png");
-    private static final ResourceLocation defaultGui = new ResourceLocation(DeepMobLearningReloadedMod.MOD_ID, "textures/gui/default_gui.png");
+    private static final ResourceLocation base = DeepMobLearningReloadedMod.getResource("textures/gui/deeplearner_base.png");
+    private static final ResourceLocation netherite_base = DeepMobLearningReloadedMod.getResource("textures/gui/netherite_deeplearner_base.png");
+    private static final ResourceLocation extras = DeepMobLearningReloadedMod.getResource("textures/gui/deeplearner_extras.png");
+    private static final ResourceLocation defaultGui = DeepMobLearningReloadedMod.getResource("textures/gui/default_gui.png");
 
     public DeepLearnerScreen(DeepLearnerContainer container, Inventory playerInv, Component component) {
         super(container, playerInv, component);
@@ -108,10 +108,10 @@ public class DeepLearnerScreen extends AbstractContainerScreen<DeepLearnerContai
     }
 
     @Override
-    public void render(GuiGraphics pGuiGraphics, int p_97796_, int p_97797_, float p_97798_) {
-        this.renderBackground(pGuiGraphics);
-        super.render(pGuiGraphics, p_97796_, p_97797_, p_97798_);
-        this.renderTooltip(pGuiGraphics, p_97796_, p_97797_);
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        this.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
     private void renderDefaultScreen(GuiGraphics pGuiGraphics) {

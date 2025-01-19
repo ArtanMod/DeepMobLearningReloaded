@@ -2,15 +2,11 @@ package jp.artan.dmlreloaded.neoforge.util;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.ItemStackHandler;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.ICapabilityProvider;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
+import net.neoforged.neoforge.common.util.Lazy;
 
 public class InventoryItemStack extends ItemStackHandler implements ICapabilityProvider {
     public final int size;
@@ -18,12 +14,12 @@ public class InventoryItemStack extends ItemStackHandler implements ICapabilityP
     protected boolean requiresUpdate;
 
     public final ItemStackHandler inventory;
-    protected LazyOptional<ItemStackHandler> handler;
+    protected Lazy<ItemStackHandler> handler;
 
     public InventoryItemStack(int pSize) {
         this.size = pSize;
         this.inventory = createInventory();
-        this.handler = LazyOptional.of(()-> this.inventory);
+        this.handler = Lazy.of(()-> this.inventory);
     }
 
     private ItemStackHandler createInventory() {
@@ -40,7 +36,7 @@ public class InventoryItemStack extends ItemStackHandler implements ICapabilityP
     }
 
     @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+    public <T> Lazy<T> getCapability(Capability<T> cap, Direction side) {
         return cap == Capabilities.ITEM_HANDLER ? this.handler.cast() : LazyOptional.empty();
     }
 
