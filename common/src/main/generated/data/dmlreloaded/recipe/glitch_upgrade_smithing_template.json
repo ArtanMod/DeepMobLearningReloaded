@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:netherite_upgrade_smithing_template"
+    },
+    "B": {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    "C": {
+      "item": "dmlreloaded:glitch_fragment"
+    }
+  },
+  "pattern": [
+    "BCB",
+    "CAC",
+    "BCB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "dmlreloaded:glitch_upgrade_smithing_template"
+  }
+}

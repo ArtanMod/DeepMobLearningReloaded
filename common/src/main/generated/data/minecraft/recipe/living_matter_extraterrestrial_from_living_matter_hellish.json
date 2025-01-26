@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "dmlreloaded:living_matter_hellish"
+    },
+    "X": {
+      "item": "minecraft:end_stone"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "dmlreloaded:living_matter_extraterrestrial"
+  }
+}

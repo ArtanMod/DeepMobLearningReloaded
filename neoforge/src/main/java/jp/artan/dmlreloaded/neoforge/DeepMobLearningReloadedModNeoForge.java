@@ -40,13 +40,13 @@ public class DeepMobLearningReloadedModNeoForge {
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::onClientSetup);
         eventBus.addListener(this::registerScreens);
+        eventBus.addListener(DMLPacketHandler::register);
 
         PluginInit.init(eventBus);
     }
 
     public void commonSetup(final FMLCommonSetupEvent event) {
         DeepMobLearningReloadedMod.commonSetup();
-        event.enqueueWork(DMLPacketHandler::register);
     }
 
     public void onClientSetup(FMLClientSetupEvent event) {
@@ -89,7 +89,7 @@ public class DeepMobLearningReloadedModNeoForge {
         generator.addProvider(event.includeClient(), new ModItemTagsProvider(output, lookupProvider, blockTagsProvider.contentsGetter(), DeepMobLearningReloadedMod.MOD_ID, existingFileHelper));
 
         // Global Loot Modifier
-        generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(output, lookupProvider, DeepMobLearningReloadedMod.MOD_ID));
+//        generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(output, lookupProvider, DeepMobLearningReloadedMod.MOD_ID));
 
         // Patchouli
 //        generator.addProvider(event.includeClient(), new ModPatchouliProvider(event.includeClient(), DeepMobLearningReloadedMod.MOD_ID, generator, existingFileHelper));

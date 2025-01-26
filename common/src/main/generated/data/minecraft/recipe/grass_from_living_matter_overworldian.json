@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "dmlreloaded:living_matter_overworldian"
+    },
+    {
+      "item": "minecraft:dirt"
+    },
+    {
+      "tag": "minecraft:leaves"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:grass_block"
+  }
+}

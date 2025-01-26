@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "dmlreloaded:living_matter_overworldian"
+    },
+    {
+      "item": "dmlreloaded:living_matter_overworldian"
+    },
+    {
+      "item": "dmlreloaded:living_matter_overworldian"
+    },
+    {
+      "item": "dmlreloaded:living_matter_overworldian"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "id": "minecraft:iron_ingot"
+  }
+}

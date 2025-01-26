@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "A": {
+      "item": "minecraft:repeater"
+    },
+    "B": {
+      "item": "dmlreloaded:soot_covered_redstone"
+    },
+    "C": {
+      "item": "minecraft:stone"
+    },
+    "D": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "#A#",
+    "BCB",
+    "#D#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "dmlreloaded:data_model_blank"
+  }
+}

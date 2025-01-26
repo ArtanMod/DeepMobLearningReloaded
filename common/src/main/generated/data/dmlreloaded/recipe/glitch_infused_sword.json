@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "dmlreloaded:glitch_infused_ingot"
+    },
+    "X": {
+      "item": "minecraft:iron_nugget"
+    },
+    "Y": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  #",
+    "X# ",
+    "YX "
+  ],
+  "result": {
+    "count": 1,
+    "id": "dmlreloaded:glitch_infused_sword"
+  }
+}

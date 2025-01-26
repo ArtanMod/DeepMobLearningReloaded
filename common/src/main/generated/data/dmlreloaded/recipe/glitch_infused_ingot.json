@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "dmlreloaded:infused_ingot_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "dmlreloaded:glitch_infused_ingot"
+  }
+}

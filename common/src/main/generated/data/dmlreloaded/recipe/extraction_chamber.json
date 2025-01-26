@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:gold_ingot"
+    },
+    "A": {
+      "item": "minecraft:dandelion"
+    },
+    "B": {
+      "item": "minecraft:comparator"
+    },
+    "X": {
+      "item": "minecraft:diamond"
+    },
+    "Y": {
+      "item": "dmlreloaded:machine_casing"
+    }
+  },
+  "pattern": [
+    " # ",
+    "XYX",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "dmlreloaded:extraction_chamber"
+  }
+}

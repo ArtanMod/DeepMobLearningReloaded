@@ -1,5 +1,5 @@
-// 1.20.1	2024-07-24T22:40:20.6710167	Loot Tables
-4eb5d6cf4e595214db6243278f706d5261bd8d8a data/dmlreloaded/loot_tables/blocks/extraction_chamber.json
-f94e798fc076c34f872a03816dbce9296a6ea198 data/dmlreloaded/loot_tables/blocks/infused_ingot_block.json
-778905fa3e5a34c23bf8580a30dbe7b1a6390ac1 data/dmlreloaded/loot_tables/blocks/machine_casing.json
-bdd95874a153c3b36b10aad7eb738ae53e407efe data/dmlreloaded/loot_tables/blocks/simulation_chamber.json
+// 1.21.1	2025-01-26T17:31:26.1754165	Loot Tables
+4eb5d6cf4e595214db6243278f706d5261bd8d8a data/dmlreloaded/loot_table/blocks/extraction_chamber.json
+f94e798fc076c34f872a03816dbce9296a6ea198 data/dmlreloaded/loot_table/blocks/infused_ingot_block.json
+778905fa3e5a34c23bf8580a30dbe7b1a6390ac1 data/dmlreloaded/loot_table/blocks/machine_casing.json
+bdd95874a153c3b36b10aad7eb738ae53e407efe data/dmlreloaded/loot_table/blocks/simulation_chamber.json
